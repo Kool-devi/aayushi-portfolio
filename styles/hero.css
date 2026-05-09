@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section container ──────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;        /* dvh for mobile browser chrome awareness */
+  min-height: 480px;
+  overflow: hidden;
+  background-image: url('../bgimage.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   CORNER NAVIGATION
+   Fixed to the viewport so it stays in the corners while scrolling.
+   mix-blend-mode: difference on the container means nav text
+   is always the exact inverse of whatever background is below —
+   perfectly legible on any background, light or dark.
+   ══════════════════════════════════════════════════════════════ */
+.corner-nav {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  mix-blend-mode: difference;
+}
+
+.nav-item {
+  position: absolute;
+  font-family: var(--f-body);
+  font-size: var(--nav-size);
+  font-weight: 400;
+  letter-spacing: var(--nav-spacing);
+  text-transform: uppercase;
+  color: #ffffff;              /* white + difference = inverse of background */
+  pointer-events: all;
+  /*
+   * Transform handles scroll-hide slide animation.
+   * Opacity handles hover fade.
+   * Both run on independent timing so they never fight each other.
+   */
+  transition:
+    transform 650ms var(--ease-expo),
+    opacity   var(--t-fast) var(--ease-out);
+  will-change: transform;
+}
+
+.nav-item:hover {
+  opacity: 0.5;
+}
+
+/* Corner positions */
+.nav--tl { top:    var(--nav-pad); left:  var(--nav-pad); }
+.nav--tr { top:    var(--nav-pad); right: var(--nav-pad); }
+.nav--bl { bottom: var(--nav-pad); left:  var(--nav-pad); }
+.nav--br { bottom: var(--nav-pad); right: var(--nav-pad); }
+
+/* ── Scroll-hidden state ────────────────────────────────────────
+   JS adds .nav--hidden to .corner-nav when the user scrolls down.
+   Left-side items slide out to the left; right-side items to the right.
+   calc(-100% - var(--nav-pad) - 1rem) guarantees the element clears
+   the viewport edge regardless of text length.
+   Removing the class animates them back along the same path.
+   ─────────────────────────────────────────────────────────────── */
+.corner-nav.nav--hidden .nav--tl,
+.corner-nav.nav--hidden .nav--bl {
+  transform: translateX(calc(-100% - var(--nav-pad) - 1rem));
+}
+
+.corner-nav.nav--hidden .nav--tr,
+.corner-nav.nav--hidden .nav--br {
+  transform: translateX(calc(100% + var(--nav-pad) + 1rem));
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   HERO HEADLINE  — large background text
+   ══════════════════════════════════════════════════════════════ */
+.hero-headline {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  text-align: left;
+  /* Neutralise browser h1 defaults — child .hero-line spans set everything */
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.hero-line {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: var(--hero-weight);
+  font-size: var(--hero-size);
+  line-height: var(--hero-leading);
+  letter-spacing: var(--hero-kern);
+  color: var(--c-ink);
+  text-transform: uppercase;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   BRACKET ELEMENT  — left decorative typographic element
+   ══════════════════════════════════════════════════════════════ */
+.bracket-el {
+  position: absolute;
+  left: var(--bkt-left);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: var(--bkt-gap);
+}
+
+.bracket-paren {
+  font-family: var(--f-display);
+  font-weight: var(--bkt-weight);
+  font-size: var(--bkt-paren-size);
+  line-height: 1;
+  color: var(--c-ink);
+  /* Parentheses sit slightly different vertically — nudge to align optically */
+}
+
+.bracket-paren--l { transform: translateY(0.06em); }
+.bracket-paren--r { transform: translateY(0.06em); }
+
+.bracket-inner {
+  font-family: var(--f-body);
+  font-size: var(--fs-body-lg);
+  font-style: italic;
+  line-height: var(--bkt-text-lead);
+  color: var(--c-ink);
+  white-space: nowrap;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   FLOATING PERSONAL IMAGE
+   ══════════════════════════════════════════════════════════════ */
+.floating-img {
+  position: absolute;
+  left: var(--img-left);
+  top: var(--img-top);
+  transform: translate(-50%, -50%);
+  z-index: 6;               /* on top of headline */
+  width: var(--img-width);
+  pointer-events: none;
+}
+
+.floating-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   STAR ELEMENT  — decorative burst icon, right side
+   ══════════════════════════════════════════════════════════════ */
+.star-el {
+  position: absolute;
+  right: 6.5vw;
+  top: 44%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: var(--star-size);
+  pointer-events: none;
+}
+
+.star-el img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   ARROW ELEMENT  — diagonal arrow, bottom-left
+   ══════════════════════════════════════════════════════════════ */
+.arrow-el {
+  position: absolute;
+  left: 8.5vw;
+  bottom: 17%;
+  z-index: 5;
+  width: var(--arrow-size);
+  pointer-events: none;
+}
+
+.arrow-el img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   Variables handle most of the scaling — only layout shifts here
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (≤1024px) ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .star-el  { right: 4.5vw; }
+  .arrow-el { left: 5.5vw; }
+}
+
+/* ── Large phone (≤768px) ──────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Bracket moves to top-left, no longer vertically centered */
+  .bracket-el {
+    left: 4vw;
+    top: 14%;
+    transform: none;
+  }
+
+  /* Headline stays centred on mobile too */
+  .hero-headline {
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Image pins to right, vertically centered */
+  .floating-img {
+    left: auto;
+    right: 3vw;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Star moves to upper-right corner area */
+  .star-el {
+    right: 3vw;
+    top: 14%;
+    transform: none;
+  }
+
+  /* Arrow stays bottom-left */
+  .arrow-el {
+    left: 4.5vw;
+    bottom: 13%;
+  }
+}
+
+/* ── Phone (≤480px) ────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* On very small phones the star would clutter; keep it but shrink it */
+  .star-el {
+    right: 2.5vw;
+    top: 12%;
+  }
+
+  .bracket-el {
+    top: 12%;
+    left: 3.5vw;
+  }
+
+  .arrow-el {
+    left: 3.5vw;
+    bottom: 10%;
+  }
+}
+
+/* ── Widescreen (≥1600px) ──────────────────────────────────── */
+@media (min-width: 1600px) {
+  /* On ultrawide, vw-based sizes can get too large — clamp in variables handles most of it.
+     These nudge positioning to stay proportional. */
+  .star-el  { right: 7vw;  }
+  .arrow-el { left: 9vw; }
+}

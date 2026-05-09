@@ -1,0 +1,207 @@
+/* ═══════════════════════════════════════════════════════════════
+   PROJECTS SECTION
+   Two-column split: black left panel + three numbered cards right
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ──────────────────────────────────────────── */
+.projects {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  min-height: 90vh;
+  width: 100%;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LEFT PANEL — full-bleed image background with text overlay
+   ═══════════════════════════════════════════════════════════════ */
+.projects-left {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
+    url('../ProjectSectionImage.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: clamp(2rem, 4.5vw, 5rem) clamp(2rem, 4vw, 4.5rem);
+}
+
+/* ── Text block ───────────────────────────────────────────────── */
+.projects-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: clamp(1rem, 1.8vw, 2rem);
+}
+
+.projects-heading {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: var(--fs-h2);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-sub {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: clamp(1.4rem, 2.2vw, 2.5rem);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RIGHT PANEL — three numbered project cards
+   ═══════════════════════════════════════════════════════════════ */
+.projects-right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* ── Individual card ──────────────────────────────────────────── */
+.proj-card {
+  background: #C18C4A;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.6rem, 3vw, 3.2rem) clamp(1.2rem, 2.5vw, 2.8rem);
+  border-left: 3px solid #000;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--t-mid) var(--ease-out);
+}
+
+.proj-card:hover {
+  background: #d49e5a;
+}
+
+/* Even cards flip so number sits at top, name at bottom */
+.proj-card:nth-child(even) {
+  flex-direction: column-reverse;
+}
+
+/* ── Project name ─────────────────────────────────────────────── */
+.proj-card-name {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #000;
+  line-height: 1.5;
+}
+
+/* ── Large number — the dominant visual element ───────────────── */
+.proj-card-num {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(9rem, 20vw, 24rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: #000;
+  /*
+   * Negative margin pulls the number past the card's left padding so
+   * the "0" is half-clipped by the card's overflow:hidden boundary.
+   * ≈ -0.4em cancels the padding (~0.12em) + hides the left half
+   * of "0" (width ≈ 0.57em → half ≈ 0.28em) at the current font size.
+   */
+  margin-left: -0.4em;
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .projects {
+    grid-template-columns: 44% 56%;
+  }
+
+  .proj-card-num {
+    font-size: clamp(8rem, 18vw, 20rem);
+  }
+}
+
+/* Mobile — cards become full-width horizontal rows */
+@media (max-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-left {
+    min-height: 60vh;
+  }
+
+  /* ── Card row layout ──────────────────────────────────────────
+     Each card spans the full width as a horizontal row.
+     Odd cards: number LEFT (bleeds left), name RIGHT.
+     Even cards: name LEFT, number RIGHT (bleeds right).
+  ──────────────────────────────────────────────────────────── */
+  .projects-right {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-card {
+    /* Override desktop column direction — all cards become rows */
+    flex-direction: row-reverse; /* num left, name right (odd) */
+    align-items: center;
+    min-height: clamp(8rem, 28vw, 14rem);
+    /* Switch border from left-edge divider to top-edge divider */
+    border-left: none;
+    border-top: 3px solid #000;
+    padding: 0 clamp(1.2rem, 3vw, 2.8rem);
+  }
+
+  .proj-card:first-child {
+    border-top: none;
+  }
+
+  /* Even cards: name on LEFT, number on RIGHT */
+  .proj-card:nth-child(even) {
+    flex-direction: row;
+  }
+
+  /* Name takes up remaining horizontal space */
+  .proj-card-name {
+    flex: 1;
+    font-size: var(--fs-label);
+    padding: 0 clamp(0.8rem, 2.5vw, 2rem);
+    letter-spacing: 0.03em;
+  }
+
+  /* Number fills card height and bleeds off its outer edge */
+  .proj-card-num {
+    font-size: clamp(6rem, 26vw, 14rem);
+    flex-shrink: 0;
+    align-self: center;
+    /* Odd cards (row-reverse): number is on LEFT → bleed left */
+    margin-left: -0.4em;
+    margin-right: 0;
+  }
+
+  /* Even cards: number is on RIGHT → bleed right */
+  .proj-card:nth-child(even) .proj-card-num {
+    margin-left: 0;
+    margin-right: -0.4em;
+  }
+}

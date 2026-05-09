@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN TOKENS
+   All site-wide values live here. Change anything once, it updates everywhere.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+
+  /* ── Colors ─────────────────────────────────────────────────
+     Swap these to retheme the whole site instantly            */
+  --c-ink:          #000000;   /* primary text, icons, lines  */
+  --c-bg-fallback:  #e8e0d5;   /* shown if bgimage fails      */
+  --c-accent:       #000000;   /* brand accent – change later */
+  --c-nav:          #ffffff;   /* white + mix-blend-mode:difference = always readable */
+
+  /* ── Font Families ──────────────────────────────────────── */
+  --f-display:      'Roboto Condensed', sans-serif;  /* headings  */
+  --f-body:         'Roboto', sans-serif;            /* body copy */
+
+  /* ── Type Scale ──────────────────────────────────────────────
+     Strict hierarchy (largest → smallest):
+       h1  = --hero-size  (defined below, viewport-aware)
+       h2  = --fs-h2      section headings
+       h3  = --fs-h3      sub-headings
+       ↓   = --fs-display large decorative / ticker text
+       ↓   = --fs-body-lg bracket inner / comfortable body
+       ↓   = --fs-label   eyebrows, sub-labels, nav, card names
+       ↓   = --fs-xs      smallest body (about nums & body copy)
+     All minimums ≥ 0.72 rem (~11.5 px) for WCAG readability.
+  ────────────────────────────────────────────────────────────── */
+  --fs-h2:        clamp(2.2rem,  5vw,    6.5rem);
+  --fs-h3:        clamp(0.875rem, 1.05vw, 1.05rem);
+  --fs-display:   clamp(2.4rem,  5.5vw,  6.5rem);
+  --fs-body-lg:   clamp(0.875rem, 1.1vw,  1.05rem);
+  --fs-label:     clamp(0.75rem,  0.85vw, 0.875rem);
+  --fs-xs:        clamp(0.72rem,  0.75vw, 0.8rem);
+
+  /* ── Hero Headline ──────────────────────────────────────── */
+  /* min(15vw, 22vh) ensures text fits BOTH horizontally and vertically.
+     4 lines × 22vh × 0.82 line-height ≈ 72vh — stays inside the viewport. */
+  --hero-size:      clamp(3.5rem, min(15vw, 22vh), 20rem);
+  --hero-leading:   0.82;                        /* line-height  */
+  --hero-kern:      -0.04em;                     /* letter-spacing (reduced kerning) */
+  --hero-weight:    900;
+  --hero-left:      18vw;                        /* text block left offset */
+
+  /* ── Corner Navigation ──────────────────────────────────── */
+  --nav-size:       var(--fs-label);
+  --nav-spacing:    0.14em;
+  --nav-pad:        clamp(1.2rem, 1.8vw, 1.8rem);  /* edge inset */
+
+  /* ── Bracket Element ─────────────────────────────────────── */
+  --bkt-paren-size: clamp(3rem, 6vw, 8rem);
+  --bkt-text-size:  clamp(0.72rem, 1vw, 1.05rem);
+  --bkt-text-lead:  1.4;
+  --bkt-gap:        0.35em;   /* gap between ( text ) */
+  --bkt-left:       3.5vw;
+  --bkt-weight:     300;
+
+  /* ── Floating Personal Image ────────────────────────────── */
+  --img-width:      clamp(150px, 22vw, 330px);
+  --img-left:       52%;       /* horizontal center anchor    */
+  --img-top:        50%;       /* vertical center anchor      */
+
+  /* ── Star & Arrow ───────────────────────────────────────── */
+  --star-size:      clamp(3.5rem, 6vw, 9rem);
+  --arrow-size:     clamp(3rem, 5.5vw, 8rem);
+
+  /* ── Easing & Timing ─────────────────────────────────────── */
+  --ease-expo:      cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --t-fast:         180ms;
+  --t-mid:          350ms;
+
+}
+
+/* ── Tablet overrides (≤1024px) ─────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --hero-size:      clamp(3rem, min(14vw, 22vh), 16rem);
+    --hero-left:      14vw;
+    --img-width:      clamp(130px, 24vw, 280px);
+    --img-left:       54%;
+    --bkt-left:       3vw;
+    --bkt-paren-size: clamp(2.5rem, 5.5vw, 7rem);
+    --star-size:      clamp(3rem, 5.5vw, 7.5rem);
+    --arrow-size:     clamp(2.5rem, 5vw, 7rem);
+    --fs-h2:          clamp(2rem, 4.5vw, 5.5rem);
+  }
+}
+
+/* ── Large phone overrides (≤768px) ─────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --hero-size:      clamp(2.8rem, 12vw, 7rem);
+    --hero-leading:   0.86;
+    --hero-left:      5vw;
+    --img-width:      clamp(110px, 32vw, 200px);
+    --bkt-paren-size: clamp(2rem, 4.5vw, 4rem);
+    --bkt-text-size:  clamp(0.72rem, 1.6vw, 0.9rem);
+    --star-size:      clamp(2.5rem, 6vw, 5rem);
+    --arrow-size:     clamp(2.2rem, 5.5vw, 4.5rem);
+    --nav-pad:        clamp(0.9rem, 2.5vw, 1.4rem);
+    --fs-h2:          clamp(1.8rem, 6vw, 3.5rem);
+    --fs-h3:          clamp(0.875rem, 2.5vw, 1.05rem);
+    --fs-display:     clamp(2rem, 8vw, 5rem);
+    --fs-label:       clamp(0.75rem, 2vw, 0.875rem);
+    --fs-xs:          clamp(0.72rem, 1.8vw, 0.85rem);
+  }
+}
+
+/* ── Small phone overrides (≤480px) ─────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --hero-size:      clamp(2.5rem, 13.5vw, 5rem);
+    --hero-left:      4vw;
+    --img-width:      clamp(90px, 28vw, 150px);
+    --bkt-paren-size: clamp(1.8rem, 4vw, 3rem);
+    --nav-size:       clamp(0.65rem, 2.2vw, 0.75rem);
+    --nav-pad:        clamp(0.8rem, 3vw, 1.2rem);
+    --star-size:      clamp(2rem, 6vw, 3.5rem);
+    --arrow-size:     clamp(1.8rem, 6vw, 3rem);
+    --fs-h3:          clamp(0.875rem, 2.8vw, 1rem);
+    --fs-label:       clamp(0.72rem, 2.2vw, 0.82rem);
+    --fs-xs:          clamp(0.7rem, 2vw, 0.8rem);
+  }
+}
+
+/* ── Widescreen overrides (≥1600px) ─────────────────────── */
+@media (min-width: 1600px) {
+  :root {
+    --fs-h2:          clamp(4rem, 4.5vw, 7rem);
+    --fs-display:     clamp(4rem, 5vw, 7rem);
+    --fs-label:       clamp(0.8rem, 0.6vw, 1rem);
+    --fs-xs:          clamp(0.75rem, 0.55vw, 0.9rem);
+  }
+}

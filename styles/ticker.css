@@ -1,0 +1,135 @@
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS TICKER SECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Section container ──────────────────────────────────────── */
+.skills-ticker {
+  width: 100%;
+  background-color: #BFA992;
+  overflow: hidden;
+  padding: clamp(2.8rem, 5vw, 5rem) 0 clamp(3rem, 5.5vw, 5.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.6rem, 2.8vw, 2.8rem);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   LABEL  — "I am good at:"
+   ══════════════════════════════════════════════════════════════ */
+.ticker-label {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #000000;
+  text-align: center;
+  user-select: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   TICKER STRIP  — scrolling marquee
+   ══════════════════════════════════════════════════════════════ */
+.ticker-strip {
+  width: 100%;
+  overflow: hidden;
+  /* Hard mask: skills fade in/out at left and right edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    #000 8%,
+    #000 92%,
+    transparent 100%
+  );
+}
+
+/* Inner wrapper — two identical sets; animation moves exactly -50% (= 1 set width) */
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: max-content;
+  animation: ticker-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover — gives the reader a chance to read */
+.skills-ticker:hover .ticker-inner {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+/* ── Individual skill word ───────────────────────────────────── */
+.ticker-item {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: var(--fs-display);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: #000000;
+  padding: 0 clamp(0.8rem, 2vw, 2rem);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* ── Separator glyph between skills ─────────────────────────── */
+.ticker-sep {
+  font-family: var(--f-display);
+  font-size: clamp(1rem, 2.5vw, 3rem);
+  color: #000000;
+  opacity: 0.45;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Slow it down slightly on smaller screens so text remains readable */
+@media (max-width: 768px) {
+  .ticker-inner {
+    animation-duration: 48s;
+  }
+  /* Narrower fade edges on mobile */
+  .ticker-strip {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      #000 5%,
+      #000 95%,
+      transparent 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .ticker-inner {
+    animation-duration: 38s;
+  }
+}

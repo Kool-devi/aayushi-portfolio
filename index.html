@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aayushi — Portfolio</title>
+
+  <!-- Google Fonts: Roboto Condensed (display) + Roboto (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+  <!-- ── Corner Navigation ───────────────────────────────────
+       Fixed to the viewport — persists while scrolling.
+       mix-blend-mode: difference on the container keeps text
+       readable against any background (light or dark).
+  ──────────────────────────────────────────────────────────── -->
+  <nav class="corner-nav" aria-label="Site navigation">
+    <a href="index.html"    class="nav-item nav--tl">Home</a>
+    <a href="#projects"     class="nav-item nav--tr">Projects</a>
+    <a href="#contact"      class="nav-item nav--bl">Contact</a>
+    <a href="https://linkedin.com/in/aayushi"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="nav-item nav--br">LinkedIn</a>
+  </nav>
+
+  <!-- ════════════════════════════════════════════════════════
+       HOME PAGE — HERO SECTION
+       ════════════════════════════════════════════════════════ -->
+  <section class="hero" id="home">
+
+    <!-- ── Bracket Element ───────────────────────────────────
+         Typographic decorative element, left side
+    ──────────────────────────────────────────────────────── -->
+    <div class="bracket-el" aria-hidden="true">
+      <span class="bracket-paren bracket-paren--l">(</span>
+      <span class="bracket-inner">
+        Every brief<br>is a dare
+      </span>
+      <span class="bracket-paren bracket-paren--r">)</span>
+    </div>
+
+    <!-- ── Hero Headline ─────────────────────────────────────
+         Large background text — update copy in the spans below
+    ──────────────────────────────────────────────────────── -->
+    <h1 class="hero-headline" aria-label="For brands a mission">
+      <span class="hero-line">For</span>
+      <span class="hero-line">Brands</span>
+      <span class="hero-line">A</span>
+      <span class="hero-line">Mission</span>
+    </h1>
+
+    <!-- ── Floating Personal Image ───────────────────────────
+         Overlaid on the headline text, center-right
+    ──────────────────────────────────────────────────────── -->
+    <figure class="floating-img">
+      <img src="Personal%20Image.webp" alt="Aayushi" draggable="false">
+    </figure>
+
+    <!-- ── Star Element ──────────────────────────────────────
+         Decorative burst icon, right side
+    ──────────────────────────────────────────────────────── -->
+    <div class="star-el" aria-hidden="true">
+      <img src="star.svg" alt="">
+    </div>
+
+    <!-- ── Arrow Element ─────────────────────────────────────
+         Diagonal arrow, bottom-left
+    ──────────────────────────────────────────────────────── -->
+    <div class="arrow-el" aria-hidden="true">
+      <img src="arrow.png" alt="">
+    </div>
+
+  </section>
+  <!-- /hero -->
+
+
+  <!-- ════════════════════════════════════════════════════════
+       SKILLS TICKER SECTION
+       ════════════════════════════════════════════════════════ -->
+  <section class="skills-ticker" id="skills" aria-label="Skills">
+
+    <!-- ── Static label ──────────────────────────────────────── -->
+    <p class="ticker-label">I am good at:</p>
+
+    <!-- ── Marquee strip ─────────────────────────────────────── -->
+    <!-- Items are duplicated so the animation loops seamlessly  -->
+    <div class="ticker-strip">
+      <div class="ticker-inner" aria-hidden="true">
+
+        <!-- Set A -->
+        <span class="ticker-item">UX Performance Monitoring and Research</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Development Ready Design System</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Code Led Design and Prototyping</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Use Case Development</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Data Structuring</span>
+        <span class="ticker-sep">✦</span>
+
+        <!-- Set B — identical copy for seamless loop -->
+        <span class="ticker-item">UX Performance Monitoring and Research</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Development Ready Design System</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Code Led Design and Prototyping</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Use Case Development</span>
+        <span class="ticker-sep">✦</span>
+        <span class="ticker-item">Data Structuring</span>
+        <span class="ticker-sep">✦</span>
+
+      </div>
+    </div>
+
+  </section>
+  <!-- /skills-ticker -->
+
+
+
+
+  <!-- ════════════════════════════════════════════════════════
+       PROJECTS SECTION
+       Left: black panel (text top, image bottom)
+       Right: three numbered project cards
+       ════════════════════════════════════════════════════════ -->
+  <section class="projects" id="projects">
+
+    <!-- ── Left Panel ──────────────────────────────────────────
+         Full-bleed image background (ProjectSectionImage.png)
+         with a dark overlay; text sits on top.
+    ──────────────────────────────────────────────────────────── -->
+    <div class="projects-left">
+
+      <div class="projects-text">
+        <p class="projects-eyebrow">Featured</p>
+        <h2 class="projects-heading">
+          <span>SELECTED</span>
+          <span>WORKS</span>
+        </h2>
+        <p class="projects-sub">Design · Strategy · Research</p>
+      </div>
+
+    </div>
+    <!-- /projects-left -->
+
+    <!-- ── Right Panel — Numbered Cards ────────────────────────
+         Three cards: odd cards have name top / number bottom;
+         even cards flip so number sits top / name bottom.
+    ──────────────────────────────────────────────────────────── -->
+    <div class="projects-right">
+
+      <article class="proj-card">
+        <span class="proj-card-name">Brand Identity</span>
+        <span class="proj-card-num">01</span>
+      </article>
+
+      <article class="proj-card">
+        <span class="proj-card-name">UX Research</span>
+        <span class="proj-card-num">02</span>
+      </article>
+
+      <article class="proj-card">
+        <span class="proj-card-name">Product Design</span>
+        <span class="proj-card-num">03</span>
+      </article>
+
+    </div>
+    <!-- /projects-right -->
+
+  </section>
+  <!-- /projects -->
+
+
+
+  <!-- ════════════════════════════════════════════════════════
+       ABOUT ME SECTION
+       Warm beige canvas — portrait anchored bottom-centre,
+       four numbered facts orbiting it, decorative cluster left.
+       ════════════════════════════════════════════════════════ -->
+  <section class="about" id="about">
+
+    <!-- ── Fact 02 — top-left: right edge 1.5vw from image left ── -->
+    <div class="about-fact about-fact--02">
+      <span class="about-num">02</span>
+      <h3 class="about-label">Past Experience</h3>
+      <p class="about-body">I've led product design at two early-stage startups, shipping zero-to-one apps from concept to launch.</p>
+    </div>
+
+    <!-- ── Fact 03 — upper-right: left edge at image right ───── -->
+    <div class="about-fact about-fact--03">
+      <span class="about-num">03</span>
+      <h3 class="about-label">Approach</h3>
+      <p class="about-body">I treat every brief as a systems problem — clarity of thinking first, aesthetics second.</p>
+    </div>
+
+    <!-- ── Personal portrait — bottom centre ────────────────────
+         Grayscale applied via CSS. Swap src when ready.
+    ──────────────────────────────────────────────────────────── -->
+    <figure class="about-portrait">
+      <img src="Personal%20Image.webp" alt="Aayushi">
+    </figure>
+
+    <!-- ── Fact 04 — lower-left: right edge at image left ────── -->
+    <div class="about-fact about-fact--04">
+      <span class="about-num">04</span>
+      <h3 class="about-label">Current Experience</h3>
+      <p class="about-body">Designing full-stack digital products for global clients, balancing craft with delivery speed.</p>
+    </div>
+
+    <!-- ── Fact 05 — lower-right: left edge at image right ───── -->
+    <div class="about-fact about-fact--05">
+      <span class="about-num">05</span>
+      <h3 class="about-label">Inspiration</h3>
+      <p class="about-body">Architecture, long walks, and late-night reading fuel most of my best ideas.</p>
+    </div>
+
+  </section>
+  <!-- /about -->
+
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>
