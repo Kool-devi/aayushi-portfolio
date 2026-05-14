@@ -2,6 +2,33 @@
    HERO SECTION
    ═══════════════════════════════════════════════════════════════ */
 
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE-LOAD ANIMATIONS
+   Hero elements animate in on arrival — no scroll trigger needed.
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes h-fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes h-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Staggered entrance for every hero element */
+.hero .bracket-el                  { animation: h-fade-up  0.9s var(--ease-expo) 0.15s both; }
+.hero-line:nth-child(1)            { animation: h-fade-up  1s   var(--ease-expo) 0.05s both; }
+.hero-line:nth-child(2)            { animation: h-fade-up  1s   var(--ease-expo) 0.15s both; }
+.hero-line:nth-child(3)            { animation: h-fade-up  1s   var(--ease-expo) 0.25s both; }
+.hero-line:nth-child(4)            { animation: h-fade-up  1s   var(--ease-expo) 0.35s both; }
+.floating-img                      { animation: h-fade-in  1s   var(--ease-out)  0.45s both; }
+.star-el                           { animation: h-fade-in  1.2s var(--ease-out)  0.1s  both; }
+.arrow-el                          { animation: h-fade-up  0.8s var(--ease-expo) 0.55s both; }
+
+
 /* ── Section container ──────────────────────────────────────── */
 .hero {
   position: relative;
@@ -46,7 +73,7 @@
    * Both run on independent timing so they never fight each other.
    */
   transition:
-    transform 650ms var(--ease-expo),
+    transform 950ms var(--ease-expo),
     opacity   var(--t-fast) var(--ease-out);
   will-change: transform;
 }
@@ -90,7 +117,7 @@
   z-index: 2;
   pointer-events: none;
   user-select: none;
-  text-align: left;
+  text-align: center;
   /* Neutralise browser h1 defaults — child .hero-line spans set everything */
   font-size: inherit;
   font-weight: inherit;

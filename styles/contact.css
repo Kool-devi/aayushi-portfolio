@@ -1,0 +1,211 @@
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT PAGE
+   Standalone styles for contact.html.
+   Shared design tokens live in variables.css (loaded via main.css).
+   Universal footer styles live in footer.css (also via main.css).
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE-LOAD ANIMATIONS
+   Hero elements animate in on arrival — no scroll trigger needed.
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes ct-fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes ct-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Staggered entrance for every hero element */
+.ct-hero .bracket-el              { animation: ct-fade-up  0.9s var(--ease-expo) 0.15s both; }
+.ct-eyebrow                       { animation: ct-fade-in  0.8s var(--ease-out)  0.1s  both; }
+.ct-headline .ct-line:nth-child(1){ animation: ct-fade-up  1s   var(--ease-expo) 0.05s both; }
+.ct-headline .ct-line:nth-child(2){ animation: ct-fade-up  1s   var(--ease-expo) 0.2s  both; }
+.ct-email-cta                     { animation: ct-fade-up  0.8s var(--ease-expo) 0.5s  both; }
+.ct-star                          { animation: ct-fade-in  1.2s var(--ease-out)  0.1s  both; }
+.ct-scroll-hint                   { animation: ct-fade-in  1s   var(--ease-out)  0.85s both; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   CONTACT HERO  —  light full-screen opener
+   Warm beige canvas — matches the site's primary background tone.
+   ══════════════════════════════════════════════════════════════ */
+
+.ct-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100dvh;
+  background: var(--c-bg-fallback);
+  overflow: hidden;
+}
+
+
+/* ── Bracket element — dark on light background ─────────────── */
+
+.ct-hero .bracket-el .bracket-paren,
+.ct-hero .bracket-el .bracket-inner {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* ── Section eyebrow (top-centre) ─────────────────────────────── */
+
+.ct-eyebrow {
+  position: absolute;
+  top: var(--nav-pad);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ── Main headline — poster-scale, centred ────────────────────── */
+
+.ct-headline {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.ct-line {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(4rem, min(18vw, 26vh), 22rem);
+  line-height: 0.84;
+  letter-spacing: -0.04em;
+  color: var(--c-ink);
+  text-transform: uppercase;
+}
+
+
+/* ── Star (no invert — dark star on light bg) ─────────────────── */
+
+.ct-star {
+  position: absolute;
+  right: 6.5vw;
+  top: 44%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: var(--star-size);
+  pointer-events: none;
+}
+
+.ct-star img {
+  width: 100%;
+  height: auto;
+}
+
+
+/* ── Email CTA — bottom-centre, large linked text ─────────────── */
+
+.ct-email-cta {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+  text-decoration: none;
+  color: var(--c-ink);
+  z-index: 10;
+  white-space: nowrap;
+  transition: opacity var(--t-fast) var(--ease-out);
+}
+
+.ct-email-cta:hover { opacity: 0.55; }
+
+.ct-email-text {
+  font-family: var(--f-display);
+  font-weight: 300;
+  font-size: clamp(1rem, 2.8vw, 3rem);
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.28);
+  padding-bottom: 2px;
+  transition: border-color var(--t-mid) var(--ease-out);
+}
+
+.ct-email-cta:hover .ct-email-text { border-color: var(--c-ink); }
+
+.ct-email-arrow {
+  font-family: var(--f-body);
+  font-size: clamp(0.9rem, 2vw, 2rem);
+  color: rgba(0, 0, 0, 0.45);
+  transition: transform var(--t-mid) var(--ease-expo);
+}
+
+.ct-email-cta:hover .ct-email-arrow { transform: translate(5px, -5px); }
+
+
+/* ── Scroll hint — very bottom, disappears as user scrolls ─────── */
+
+.ct-scroll-hint {
+  position: absolute;
+  bottom: 4.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--f-body);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1024px) {
+  .ct-star { right: 4.5vw; }
+}
+
+@media (max-width: 768px) {
+  .ct-hero .bracket-el {
+    top: 14%;
+    transform: none;
+  }
+
+  .ct-star {
+    right: 3vw;
+    top: 14%;
+    transform: none;
+  }
+
+  .ct-email-text {
+    font-size: clamp(0.85rem, 4.8vw, 1.8rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .ct-hero .bracket-el { top: 12%; }
+  .ct-star             { right: 2.5vw; top: 12%; }
+}
+
+@media (min-width: 1600px) {
+  .ct-star { right: 7vw; }
+}

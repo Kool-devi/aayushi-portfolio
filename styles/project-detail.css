@@ -1,0 +1,470 @@
+/* ═══════════════════════════════════════════════════════════════
+   PROJECT DETAIL — MOBILE TEMPLATE
+   Landing hero section for case study pages.
+   Shared by all mobile-based project detail pages.
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════════════════════
+   PAGE-LOAD ANIMATIONS
+   Hero elements animate in on arrival — no scroll trigger needed.
+   ══════════════════════════════════════════════════════════════ */
+
+@keyframes pd-fade-up {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes pd-fade-up-from-below {
+  from { opacity: 0; transform: translateY(48px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Staggered entrance for every hero element */
+.pd-hero-tagline { animation: pd-fade-up            0.9s var(--ease-expo) 0.1s  both; }
+.pd-hero-btn     { animation: pd-fade-up            0.8s var(--ease-expo) 0.3s  both; }
+.pd-hero-title   { animation: pd-fade-up-from-below 1s   var(--ease-expo) 0.2s  both; }
+
+
+/* ── Hero Section ─────────────────────────────────────────────── */
+
+.pd-hero {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 520px;
+  overflow: hidden;
+
+  /* Background image set inline on the element or overridden per project */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.54), rgba(0, 0, 0, 0.54)),
+    url('../MobileProjectImageTemplate.webp');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* ── Intro Block: tagline + CTA, upper-left ───────────────────── */
+
+.pd-hero-intro {
+  position: absolute;
+  top: clamp(5rem, 20vh, 12rem);
+  left: var(--nav-pad);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 1.5vw, 1.5rem);
+  max-width: clamp(220px, 34vw, 480px);
+}
+
+.pd-hero-tagline {
+  font-family: var(--f-body);
+  font-size: var(--fs-body-lg);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.01em;
+}
+
+
+/* ── View Live Button: text + underline + arrow ───────────────── */
+
+.pd-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: var(--nav-spacing);
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  width: fit-content;
+
+  /* The underline lives here — border instead of text-decoration for control */
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+
+  transition:
+    border-color var(--t-fast) var(--ease-out),
+    opacity      var(--t-fast) var(--ease-out);
+}
+
+.pd-hero-btn:hover {
+  border-bottom-color: #ffffff;
+  opacity: 0.65;
+}
+
+.pd-btn-arrow {
+  display: inline-block;
+  transition: transform var(--t-mid) var(--ease-expo);
+}
+
+.pd-hero-btn:hover .pd-btn-arrow {
+  transform: translateX(5px);
+}
+
+
+/* ── Project Title: massive display type, bottom-left ─────────── */
+
+.pd-hero-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-left: 0;
+  text-align: center;
+
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(5rem, 20vw, 26rem);
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   OVERVIEW SECTION
+   Two-column: section label left, body copy + stats right.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-overview {
+  display: grid;
+  grid-template-columns: 36% 64%;
+  width: 100%;
+  padding: clamp(4rem, 7vw, 8rem) clamp(2rem, 5vw, 6rem);
+  background: var(--c-bg-fallback);
+  gap: clamp(2rem, 4vw, 4rem);
+  box-sizing: border-box;
+}
+
+/* ── Left: bracketed section label ───────────────────────────── */
+
+.pd-overview-label {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  padding-top: 0.3em;
+}
+
+/* ── Right: body copy ─────────────────────────────────────────── */
+
+.pd-overview-body {
+  font-family: var(--f-body);
+  font-size: clamp(1.05rem, 1.6vw, 1.55rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  margin: 0 0 clamp(2.5rem, 4.5vw, 5rem);
+}
+
+/* ── Right: stats row ─────────────────────────────────────────── */
+
+.pd-overview-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.pd-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.pd-stat-num {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-ink);
+}
+
+.pd-stat-label {
+  font-family: var(--f-body);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  color: var(--c-ink);
+  opacity: 0.6;
+}
+
+
+/* ── Responsive (hero + overview) ────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .pd-hero-intro {
+    max-width: clamp(220px, 52vw, 400px);
+  }
+
+  .pd-overview {
+    grid-template-columns: 30% 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-hero-intro {
+    top: clamp(4.5rem, 18vh, 9rem);
+    max-width: 72vw;
+  }
+
+  .pd-hero-title {
+    font-size: clamp(4rem, 18vw, 14rem);
+  }
+
+  /* Stack overview to single column on tablet/phone */
+  .pd-overview {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-hero-intro {
+    top: clamp(4rem, 16vh, 7rem);
+    max-width: 86vw;
+  }
+
+  .pd-hero-title {
+    font-size: clamp(3.2rem, 19vw, 8rem);
+  }
+
+  .pd-overview-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   APP FLOW SECTION
+   Dark two-column: animated text left, phone mockup right.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-flow {
+  display: grid;
+  grid-template-columns: 52% 48%;
+  width: 100%;
+  min-height: 100dvh;
+  padding: clamp(5rem, 9vw, 11rem) clamp(2rem, 6vw, 7rem);
+  background: #0d0d0d;
+  box-sizing: border-box;
+  align-items: center;
+  gap: clamp(2rem, 4vw, 5rem);
+}
+
+
+/* ── Left panel ───────────────────────────────────────────────── */
+
+.pd-flow-left {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.2rem, 2vw, 2rem);
+}
+
+.pd-flow-eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.pd-flow-heading {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 6.5vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0;
+}
+
+
+/* ── Description text with swipe-up animation ─────────────────── */
+
+.pd-flow-desc-wrap {
+  position: relative;
+  overflow: hidden;
+  /*
+    Fixed height accommodates ~3 lines of body text.
+    Prevents layout shift during the animation swap.
+  */
+  min-height: 6.5rem;
+  margin-top: clamp(0.4rem, 0.8vw, 0.8rem);
+}
+
+.pd-flow-desc {
+  font-family: var(--f-body);
+  font-size: clamp(0.95rem, 1.25vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.60);
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  /* Transitions are disabled until .pd-flow--active is added by JS,
+     so the initial positioning snap is invisible to the user.       */
+  transition: none;
+}
+
+/* JS adds this to the section after initial positions are set */
+.pd-flow--active .pd-flow-desc {
+  transition:
+    transform 0.55s var(--ease-expo),
+    opacity   0.55s ease;
+}
+
+/* ── Three positional states ──────────────────────────────────── */
+
+.pd-flow-desc.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Outgoing: slides up and out */
+.pd-flow-desc.is-above {
+  transform: translateY(-115%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Waiting below: slides up into view on next step */
+.pd-flow-desc.is-below {
+  transform: translateY(115%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* ── Right panel: phone mockup ────────────────────────────────── */
+
+.pd-flow-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pd-flow-phone {
+  position: relative;
+  width: clamp(200px, 24vw, 340px);
+  aspect-ratio: 9 / 19.5;
+  background: #111111;
+  border-radius: clamp(28px, 3.5vw, 48px);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.13),
+    0 0 0 10px  rgba(255, 255, 255, 0.03),
+    0 50px 100px rgba(0, 0, 0, 0.7);
+}
+
+/* Subtle glass gloss across the top half */
+.pd-flow-phone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 52%
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+/* Dynamic island / notch */
+.pd-flow-phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 33%;
+  height: clamp(16px, 2.2%, 22px);
+  background: #000000;
+  border-radius: 0 0 14px 14px;
+  z-index: 3;
+}
+
+.pd-flow-phone-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.pd-flow-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+
+/* ── Responsive (flow section) ────────────────────────────────── */
+
+@media (max-width: 1200px) {
+  .pd-flow {
+    grid-template-columns: 55% 45%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .pd-flow {
+    grid-template-columns: 58% 42%;
+  }
+
+  .pd-flow-phone {
+    width: clamp(180px, 30vw, 300px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-flow {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  /* Phone goes above the text on narrow screens */
+  .pd-flow-right {
+    order: -1;
+  }
+
+  .pd-flow-phone {
+    width: clamp(160px, 42vw, 240px);
+  }
+
+  .pd-flow-desc-wrap {
+    min-height: 7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-flow-phone {
+    width: clamp(150px, 52vw, 210px);
+  }
+
+  .pd-flow-desc-wrap {
+    min-height: 8rem;
+  }
+}

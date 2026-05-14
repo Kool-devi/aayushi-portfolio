@@ -8,7 +8,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior handled by Lenis — native smooth would double-ease */
   -webkit-text-size-adjust: 100%;
 }
 

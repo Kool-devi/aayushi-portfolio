@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Aayushi</title>
+
+  <!-- Google Fonts: Roboto Condensed (display) + Roboto (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <!-- Shared design system (tokens + reset + corner-nav + footer) -->
+  <link rel="stylesheet" href="styles/main.css">
+
+  <!-- Contact page styles -->
+  <link rel="stylesheet" href="styles/contact.css">
+</head>
+<body>
+
+  <!-- ── Corner Navigation ─────────────────────────────────────────
+       Identical chrome to every other page.
+       mix-blend-mode: difference keeps text readable on dark and light.
+  ──────────────────────────────────────────────────────────────── -->
+  <nav class="corner-nav" aria-label="Site navigation">
+    <a href="index.html"          class="nav-item nav--tl">Home</a>
+    <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
+    <a href="contact.html"        class="nav-item nav--bl" aria-current="page">Contact</a>
+    <a href="https://linkedin.com/in/aayushi"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="nav-item nav--br">LinkedIn</a>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CONTACT HERO — light, full-screen opener
+       Warm beige canvas. Massive condensed headline centred on
+       the viewport, email CTA anchored to the lower third.
+       ════════════════════════════════════════════════════════════ -->
+  <section class="ct-hero" id="contact" aria-label="Contact">
+
+    <!-- ── Bracket — left, vertically centred ───────────────────── -->
+    <div class="bracket-el" aria-hidden="true">
+      <span class="bracket-paren bracket-paren--l">(</span>
+      <span class="bracket-inner">I'm listening —<br>tell me everything</span>
+      <span class="bracket-paren bracket-paren--r">)</span>
+    </div>
+
+    <!-- ── Section eyebrow label (top-centre) ───────────────────── -->
+    <p class="ct-eyebrow" aria-hidden="true">[ Contact ]</p>
+
+    <!-- ── Main headline — centred, fills the viewport ──────────── -->
+    <h1 class="ct-headline" aria-label="Have a brief?">
+      <span class="ct-line">HAVE A</span>
+      <span class="ct-line">BRIEF?</span>
+    </h1>
+
+    <!-- ── Star decorative element ──────────────────────────────── -->
+    <div class="ct-star" aria-hidden="true">
+      <img src="star.svg" alt="">
+    </div>
+
+    <!-- ── Email CTA — bottom-centre, large linked text ─────────── -->
+    <a href="mailto:hello@aayushi.design"
+       class="ct-email-cta"
+       aria-label="Email Aayushi at hello@aayushi.design">
+      <span class="ct-email-text">hello@aayushi.design</span>
+      <span class="ct-email-arrow" aria-hidden="true">↗</span>
+    </a>
+
+    <!-- ── Scroll hint ───────────────────────────────────────────── -->
+    <p class="ct-scroll-hint" aria-hidden="true">scroll down ↓</p>
+
+  </section>
+  <!-- /ct-hero -->
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       UNIVERSAL SITE FOOTER
+       ════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" aria-label="Site footer">
+
+    <div>
+      <p class="site-footer-eyebrow">[ While you're here ]</p>
+      <nav class="site-footer-links" aria-label="Social links">
+        <a href="https://linkedin.com/in/aayushi"
+           class="site-footer-link"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="index.html#projects"
+           class="site-footer-link">View Work ↗</a>
+        <a href="mailto:hello@aayushi.design"
+           class="site-footer-link">Email ↗</a>
+      </nav>
+    </div>
+
+    <div class="site-footer-bottom">
+      <hr class="site-footer-rule">
+      <div class="site-footer-meta">
+        <span class="site-footer-credit">Aayushi — UX Designer</span>
+        <span class="site-footer-year">© 2025</span>
+      </div>
+    </div>
+
+  </footer>
+  <!-- /site-footer -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>

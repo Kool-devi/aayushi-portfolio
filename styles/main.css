@@ -9,4 +9,5 @@
 /* Additional page stylesheets will be imported below as they are built */
 @import url('./projects.css');
 @import url('./about.css');
+@import url('./footer.css');
 /* @import url('./contact.css');  */

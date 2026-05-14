@@ -23,7 +23,7 @@
   <nav class="corner-nav" aria-label="Site navigation">
     <a href="index.html"    class="nav-item nav--tl">Home</a>
     <a href="#projects"     class="nav-item nav--tr">Projects</a>
-    <a href="#contact"      class="nav-item nav--bl">Contact</a>
+    <a href="contact.html"  class="nav-item nav--bl">Contact</a>
     <a href="https://linkedin.com/in/aayushi"
        target="_blank"
        rel="noopener noreferrer"
@@ -158,8 +158,8 @@
     ──────────────────────────────────────────────────────────── -->
     <div class="projects-right">
 
-      <article class="proj-card">
-        <span class="proj-card-name">Brand Identity</span>
+      <article class="proj-card" onclick="window.location.href='project-delicut.html'" style="cursor:pointer;">
+        <span class="proj-card-name">Delicut</span>
         <span class="proj-card-num">01</span>
       </article>
 
@@ -227,6 +227,37 @@
   <!-- /about -->
 
 
+  <!-- ════════════════════════════════════════════════════════════
+       UNIVERSAL SITE FOOTER
+       ════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" aria-label="Site footer">
+
+    <div>
+      <p class="site-footer-eyebrow">[ While you're here ]</p>
+      <nav class="site-footer-links" aria-label="Social links">
+        <a href="https://linkedin.com/in/aayushi"
+           class="site-footer-link"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="#projects"
+           class="site-footer-link">View Work ↗</a>
+        <a href="contact.html"
+           class="site-footer-link">Contact ↗</a>
+      </nav>
+    </div>
+
+    <div class="site-footer-bottom">
+      <hr class="site-footer-rule">
+      <div class="site-footer-meta">
+        <span class="site-footer-credit">Aayushi — UX Designer</span>
+        <span class="site-footer-year">© 2025</span>
+      </div>
+    </div>
+
+  </footer>
+  <!-- /site-footer -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 </html>
