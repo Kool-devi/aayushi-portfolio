@@ -8,6 +8,8 @@
 .about {
   position: relative;
   width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
   min-height: 100vh;
   background: var(--c-bg-fallback);
   overflow: hidden;
@@ -160,7 +162,8 @@
   .about {
     display: flex;
     flex-direction: column;
-    padding: clamp(2.5rem, 7vw, 4rem) clamp(1.5rem, 5vw, 3rem);
+    padding-block: clamp(2.5rem, 7vw, 4rem);
+    padding-inline: max(clamp(1.5rem, 5vw, 3rem), calc((100% - var(--site-max)) / 2));
     padding-bottom: clamp(220px, 55vw, 380px);
   }
 

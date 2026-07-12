@@ -15,6 +15,7 @@
 
   <!-- Project detail page styles -->
   <link rel="stylesheet" href="styles/project-detail.css">
+  <link rel="stylesheet" href="styles/pd-states.css">
 </head>
 <body>
 
@@ -64,49 +65,90 @@
 
 
   <!-- ════════════════════════════════════════════════════════════
-       PROJECT OVERVIEW SECTION
-       Two-column: label left, body copy + stats right.
+       TLDR — OVERVIEW · METADATA · PROBLEM
+       First content section after hero.
+       Three stacked blocks: overview copy, 4-col metadata grid,
+       and a "The Problem" statement card.
   ════════════════════════════════════════════════════════════════ -->
-  <section class="pd-overview">
+  <section class="pd-tldr" id="pd-tldr">
 
-    <!-- ── Left: section label ───────────────────────────────────── -->
-    <div class="pd-overview-label">
-      <span>[ Overview ]</span>
+    <!-- ── Overview block ────────────────────────────────────────── -->
+    <div class="pd-tldr-overview">
+      <p class="pd-tldr-eyebrow">TLDR</p>
+      <h2 class="pd-tldr-heading">Overview</h2>
+      <p class="pd-tldr-body">
+        Delicut is a UAE-based meal plan subscription app serving 15,000+
+        customers across daily delivery tiers. When I joined, the app had a
+        solid product — but its interface was built for one kind of user: the
+        one who signs up and never deviates. In reality, users skipped
+        deliveries, joined plans late, cancelled mid-cycle, and returned months
+        after their subscription lapsed. None of those moments had a designed
+        screen. I mapped every state a real user could land in and designed the
+        flows that made the app usable for all of them — not just the ideal ones.
+      </p>
     </div>
 
-    <!-- ── Right: description + stats ───────────────────────────── -->
-    <div class="pd-overview-content">
+    <!-- ── Metadata grid: Role · Timeline · Team · Skills ─────────── -->
+    <div class="pd-tldr-meta">
 
-      <p class="pd-overview-body">
-        Delicut is a food delivery application built around the idea that
-        healthy eating should feel effortless. The brief was to design an
-        experience as fresh as the food itself — clear, fast, and satisfying
-        from the first tap to the final bite.
-      </p>
+      <div class="pd-tldr-meta-col">
+        <span class="pd-tldr-meta-label">My role</span>
+        <p class="pd-tldr-meta-value">
+          UX researcher<br>
+          then UI/UX designer,<br>
+          edge case lead
+        </p>
+      </div>
 
-      <div class="pd-overview-stats">
+      <div class="pd-tldr-meta-col">
+        <span class="pd-tldr-meta-label">Timeline</span>
+        <p class="pd-tldr-meta-value">
+          4 months<br>
+          2025
+        </p>
+      </div>
 
-        <div class="pd-stat">
-          <span class="pd-stat-num">12</span>
-          <span class="pd-stat-label">Weeks of research and design.</span>
-        </div>
+      <div class="pd-tldr-meta-col">
+        <span class="pd-tldr-meta-label">Team</span>
+        <p class="pd-tldr-meta-value">
+          2 designers<br>
+          Lead designer + me.<br>
+          Client-side user interviews observed.
+        </p>
+      </div>
 
-        <div class="pd-stat">
-          <span class="pd-stat-num">3</span>
-          <span class="pd-stat-label">Rounds of user testing conducted.</span>
-        </div>
-
-        <div class="pd-stat">
-          <span class="pd-stat-num">94%</span>
-          <span class="pd-stat-label">Task success rate in final testing.</span>
-        </div>
-
+      <div class="pd-tldr-meta-col">
+        <span class="pd-tldr-meta-label">Skills</span>
+        <p class="pd-tldr-meta-value">
+          Systems thinking<br>
+          Edge case design<br>
+          UX research<br>
+          UI design<br>
+          User flows<br>
+          Prototyping
+        </p>
       </div>
 
     </div>
+    <!-- /pd-tldr-meta -->
+
+    <!-- ── The Problem card ───────────────────────────────────────── -->
+    <div class="pd-tldr-problem">
+      <span class="pd-tldr-problem-eyebrow">The Problem</span>
+      <h3 class="pd-tldr-problem-heading">
+        The app was built for the ideal&nbsp;journey.
+        Real users take a different&nbsp;one.
+      </h3>
+      <p class="pd-tldr-problem-sub">
+        How do you design a subscription experience that holds up when users
+        pause mid-cycle, skip deliveries, rejoin after months away, or sign up
+        on day three of a seven-day plan?
+      </p>
+    </div>
+    <!-- /pd-tldr-problem -->
 
   </section>
-  <!-- /pd-overview -->
+  <!-- /pd-tldr -->
 
 
   <!-- ════════════════════════════════════════════════════════════
@@ -150,6 +192,283 @@
   </section>
   <!-- /pd-flow -->
 
+  <!-- ============================================================
+       USE CASES / STATES
+       Desktop: sticky left copy updates as right media scrolls.
+       Mobile: stacked serial sections, no stickiness.
+  ============================================================ -->
+  <section class="pd-states" id="pd-states" aria-label="Subscription use cases">
+
+    <aside class="pd-states-sticky" aria-live="polite">
+      <div class="pd-states-sticky-inner">
+        <span class="pd-states-eyebrow">[ Use Cases ]</span>
+
+        <div class="pd-states-title-wrap">
+          <h2 class="pd-states-title is-visible" id="pd-states-title-a"></h2>
+          <h2 class="pd-states-title is-below" id="pd-states-title-b" aria-hidden="true"></h2>
+        </div>
+
+        <div class="pd-states-chips" role="list">
+          <div class="pd-states-chip" role="listitem">
+            <span class="pd-states-chip-label">User type</span>
+            <div class="pd-states-chip-value-wrap">
+              <span class="pd-states-chip-value is-visible" data-chip="user" data-slot="a"></span>
+              <span class="pd-states-chip-value is-below" data-chip="user" data-slot="b" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="pd-states-chip" role="listitem">
+            <span class="pd-states-chip-label">Plan status</span>
+            <div class="pd-states-chip-value-wrap">
+              <span class="pd-states-chip-value is-visible" data-chip="plan" data-slot="a"></span>
+              <span class="pd-states-chip-value is-below" data-chip="plan" data-slot="b" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="pd-states-chip" role="listitem">
+            <span class="pd-states-chip-label">Viewing date</span>
+            <div class="pd-states-chip-value-wrap">
+              <span class="pd-states-chip-value is-visible" data-chip="date" data-slot="a"></span>
+              <span class="pd-states-chip-value is-below" data-chip="date" data-slot="b" aria-hidden="true"></span>
+            </div>
+          </div>
+          <div class="pd-states-chip" role="listitem">
+            <span class="pd-states-chip-label">Available action</span>
+            <div class="pd-states-chip-value-wrap">
+              <span class="pd-states-chip-value is-visible" data-chip="action" data-slot="a"></span>
+              <span class="pd-states-chip-value is-below" data-chip="action" data-slot="b" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pd-states-body-wrap">
+          <p class="pd-states-body is-visible" id="pd-states-body-a"></p>
+          <p class="pd-states-body is-below" id="pd-states-body-b" aria-hidden="true"></p>
+        </div>
+      </div>
+    </aside>
+
+    <div class="pd-states-panels">
+      <article class="pd-states-panel is-active" data-state="0">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Before the plan begins</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">New user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan not started</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">Upcoming plan</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">View plan details</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            The plan is purchased but deliveries haven't started yet. Users need a clear preview of what's coming — menu, start date, and how to tweak before day one.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Upcoming plan screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pd-states-panel" data-state="1">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Today's delivery is locked</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">New user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan active</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">Today</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">Changes locked</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            Once the kitchen cut-off passes, edits are frozen. The screen explains why changes aren't available and points users to what they can still do.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Today locked screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pd-states-panel" data-state="2">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Tomorrow is still flexible</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">New user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan active</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">Tomorrow</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">Manage delivery</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            Looking ahead, users can skip, swap, or reschedule tomorrow's meal — as long as they're inside the management window.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Tomorrow manage screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pd-states-panel" data-state="3">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Reflect on yesterday</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">New user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan active</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">Yesterday</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">Rate meal</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            Past deliveries become feedback opportunities. Rating a meal feeds the preference engine and makes future menus feel more personal.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Rate meal screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pd-states-panel" data-state="4">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Plan is winding down</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">Existing user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan active</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">Expiring soon</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">Review renewal</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            With a few days left, the experience shifts toward renewal — clear timing, plan options, and no pressure to decide in a hurry.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Renewal review screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pd-states-panel" data-state="5">
+        <div class="pd-states-panel-copy">
+          <span class="pd-states-eyebrow">[ Use Cases ]</span>
+          <h2 class="pd-states-title">Coming back after a break</h2>
+          <div class="pd-states-chips" role="list">
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">User type</span>
+              <span class="pd-states-chip-value is-static">Returning user</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Plan status</span>
+              <span class="pd-states-chip-value is-static">Plan expired</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Viewing date</span>
+              <span class="pd-states-chip-value is-static">No active deliveries</span>
+            </div>
+            <div class="pd-states-chip" role="listitem">
+              <span class="pd-states-chip-label">Available action</span>
+              <span class="pd-states-chip-value is-static">Renew plan</span>
+            </div>
+          </div>
+          <p class="pd-states-body">
+            The plan has lapsed and there's nothing on the calendar. Returning users need a short path back in — renew, pick a start date, and go.
+          </p>
+        </div>
+        <div class="pd-states-panel-media">
+          <div class="pd-states-phone" role="img" aria-label="Renew plan screen placeholder">
+            <div class="pd-states-phone-notch"></div>
+            <div class="pd-states-phone-screen">
+              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </section>
+  <!-- /pd-states -->
+
+
+
 
   <!-- ════════════════════════════════════════════════════════════
        UNIVERSAL SITE FOOTER
@@ -184,6 +503,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <!-- Corner-nav scroll hide/show behaviour -->
   <script src="scripts/main.js"></script>
+  <script src="scripts/pd-states.js"></script>
 
   <!-- ── App Flow: text cycling + scroll trigger ─────────────── -->
   <script>

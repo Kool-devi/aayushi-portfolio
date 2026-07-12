@@ -1,0 +1,388 @@
+/* ═══════════════════════════════════════════════════════════════
+   USE CASES / STATES
+   Desktop: sticky left copy + scrolling right media.
+   Mobile: stacked serial sections, no stickiness.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-states {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  width: 100%;
+  background: var(--c-bg-fallback);
+  box-sizing: border-box;
+  padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
+}
+
+
+/* ── Sticky left panel ────────────────────────────────────────── */
+
+.pd-states-sticky {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(2.5rem, 4vw, 4rem);
+  padding-right: clamp(1.25rem, 2.5vw, 2.75rem);
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.pd-states-sticky-inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.1rem, 1.8vw, 1.6rem);
+  width: 100%;
+  max-width: 34rem;
+}
+
+
+/* ── Shared type ──────────────────────────────────────────────── */
+
+.pd-states-eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.42;
+}
+
+.pd-states-title-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(5.5rem, 9vw, 9.5rem);
+}
+
+.pd-states-title {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(2.4rem, 4.2vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--c-ink);
+  margin: 0;
+}
+
+.pd-states-title-wrap .pd-states-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: none;
+}
+
+.pd-states--ready .pd-states-title-wrap .pd-states-title {
+  transition:
+    transform 0.55s var(--ease-expo),
+    opacity 0.45s ease;
+}
+
+.pd-states-body-wrap {
+  position: relative;
+  overflow: hidden;
+  min-height: 7.5rem;
+}
+
+.pd-states-body {
+  font-family: var(--f-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: var(--c-ink);
+  opacity: 0.72;
+  margin: 0;
+  max-width: 38ch;
+}
+
+.pd-states-body-wrap .pd-states-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: none;
+}
+
+.pd-states--ready .pd-states-body-wrap .pd-states-body {
+  transition:
+    transform 0.55s var(--ease-expo),
+    opacity 0.45s ease;
+}
+
+
+/* ── Chips ────────────────────────────────────────────────────── */
+
+.pd-states-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.75rem, 1.5vw, 1.35rem);
+}
+
+.pd-states-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.pd-states-chip-label {
+  font-family: var(--f-body);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.42;
+}
+
+.pd-states-chip-value-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 2.15rem;
+}
+
+.pd-states-chip-value {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0.4em 0.75em;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: var(--f-body);
+  font-size: clamp(0.78rem, 0.95vw, 0.9rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--c-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+.pd-states-chip-value-wrap .pd-states-chip-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: none;
+}
+
+.pd-states--ready .pd-states-chip-value-wrap .pd-states-chip-value {
+  transition:
+    transform 0.5s var(--ease-expo),
+    opacity 0.4s ease;
+}
+
+.pd-states-chip-value.is-static {
+  position: static;
+  opacity: 1;
+}
+
+
+/* ── Slide states ─────────────────────────────────────────────── */
+
+.pd-states-title.is-visible,
+.pd-states-body.is-visible,
+.pd-states-chip-value.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.pd-states-title.is-above,
+.pd-states-body.is-above,
+.pd-states-chip-value.is-above {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pd-states-title.is-below,
+.pd-states-body.is-below,
+.pd-states-chip-value.is-below {
+  transform: translateY(110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pd-states-body-wrap .pd-states-body.is-visible {
+  opacity: 0.72;
+}
+
+
+/* ── Right panels ─────────────────────────────────────────────── */
+
+.pd-states-panels {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-states-panel {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: clamp(2.5rem, 4vw, 4rem);
+  box-sizing: border-box;
+}
+
+.pd-states-panel-copy {
+  display: none;
+}
+
+.pd-states-panel-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/* ── Phone mockup ─────────────────────────────────────────────── */
+
+.pd-states-phone {
+  position: relative;
+  width: clamp(200px, 22vw, 320px);
+  aspect-ratio: 9 / 19.5;
+  background: #111111;
+  border-radius: clamp(28px, 3.5vw, 48px);
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1.5px rgba(0, 0, 0, 0.12),
+    0 0 0 10px rgba(0, 0, 0, 0.03),
+    0 40px 80px rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.7s var(--ease-expo),
+    opacity 0.55s ease;
+}
+
+.pd-states-panel:not(.is-active) .pd-states-phone {
+  opacity: 0.45;
+  transform: scale(0.96);
+}
+
+.pd-states-phone::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    transparent 52%
+  );
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.pd-states-phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 33%;
+  height: clamp(16px, 2.2%, 22px);
+  background: #000000;
+  border-radius: 0 0 14px 14px;
+  z-index: 3;
+}
+
+.pd-states-phone-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+.pd-states-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+
+/* ── Responsive ───────────────────────────────────────────────── */
+
+@media (max-width: 1100px) {
+  .pd-states {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .pd-states-phone {
+    width: clamp(180px, 26vw, 280px);
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-states {
+    display: flex;
+    flex-direction: column;
+    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
+    padding-block: 0;
+  }
+
+  .pd-states-sticky {
+    display: none;
+  }
+
+  .pd-states-panel {
+    min-height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(1.5rem, 4vw, 2.25rem);
+    padding-block: clamp(2.75rem, 6vw, 4rem);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .pd-states-panel:first-child {
+    border-top: none;
+  }
+
+  .pd-states-panel-copy {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.9rem, 2.5vw, 1.25rem);
+  }
+
+  .pd-states-panel-copy .pd-states-title {
+    position: static;
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .pd-states-panel-copy .pd-states-body {
+    position: static;
+    opacity: 0.72;
+    max-width: none;
+  }
+
+  .pd-states-panel-media {
+    order: -1;
+  }
+
+  .pd-states-phone {
+    width: clamp(160px, 48vw, 230px);
+  }
+
+  .pd-states-panel:not(.is-active) .pd-states-phone {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-states-chips {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .pd-states-phone {
+    width: clamp(150px, 58vw, 200px);
+  }
+}

@@ -138,7 +138,8 @@
   display: grid;
   grid-template-columns: 36% 64%;
   width: 100%;
-  padding: clamp(4rem, 7vw, 8rem) clamp(2rem, 5vw, 6rem);
+  padding-block: clamp(4rem, 7vw, 8rem);
+  padding-inline: max(clamp(2rem, 5vw, 6rem), calc((100% - var(--site-max)) / 2));
   background: var(--c-bg-fallback);
   gap: clamp(2rem, 4vw, 4rem);
   box-sizing: border-box;
@@ -228,7 +229,8 @@
   .pd-overview {
     grid-template-columns: 1fr;
     gap: clamp(1.5rem, 3vw, 2.5rem);
-    padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
   }
 }
 
@@ -250,6 +252,180 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
+   TLDR — OVERVIEW · METADATA · PROBLEM
+   Warm cream background, three stacked blocks.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-tldr {
+  background: var(--c-bg-fallback);
+  padding-block: clamp(3.25rem, 5.5vw, 5.5rem);
+  padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
+  display: flex;
+  flex-direction: column;
+  /* Between major groups (overview → meta → problem) */
+  gap: clamp(2rem, 3.5vw, 3.25rem);
+  box-sizing: border-box;
+}
+
+
+/* ── Overview block ─────────────────────────────────────────── */
+
+.pd-tldr-eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.45;
+  margin: 0 0 0.35rem; /* tight to heading */
+}
+
+.pd-tldr-heading {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(3.2rem, 6vw, 7.5rem);
+  line-height: 0.88;
+  letter-spacing: -0.035em;
+  color: var(--c-ink);
+  margin: 0 0 clamp(0.9rem, 1.6vw, 1.35rem); /* closer to body */
+}
+
+.pd-tldr-body {
+  font-family: var(--f-body);
+  font-size: clamp(1rem, 1.45vw, 1.35rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: var(--c-ink);
+  max-width: 70ch;
+  margin: 0;
+}
+
+
+/* ── Metadata grid ──────────────────────────────────────────── */
+
+.pd-tldr-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.16);
+  padding-top: clamp(1.35rem, 2.2vw, 2rem);
+}
+
+.pd-tldr-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem; /* label ↔ value */
+}
+
+.pd-tldr-meta-label {
+  display: block;
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.42;
+}
+
+.pd-tldr-meta-value {
+  font-family: var(--f-body);
+  font-size: clamp(0.875rem, 1.1vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--c-ink);
+  margin: 0;
+}
+
+
+/* ── Problem card ───────────────────────────────────────────── */
+
+.pd-tldr-problem {
+  background: rgba(0, 0, 0, 0.055);
+  border-radius: 10px;
+  padding: clamp(1.6rem, 2.8vw, 2.5rem) clamp(1.5rem, 2.8vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem; /* eyebrow ↔ heading tight */
+}
+
+.pd-tldr-problem-eyebrow {
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.42;
+}
+
+.pd-tldr-problem-heading {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.6vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  color: var(--c-ink);
+  margin: 0;
+  max-width: 82%;
+}
+
+.pd-tldr-problem-sub {
+  font-family: var(--f-body);
+  font-size: clamp(0.875rem, 1.1vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--c-ink);
+  opacity: 0.6;
+  margin: 0.45rem 0 0; /* slightly more air after the statement */
+  max-width: 60ch;
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .pd-tldr-meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    row-gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .pd-tldr-problem-heading {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-tldr {
+    padding-block: clamp(2.75rem, 5.5vw, 4rem);
+    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
+    gap: clamp(1.75rem, 3.5vw, 2.75rem);
+  }
+
+  .pd-tldr-problem {
+    padding: clamp(1.4rem, 4vw, 2rem) clamp(1.25rem, 3.5vw, 1.85rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .pd-tldr-meta {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.15rem;
+    row-gap: 1.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .pd-tldr-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    APP FLOW SECTION
    Dark two-column: animated text left, phone mockup right.
    ═══════════════════════════════════════════════════════════════ */
@@ -259,11 +435,12 @@
   grid-template-columns: 52% 48%;
   width: 100%;
   min-height: 100dvh;
-  padding: clamp(5rem, 9vw, 11rem) clamp(2rem, 6vw, 7rem);
+  padding-block: clamp(3.5rem, 6.5vw, 6.5rem);
+  padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
   background: #0d0d0d;
   box-sizing: border-box;
   align-items: center;
-  gap: clamp(2rem, 4vw, 5rem);
+  gap: clamp(1.5rem, 3vw, 3.25rem);
 }
 
 
@@ -272,7 +449,7 @@
 .pd-flow-left {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.2rem, 2vw, 2rem);
+  gap: clamp(0.75rem, 1.4vw, 1.15rem); /* eyebrow → heading → desc */
 }
 
 .pd-flow-eyebrow {
@@ -305,7 +482,7 @@
     Prevents layout shift during the animation swap.
   */
   min-height: 6.5rem;
-  margin-top: clamp(0.4rem, 0.8vw, 0.8rem);
+  margin-top: clamp(0.2rem, 0.5vw, 0.45rem);
 }
 
 .pd-flow-desc {
@@ -441,8 +618,9 @@
   .pd-flow {
     grid-template-columns: 1fr;
     min-height: auto;
-    padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 4vw, 3rem);
-    gap: clamp(2.5rem, 6vw, 4rem);
+    padding-block: clamp(2.75rem, 5.5vw, 4.25rem);
+    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
+    gap: clamp(1.75rem, 4vw, 2.75rem);
   }
 
   /* Phone goes above the text on narrow screens */

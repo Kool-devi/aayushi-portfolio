@@ -70,6 +70,13 @@
   --t-fast:         180ms;
   --t-mid:          350ms;
 
+  /* ── Layout rail ───────────────────────────────────────────
+     Caps content sections on wide screens. Full-bleed heroes,
+     image headers, and marquees intentionally ignore this.
+     Use: padding-inline: max(GUTTER, calc((100% - var(--site-max)) / 2));
+  ────────────────────────────────────────────────────────────── */
+  --site-max:       1400px;
+
 }
 
 /* ── Tablet overrides (≤1024px) ─────────────────────────── */
