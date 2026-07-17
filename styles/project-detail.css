@@ -585,6 +585,7 @@
   inset: 0;
   display: flex;
   align-items: stretch;
+  overflow: hidden;
 }
 
 .pd-flow-media {
@@ -593,6 +594,34 @@
   object-fit: cover;
   object-position: top center;
   display: block;
+}
+
+/*
+   Onboarding video is 1918×1030 with a centered phone on beige bg.
+   Equal crop with the Use Cases videos: x=746 y=75 w=426 h=879
+*/
+.pd-flow-phone--video {
+  aspect-ratio: 426 / 879;
+  background: #111111;
+}
+
+.pd-flow-phone--video .pd-flow-phone-notch {
+  display: none;
+}
+
+.pd-flow-phone--video::before {
+  display: none;
+}
+
+.pd-flow-media-video {
+  position: absolute;
+  width: calc(1918 / 426 * 100%);
+  height: calc(1030 / 879 * 100%);
+  left: calc(-746 / 426 * 100%);
+  top: calc(-75 / 879 * 100%);
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
 }
 
 

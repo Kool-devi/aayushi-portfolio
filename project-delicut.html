@@ -174,17 +174,21 @@
 
     </div>
 
-    <!-- ── Right: phone mockup with placeholder image ─────────── -->
+    <!-- ── Right: phone mockup with onboarding video ──────────── -->
     <div class="pd-flow-right">
-      <div class="pd-flow-phone" role="img" aria-label="App screen preview">
+      <div class="pd-flow-phone pd-flow-phone--video" aria-label="Onboarding screen">
         <div class="pd-flow-phone-notch"></div>
         <div class="pd-flow-phone-screen">
-          <img
-            src="MobileProjectImageTemplate.webp"
-            alt="App screen"
-            class="pd-flow-media"
+          <video
+            class="pd-flow-media pd-flow-media-video"
             id="pd-flow-media"
-          >
+            src="Videos/Delicut/Onboarding.mp4"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Onboarding screen recording"
+          ></video>
         </div>
       </div>
     </div>
@@ -274,10 +278,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Upcoming plan screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Upcoming plan screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/1.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Upcoming plan screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -310,10 +322,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Today locked screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Today locked screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/2.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Today locked screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -346,10 +366,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Tomorrow manage screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Tomorrow manage screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/3.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Tomorrow manage screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -382,10 +410,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Rate meal screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Rate meal screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/4.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Rate meal screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -418,10 +454,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Renewal review screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Renewal review screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/5.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Renewal review screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -454,10 +498,18 @@
           </p>
         </div>
         <div class="pd-states-panel-media">
-          <div class="pd-states-phone" role="img" aria-label="Renew plan screen placeholder">
+          <div class="pd-states-phone pd-states-phone--video" aria-label="Renew plan screen">
             <div class="pd-states-phone-notch"></div>
             <div class="pd-states-phone-screen">
-              <img src="MobileProjectImageTemplate.webp" alt="" class="pd-states-media">
+              <video
+                class="pd-states-media pd-states-media-video"
+                src="Videos/Delicut/6.mp4"
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Renew plan screen recording"
+              ></video>
             </div>
           </div>
         </div>
@@ -524,6 +576,7 @@
     var section  = document.getElementById('pd-flow');
     var elA      = document.getElementById('pd-flow-desc-a');
     var elB      = document.getElementById('pd-flow-desc-b');
+    var media    = document.getElementById('pd-flow-media');
 
     if (!section || !elA || !elB) return;
 
@@ -531,6 +584,19 @@
     var started    = false;
     var activeEl   = elA;
     var standbyEl  = elB;
+
+    function playFlowVideo() {
+      if (!media || media.tagName !== 'VIDEO') return;
+      var playPromise = media.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () { /* autoplay may be blocked */ });
+      }
+    }
+
+    function pauseFlowVideo() {
+      if (!media || media.tagName !== 'VIDEO') return;
+      media.pause();
+    }
 
     /* ── Place elements without triggering transitions ─────────── */
     function setup() {
@@ -584,17 +650,26 @@
       setInterval(step, INTERVAL_MS);
     }
 
-    /* ── Fire once on first intersection, then ignore ───────────── */
+    /* ── Text cycle: start once. Video: play/pause with visibility ─ */
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) startFlow();
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+            startFlow();
+            playFlowVideo();
+          } else {
+            pauseFlowVideo();
+          }
         });
       },
-      { threshold: 0.25 }
+      { threshold: [0, 0.25, 0.5] }
     );
 
     observer.observe(section);
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) pauseFlowVideo();
+    });
   })();
   </script>
 </body>

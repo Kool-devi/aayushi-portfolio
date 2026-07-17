@@ -7,7 +7,7 @@
 .pd-states {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
   width: 100%;
   background: var(--c-bg-fallback);
   box-sizing: border-box;
@@ -35,7 +35,7 @@
   flex-direction: column;
   gap: clamp(1.1rem, 1.8vw, 1.6rem);
   width: 100%;
-  max-width: 34rem;
+  max-width: 44rem;
 }
 
 
@@ -117,15 +117,18 @@
 /* ── Chips ────────────────────────────────────────────────────── */
 
 .pd-states-chips {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.75rem, 1.5vw, 1.35rem);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.65rem, 1.1vw, 1.1rem);
 }
 
 .pd-states-chip {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0.4rem;
+  flex: 0 0 auto;
   min-width: 0;
 }
 
@@ -137,20 +140,23 @@
   text-transform: uppercase;
   color: var(--c-ink);
   opacity: 0.42;
+  white-space: nowrap;
 }
 
 .pd-states-chip-value-wrap {
   position: relative;
+  display: grid;
+  grid-template-columns: max-content;
   overflow: hidden;
   height: 2.15rem;
+  width: max-content;
 }
 
 .pd-states-chip-value {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  max-width: 100%;
-  padding: 0.4em 0.75em;
+  width: max-content;
+  padding: 0.4em 0.65em;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.07);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -161,15 +167,11 @@
   letter-spacing: 0.01em;
   color: var(--c-ink);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   box-sizing: border-box;
 }
 
 .pd-states-chip-value-wrap .pd-states-chip-value {
-  position: absolute;
-  top: 0;
-  left: 0;
+  grid-area: 1 / 1;
   transition: none;
 }
 
@@ -297,6 +299,7 @@
   inset: 0;
   display: flex;
   align-items: stretch;
+  overflow: hidden;
 }
 
 .pd-states-media {
@@ -307,12 +310,45 @@
   display: block;
 }
 
+/*
+   Delicut state videos are 1918×1030 with a centered phone on page-colored bg.
+   Equal crop for all five (phone bezel bounds): x=746 y=75 w=426 h=879
+*/
+.pd-states-phone--video {
+  aspect-ratio: 426 / 879;
+  background: #111111;
+}
+
+.pd-states-phone--video .pd-states-phone-notch {
+  display: none;
+}
+
+.pd-states-phone--video::before {
+  display: none;
+}
+
+.pd-states-media-video {
+  position: absolute;
+  width: calc(1918 / 426 * 100%);
+  height: calc(1030 / 879 * 100%);
+  left: calc(-746 / 426 * 100%);
+  top: calc(-75 / 879 * 100%);
+  max-width: none;
+  object-fit: fill;
+  pointer-events: none;
+}
+
 
 /* ── Responsive ───────────────────────────────────────────────── */
 
 @media (max-width: 1100px) {
   .pd-states {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+
+  .pd-states-chips {
+    flex-wrap: wrap;
+    column-gap: clamp(1rem, 2vw, 1.5rem);
   }
 
   .pd-states-phone {
@@ -378,7 +414,7 @@
 
 @media (max-width: 480px) {
   .pd-states-chips {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 0.75rem;
   }
 
