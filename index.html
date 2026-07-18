@@ -17,10 +17,10 @@
 
   <!-- ── Corner Navigation ───────────────────────────────────
        Fixed to the viewport — persists while scrolling.
-       mix-blend-mode: difference on the container keeps text
-       readable against any background (light or dark).
+       Adaptive black/white contrast (nav-contrast.js) replaces
+       mix-blend-mode on this page so items stay readable on grey.
   ──────────────────────────────────────────────────────────── -->
-  <nav class="corner-nav" aria-label="Site navigation">
+  <nav class="corner-nav corner-nav--adaptive" aria-label="Site navigation">
     <a href="index.html"    class="nav-item nav--tl">Home</a>
     <a href="#projects"     class="nav-item nav--tr">Projects</a>
     <a href="contact.html"  class="nav-item nav--bl">Contact</a>
@@ -259,5 +259,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/nav-contrast.js"></script>
 </body>
 </html>

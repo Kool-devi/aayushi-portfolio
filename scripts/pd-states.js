@@ -140,8 +140,24 @@
     return panel ? panel.querySelector('video.pd-states-media-video') : null;
   }
 
+  function prepareVideo(video) {
+    if (!video) return;
+    /* iOS requires the muted property (not just the attribute) for autoplay. */
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    video.playsInline = true;
+  }
+
+  panels.forEach(function (panel) {
+    prepareVideo(panelVideo(panel));
+  });
+
   function playVideo(video) {
     if (!video) return;
+    prepareVideo(video);
     var playPromise = video.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise.catch(function () { /* autoplay may be blocked until gesture */ });
@@ -167,7 +183,7 @@
       section.classList.add('pd-states--ready');
       syncWrapHeight(titleWrap, titleActive, titleStand);
       syncWrapHeight(bodyWrap, bodyActive, bodyStand);
-      syncVideos(activeIdx);
+      if (!MOBILE_MQ.matches) syncVideos(activeIdx);
     });
   });
 
@@ -210,7 +226,7 @@
       panels[activeIdx].classList.remove('is-active');
       panels[idx].classList.add('is-active');
       activeIdx = idx;
-      syncVideos(activeIdx);
+      /* Playback on mobile is owned by the phone IntersectionObserver. */
       return;
     }
 
@@ -287,7 +303,11 @@
     applyState(bestIdx);
   }
 
-  /* Mobile: stacked panels — play only the video currently in view. */
+  /*
+     Mobile: observe the phone frame (not the <video>).
+     Cropped videos have a huge layout box from the CSS crop offset, so
+     observing the video itself never reaches a useful intersection ratio.
+  */
   var mobileVideoObserver = null;
 
   function setupMobileVideoObserver() {
@@ -304,20 +324,22 @@
     mobileVideoObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          var video = entry.target;
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.4) {
+          var phone = entry.target;
+          var video = phone.querySelector('video.pd-states-media-video');
+          if (!video) return;
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
             playVideo(video);
           } else {
             pauseVideo(video);
           }
         });
       },
-      { threshold: [0, 0.4, 0.65], rootMargin: '-10% 0px -10% 0px' }
+      { threshold: [0, 0.25, 0.5, 0.75] }
     );
 
     panels.forEach(function (panel) {
-      var video = panelVideo(panel);
-      if (video) mobileVideoObserver.observe(video);
+      var phone = panel.querySelector('.pd-states-phone--video');
+      if (phone) mobileVideoObserver.observe(phone);
     });
   }
 
@@ -332,11 +354,19 @@
     setupMobileVideoObserver();
   }, { passive: true });
 
+  if (typeof MOBILE_MQ.addEventListener === 'function') {
+    MOBILE_MQ.addEventListener('change', setupMobileVideoObserver);
+  } else if (typeof MOBILE_MQ.addListener === 'function') {
+    MOBILE_MQ.addListener(setupMobileVideoObserver);
+  }
+
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
       panels.forEach(function (panel) { pauseVideo(panelVideo(panel)); });
     } else if (!MOBILE_MQ.matches) {
       syncVideos(activeIdx);
+    } else {
+      setupMobileVideoObserver();
     }
   });
 

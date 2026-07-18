@@ -105,6 +105,31 @@
   transform: translateX(calc(100% + var(--nav-pad) + 1rem));
 }
 
+/* ── Adaptive contrast (home + contact only) ────────────────────
+   Opt-in via .corner-nav--adaptive. Drops blend-mode inversion and
+   uses explicit black / white per item (set by nav-contrast.js).
+   Other pages keep mix-blend-mode: difference above.
+   ─────────────────────────────────────────────────────────────── */
+.corner-nav.corner-nav--adaptive {
+  mix-blend-mode: normal;
+}
+
+.corner-nav--adaptive .nav-item {
+  color: #000000;
+  transition:
+    transform 950ms var(--ease-expo),
+    opacity   var(--t-fast) var(--ease-out),
+    color     220ms var(--ease-out);
+}
+
+.corner-nav--adaptive .nav-item.nav-item--black {
+  color: #000000;
+}
+
+.corner-nav--adaptive .nav-item.nav-item--white {
+  color: #ffffff;
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    HERO HEADLINE  — large background text

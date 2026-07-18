@@ -19,10 +19,10 @@
 <body>
 
   <!-- ── Corner Navigation ─────────────────────────────────────────
-       Identical chrome to every other page.
-       mix-blend-mode: difference keeps text readable on dark and light.
+       Adaptive black/white contrast (nav-contrast.js) — same system
+       as the home page. Other pages keep mix-blend-mode difference.
   ──────────────────────────────────────────────────────────────── -->
-  <nav class="corner-nav" aria-label="Site navigation">
+  <nav class="corner-nav corner-nav--adaptive" aria-label="Site navigation">
     <a href="index.html"          class="nav-item nav--tl">Home</a>
     <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
     <a href="contact.html"        class="nav-item nav--bl" aria-current="page">Contact</a>
@@ -108,5 +108,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="scripts/main.js"></script>
+  <script src="scripts/nav-contrast.js"></script>
 </body>
 </html>

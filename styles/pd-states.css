@@ -399,7 +399,7 @@
   }
 
   .pd-states-panel-media {
-    order: -1;
+    order: 0;
   }
 
   .pd-states-phone {

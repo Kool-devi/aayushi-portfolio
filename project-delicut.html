@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="styles/project-detail.css">
   <link rel="stylesheet" href="styles/pd-states.css">
 </head>
-<body>
+<body class="pd-page">
 
   <!-- ── Corner Navigation ───────────────────────────────────────
        Fixed to the viewport — identical to the main portfolio.
@@ -49,7 +49,7 @@
     <div class="pd-hero-intro">
       <p class="pd-hero-tagline">A food delivery app designed for<br>seamless, delightful ordering.</p>
 
-      <a href="#" class="pd-hero-btn" target="_blank" rel="noopener noreferrer">
+      <a href="https://delicut.ae/" class="pd-hero-btn" target="_blank" rel="noopener noreferrer">
         <span class="pd-btn-text">View Live Project</span>
         <span class="pd-btn-arrow">→</span>
       </a>
@@ -63,6 +63,26 @@
   </section>
   <!-- /pd-hero -->
 
+
+  <!-- ════════════════════════════════════════════════════════════
+       CASE STUDY LAYOUT
+       Sticky table of contents (left) + main content (right).
+       On phone: TOC stacks under the hero and scrolls normally.
+  ════════════════════════════════════════════════════════════════ -->
+  <div class="pd-layout">
+
+    <aside class="pd-toc" aria-label="Case study contents">
+      <a href="index.html" class="pd-toc-back">← Back</a>
+      <p class="pd-toc-project">Delicut</p>
+      <nav class="pd-toc-nav" aria-label="On this page">
+        <a href="#pd-tldr" class="pd-toc-link is-active">TLDR</a>
+        <a href="#pd-problem" class="pd-toc-link">Problem</a>
+        <a href="#pd-flow" class="pd-toc-link">App Flow</a>
+        <a href="#pd-states" class="pd-toc-link">Use Cases</a>
+      </nav>
+    </aside>
+
+    <div class="pd-layout-main">
 
   <!-- ════════════════════════════════════════════════════════════
        TLDR — OVERVIEW · METADATA · PROBLEM
@@ -133,7 +153,7 @@
     <!-- /pd-tldr-meta -->
 
     <!-- ── The Problem card ───────────────────────────────────────── -->
-    <div class="pd-tldr-problem">
+    <div class="pd-tldr-problem" id="pd-problem">
       <span class="pd-tldr-problem-eyebrow">The Problem</span>
       <h3 class="pd-tldr-problem-heading">
         The app was built for the ideal&nbsp;journey.
@@ -186,6 +206,7 @@
             muted
             loop
             playsinline
+            webkit-playsinline
             preload="metadata"
             aria-label="Onboarding screen recording"
           ></video>
@@ -287,6 +308,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Upcoming plan screen recording"
               ></video>
@@ -331,6 +353,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Today locked screen recording"
               ></video>
@@ -375,6 +398,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Tomorrow manage screen recording"
               ></video>
@@ -419,6 +443,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Rate meal screen recording"
               ></video>
@@ -463,6 +488,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Renewal review screen recording"
               ></video>
@@ -507,6 +533,7 @@
                 muted
                 loop
                 playsinline
+                webkit-playsinline
                 preload="metadata"
                 aria-label="Renew plan screen recording"
               ></video>
@@ -519,7 +546,10 @@
   </section>
   <!-- /pd-states -->
 
-
+    </div>
+    <!-- /pd-layout-main -->
+  </div>
+  <!-- /pd-layout -->
 
 
   <!-- ════════════════════════════════════════════════════════════
@@ -556,6 +586,7 @@
   <!-- Corner-nav scroll hide/show behaviour -->
   <script src="scripts/main.js"></script>
   <script src="scripts/pd-states.js"></script>
+  <script src="scripts/pd-toc.js"></script>
 
   <!-- ── App Flow: text cycling + scroll trigger ─────────────── -->
   <script>
@@ -585,8 +616,19 @@
     var activeEl   = elA;
     var standbyEl  = elB;
 
+    function prepareFlowVideo() {
+      if (!media || media.tagName !== 'VIDEO') return;
+      media.muted = true;
+      media.defaultMuted = true;
+      media.setAttribute('muted', '');
+      media.setAttribute('playsinline', '');
+      media.setAttribute('webkit-playsinline', '');
+      media.playsInline = true;
+    }
+
     function playFlowVideo() {
       if (!media || media.tagName !== 'VIDEO') return;
+      prepareFlowVideo();
       var playPromise = media.play();
       if (playPromise && typeof playPromise.catch === 'function') {
         playPromise.catch(function () { /* autoplay may be blocked */ });
@@ -597,6 +639,8 @@
       if (!media || media.tagName !== 'VIDEO') return;
       media.pause();
     }
+
+    prepareFlowVideo();
 
     /* ── Place elements without triggering transitions ─────────── */
     function setup() {
