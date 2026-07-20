@@ -311,11 +311,19 @@
 }
 
 /*
-   Delicut state videos are 1918×1030 with a centered phone on page-colored bg.
-   Equal crop for all five (phone bezel bounds): x=746 y=75 w=426 h=879
+   State videos: phone on page-colored bg.
+   Crop via CSS vars on each .pd-states-phone--video:
+     --v-w/--v-h source canvas, --c-x/--c-y/--c-w/--c-h phone crop
+   Defaults keep video 6 on the original 1918×1030 crop.
 */
 .pd-states-phone--video {
-  aspect-ratio: 426 / 879;
+  --v-w: 1918;
+  --v-h: 1030;
+  --c-x: 746;
+  --c-y: 75;
+  --c-w: 426;
+  --c-h: 879;
+  aspect-ratio: var(--c-w) / var(--c-h);
   background: #111111;
 }
 
@@ -329,10 +337,10 @@
 
 .pd-states-media-video {
   position: absolute;
-  width: calc(1918 / 426 * 100%);
-  height: calc(1030 / 879 * 100%);
-  left: calc(-746 / 426 * 100%);
-  top: calc(-75 / 879 * 100%);
+  width: calc(var(--v-w) / var(--c-w) * 100%);
+  height: calc(var(--v-h) / var(--c-h) * 100%);
+  left: calc(-1 * var(--c-x) / var(--c-w) * 100%);
+  top: calc(-1 * var(--c-y) / var(--c-h) * 100%);
   max-width: none;
   object-fit: fill;
   pointer-events: none;

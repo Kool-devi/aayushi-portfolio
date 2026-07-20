@@ -24,6 +24,28 @@
   );
 }
 
+/* Delicut landing — bright mockup; dark type, no scrim */
+.pd-page .pd-hero {
+  background-image: url('../Mockups/Delicut/Project Landing.jpg');
+}
+
+.pd-page .pd-hero-tagline {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.pd-page .pd-hero-btn {
+  color: var(--c-ink);
+  border-bottom-color: rgba(0, 0, 0, 0.4);
+}
+
+.pd-page .pd-hero-btn:hover {
+  border-bottom-color: var(--c-ink);
+}
+
+.pd-page .pd-hero-title {
+  color: var(--c-ink);
+}
+
 .pd-layout {
   display: grid;
   grid-template-columns: var(--pd-toc-width) minmax(0, 1fr);

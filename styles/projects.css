@@ -28,6 +28,25 @@
   padding: clamp(2rem, 4.5vw, 5rem) clamp(2rem, 4vw, 4.5rem);
 }
 
+/* Hover a project card → swap left-panel preview (cover crops; layout unchanged) */
+.projects:has(.proj-card:nth-child(1):hover) .projects-left {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
+    url('../Mockups/Delicut/Home Page Image.jpg');
+}
+
+.projects:has(.proj-card:nth-child(2):hover) .projects-left {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
+    url('../ProjectSectionImage.png');
+}
+
+.projects:has(.proj-card:nth-child(3):hover) .projects-left {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
+    url('../ProjectSectionImage.png');
+}
+
 /* ── Text block ───────────────────────────────────────────────── */
 .projects-text {
   display: flex;
