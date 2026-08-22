@@ -1,60 +1,36 @@
 /* ═══════════════════════════════════════════════════════════════
-   USE CASES / STATES
-   Sticky left copy updates as right-side panels scroll into view.
+   PAST / PRESENT / FUTURE
+   Desktop: a 100vh sticky frame. Scroll progress through the
+   tall track swaps left copy and slides the masked phone stack.
    Disabled (no sticky animation) below 768px — mobile uses
    per-panel copy rendered in the HTML instead.
    ═══════════════════════════════════════════════════════════════ */
 (function () {
   'use strict';
 
+  var CHIP_KEYS = ['plan', 'date', 'action'];
+
   var STATES = [
     {
-      title:  'Before the plan begins',
-      user:   'New user',
-      plan:   'Plan not started',
-      date:   'Upcoming plan',
-      action: 'View plan details',
-      body:   'The plan is purchased but deliveries haven\'t started yet. Users need a clear preview of what\'s coming — menu, start date, and how to tweak before day one.'
-    },
-    {
-      title:  'Today\'s delivery is locked',
-      user:   'New user',
-      plan:   'Plan active',
+      title:  'Today',
+      plan:   'Active plan',
       date:   'Today',
-      action: 'Changes locked',
-      body:   'Once the kitchen cut-off passes, edits are frozen. The screen explains why changes aren\'t available and points users to what they can still do.'
+      action: 'View only',
+      body:   'If today\'s delivery was already locked, users could see their assigned meals and delivery details, but could not make changes. The interface needed to make that restriction clear without making the screen feel disabled.'
     },
     {
-      title:  'Tomorrow is still flexible',
-      user:   'New user',
-      plan:   'Plan active',
+      title:  'Tomorrow',
+      plan:   'Active plan',
       date:   'Tomorrow',
       action: 'Manage delivery',
-      body:   'Looking ahead, users can skip, swap, or reschedule tomorrow\'s meal — as long as they\'re inside the management window.'
+      body:   'Future days were more flexible. Before the cut-off, users could change a meal, skip delivery, resume delivery, or change the delivery address. This was the most action-heavy state, so the priority was making the options easy to find without overcrowding the meal cards.'
     },
     {
-      title:  'Reflect on yesterday',
-      user:   'New user',
-      plan:   'Plan active',
+      title:  'Yesterday',
+      plan:   'Active plan',
       date:   'Yesterday',
       action: 'Rate meal',
-      body:   'Past deliveries become feedback opportunities. Rating a meal feeds the preference engine and makes future menus feel more personal.'
-    },
-    {
-      title:  'Plan is winding down',
-      user:   'Existing user',
-      plan:   'Plan active',
-      date:   'Expiring soon',
-      action: 'Review renewal',
-      body:   'With a few days left, the experience shifts toward renewal — clear timing, plan options, and no pressure to decide in a hurry.'
-    },
-    {
-      title:  'Coming back after a break',
-      user:   'Returning user',
-      plan:   'Plan expired',
-      date:   'No active deliveries',
-      action: 'Renew plan',
-      body:   'The plan has lapsed and there\'s nothing on the calendar. Returning users need a short path back in — renew, pick a start date, and go.'
+      body:   'Past days had a different purpose. Instead of delivery controls, users could review and rate the meals they had received. If the delivery had been skipped, rating was not shown because no meal was delivered.'
     }
   ];
 
@@ -76,27 +52,16 @@
   var titleWrap = section.querySelector('.pd-states-title-wrap');
   var bodyWrap  = section.querySelector('.pd-states-body-wrap');
 
-  var chipEls = {
-    user: {
-      a: section.querySelector('[data-chip="user"][data-slot="a"]'),
-      b: section.querySelector('[data-chip="user"][data-slot="b"]')
-    },
-    plan: {
-      a: section.querySelector('[data-chip="plan"][data-slot="a"]'),
-      b: section.querySelector('[data-chip="plan"][data-slot="b"]')
-    },
-    date: {
-      a: section.querySelector('[data-chip="date"][data-slot="a"]'),
-      b: section.querySelector('[data-chip="date"][data-slot="b"]')
-    },
-    action: {
-      a: section.querySelector('[data-chip="action"][data-slot="a"]'),
-      b: section.querySelector('[data-chip="action"][data-slot="b"]')
-    }
-  };
+  var chipEls = {};
+  CHIP_KEYS.forEach(function (key) {
+    chipEls[key] = {
+      a: section.querySelector('[data-chip="' + key + '"][data-slot="a"]'),
+      b: section.querySelector('[data-chip="' + key + '"][data-slot="b"]')
+    };
+  });
 
   if (!titleA || !titleB || !bodyA || !bodyB) return;
-  if (!chipEls.user.a || !chipEls.plan.a || !chipEls.date.a || !chipEls.action.a) return;
+  if (CHIP_KEYS.some(function (key) { return !chipEls[key].a || !chipEls[key].b; })) return;
 
   var activeIdx = 0;
   var animating = false;
@@ -105,36 +70,38 @@
   var titleStand  = titleB;
   var bodyActive  = bodyA;
   var bodyStand   = bodyB;
-  var chipActive = {
-    user: chipEls.user.a,
-    plan: chipEls.plan.a,
-    date: chipEls.date.a,
-    action: chipEls.action.a
-  };
-  var chipStand = {
-    user: chipEls.user.b,
-    plan: chipEls.plan.b,
-    date: chipEls.date.b,
-    action: chipEls.action.b
-  };
+  var chipActive = {};
+  var chipStand = {};
+  CHIP_KEYS.forEach(function (key) {
+    chipActive[key] = chipEls[key].a;
+    chipStand[key] = chipEls[key].b;
+  });
 
   function syncWrapHeight(wrap, a, b) {
     if (!wrap) return;
     wrap.style.height = Math.max(a.scrollHeight, b.scrollHeight, 1) + 'px';
   }
 
+  function setPanelIndex(idx) {
+    section.style.setProperty('--pd-states-index', String(idx));
+  }
+
   function seed(state) {
     titleActive.textContent = state.title;
     bodyActive.textContent = state.body;
-    chipActive.user.textContent = state.user;
-    chipActive.plan.textContent = state.plan;
-    chipActive.date.textContent = state.date;
-    chipActive.action.textContent = state.action;
+    CHIP_KEYS.forEach(function (key) {
+      chipActive[key].textContent = state[key];
+    });
+    setPanelIndex(0);
     syncWrapHeight(titleWrap, titleActive, titleStand);
     syncWrapHeight(bodyWrap, bodyActive, bodyStand);
   }
 
   seed(STATES[0]);
+
+  var pinVisible = false;
+  var pin = section.querySelector('.pd-states-pin');
+  var mask = section.querySelector('.pd-states-mask');
 
   function panelVideo(panel) {
     return panel ? panel.querySelector('video.pd-states-media-video') : null;
@@ -145,15 +112,17 @@
     /* iOS requires the muted property (not just the attribute) for autoplay. */
     video.muted = true;
     video.defaultMuted = true;
+    video.autoplay = false;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', '');
+    video.removeAttribute('autoplay');
     video.playsInline = true;
   }
 
-  panels.forEach(function (panel) {
-    prepareVideo(panelVideo(panel));
-  });
+  function pauseAllVideos() {
+    panels.forEach(function (panel) { pauseVideo(panelVideo(panel)); });
+  }
 
   function playVideo(video) {
     if (!video) return;
@@ -169,21 +138,30 @@
     video.pause();
   }
 
+  function canPlayVideos() {
+    return pinVisible && !document.hidden;
+  }
+
   function syncVideos(activeIndex) {
     panels.forEach(function (panel, i) {
       var video = panelVideo(panel);
       if (!video) return;
-      if (i === activeIndex) playVideo(video);
+      if (canPlayVideos() && i === activeIndex) playVideo(video);
       else pauseVideo(video);
     });
   }
+
+  panels.forEach(function (panel) {
+    var video = panelVideo(panel);
+    prepareVideo(video);
+    pauseVideo(video);
+  });
 
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
       section.classList.add('pd-states--ready');
       syncWrapHeight(titleWrap, titleActive, titleStand);
       syncWrapHeight(bodyWrap, bodyActive, bodyStand);
-      if (!MOBILE_MQ.matches) syncVideos(activeIdx);
     });
   });
 
@@ -222,13 +200,17 @@
   function applyState(idx) {
     if (idx === activeIdx || idx < 0 || idx >= STATES.length) return;
 
+    panels[activeIdx].classList.remove('is-active');
+    panels[idx].classList.add('is-active');
+    setPanelIndex(idx);
+
     if (MOBILE_MQ.matches) {
-      panels[activeIdx].classList.remove('is-active');
-      panels[idx].classList.add('is-active');
       activeIdx = idx;
       /* Playback on mobile is owned by the phone IntersectionObserver. */
       return;
     }
+
+    syncVideos(idx);
 
     if (animating) {
       pendingIdx = idx;
@@ -238,10 +220,6 @@
     animating = true;
     var reverse = idx < activeIdx;
     var state = STATES[idx];
-
-    panels[activeIdx].classList.remove('is-active');
-    panels[idx].classList.add('is-active');
-    syncVideos(idx);
 
     titleStand.textContent = state.title;
     bodyStand.textContent = state.body;
@@ -256,8 +234,11 @@
     bodyActive = b.active;
     bodyStand = b.stand;
 
-    var keys = ['user', 'plan', 'date', 'action'];
-    keys.forEach(function (key) {
+    CHIP_KEYS.forEach(function (key) {
+      if (chipActive[key].textContent === state[key]) {
+        chipStand[key].textContent = state[key];
+        return;
+      }
       var c = swapPair(chipActive[key], chipStand[key], state[key], reverse);
       chipActive[key] = c.active;
       chipStand[key] = c.stand;
@@ -268,7 +249,7 @@
     setTimeout(function () {
       resetStandby(titleStand);
       resetStandby(bodyStand);
-      keys.forEach(function (key) { resetStandby(chipStand[key]); });
+      CHIP_KEYS.forEach(function (key) { resetStandby(chipStand[key]); });
       syncWrapHeight(titleWrap, titleActive, titleStand);
       syncWrapHeight(bodyWrap, bodyActive, bodyStand);
 
@@ -286,48 +267,69 @@
   function resolveActive() {
     if (MOBILE_MQ.matches) return;
 
-    var mid = window.innerHeight * 0.45;
-    var bestIdx = activeIdx;
-    var bestDist = Infinity;
+    var rect = section.getBoundingClientRect();
+    var viewH = window.innerHeight || document.documentElement.clientHeight;
+    var track = section.offsetHeight - viewH;
+    var progress = 0;
 
-    panels.forEach(function (panel, i) {
-      var rect = panel.getBoundingClientRect();
-      var center = rect.top + rect.height * 0.5;
-      var dist = Math.abs(center - mid);
-      if (dist < bestDist) {
-        bestDist = dist;
-        bestIdx = i;
-      }
-    });
+    if (track > 0) {
+      progress = Math.min(1, Math.max(0, -rect.top / track));
+    }
+
+    var n = STATES.length;
+    var bestIdx = progress >= 1
+      ? n - 1
+      : Math.max(0, Math.min(n - 1, Math.floor(progress * n)));
 
     applyState(bestIdx);
   }
 
   /*
-     Mobile: observe the phone frame (not the <video>).
-     Cropped videos have a huge layout box from the CSS crop offset, so
-     observing the video itself never reaches a useful intersection ratio.
+     Videos stay paused until their frame is in the viewport.
+     Desktop: observe the masked phone. Mobile: observe each phone.
   */
-  var mobileVideoObserver = null;
+  var videoObserver = null;
 
-  function setupMobileVideoObserver() {
-    if (mobileVideoObserver) {
-      mobileVideoObserver.disconnect();
-      mobileVideoObserver = null;
+  function setPinVisible(visible) {
+    pinVisible = !!visible;
+    if (MOBILE_MQ.matches) return;
+    if (pinVisible) syncVideos(activeIdx);
+    else pauseAllVideos();
+  }
+
+  function setupVideoObserver() {
+    if (videoObserver) {
+      videoObserver.disconnect();
+      videoObserver = null;
     }
 
-    if (!MOBILE_MQ.matches) {
-      syncVideos(activeIdx);
+    if (!('IntersectionObserver' in window)) {
+      setPinVisible(true);
       return;
     }
 
-    mobileVideoObserver = new IntersectionObserver(
+    if (!MOBILE_MQ.matches) {
+      var desktopTarget = mask || pin || section;
+      videoObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            setPinVisible(entry.isIntersecting && entry.intersectionRatio >= 0.35);
+          });
+        },
+        { threshold: [0, 0.2, 0.35, 0.5, 0.75] }
+      );
+      videoObserver.observe(desktopTarget);
+      return;
+    }
+
+    pinVisible = false;
+    videoObserver = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           var phone = entry.target;
           var video = phone.querySelector('video.pd-states-media-video');
           if (!video) return;
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.25 && !document.hidden) {
             playVideo(video);
           } else {
             pauseVideo(video);
@@ -339,7 +341,7 @@
 
     panels.forEach(function (panel) {
       var phone = panel.querySelector('.pd-states-phone--video');
-      if (phone) mobileVideoObserver.observe(phone);
+      if (phone) videoObserver.observe(phone);
     });
   }
 
@@ -351,25 +353,25 @@
 
   window.addEventListener('resize', function () {
     resolveActive();
-    setupMobileVideoObserver();
+    setupVideoObserver();
   }, { passive: true });
 
   if (typeof MOBILE_MQ.addEventListener === 'function') {
-    MOBILE_MQ.addEventListener('change', setupMobileVideoObserver);
+    MOBILE_MQ.addEventListener('change', setupVideoObserver);
   } else if (typeof MOBILE_MQ.addListener === 'function') {
-    MOBILE_MQ.addListener(setupMobileVideoObserver);
+    MOBILE_MQ.addListener(setupVideoObserver);
   }
 
   document.addEventListener('visibilitychange', function () {
     if (document.hidden) {
-      panels.forEach(function (panel) { pauseVideo(panelVideo(panel)); });
+      pauseAllVideos();
     } else if (!MOBILE_MQ.matches) {
       syncVideos(activeIdx);
     } else {
-      setupMobileVideoObserver();
+      setupVideoObserver();
     }
   });
 
   resolveActive();
-  setupMobileVideoObserver();
+  setupVideoObserver();
 })();

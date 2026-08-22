@@ -1,70 +1,134 @@
 /* ═══════════════════════════════════════════════════════════════
-   USE CASES / STATES
-   Desktop: sticky left copy + scrolling right media.
+   PAST / PRESENT / FUTURE
+   Nested in the design process column.
+   Desktop: a 100vh sticky frame. Heading at the top, iPhone
+   vertically centered, right column masked to one device.
    Mobile: stacked serial sections, no stickiness.
    ═══════════════════════════════════════════════════════════════ */
 
+.pd-process-days .pd-states {
+  margin-top: 0;
+}
+
 .pd-states {
+  --pd-states-count: 3;
+  --pd-states-index: 0;
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  display: block;
   width: 100%;
-  background: var(--c-bg-fallback);
+  max-width: none;
+  /* One viewport of scroll per state, so the pin stays locked
+     while Today → Tomorrow → Yesterday play through. */
+  height: calc(var(--pd-states-count) * 100vh);
+  background: transparent;
   box-sizing: border-box;
-  padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
+  padding-inline: 0;
+  overflow: visible;
 }
 
 
-/* ── Sticky left panel ────────────────────────────────────────── */
+/* ── Sticky 100vh frame ───────────────────────────────────────── */
 
-.pd-states-sticky {
+.pd-states-pin {
   position: sticky;
   top: 0;
-  align-self: start;
+  height: 100vh;
   height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  row-gap: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #f5f4f1;
+  z-index: 2;
+}
+
+.pd-states-heading {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  padding-top: clamp(2.5rem, 7vh, 5.25rem);
+  padding-right: clamp(1.25rem, 2.5vw, 2.5rem);
+  max-width: 22em;
+}
+
+
+/* ── Stage: left copy + phone, sized to the iPhone ───────────── */
+
+.pd-states-stage {
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  align-content: center;
+  align-items: stretch;
+  min-height: 0;
+  height: 100%;
+}
+
+.pd-states-left {
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  min-width: 0;
+  min-height: 0;
+}
+
+.pd-states-sticky {
+  grid-row: 2;
+  position: relative;
+  top: auto;
+  align-self: center;
+  height: auto;
   display: flex;
-  align-items: center;
-  padding-block: clamp(2.5rem, 4vw, 4rem);
-  padding-right: clamp(1.25rem, 2.5vw, 2.75rem);
+  align-items: flex-start;
+  padding: 0;
   box-sizing: border-box;
   z-index: 2;
+  background: transparent;
+}
+
+.pd-states-hint {
+  grid-row: 3;
+  align-self: end;
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--c-ink);
+  opacity: 0.42;
 }
 
 .pd-states-sticky-inner {
   display: flex;
   flex-direction: column;
-  gap: clamp(1.1rem, 1.8vw, 1.6rem);
+  gap: clamp(0.75rem, 1.3vw, 1.1rem);
   width: 100%;
-  max-width: 44rem;
+  max-width: 28rem;
 }
 
 
-/* ── Shared type ──────────────────────────────────────────────── */
-
-.pd-states-eyebrow {
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: 400;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c-ink);
-  opacity: 0.42;
-}
+/* ── Day label sits under the section heading ───────────────── */
 
 .pd-states-title-wrap {
   position: relative;
   overflow: hidden;
-  min-height: clamp(5.5rem, 9vw, 9.5rem);
+  min-height: 1.35em;
 }
 
 .pd-states-title {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(2.4rem, 4.2vw, 4.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--c-ink);
   margin: 0;
+  max-width: none;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+  opacity: 1;
 }
 
 .pd-states-title-wrap .pd-states-title {
@@ -84,19 +148,12 @@
 .pd-states-body-wrap {
   position: relative;
   overflow: hidden;
-  min-height: 7.5rem;
+  min-height: 4.75rem;
 }
 
 .pd-states-body {
-  font-family: var(--f-body);
-  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
-  font-weight: 400;
-  line-height: 1.65;
-  letter-spacing: -0.005em;
-  color: var(--c-ink);
-  opacity: 0.72;
   margin: 0;
-  max-width: 38ch;
+  max-width: none;
 }
 
 .pd-states-body-wrap .pd-states-body {
@@ -118,29 +175,17 @@
 
 .pd-states-chips {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: clamp(0.85rem, 1.4vw, 1.15rem) clamp(0.65rem, 1.1vw, 1.1rem);
+  gap: 0.5rem;
 }
 
 .pd-states-chip {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.4rem;
   flex: 0 0 auto;
   min-width: 0;
-}
-
-.pd-states-chip-label {
-  font-family: var(--f-body);
-  font-size: var(--fs-xs);
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-ink);
-  opacity: 0.42;
-  white-space: nowrap;
 }
 
 .pd-states-chip-value-wrap {
@@ -213,24 +258,50 @@
 }
 
 .pd-states-body-wrap .pd-states-body.is-visible {
-  opacity: 0.72;
+  opacity: 1;
 }
 
 
-/* ── Right panels ─────────────────────────────────────────────── */
+/* ── Right mask: one phone at a time, vertically centered ─────── */
+
+.pd-states-mask {
+  position: relative;
+  overflow: hidden;
+  overflow: clip;
+  clip-path: inset(0);
+  isolation: isolate;
+  width: min(336px, 26vw, calc(78dvh * 434 / 887));
+  aspect-ratio: 434 / 887;
+  max-height: 78dvh;
+  box-sizing: border-box;
+  min-height: 0;
+}
 
 .pd-states-panels {
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--pd-states-count) * 100%);
+  transform: translateY(
+    calc(var(--pd-states-index, 0) * -100% / var(--pd-states-count))
+  );
+  will-change: transform;
+}
+
+.pd-states--ready .pd-states-panels {
+  transition: transform 0.75s var(--ease-expo);
 }
 
 .pd-states-panel {
-  min-height: 100dvh;
+  height: calc(100% / var(--pd-states-count));
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-block: clamp(2.5rem, 4vw, 4rem);
+  padding: 0;
   box-sizing: border-box;
+  background: transparent;
 }
 
 .pd-states-panel-copy {
@@ -242,6 +313,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  background: transparent;
 }
 
 
@@ -249,23 +322,15 @@
 
 .pd-states-phone {
   position: relative;
-  width: clamp(200px, 22vw, 320px);
+  width: 100%;
+  max-height: 100%;
   aspect-ratio: 9 / 19.5;
   background: #111111;
   border-radius: clamp(28px, 3.5vw, 48px);
   overflow: hidden;
   box-shadow:
-    0 0 0 1.5px rgba(0, 0, 0, 0.12),
-    0 0 0 10px rgba(0, 0, 0, 0.03),
-    0 40px 80px rgba(0, 0, 0, 0.18);
-  transition:
-    transform 0.7s var(--ease-expo),
-    opacity 0.55s ease;
-}
-
-.pd-states-panel:not(.is-active) .pd-states-phone {
-  opacity: 0.45;
-  transform: scale(0.96);
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 18px 40px rgba(0, 0, 0, 0.1);
 }
 
 .pd-states-phone::before {
@@ -314,15 +379,14 @@
    State videos: phone on page-colored bg.
    Crop via CSS vars on each .pd-states-phone--video:
      --v-w/--v-h source canvas, --c-x/--c-y/--c-w/--c-h phone crop
-   Defaults keep video 6 on the original 1918×1030 crop.
 */
 .pd-states-phone--video {
-  --v-w: 1918;
-  --v-h: 1030;
-  --c-x: 746;
-  --c-y: 75;
-  --c-w: 426;
-  --c-h: 879;
+  --v-w: 1920;
+  --v-h: 1080;
+  --c-x: 744;
+  --c-y: 95;
+  --c-w: 434;
+  --c-h: 887;
   aspect-ratio: var(--c-w) / var(--c-h);
   background: #111111;
 }
@@ -346,87 +410,122 @@
   pointer-events: none;
 }
 
-
-/* ── Responsive ───────────────────────────────────────────────── */
-
-@media (max-width: 1100px) {
-  .pd-states {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  }
-
-  .pd-states-chips {
-    flex-wrap: wrap;
-    column-gap: clamp(1rem, 2vw, 1.5rem);
-  }
-
-  .pd-states-phone {
-    width: clamp(180px, 26vw, 280px);
+@media (prefers-reduced-motion: reduce) {
+  .pd-states--ready .pd-states-panels {
+    transition: none;
   }
 }
 
+
+/* ── Responsive: stacked text + video, no sticky / no hint ───── */
+
 @media (max-width: 768px) {
   .pd-states {
-    display: flex;
-    flex-direction: column;
-    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
-    padding-block: 0;
+    height: auto;
   }
 
-  .pd-states-sticky {
+  .pd-states-pin {
+    position: static;
+    top: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: visible;
+    background: transparent;
+  }
+
+  .pd-states-heading {
+    padding-top: 0;
+    padding-right: 0;
+    max-width: none;
+  }
+
+  .pd-states-stage {
+    display: contents;
+    height: auto;
+  }
+
+  .pd-states-left,
+  .pd-states-sticky,
+  .pd-states-hint {
     display: none;
   }
 
-  .pd-states-panel {
-    min-height: auto;
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(1.5rem, 4vw, 2.25rem);
-    padding-block: clamp(2.75rem, 6vw, 4rem);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  .pd-states-mask {
+    position: static;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    aspect-ratio: auto;
+    overflow: visible;
+    clip-path: none;
+    isolation: auto;
+    padding-inline: 0;
   }
 
-  .pd-states-panel:first-child {
-    border-top: none;
+  .pd-states-panels,
+  .pd-states--ready .pd-states-panels {
+    position: static;
+    inset: auto;
+    height: auto;
+    transform: none;
+    will-change: auto;
+    transition: none;
+  }
+
+  .pd-states-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    min-height: 0;
+    gap: clamp(1.35rem, 4vw, 1.85rem);
+    padding-block: clamp(2rem, 5.5vw, 2.75rem) 0;
+    background: transparent;
+  }
+
+  .pd-states-panel + .pd-states-panel {
+    margin-top: clamp(1.75rem, 4.5vw, 2.5rem);
+    padding-top: clamp(2rem, 5vw, 2.75rem);
   }
 
   .pd-states-panel-copy {
     display: flex;
     flex-direction: column;
+    order: 1;
     gap: clamp(0.9rem, 2.5vw, 1.25rem);
   }
 
   .pd-states-panel-copy .pd-states-title {
     position: static;
-    font-size: clamp(2rem, 7vw, 3rem);
+    transform: none;
+    opacity: 1;
   }
 
   .pd-states-panel-copy .pd-states-body {
     position: static;
-    opacity: 0.72;
+    transform: none;
+    opacity: 1;
     max-width: none;
   }
 
   .pd-states-panel-media {
-    order: 0;
+    order: 2;
+    height: auto;
+    width: 100%;
+    justify-content: center;
   }
 
   .pd-states-phone {
-    width: clamp(160px, 48vw, 230px);
-  }
-
-  .pd-states-panel:not(.is-active) .pd-states-phone {
-    opacity: 1;
-    transform: none;
+    width: clamp(168px, 52vw, 236px);
+    max-height: none;
+    height: auto;
   }
 }
 
 @media (max-width: 480px) {
-  .pd-states-chips {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
   .pd-states-phone {
-    width: clamp(150px, 58vw, 200px);
+    width: clamp(156px, 62vw, 210px);
   }
 }
