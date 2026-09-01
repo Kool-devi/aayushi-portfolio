@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project title — Case Study · Aayushi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/project-detail.css">
+  <!-- Include styles/pd-states.css only if this case study uses the sticky day-states section -->
+</head>
+<!--
+  Duplicate this file as project-<id>.html.
+  Set data-project to the same id you add in data/projects.js.
+  Then set published: true in that file so it appears on the homepage
+  and in “Also check out”.
+
+  Section kit (copy from project-delicut.html as needed):
+  - pd-tldr          overview + metadata
+  - pd-context       eyebrow + heading + body
+  - pd-problem-figures / pd-patterns-list   two-up figures
+  - pd-process-block + pd-process-decision
+  - pd-process-media  video + figure
+  - pd-expiry-states  labeled pair under a composite image
+  - pd-learned        two takeaways + closing thought
+  - pd-states         sticky today / tomorrow / yesterday
+-->
+<body class="pd-page" data-project="project-id">
+
+  <nav class="corner-nav" aria-label="Site navigation">
+    <a href="index.html" class="nav-item nav--tl">Home</a>
+    <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
+    <a href="contact.html" class="nav-item nav--bl">Contact</a>
+    <a href="https://linkedin.com/in/aayushi"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="nav-item nav--br">LinkedIn</a>
+  </nav>
+
+
+  <section class="pd-hero" id="pd-hero">
+    <div class="pd-hero-copy">
+      <p class="pd-hero-meta">Name · Category · Year</p>
+      <h1 class="pd-hero-title">Project title</h1>
+      <a href="#" class="pd-hero-btn" target="_blank" rel="noopener noreferrer">
+        <span class="pd-btn-text">View Live Project</span>
+        <span class="pd-btn-arrow">→</span>
+      </a>
+    </div>
+    <div class="pd-hero-media">
+      <img src="" alt="" width="1600" height="1000" decoding="async">
+    </div>
+  </section>
+
+
+  <div class="pd-layout">
+
+    <aside class="pd-toc" aria-label="Case study contents">
+      <a href="index.html" class="pd-toc-back">← Back</a>
+      <p class="pd-toc-project">Project</p>
+      <nav class="pd-toc-nav" aria-label="On this page">
+        <a href="#pd-tldr" class="pd-toc-link is-active">TLDR</a>
+        <a href="#pd-overview" class="pd-toc-link">Overview</a>
+      </nav>
+    </aside>
+
+    <div class="pd-layout-main">
+
+      <section class="pd-tldr" id="pd-tldr">
+        <div class="pd-tldr-overview">
+          <p class="pd-tldr-eyebrow">TL;DR</p>
+          <h2 class="pd-tldr-heading">Lead sentence about the project.</h2>
+          <p class="pd-tldr-body">Short overview of the problem and what you did.</p>
+        </div>
+        <div class="pd-tldr-meta">
+          <div class="pd-tldr-meta-col">
+            <span class="pd-tldr-meta-label">My role</span>
+            <p class="pd-tldr-meta-value">Product / UX Designer</p>
+          </div>
+          <div class="pd-tldr-meta-col">
+            <span class="pd-tldr-meta-label">Focus</span>
+            <p class="pd-tldr-meta-value">Focus areas</p>
+          </div>
+          <div class="pd-tldr-meta-col">
+            <span class="pd-tldr-meta-label">Timeline</span>
+            <p class="pd-tldr-meta-value">Year</p>
+          </div>
+          <div class="pd-tldr-meta-col">
+            <span class="pd-tldr-meta-label">Team</span>
+            <p class="pd-tldr-meta-value">Team</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="pd-context" id="pd-overview">
+        <p class="pd-context-eyebrow">Overview</p>
+        <h2 class="pd-context-heading">Lead sentence for this section.</h2>
+        <p class="pd-context-body">Body copy.</p>
+      </section>
+
+
+      <a
+        class="pd-contact-cta"
+        href="mailto:hello@aayushi.design?subject=Case%20study"
+        aria-label="Email Aayushi at hello@aayushi.design"
+      >
+        <span class="pd-contact-cta-title">
+          Curious to know more?
+          <span class="pd-contact-cta-arrow" aria-hidden="true">→</span>
+        </span>
+        <span class="pd-contact-cta-copy">
+          This is just a small part of the design process. To get the full story,
+          get in touch.
+        </span>
+      </a>
+
+      <section class="pd-related" aria-label="More projects" hidden>
+        <p class="pd-context-eyebrow">Also check out</p>
+        <div class="pd-related-grid" data-projects-related></div>
+      </section>
+
+    </div>
+  </div>
+
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div>
+      <p class="site-footer-eyebrow">[ While you're here ]</p>
+      <nav class="site-footer-links" aria-label="Social links">
+        <a href="https://linkedin.com/in/aayushi"
+           class="site-footer-link"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="index.html#projects" class="site-footer-link">View Work ↗</a>
+        <a href="contact.html" class="site-footer-link">Contact ↗</a>
+      </nav>
+    </div>
+    <div class="site-footer-bottom">
+      <hr class="site-footer-rule">
+      <div class="site-footer-meta">
+        <span class="site-footer-credit">Aayushi — UX Designer</span>
+        <span class="site-footer-year">© 2025</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="scripts/projects.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/pd-toc.js"></script>
+</body>
+</html>

@@ -99,7 +99,23 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--c-ink);
-  opacity: 0.42;
+  opacity: 0;
+  transform: translateY(0.7em);
+}
+
+.pd-states-hint.is-in {
+  animation: pd-states-hint-in 0.8s var(--ease-expo) 0.12s both;
+}
+
+@keyframes pd-states-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.7em);
+  }
+  to {
+    opacity: 0.42;
+    transform: translateY(0);
+  }
 }
 
 .pd-states-sticky-inner {
@@ -413,6 +429,13 @@
 @media (prefers-reduced-motion: reduce) {
   .pd-states--ready .pd-states-panels {
     transition: none;
+  }
+
+  .pd-states-hint,
+  .pd-states-hint.is-in {
+    animation: none;
+    opacity: 0.42;
+    transform: none;
   }
 }
 

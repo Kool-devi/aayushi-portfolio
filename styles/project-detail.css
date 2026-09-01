@@ -179,7 +179,9 @@
 
   .pd-layout-main .pd-tldr,
   .pd-layout-main .pd-context,
-  .pd-layout-main .pd-flow {
+  .pd-layout-main .pd-flow,
+  .pd-layout-main .pd-contact-cta,
+  .pd-layout-main .pd-related {
     padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
   }
 
@@ -198,7 +200,9 @@
 @media (max-width: 768px) {
   .pd-layout-main .pd-tldr,
   .pd-layout-main .pd-context,
-  .pd-layout-main .pd-flow {
+  .pd-layout-main .pd-flow,
+  .pd-layout-main .pd-contact-cta,
+  .pd-layout-main .pd-related {
     padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
   }
 }
@@ -570,15 +574,28 @@
   margin: clamp(1.75rem, 3vw, 2.75rem) 0;
 }
 
+.pd-problem-figures:has(> :only-child),
+.pd-problem-figures--stack {
+  grid-template-columns: 1fr;
+}
+
 .pd-problem-figure {
   margin: 0;
   min-width: 0;
 }
 
-.pd-problem-figure img {
+.pd-problem-figure img,
+.pd-problem-slot {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.pd-problem-slot {
+  aspect-ratio: 4 / 3;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .pd-problem-caption {
@@ -817,8 +834,257 @@
   margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   KEY INTERACTION PATTERNS
+   Two equal columns: cropped image card, caption, then copy.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-patterns-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  width: 100%;
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+  align-items: start;
+}
+
+.pd-pattern {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pd-pattern-figure {
+  margin: 0;
+  width: 100%;
+}
+
+.pd-pattern-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.pd-pattern-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.pd-pattern-figure .pd-problem-caption {
+  margin-top: 0.85rem;
+}
+
+.pd-pattern-figure + .pd-context-body {
+  margin-top: 0.55em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   EXPIRY SCREEN FLOW
+   Composite figure, then two labeled states, then a decision.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-expiry-figure {
+  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+}
+
+.pd-expiry-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pd-expiry-states {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  width: 100%;
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+  align-items: start;
+}
+
+.pd-expiry-state .pd-problem-caption {
+  margin: 0 0 0.55em;
+}
+
+.pd-expiry-state .pd-context-body + .pd-context-body {
+  margin-top: 0.85em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   WHAT I LEARNED
+   Lead, then two takeaways, then a closing thought.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-learned-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  width: 100%;
+  margin-top: clamp(1.5rem, 2.5vw, 2.25rem);
+  align-items: start;
+}
+
+.pd-learned-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT CTA — full-block mailto at the end of the case study
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-contact-cta {
+  display: block;
+  width: 100%;
+  max-width: var(--pd-prose-max);
+  margin-top: clamp(2.75rem, 4.5vw, 4.5rem);
+  padding-top: clamp(2rem, 3.5vw, 2.75rem);
+  padding-bottom: clamp(2.75rem, 4.5vw, 4.5rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: var(--c-ink);
+  box-sizing: border-box;
+}
+
+.pd-contact-cta:has(+ .pd-related:not([hidden])) {
+  padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+.pd-contact-cta-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5em;
+  margin: 0 0 0.4rem;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 1.85vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.pd-contact-cta-copy {
+  display: block;
+  font-family: var(--f-body);
+  font-size: clamp(0.9rem, 1.12vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.45;
+}
+
+.pd-contact-cta-arrow {
+  display: inline-block;
+  transition: transform var(--t-mid) var(--ease-expo);
+}
+
+.pd-contact-cta:hover .pd-contact-cta-arrow,
+.pd-contact-cta:focus-visible .pd-contact-cta-arrow {
+  transform: translateX(5px);
+}
+
+.pd-contact-cta:focus-visible {
+  outline: 2px solid var(--c-ink);
+  outline-offset: 6px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ALSO CHECK OUT — other published case studies
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-related {
+  width: 100%;
+  max-width: var(--pd-prose-max);
+  margin-top: 0;
+  padding-top: clamp(2rem, 3.5vw, 2.75rem);
+  padding-bottom: clamp(2.75rem, 4.5vw, 4.5rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+}
+
+.pd-related[hidden] {
+  display: none;
+}
+
+.pd-related-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  width: 100%;
+  margin-top: clamp(1.15rem, 2vw, 1.75rem);
+}
+
+.pd-related-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-decoration: none;
+  color: var(--c-ink);
+}
+
+.pd-related-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #eceae6;
+}
+
+.pd-related-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pd-related-meta {
+  margin: 0.85rem 0 0;
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-ink);
+  opacity: 0.42;
+}
+
+.pd-related-title {
+  margin: 0.35rem 0 0;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+
+.pd-related-card:hover .pd-related-title,
+.pd-related-card:focus-visible .pd-related-title {
+  opacity: 0.65;
+}
+
+.pd-related-card:focus-visible {
+  outline: 2px solid var(--c-ink);
+  outline-offset: 6px;
+}
+
 @media (max-width: 768px) {
-  .pd-process-figures {
+  .pd-process-figures,
+  .pd-patterns-list,
+  .pd-expiry-states,
+  .pd-learned-grid,
+  .pd-related-grid {
     grid-template-columns: 1fr;
   }
 

@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════════
+   DARKROAST ONLY
+   White page + matted screenshot frames so light UI does not
+   disappear into the background. Do not load on other case studies.
+   ═══════════════════════════════════════════════════════════════ */
+
+html:has([data-project="darkroast"]) {
+  background-color: #ffffff;
+}
+
+[data-project="darkroast"].pd-page {
+  --pd-media-mat: #f5f5f5;
+  --pd-media-line: #e2e2e2;
+  --pd-media-pad: clamp(2rem, 4vw, 3.25rem);
+  background-color: #ffffff;
+}
+
+[data-project="darkroast"] .pd-hero-media {
+  border-radius: 0;
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+  padding: var(--pd-media-pad);
+}
+
+[data-project="darkroast"] .pd-hero-media img {
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+[data-project="darkroast"] .pd-layout-main figure img {
+  box-sizing: border-box;
+  padding: var(--pd-media-pad);
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+  border-radius: 0;
+}
+
+
+/* ── Solution — interactive prototype ───────────────────────── */
+
+[data-project="darkroast"] .pd-solution {
+  max-width: var(--pd-max);
+}
+
+[data-project="darkroast"] .pd-solution-figure {
+  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+  width: 100%;
+  max-width: var(--pd-max);
+}
+
+[data-project="darkroast"] .pd-solution-mat {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--pd-max);
+  padding: var(--pd-media-pad);
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+}
+
+[data-project="darkroast"] .pd-solution-scaler {
+  position: relative;
+  container-type: inline-size;
+  width: 100%;
+  aspect-ratio: 1440 / 900;
+  overflow: hidden;
+  background: #0f3826;
+}
+
+[data-project="darkroast"] .pd-solution-scaler iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@supports (width: 1cqi) {
+  [data-project="darkroast"] .pd-solution-scaler iframe {
+    inset: auto;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 900px;
+    transform: scale(calc(100cqi / 1440px));
+    transform-origin: top left;
+  }
+}
+
+
+/* ── Research — survey / implied-issue pairs ─────────────────── */
+
+[data-project="darkroast"] .pd-research-label {
+  display: block;
+  font-family: var(--f-body);
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--c-ink);
+  opacity: 0.55;
+}
+
+[data-project="darkroast"] .pd-research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: clamp(0.85rem, 1.6vw, 1.15rem);
+  width: 100%;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+[data-project="darkroast"] .pd-research-pair {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 1.8vw, 1.35rem);
+  min-width: 0;
+  height: 100%;
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+  border-radius: 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+[data-project="darkroast"] .pd-research-text {
+  margin: 0.35rem 0 0;
+  font-family: var(--f-body);
+  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
+}
+
+[data-project="darkroast"] .pd-highlight {
+  margin: clamp(2rem, 3.5vw, 2.75rem) 0 0;
+  font-family: var(--f-body);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 1.85vw, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--c-ink);
+}
+
+[data-project="darkroast"] .pd-process-list + .pd-context-body {
+  margin-top: 1.15em;
+}
+
+@media (max-width: 768px) {
+  [data-project="darkroast"] .pd-research-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+}

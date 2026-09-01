@@ -1,0 +1,9 @@
+# Design source files — keep local, too large for GitHub
+*.psd
+*.af
+*.zip
+__MACOSX/
+Mockups/Delicut/Free-iPhone-16-Pro-Mockup-on-Bright-Concrete-Surface-with-Shadows/
+
+# Root working PDFs (organized copies live in docs/)
+/*.pdf

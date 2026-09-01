@@ -102,6 +102,7 @@
   var pinVisible = false;
   var pin = section.querySelector('.pd-states-pin');
   var mask = section.querySelector('.pd-states-mask');
+  var hint = section.querySelector('.pd-states-hint');
 
   function panelVideo(panel) {
     return panel ? panel.querySelector('video.pd-states-media-video') : null;
@@ -290,9 +291,28 @@
   */
   var videoObserver = null;
 
+  function showHint() {
+    if (!hint || MOBILE_MQ.matches) return;
+    hint.classList.remove('is-in');
+    void hint.offsetWidth;
+    hint.classList.add('is-in');
+  }
+
+  function hideHint() {
+    if (!hint) return;
+    hint.classList.remove('is-in');
+  }
+
   function setPinVisible(visible) {
-    pinVisible = !!visible;
+    var next = !!visible;
+    var arrived = next && !pinVisible;
+    pinVisible = next;
+
     if (MOBILE_MQ.matches) return;
+
+    if (arrived) showHint();
+    else if (!pinVisible) hideHint();
+
     if (pinVisible) syncVideos(activeIdx);
     else pauseAllVideos();
   }

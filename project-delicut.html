@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="styles/project-detail.css">
   <link rel="stylesheet" href="styles/pd-states.css">
 </head>
-<body class="pd-page">
+<body class="pd-page" data-project="delicut">
 
   <!-- ── Corner Navigation ───────────────────────────────────────
        Fixed to the viewport — identical to the main portfolio.
@@ -80,6 +80,9 @@
         <a href="#pd-problem" class="pd-toc-link">Problem</a>
         <a href="#pd-goals" class="pd-toc-link">Goals</a>
         <a href="#pd-process" class="pd-toc-link">Design process</a>
+        <a href="#pd-patterns" class="pd-toc-link">Key interaction patterns</a>
+        <a href="#pd-expiry" class="pd-toc-link">Expiry screen flow</a>
+        <a href="#pd-learned" class="pd-toc-link">What I learned</a>
       </nav>
     </aside>
 
@@ -605,6 +608,185 @@
   </section>
   <!-- /pd-process -->
 
+
+  <!-- ════════════════════════════════════════════════════════════
+       KEY INTERACTION PATTERNS
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="pd-context pd-patterns" id="pd-patterns">
+    <p class="pd-context-eyebrow">Key interaction patterns</p>
+
+    <div class="pd-patterns-list">
+
+      <article class="pd-pattern">
+        <figure class="pd-pattern-figure">
+          <div class="pd-pattern-media">
+            <img
+              src="Mockups/Delicut/Delicut Skip Resume.png"
+              alt="Manage deliveries calendar showing active, skipped, and unavailable days"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <figcaption class="pd-problem-caption">Skip & resume</figcaption>
+        </figure>
+        <p class="pd-context-body">
+          Users can manage delivery days from a single calendar, making it
+          easy to see which days are active, skipped, or unavailable. This
+          keeps pause and resume actions tied to specific dates instead of
+          making users manage the whole subscription at once.
+        </p>
+      </article>
+
+      <article class="pd-pattern">
+        <figure class="pd-pattern-figure">
+          <div class="pd-pattern-media">
+            <img
+              src="Mockups/Delicut/Delicut Cut-off Drawer.png"
+              alt="Bottom sheet explaining a locked delivery day and the cut-off time that has passed"
+              loading="lazy"
+              decoding="async"
+            >
+          </div>
+          <figcaption class="pd-problem-caption">Cut-off drawer</figcaption>
+        </figure>
+        <p class="pd-context-body">
+          When a delivery can no longer be changed, the bottom sheet explains
+          exactly why and shows the cut-off time that has passed. This avoids
+          dead-end interactions and makes the rule clear before users try to
+          edit a locked day.
+        </p>
+      </article>
+
+    </div>
+  </section>
+  <!-- /pd-patterns -->
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       EXPIRY SCREEN FLOW
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="pd-context pd-expiry" id="pd-expiry">
+    <p class="pd-context-eyebrow">Expiry screen flow</p>
+    <h2 class="pd-context-heading">Expiry was a journey, not one screen</h2>
+    <p class="pd-context-body">
+      A subscription does not suddenly become irrelevant on its final day.
+      We designed separate states around the end of the plan.
+    </p>
+
+    <figure class="pd-expiry-figure">
+      <img
+        src="Mockups/Delicut/Delicut Expiry Screen.png"
+        alt="Expiring soon home screen with a seven-day renewal banner, beside the expired state with last-used plan details and a renew path"
+        loading="lazy"
+        decoding="async"
+      >
+    </figure>
+
+    <div class="pd-expiry-states">
+      <article class="pd-expiry-state">
+        <h3 class="pd-problem-caption">Expiring soon</h3>
+        <p class="pd-context-body">
+          When only a short time remains, the customer can see that their
+          plan is approaching its end. This creates space for renewal before
+          their deliveries stop.
+        </p>
+      </article>
+
+      <article class="pd-expiry-state">
+        <h3 class="pd-problem-caption">Expired</h3>
+        <p class="pd-context-body">
+          After the plan ends, future meal controls disappear. The product
+          shifts toward one clear next step: Renew plan.
+        </p>
+        <p class="pd-context-body">
+          This gave returning customers a way back into Delicut without
+          making the app feel broken or empty.
+        </p>
+      </article>
+    </div>
+
+    <aside class="pd-process-decision" aria-label="Design decision">
+      <p class="pd-process-decision-label">Design decision</p>
+      <p class="pd-process-decision-text">
+        When the plan ends, users no longer need meal-level actions. I designed
+        this state with familiar plan details and a strong renewal path that
+        helps users restart without friction.
+      </p>
+    </aside>
+  </section>
+  <!-- /pd-expiry -->
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       WHAT I LEARNED
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="pd-context pd-learned" id="pd-learned">
+    <p class="pd-context-eyebrow">What I learned</p>
+    <h2 class="pd-context-heading">
+      The most important lesson from Delicut was that complexity does not
+      disappear because the interface looks simple.
+    </h2>
+    <p class="pd-context-body">
+      Someone still has to understand it.
+    </p>
+
+    <div class="pd-learned-grid">
+      <article class="pd-learned-item">
+        <h3 class="pd-learned-title">Before drawing the final screen</h3>
+        <p class="pd-context-body">
+          For this project, much of my work happened before the final screen:
+          mapping states, finding conflicting rules, asking what should happen
+          next, documenting decisions, and connecting one flow to another.
+        </p>
+      </article>
+
+      <article class="pd-learned-item">
+        <h3 class="pd-learned-title">When a project changes quickly</h3>
+        <p class="pd-context-body">
+          A designer cannot stop every new idea. But I can help the team
+          understand which ideas solve a real problem, which create new
+          problems, and which should wait.
+        </p>
+      </article>
+    </div>
+
+    <aside class="pd-process-decision" aria-label="Takeaway">
+      <p class="pd-process-decision-text">
+        That changed how I see product design. My job is not only to make the
+        interface clear. It is also to help make the product itself clearer.
+      </p>
+    </aside>
+  </section>
+  <!-- /pd-learned -->
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       CURIOUS TO KNOW MORE — mailto CTA
+  ════════════════════════════════════════════════════════════════ -->
+  <a
+    class="pd-contact-cta"
+    href="mailto:hello@aayushi.design?subject=Delicut%20case%20study"
+    aria-label="Email Aayushi at hello@aayushi.design about the Delicut case study"
+  >
+    <span class="pd-contact-cta-title">
+      Curious to know more?
+      <span class="pd-contact-cta-arrow" aria-hidden="true">→</span>
+    </span>
+    <span class="pd-contact-cta-copy">
+      This is just a small part of the design process. To get the full story,
+      get in touch.
+    </span>
+  </a>
+
+  <!-- ════════════════════════════════════════════════════════════
+       ALSO CHECK OUT — filled from data/projects.js
+       Hidden until another published case study exists.
+  ════════════════════════════════════════════════════════════════ -->
+  <section class="pd-related" aria-label="More projects" hidden>
+    <p class="pd-context-eyebrow">Also check out</p>
+    <div class="pd-related-grid" data-projects-related></div>
+  </section>
+
     </div>
     <!-- /pd-layout-main -->
   </div>
@@ -642,6 +824,8 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="scripts/projects.js"></script>
   <!-- Corner-nav scroll hide/show behaviour -->
   <script src="scripts/main.js"></script>
   <script src="scripts/pd-states.js"></script>

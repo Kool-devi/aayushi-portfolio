@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DarkRoast — Case Study · Aayushi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/project-detail.css">
+  <link rel="stylesheet" href="styles/pd-darkroast.css">
+</head>
+<body class="pd-page" data-project="darkroast">
+
+  <nav class="corner-nav" aria-label="Site navigation">
+    <a href="index.html" class="nav-item nav--tl">Home</a>
+    <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
+    <a href="contact.html" class="nav-item nav--bl">Contact</a>
+    <a href="https://linkedin.com/in/aayushi"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="nav-item nav--br">LinkedIn</a>
+  </nav>
+
+
+  <section class="pd-hero" id="pd-hero">
+    <div class="pd-hero-copy">
+      <p class="pd-hero-meta">DarkRoast · Creative operations</p>
+      <h1 class="pd-hero-title">Redesigning the project workspace for faster creative collaboration</h1>
+    </div>
+    <div class="pd-hero-media" aria-hidden="true"></div>
+  </section>
+
+
+  <div class="pd-layout">
+
+    <aside class="pd-toc" aria-label="Case study contents">
+      <a href="index.html" class="pd-toc-back">← Back</a>
+      <p class="pd-toc-project">DarkRoast</p>
+      <nav class="pd-toc-nav" aria-label="On this page">
+        <a href="#pd-tldr" class="pd-toc-link is-active">TLDR</a>
+        <a href="#pd-solution" class="pd-toc-link">Solution</a>
+        <a href="#pd-problem" class="pd-toc-link">Problem</a>
+        <a href="#pd-research" class="pd-toc-link">Research</a>
+      </nav>
+    </aside>
+
+    <div class="pd-layout-main">
+
+      <section class="pd-tldr" id="pd-tldr">
+        <div class="pd-tldr-overview">
+          <p class="pd-tldr-eyebrow">TL;DR</p>
+          <h2 class="pd-tldr-heading">
+            The existing dashboard had grown into a dense project management
+            interface where messaging, files, briefs, status, and project
+            metadata all competed for attention.
+          </h2>
+          <p class="pd-tldr-body">
+            Through user feedback, workflow analysis, benchmarking, and a
+            detailed product audit, I found that the main problem was not
+            missing features. It was hierarchy, focus, and context.
+          </p>
+          <p class="pd-tldr-body">
+            The redesign therefore started by redefining what mattered most
+            at each point in the workflow.
+          </p>
+        </div>
+      </section>
+
+      <section class="pd-context pd-solution" id="pd-solution">
+        <p class="pd-context-eyebrow">Solution</p>
+        <h2 class="pd-context-heading">
+          Here is an interactive prototype of the final solution:
+        </h2>
+
+        <figure class="pd-problem-figure pd-solution-figure">
+          <div class="pd-solution-mat">
+            <div class="pd-solution-scaler">
+              <iframe
+                src="prototypes/darkroast.html"
+                title="DarkRoast interactive prototype"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+          <figcaption class="pd-problem-caption">
+            Above prototype was vibe coded using Claude agents by importing my
+            Figma designs using the MCP server.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="pd-context" id="pd-problem">
+        <p class="pd-context-eyebrow">The Problem</p>
+        <h2 class="pd-context-heading">
+          DarkRoast clients manage a high volume of creative work.
+        </h2>
+        <p class="pd-context-body">
+          They need to know what is moving, what needs attention, what is
+          blocked, where feedback is required and who is working on what.
+          But the current dashboard made this harder than it needed to be.
+        </p>
+
+        <div class="pd-problem-figures pd-problem-figures--stack">
+          <figure class="pd-problem-figure">
+            <img
+              src="Mockups/DarkRoast/Main Screen Audit.png"
+              alt="Annotated audit of the DarkRoast main dashboard"
+              loading="lazy"
+              decoding="async"
+            >
+            <figcaption class="pd-problem-caption">Main screen audit</figcaption>
+          </figure>
+          <figure class="pd-problem-figure">
+            <img
+              src="Mockups/DarkRoast/Project Detail Screen Audit.png"
+              alt="Annotated audit of the DarkRoast project detail screen"
+              loading="lazy"
+              decoding="async"
+            >
+            <figcaption class="pd-problem-caption">Project detail screen audit</figcaption>
+          </figure>
+        </div>
+
+        <p class="pd-context-body">
+          Across the dashboard, the issues were closely related.
+        </p>
+        <p class="pd-context-body">
+          Users had too much information visible at once but not enough
+          clarity about what mattered now.
+        </p>
+        <p class="pd-context-body">This resulted in:</p>
+        <ul class="pd-process-list">
+          <li>higher cognitive load</li>
+          <li>slower project triage</li>
+          <li>more context switching</li>
+          <li>unnecessary navigation</li>
+          <li>weaker confidence in project status</li>
+          <li>more friction between clients and designers</li>
+        </ul>
+
+        <p class="pd-highlight">
+          The problem was not a collection of isolated UI issues. It was an
+          information hierarchy and workflow problem.
+        </p>
+      </section>
+
+      <section class="pd-context pd-research" id="pd-research">
+        <p class="pd-context-eyebrow">Research</p>
+        <h2 class="pd-context-heading">
+          Around 150 clients had responded to a survey asking what they
+          wanted improved.
+        </h2>
+        <p class="pd-context-body">
+          We started with the client feedback that already existed.
+        </p>
+
+        <div class="pd-research-grid">
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <span class="pd-research-label">Survey comment</span>
+              <p class="pd-research-text">“Needs better mobile experience”</p>
+            </div>
+            <div class="pd-research-item">
+              <span class="pd-research-label">Implied issue</span>
+              <p class="pd-research-text">Poor use of space across screen sizes</p>
+            </div>
+          </article>
+
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <span class="pd-research-label">Survey comment</span>
+              <p class="pd-research-text">“Needs better file management”</p>
+            </div>
+            <div class="pd-research-item">
+              <span class="pd-research-label">Implied issue</span>
+              <p class="pd-research-text">Previewing and finding the right file inside long conversations</p>
+            </div>
+          </article>
+
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <span class="pd-research-label">Survey comment</span>
+              <p class="pd-research-text">“Issues with text, links and spacing”</p>
+            </div>
+            <div class="pd-research-item">
+              <span class="pd-research-label">Implied issue</span>
+              <p class="pd-research-text">Less reliability due to decreased trust</p>
+            </div>
+          </article>
+
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <span class="pd-research-label">Survey comment</span>
+              <p class="pd-research-text">“Providing small updates felt too formal”</p>
+            </div>
+            <div class="pd-research-item">
+              <span class="pd-research-label">Implied issue</span>
+              <p class="pd-research-text">Product had a heavy management workflow</p>
+            </div>
+          </article>
+        </div>
+
+        <p class="pd-highlight">
+          DarkRoast needed to support both structured project management and
+          casual collaboration.
+        </p>
+      </section>
+
+      <a
+        class="pd-contact-cta"
+        href="mailto:hello@aayushi.design?subject=DarkRoast%20case%20study"
+        aria-label="Email Aayushi at hello@aayushi.design about the DarkRoast case study"
+      >
+        <span class="pd-contact-cta-title">
+          Curious to know more?
+          <span class="pd-contact-cta-arrow" aria-hidden="true">→</span>
+        </span>
+        <span class="pd-contact-cta-copy">
+          This is just a small part of the design process. To get the full story,
+          get in touch.
+        </span>
+      </a>
+
+      <section class="pd-related" aria-label="More projects" hidden>
+        <p class="pd-context-eyebrow">Also check out</p>
+        <div class="pd-related-grid" data-projects-related></div>
+      </section>
+
+    </div>
+  </div>
+
+
+  <footer class="site-footer" aria-label="Site footer">
+    <div>
+      <p class="site-footer-eyebrow">[ While you're here ]</p>
+      <nav class="site-footer-links" aria-label="Social links">
+        <a href="https://linkedin.com/in/aayushi"
+           class="site-footer-link"
+           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="index.html#projects" class="site-footer-link">View Work ↗</a>
+        <a href="contact.html" class="site-footer-link">Contact ↗</a>
+      </nav>
+    </div>
+    <div class="site-footer-bottom">
+      <hr class="site-footer-rule">
+      <div class="site-footer-meta">
+        <span class="site-footer-credit">Aayushi — UX Designer</span>
+        <span class="site-footer-year">© 2025</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="scripts/projects.js"></script>
+  <script src="scripts/main.js"></script>
+  <script src="scripts/pd-toc.js"></script>
+</body>
+</html>

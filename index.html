@@ -156,20 +156,20 @@
          Three cards: odd cards have name top / number bottom;
          even cards flip so number sits top / name bottom.
     ──────────────────────────────────────────────────────────── -->
-    <div class="projects-right">
+    <div class="projects-right" data-projects-home>
 
-      <article class="proj-card" onclick="window.location.href='project-delicut.html'" style="cursor:pointer;">
-        <span class="proj-card-name">Delicut</span>
+      <a class="proj-card" href="project-darkroast.html">
+        <span class="proj-card-name">DarkRoast</span>
         <span class="proj-card-num">01</span>
-      </article>
+      </a>
 
-      <article class="proj-card">
-        <span class="proj-card-name">UX Research</span>
+      <a class="proj-card" href="project-delicut.html">
+        <span class="proj-card-name">Delicut</span>
         <span class="proj-card-num">02</span>
-      </article>
+      </a>
 
-      <article class="proj-card">
-        <span class="proj-card-name">Product Design</span>
+      <article class="proj-card proj-card--soon" aria-disabled="true">
+        <span class="proj-card-name">UX Research</span>
         <span class="proj-card-num">03</span>
       </article>
 
@@ -258,6 +258,8 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="scripts/projects.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/nav-contrast.js"></script>
 </body>
