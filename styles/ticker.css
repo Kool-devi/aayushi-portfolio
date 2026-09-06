@@ -21,8 +21,9 @@
 .ticker-label {
   font-family: var(--f-body);
   font-size: var(--fs-label);
-  font-weight: 400;
-  letter-spacing: 0.22em;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-flat);
+  letter-spacing: var(--ls-caps-lg);
   text-transform: uppercase;
   color: #000000;
   text-align: center;
@@ -77,10 +78,10 @@
 /* ── Individual skill word ───────────────────────────────────── */
 .ticker-item {
   font-family: var(--f-display);
-  font-weight: 500;
+  font-weight: var(--fw-bold);
   font-size: var(--fs-display);
-  line-height: 1;
-  letter-spacing: 0.01em;
+  line-height: var(--lh-flat);
+  letter-spacing: var(--ls-display);
   text-transform: uppercase;
   color: #000000;
   padding: 0 clamp(0.8rem, 2vw, 2rem);
@@ -91,11 +92,12 @@
 /* ── Separator glyph between skills ─────────────────────────── */
 .ticker-sep {
   font-family: var(--f-display);
-  font-size: clamp(1rem, 2.5vw, 3rem);
+  font-weight: var(--fw-light);
+  font-size: clamp(1rem, 2.2vw, 2.5rem);
   color: #000000;
-  opacity: 0.45;
+  opacity: 0.4;
   flex-shrink: 0;
-  line-height: 1;
+  line-height: var(--lh-flat);
   user-select: none;
 }
 

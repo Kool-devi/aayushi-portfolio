@@ -5,5 +5,14 @@
 __MACOSX/
 Mockups/Delicut/Free-iPhone-16-Pro-Mockup-on-Bright-Concrete-Surface-with-Shadows/
 
+# Local visual-review output
+.shots/
+
+# Keep only the variable WOFF2 files used by the website
+stack_sans/fonts/*/otf/
+stack_sans/fonts/*/ttf/
+stack_sans/fonts/*/variable/
+stack_sans/fonts/*/webfonts/*-*.woff2
+
 # Root working PDFs (organized copies live in docs/)
 /*.pdf

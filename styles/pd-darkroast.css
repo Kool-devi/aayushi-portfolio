@@ -5,14 +5,15 @@
    ═══════════════════════════════════════════════════════════════ */
 
 html:has([data-project="darkroast"]) {
-  background-color: #ffffff;
+  background-color: #edf4ef;
 }
 
 [data-project="darkroast"].pd-page {
-  --pd-media-mat: #f5f5f5;
+  --pd-media-mat: #ffffff;
   --pd-media-line: #e2e2e2;
   --pd-media-pad: clamp(2rem, 4vw, 3.25rem);
-  background-color: #ffffff;
+  background-color: #edf4ef;
+  overflow-x: clip;
 }
 
 [data-project="darkroast"] .pd-hero-media {
@@ -37,26 +38,59 @@ html:has([data-project="darkroast"]) {
   border-radius: 0;
 }
 
+[data-project="darkroast"] .pd-related-media {
+  background: #ffffff;
+}
+
+/* Keep every case-study section on one typographic hierarchy:
+   label, large lead, then supporting body copy. */
+[data-project="darkroast"] .pd-tldr-heading {
+  font-family: var(--f-head);
+  font-size: var(--fs-section);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-section);
+  letter-spacing: var(--ls-section);
+  margin-bottom: 0.6rem;
+}
+
 
 /* ── Solution — interactive prototype ───────────────────────── */
 
 [data-project="darkroast"] .pd-solution {
-  max-width: var(--pd-max);
+  --pd-solution-shift: calc(var(--pd-toc-width) + var(--pd-layout-gap) + var(--pd-layout-pad) + max(0px, (100vw - var(--pd-max)) / 2));
+  position: relative;
+  z-index: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(-1 * var(--pd-solution-shift));
+  padding-block: clamp(2.5rem, 4vw, 4rem);
+  padding-inline: max(clamp(1.5rem, 4vw, 2.5rem),
+      calc((100vw - var(--pd-prose-max)) / 2));
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+[data-project="darkroast"] .pd-solution .pd-context-eyebrow,
+[data-project="darkroast"] .pd-solution .pd-context-heading,
+[data-project="darkroast"] .pd-solution-figure {
+  width: 100%;
+  max-width: var(--pd-prose-max);
 }
 
 [data-project="darkroast"] .pd-solution-figure {
   margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
-  width: 100%;
-  max-width: var(--pd-max);
 }
 
 [data-project="darkroast"] .pd-solution-mat {
   box-sizing: border-box;
   width: 100%;
-  max-width: var(--pd-max);
-  padding: var(--pd-media-pad);
-  background: var(--pd-media-mat);
-  border: 1px solid var(--pd-media-line);
+  max-width: none;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 [data-project="darkroast"] .pd-solution-scaler {
@@ -88,15 +122,24 @@ html:has([data-project="darkroast"]) {
   }
 }
 
+@media (max-width: 1200px) {
+  [data-project="darkroast"] .pd-solution {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
 
 /* ── Research — survey / implied-issue pairs ─────────────────── */
 
 [data-project="darkroast"] .pd-research-label {
   display: block;
   font-family: var(--f-body);
-  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
-  font-weight: 500;
-  letter-spacing: 0.01em;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
   color: var(--c-ink);
   opacity: 0.55;
 }
@@ -124,32 +167,691 @@ html:has([data-project="darkroast"]) {
 }
 
 [data-project="darkroast"] .pd-research-text {
-  margin: 0.35rem 0 0;
+  margin: 0.4rem 0 0;
   font-family: var(--f-body);
-  font-size: clamp(0.95rem, 1.2vw, 1.08rem);
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
   color: var(--c-ink);
+  opacity: 0.85;
 }
 
+/* Pull quote — same voice as a design decision, not a heading */
 [data-project="darkroast"] .pd-highlight {
-  margin: clamp(2rem, 3.5vw, 2.75rem) 0 0;
+  margin: clamp(1.25rem, 2vw, 1.75rem) 0 0;
   font-family: var(--f-body);
-  font-weight: 600;
-  font-size: clamp(1.2rem, 1.85vw, 1.5rem);
-  line-height: 1.35;
-  letter-spacing: -0.015em;
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
   color: var(--c-ink);
 }
 
-[data-project="darkroast"] .pd-process-list + .pd-context-body {
-  margin-top: 1.15em;
+[data-project="darkroast"] .pd-process-list+.pd-context-body {
+  margin-top: 0.9em;
 }
 
 @media (max-width: 768px) {
   [data-project="darkroast"] .pd-research-grid {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
+  }
+}
+
+
+/* ── Workflow — recurring client jobs ───────────────────────── */
+
+[data-project="darkroast"] .pd-workflow {
+  --pd-workflow-cols: 6;
+  --pd-workflow-accent: #1e6042;
+  --pd-workflow-accent-soft: rgba(30, 96, 66, 0.1);
+  --pd-workflow-track: #d6d6d6;
+  --pd-workflow-node: 0.62rem;
+  --pd-workflow-job-h: 2.35rem;
+  --pd-workflow-rail-h: 2.6rem;
+  --pd-workflow-pad-y: 1.25rem;
+  --pd-workflow-pad-x: 0.7rem;
+}
+
+[data-project="darkroast"] .pd-workflow .pd-context-heading,
+[data-project="darkroast"] .pd-workflow .pd-context-body {
+  max-width: var(--pd-prose-max);
+}
+
+[data-project="darkroast"] .pd-workflow-figure {
+  width: 100%;
+  max-width: var(--pd-prose-max);
+  margin: clamp(2rem, 3.5vw, 3rem) 0 0;
+}
+
+[data-project="darkroast"] .pd-workflow-scroller {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-project="darkroast"] .pd-workflow-map {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+[data-project="darkroast"] .pd-workflow-map::before,
+[data-project="darkroast"] .pd-workflow-map::after {
+  content: '';
+  position: absolute;
+  top: calc(var(--pd-workflow-pad-y) + var(--pd-workflow-job-h) + (var(--pd-workflow-rail-h) / 2));
+  height: 1.5px;
+  pointer-events: none;
+}
+
+[data-project="darkroast"] .pd-workflow-map::before {
+  left: calc(var(--pd-workflow-pad-x) + (var(--pd-workflow-node) / 2));
+  right: calc((100% / var(--pd-workflow-cols)) - var(--pd-workflow-pad-x) - (var(--pd-workflow-node) / 2));
+  background: var(--pd-workflow-track);
+}
+
+[data-project="darkroast"] .pd-workflow-map::after {
+  left: calc(var(--pd-workflow-pad-x) + (var(--pd-workflow-node) / 2));
+  width: calc((100% - (100% / var(--pd-workflow-cols))) * 0.5);
+  background: var(--pd-workflow-accent);
+}
+
+[data-project="darkroast"] .pd-workflow-stage {
+  display: grid;
+  grid-template-rows: var(--pd-workflow-job-h) var(--pd-workflow-rail-h) 1fr;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: var(--pd-workflow-pad-y) var(--pd-workflow-pad-x) 1.5rem;
+  min-width: 0;
+}
+
+[data-project="darkroast"] .pd-workflow-stage.is-focus::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pd-workflow-accent-soft);
+  border-radius: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Six columns share one prose width, so this label stays a notch below
+   body size — it has to hold one line inside --pd-workflow-job-h. */
+[data-project="darkroast"] .pd-workflow-job {
+  margin: 0;
+  font-family: var(--f-head);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-sub);
+  letter-spacing: var(--ls-sub);
+  color: var(--c-ink);
+}
+
+[data-project="darkroast"] .pd-workflow-node {
+  width: var(--pd-workflow-node);
+  height: var(--pd-workflow-node);
+  margin-top: calc((var(--pd-workflow-rail-h) - var(--pd-workflow-node)) / 2);
+  border-radius: 50%;
+  background: #c8c8c8;
+  box-shadow: 0 0 0 4px #ffffff;
+}
+
+[data-project="darkroast"] .pd-workflow-stage.is-complete .pd-workflow-node,
+[data-project="darkroast"] .pd-workflow-stage.is-focus .pd-workflow-node {
+  background: var(--pd-workflow-accent);
+}
+
+[data-project="darkroast"] .pd-workflow-stage.is-focus .pd-workflow-node {
+  box-shadow:
+    0 0 0 4px #ffffff,
+    0 0 0 7px var(--pd-workflow-accent-soft);
+}
+
+[data-project="darkroast"] .pd-workflow-need {
+  margin: 0.25rem 0 0;
+  font-family: var(--f-body);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-body);
+  color: var(--c-ink);
+  opacity: 0.55;
+}
+
+[data-project="darkroast"] .pd-workflow-stage.is-focus .pd-workflow-need {
+  opacity: 0.72;
+}
+
+[data-project="darkroast"] .pd-workflow-figure .pd-problem-caption {
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  [data-project="darkroast"] .pd-workflow {
+    --pd-workflow-pad-y: 0.95rem;
+    --pd-workflow-node-nudge: 0.35em;
+    --pd-workflow-rail-inset: calc(var(--pd-workflow-pad-y) + var(--pd-workflow-node-nudge) + (var(--pd-workflow-node) / 2));
+  }
+
+  [data-project="darkroast"] .pd-workflow-scroller {
+    overflow: visible;
+  }
+
+  [data-project="darkroast"] .pd-workflow-map {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  [data-project="darkroast"] .pd-workflow-map::before,
+  [data-project="darkroast"] .pd-workflow-map::after {
+    top: var(--pd-workflow-rail-inset);
+    bottom: var(--pd-workflow-rail-inset);
+    left: calc(var(--pd-workflow-pad-x) + (var(--pd-workflow-node) / 2));
+    right: auto;
+    width: 1.5px;
+    height: auto;
+  }
+
+  [data-project="darkroast"] .pd-workflow-map::after {
+    bottom: auto;
+    height: calc((100% - (var(--pd-workflow-rail-inset) * 2)) * 0.5);
+  }
+
+  [data-project="darkroast"] .pd-workflow-stage {
+    grid-template-columns: 1.35rem minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 0.7rem;
+    padding-block: 0.95rem;
+  }
+
+  [data-project="darkroast"] .pd-workflow-job {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  [data-project="darkroast"] .pd-workflow-node {
+    grid-column: 1;
+    grid-row: 1;
+    margin-top: 0.35em;
+  }
+
+  [data-project="darkroast"] .pd-workflow-need {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 0.25rem;
+  }
+}
+
+
+/* ── Mental model — two modes on the current interface ──────── */
+
+[data-project="darkroast"] .pd-model {
+  --pd-workflow-accent: #1e6042;
+  --pd-workflow-accent-soft: rgba(30, 96, 66, 0.14);
+}
+
+[data-project="darkroast"] .pd-model-figure {
+  width: 100%;
+  max-width: var(--pd-prose-max);
+  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+}
+
+[data-project="darkroast"] .pd-model-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+}
+
+[data-project="darkroast"] .pd-layout-main .pd-model-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  opacity: 0.26;
+}
+
+[data-project="darkroast"] .pd-model-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+}
+
+[data-project="darkroast"] .pd-model-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+[data-project="darkroast"] .pd-model-pane--active {
+  background: var(--pd-workflow-accent-soft);
+}
+
+[data-project="darkroast"] .pd-model-pane--reference {
+  background: color-mix(in srgb, var(--pd-media-mat) 48%, transparent);
+  border-left: 1px solid var(--pd-media-line);
+}
+
+[data-project="darkroast"] .pd-model-pane .pd-research-label {
+  margin-top: 0.35rem;
+}
+
+[data-project="darkroast"] .pd-model-pane .pd-process-list {
+  margin-top: 0.85rem;
+}
+
+[data-project="darkroast"] .pd-model-figure+.pd-context-body {
+  margin-top: 0.9em;
+}
+
+[data-project="darkroast"] .pd-highlight+.pd-context-body {
+  margin-top: 0.9em;
+}
+
+[data-project="darkroast"] .pd-model .pd-research-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  [data-project="darkroast"] .pd-model .pd-research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  [data-project="darkroast"] .pd-model-pane {
+    padding: 0.7rem 0.55rem;
+  }
+}
+
+
+/* ── Project listing — continuous iteration marquee ─────────── */
+
+[data-project="darkroast"] .pd-listing {
+  --pd-listing-shift: calc(var(--pd-toc-width) + var(--pd-layout-gap) + var(--pd-layout-pad) + max(0px, (100vw - var(--pd-max)) / 2));
+  --pd-listing-slide-w: min(42rem, 78vw);
+  --pd-listing-gap: clamp(0.85rem, 1.6vw, 1.25rem);
+  overflow: visible;
+}
+
+[data-project="darkroast"] .pd-listing-carousel {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: none;
+  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+  margin-left: calc(-1 * var(--pd-listing-shift));
+  padding-block: 0.15rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 4%,
+      #000 96%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 4%,
+      #000 96%,
+      transparent 100%);
+}
+
+[data-project="darkroast"] .pd-listing-track {
+  display: flex;
+  width: max-content;
+  animation: pd-listing-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+[data-project="darkroast"] .pd-listing-carousel:hover .pd-listing-track,
+[data-project="darkroast"] .pd-listing-carousel:focus-within .pd-listing-track {
+  animation-play-state: paused;
+}
+
+[data-project="darkroast"] .pd-listing-set {
+  display: flex;
+  flex-shrink: 0;
+}
+
+[data-project="darkroast"] .pd-listing-slide {
+  margin: 0;
+  flex-shrink: 0;
+  width: auto;
+  margin-inline-end: var(--pd-listing-gap);
+}
+
+[data-project="darkroast"] .pd-layout-main .pd-listing-slide img {
+  display: block;
+  width: auto;
+  height: var(--pd-listing-slide-h, 28rem);
+  object-fit: contain;
+  padding: clamp(0.65rem, 1.2vw, 1rem);
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+  border-radius: 0;
+}
+
+[data-project="darkroast"] .pd-listing-carousel+.pd-context-body {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+@keyframes pd-listing-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 1200px) {
+  [data-project="darkroast"] .pd-listing {
+    --pd-listing-shift: max(clamp(2rem, 6vw, 7rem),
+        calc((100% - var(--site-max)) / 2));
+  }
+
+  [data-project="darkroast"] .pd-listing-carousel {
+    width: calc(100% + (2 * var(--pd-listing-shift)));
+    margin-left: calc(-1 * var(--pd-listing-shift));
+  }
+}
+
+@media (max-width: 768px) {
+  [data-project="darkroast"] .pd-listing {
+    --pd-listing-shift: max(clamp(1.5rem, 4vw, 3rem),
+        calc((100% - var(--site-max)) / 2));
+    --pd-listing-slide-w: min(22rem, 88vw);
+    --pd-listing-slide-h: 16rem;
+  }
+
+  [data-project="darkroast"] .pd-listing-track {
+    animation-duration: 42s;
+  }
+
+  [data-project="darkroast"] .pd-listing-carousel {
+    -webkit-mask-image: linear-gradient(to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%);
+    mask-image: linear-gradient(to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-project="darkroast"] .pd-listing-track {
+    animation: none;
+  }
+
+  [data-project="darkroast"] .pd-listing-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  [data-project="darkroast"] .pd-listing-set[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+
+/* Outcome and reflection */
+
+[data-project="darkroast"] .pd-outcome > .pd-context-body + .pd-context-body {
+  margin-top: 0.75em;
+}
+
+[data-project="darkroast"] .pd-outcome strong {
+  font-weight: var(--fw-semibold);
+}
+
+[data-project="darkroast"] .pd-outcome-closing {
+  max-width: var(--pd-prose-max);
+  margin: clamp(2rem, 3.5vw, 3rem) 0 0;
+  padding-top: clamp(1.25rem, 2vw, 1.75rem);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  font-family: var(--f-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--c-ink);
+}
+
+
+/* Final design — before and after comparisons */
+
+[data-project="darkroast"] .pd-final-changes-intro {
+  max-width: var(--pd-prose-max);
+}
+
+[data-project="darkroast"] .pd-change-list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5rem, 9vw, 8rem);
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+[data-project="darkroast"] .pd-change-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+[data-project="darkroast"] .pd-change-state {
+  min-width: 0;
+  margin: 0;
+}
+
+[data-project="darkroast"] .pd-change-media {
+  width: 100%;
+  aspect-ratio: 904 / 662;
+  overflow: hidden;
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+}
+
+[data-project="darkroast"] .pd-layout-main .pd-change-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+  background: transparent;
+  border: 0;
+}
+
+[data-project="darkroast"] .pd-change-state figcaption {
+  padding-top: clamp(1rem, 1.7vw, 1.35rem);
+}
+
+[data-project="darkroast"] .pd-change-label {
+  margin: 0 0 0.6rem;
+  font-family: var(--f-body);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-flat);
+  letter-spacing: var(--ls-caps-lg);
+  text-transform: uppercase;
+}
+
+[data-project="darkroast"] .pd-change-state--before .pd-change-label {
+  color: #8f3329;
+}
+
+[data-project="darkroast"] .pd-change-state--after .pd-change-label {
+  color: #0f6a42;
+}
+
+[data-project="darkroast"] .pd-change-copy {
+  max-width: 45ch;
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--c-ink);
+  opacity: 0.78;
+}
+
+@media (max-width: 768px) {
+  [data-project="darkroast"] .pd-change-pair {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  [data-project="darkroast"] .pd-change-list {
+    gap: 5rem;
+  }
+}
+
+
+/* Project detail header — continuous reverse iteration marquee */
+
+[data-project="darkroast"] .pd-header {
+  --pd-header-shift: calc(var(--pd-toc-width) + var(--pd-layout-gap) + var(--pd-layout-pad) + max(0px, (100vw - var(--pd-max)) / 2));
+  --pd-header-gap: clamp(0.85rem, 1.6vw, 1.25rem);
+  overflow: visible;
+}
+
+[data-project="darkroast"] .pd-header-carousel {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: none;
+  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+  margin-left: calc(-1 * var(--pd-header-shift));
+  padding-block: 0.15rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 4%,
+      #000 96%,
+      transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      #000 4%,
+      #000 96%,
+      transparent 100%);
+}
+
+[data-project="darkroast"] .pd-header-track {
+  display: flex;
+  width: max-content;
+  animation: pd-header-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+[data-project="darkroast"] .pd-header-carousel:hover .pd-header-track,
+[data-project="darkroast"] .pd-header-carousel:focus-within .pd-header-track {
+  animation-play-state: paused;
+}
+
+[data-project="darkroast"] .pd-header-set {
+  display: flex;
+  flex-shrink: 0;
+}
+
+[data-project="darkroast"] .pd-header-slide {
+  margin: 0;
+  margin-inline-end: var(--pd-header-gap);
+  flex-shrink: 0;
+}
+
+[data-project="darkroast"] .pd-layout-main .pd-header-slide img {
+  display: block;
+  width: auto;
+  height: var(--pd-header-slide-h, 19rem);
+  max-width: none;
+  object-fit: contain;
+  padding: clamp(0.65rem, 1.2vw, 1rem);
+  background: var(--pd-media-mat);
+  border: 1px solid var(--pd-media-line);
+  border-radius: 0;
+}
+
+[data-project="darkroast"] .pd-header-carousel+.pd-context-body {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+@keyframes pd-header-scroll {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  [data-project="darkroast"] .pd-header {
+    --pd-header-shift: max(clamp(2rem, 6vw, 7rem),
+        calc((100% - var(--site-max)) / 2));
+  }
+
+  [data-project="darkroast"] .pd-header-carousel {
+    width: calc(100% + (2 * var(--pd-header-shift)));
+    margin-left: calc(-1 * var(--pd-header-shift));
+  }
+}
+
+@media (max-width: 768px) {
+  [data-project="darkroast"] .pd-header {
+    --pd-header-shift: max(clamp(1.5rem, 4vw, 3rem),
+        calc((100% - var(--site-max)) / 2));
+    --pd-header-slide-h: 12rem;
+  }
+
+  [data-project="darkroast"] .pd-header-track {
+    animation-duration: 34s;
+  }
+
+  [data-project="darkroast"] .pd-header-carousel {
+    -webkit-mask-image: linear-gradient(to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%);
+    mask-image: linear-gradient(to right,
+        transparent 0%,
+        #000 3%,
+        #000 97%,
+        transparent 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-project="darkroast"] .pd-header-track {
+    animation: none;
+    transform: none;
+  }
+
+  [data-project="darkroast"] .pd-header-carousel {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  [data-project="darkroast"] .pd-header-set[aria-hidden="true"] {
+    display: none;
   }
 }

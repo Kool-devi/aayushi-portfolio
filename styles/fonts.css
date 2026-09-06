@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════════════════════════
+   STACK SANS — SELF-HOSTED WEBFONTS
+   Three cuts of one family, each with a 200–700 weight axis:
+
+     Notch     → titles & display moments (the signature notched cut)
+     Headline  → headlines and sub-headings (display optical size)
+     Text      → body copy, labels, captions (text optical size)
+
+   Variable woff2 is used so every weight between 200 and 700 is
+   available from a single ~50 KB file per cut. Square brackets in
+   the filenames are percent-encoded so the URLs stay unambiguous.
+
+   Licensed under the SIL Open Font License v1.1 (stack_sans/OFL.txt).
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Stack Sans Notch';
+  src: url('../stack_sans/fonts/Notch/webfonts/StackSansNotch%5Bwght%5D.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Stack Sans Headline';
+  src: url('../stack_sans/fonts/Headline/webfonts/StackSansHeadline%5Bwght%5D.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Stack Sans Text';
+  src: url('../stack_sans/fonts/Text/webfonts/StackSansText%5Bwght%5D.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}

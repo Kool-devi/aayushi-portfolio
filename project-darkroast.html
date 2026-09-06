@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DarkRoast — Case Study · Aayushi</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Stack Sans — self-hosted, faces declared in styles/fonts.css -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="stack_sans/fonts/Text/webfonts/StackSansText%5Bwght%5D.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="stack_sans/fonts/Headline/webfonts/StackSansHeadline%5Bwght%5D.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="stack_sans/fonts/Notch/webfonts/StackSansNotch%5Bwght%5D.woff2">
 
-  <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/project-detail.css">
-  <link rel="stylesheet" href="styles/pd-darkroast.css">
+  <link rel="stylesheet" href="styles/main.css?v=20260905-2">
+  <link rel="stylesheet" href="styles/project-detail.css?v=20260905-3">
+  <link rel="stylesheet" href="styles/pd-darkroast.css?v=20260905-6">
 </head>
+
 <body class="pd-page" data-project="darkroast">
 
   <nav class="corner-nav" aria-label="Site navigation">
     <a href="index.html" class="nav-item nav--tl">Home</a>
     <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
     <a href="contact.html" class="nav-item nav--bl">Contact</a>
-    <a href="https://linkedin.com/in/aayushi"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="nav-item nav--br">LinkedIn</a>
+    <a href="about.html" class="nav-item nav--br">About</a>
   </nav>
 
 
@@ -31,7 +34,10 @@
       <p class="pd-hero-meta">DarkRoast · Creative operations</p>
       <h1 class="pd-hero-title">Redesigning the project workspace for faster creative collaboration</h1>
     </div>
-    <div class="pd-hero-media" aria-hidden="true"></div>
+    <div class="pd-hero-media">
+      <img src="Mockups/DarkRoast/DarkRoast PMS Dashboard Main.png"
+        alt="DarkRoast project management dashboard" width="1916" height="907" decoding="async">
+    </div>
   </section>
 
 
@@ -42,9 +48,16 @@
       <p class="pd-toc-project">DarkRoast</p>
       <nav class="pd-toc-nav" aria-label="On this page">
         <a href="#pd-tldr" class="pd-toc-link is-active">TLDR</a>
+        <a href="#pd-overview" class="pd-toc-link">Overview</a>
         <a href="#pd-solution" class="pd-toc-link">Solution</a>
         <a href="#pd-problem" class="pd-toc-link">Problem</a>
         <a href="#pd-research" class="pd-toc-link">Research</a>
+        <a href="#pd-workflow" class="pd-toc-link">Workflow</a>
+        <a href="#pd-model" class="pd-toc-link">Mental model</a>
+        <a href="#pd-listing" class="pd-toc-link">Project listing</a>
+        <a href="#pd-header" class="pd-toc-link">Project header</a>
+        <a href="#pd-final-changes" class="pd-toc-link">Final changes</a>
+        <a href="#pd-outcome" class="pd-toc-link">Outcome</a>
       </nav>
     </aside>
 
@@ -70,6 +83,20 @@
         </div>
       </section>
 
+      <section class="pd-context" id="pd-overview">
+        <p class="pd-context-eyebrow">Overview</p>
+        <h2 class="pd-context-heading">
+          DarkRoast is a creative operations platform used by clients and designers to manage projects, feedback,
+          files, and ongoing creative work.
+        </h2>
+        <p class="pd-context-body">
+          I worked across the dashboard redesign, from research and workflow mapping to information architecture and
+          the final client- and designer-facing experience. The focus was to make project progress easier to
+          understand, give active collaboration more space, and reduce the amount of information competing for
+          attention at once.
+        </p>
+      </section>
+
       <section class="pd-context pd-solution" id="pd-solution">
         <p class="pd-context-eyebrow">Solution</p>
         <h2 class="pd-context-heading">
@@ -79,11 +106,8 @@
         <figure class="pd-problem-figure pd-solution-figure">
           <div class="pd-solution-mat">
             <div class="pd-solution-scaler">
-              <iframe
-                src="prototypes/darkroast.html"
-                title="DarkRoast interactive prototype"
-                loading="lazy"
-              ></iframe>
+              <iframe src="DarkRoast Prototype new.html" title="DarkRoast interactive prototype"
+                loading="lazy"></iframe>
             </div>
           </div>
           <figcaption class="pd-problem-caption">
@@ -106,21 +130,13 @@
 
         <div class="pd-problem-figures pd-problem-figures--stack">
           <figure class="pd-problem-figure">
-            <img
-              src="Mockups/DarkRoast/Main Screen Audit.png"
-              alt="Annotated audit of the DarkRoast main dashboard"
-              loading="lazy"
-              decoding="async"
-            >
+            <img src="Mockups/DarkRoast/Main Screen Audit.png" alt="Annotated audit of the DarkRoast main dashboard"
+              loading="lazy" decoding="async">
             <figcaption class="pd-problem-caption">Main screen audit</figcaption>
           </figure>
           <figure class="pd-problem-figure">
-            <img
-              src="Mockups/DarkRoast/Project Detail Screen Audit.png"
-              alt="Annotated audit of the DarkRoast project detail screen"
-              loading="lazy"
-              decoding="async"
-            >
+            <img src="Mockups/DarkRoast/Project Detail Screen Audit.png"
+              alt="Annotated audit of the DarkRoast project detail screen" loading="lazy" decoding="async">
             <figcaption class="pd-problem-caption">Project detail screen audit</figcaption>
           </figure>
         </div>
@@ -210,11 +226,429 @@
         </p>
       </section>
 
-      <a
-        class="pd-contact-cta"
-        href="mailto:hello@aayushi.design?subject=DarkRoast%20case%20study"
-        aria-label="Email Aayushi at hello@aayushi.design about the DarkRoast case study"
-      >
+      <section class="pd-context pd-workflow" id="pd-workflow">
+        <p class="pd-context-eyebrow">Mapping the client workflow</p>
+        <h2 class="pd-context-heading">
+          The survey told us what clients were unhappy with, and the audit
+          showed where the interface was getting in the way. But neither
+          explained how those issues connected across a full project.
+        </h2>
+        <p class="pd-context-body">
+          So I mapped the recurring jobs clients were trying to complete
+          across DarkRoast. This helped separate the underlying workflow
+          from the current interface and gave us a clearer basis for
+          deciding what the dashboard actually needed to support.
+        </p>
+
+        <figure class="pd-workflow-figure">
+          <div class="pd-workflow-scroller">
+            <ol class="pd-workflow-map" aria-label="Recurring client jobs across a DarkRoast project">
+              <li class="pd-workflow-stage is-complete">
+                <p class="pd-workflow-job">Share intent</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">Turn rough goals into clear creative direction.</p>
+              </li>
+              <li class="pd-workflow-stage is-complete">
+                <p class="pd-workflow-job">Start work</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">Create new work quickly using existing context.</p>
+              </li>
+              <li class="pd-workflow-stage is-focus">
+                <p class="pd-workflow-job">Track progress</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">See what needs attention without opening every project.</p>
+              </li>
+              <li class="pd-workflow-stage">
+                <p class="pd-workflow-job">Review work</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">Check quality and direction at a glance.</p>
+              </li>
+              <li class="pd-workflow-stage">
+                <p class="pd-workflow-job">Give feedback</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">Iterate without re-briefing or heavy process.</p>
+              </li>
+              <li class="pd-workflow-stage">
+                <p class="pd-workflow-job">Reuse &amp; scale</p>
+                <span class="pd-workflow-node" aria-hidden="true"></span>
+                <p class="pd-workflow-need">Carry past work and brand context into future projects.</p>
+              </li>
+            </ol>
+          </div>
+          <figcaption class="pd-problem-caption">
+            The current dashboard sat in the middle of this loop — tracking work —
+            without supporting the jobs around it.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="pd-context pd-model" id="pd-model">
+        <p class="pd-context-eyebrow">Defining the product mental model</p>
+        <h2 class="pd-context-heading">
+          The research helped us define a simple way to think about the
+          project page.
+        </h2>
+        <p class="pd-context-body">
+          A project had two modes.
+        </p>
+
+        <figure class="pd-model-figure">
+          <div class="pd-model-frame">
+            <img src="current interface.png"
+              alt="Current DarkRoast project page, shown underneath the two-mode mental model" loading="lazy"
+              decoding="async">
+            <div class="pd-model-overlay">
+              <div class="pd-model-pane pd-model-pane--active">
+                <p class="pd-workflow-job">Active Mode</p>
+                <p class="pd-research-label">Where work happens:</p>
+                <ul class="pd-process-list">
+                  <li>messaging</li>
+                  <li>feedback</li>
+                  <li>coordination</li>
+                  <li>file sharing</li>
+                  <li>decisions</li>
+                </ul>
+              </div>
+              <div class="pd-model-pane pd-model-pane--reference">
+                <p class="pd-workflow-job">Reference Mode</p>
+                <p class="pd-research-label">Where users check context:</p>
+                <ul class="pd-process-list">
+                  <li>project brief</li>
+                  <li>metadata</li>
+                  <li>summaries</li>
+                  <li>historical information</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </figure>
+
+        <p class="pd-context-body">
+          The existing product treated both modes as equally important all
+          the time. That was creating unnecessary density.
+        </p>
+        <p class="pd-highlight">
+          Our working principle became: Give active work priority. Keep
+          reference information close, but not permanently in the way.
+        </p>
+        <p class="pd-context-body">
+          By the end of the research and audit phase, three priorities were
+          clear.
+        </p>
+        <div class="pd-research-grid">
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <p class="pd-workflow-job">Make progress obvious</p>
+              <p class="pd-research-text">
+                Clients should understand what is happening across their
+                projects without opening each one.
+              </p>
+            </div>
+          </article>
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <p class="pd-workflow-job">Give active work more space</p>
+              <p class="pd-research-text">
+                Messaging, feedback, and collaboration should take priority
+                when users are working inside a project.
+              </p>
+            </div>
+          </article>
+          <article class="pd-research-pair">
+            <div class="pd-research-item">
+              <p class="pd-workflow-job">Reduce persistent information</p>
+              <p class="pd-research-text">
+                Reference content should stay accessible without competing
+                with the main task.
+              </p>
+            </div>
+          </article>
+        </div>
+        <p class="pd-highlight">
+          These principles became the foundation for the next phase.
+        </p>
+      </section>
+
+      <section class="pd-context pd-listing" id="pd-listing">
+        <p class="pd-context-eyebrow">Iterating on the project listing</p>
+        <h2 class="pd-context-heading">
+          With those priorities in place, I started by reworking the
+          Projects page — the main place clients scan active work, check
+          status, and decide what needs attention.
+        </h2>
+
+        <div class="pd-listing-carousel" role="region"
+          aria-label="Project listing design iterations, scrolling continuously">
+          <div class="pd-listing-track">
+            <div class="pd-listing-set">
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Project listing _ Default.png"
+                  alt="Project listing iteration: default grouped list with status pills" width="1214" height="732"
+                  loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png"
+                  alt="Project listing iteration: rows with progress bars for capacity and completion" width="1234"
+                  height="783" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png"
+                  alt="Project listing iteration: denser layout with tooltips for status detail" width="1440"
+                  height="1100" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Client _ Project listing.png"
+                  alt="Project listing iteration: client-facing view emphasizing priority and attention" width="1237"
+                  height="632" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="pd-listing-set" aria-hidden="true">
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Project listing _ Default.png" alt="" width="1214"
+                  height="732" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png" alt=""
+                  width="1234" height="783" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png" alt=""
+                  width="1440" height="1100" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-listing-slide">
+                <img src="Dark Roast Project Listing Page Iterations/Client _ Project listing.png" alt="" width="1237"
+                  height="632" loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <p class="pd-context-body">
+          I explored several directions around grouping, status visibility,
+          priority, progress, and project capacity. Each iteration tested a
+          different balance between density and visibility, helping us narrow
+          down which signals needed to stay prominent and which could be
+          reduced.
+        </p>
+      </section>
+
+      <section class="pd-context pd-header" id="pd-header">
+        <p class="pd-context-eyebrow">Iterating on the project detail header</p>
+        <h2 class="pd-context-heading">
+          The project detail page already contained the right information, but too much of it competed for attention at
+          the top of the screen.
+        </h2>
+        <p class="pd-context-body">
+          I explored a few ways to simplify the header by reducing metadata, improving the placement of project actions,
+          and keeping important context like status, designers, search, and project details easy to access.
+        </p>
+
+        <div class="pd-header-carousel" role="region"
+          aria-label="Project detail header iterations, scrolling continuously from left to right">
+          <div class="pd-header-track">
+            <div class="pd-header-set">
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/First screen - Variation 1.png"
+                  alt="First screen - Variation 1" width="1185" height="308" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/First screen - Variation 2.png"
+                  alt="First screen - Variation 2" width="1182" height="302" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/Screen 1.png" alt="Screen 1" width="1184"
+                  height="300" loading="lazy" decoding="async">
+              </figure>
+            </div>
+            <div class="pd-header-set" aria-hidden="true">
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/First screen - Variation 1.png" alt="" width="1185"
+                  height="308" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/First screen - Variation 2.png" alt="" width="1182"
+                  height="302" loading="lazy" decoding="async">
+              </figure>
+              <figure class="pd-header-slide">
+                <img src="Dark Roast Project Detail Page Iterations/Screen 1.png" alt="" width="1184" height="300"
+                  loading="lazy" decoding="async">
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <p class="pd-context-body">
+          Across the iterations, the direction became clearer:
+        </p>
+        <ul class="pd-process-list">
+          <li>keep the project title and status immediately visible</li>
+          <li>reduce secondary metadata in the header</li>
+          <li>group utility actions more intentionally</li>
+          <li>keep Messages and Files easy to switch between</li>
+          <li>move reference content like AI Summary and Project Details out of the main working area</li>
+        </ul>
+      </section>
+
+      <section class="pd-context pd-final-changes" id="pd-final-changes">
+        <p class="pd-context-eyebrow">Final design</p>
+        <h2 class="pd-context-heading">What changed in the final design</h2>
+        <p class="pd-context-body pd-final-changes-intro">
+          The final redesign focused on a few high-impact changes rather than replacing the whole experience. Each
+          change came directly from the research and audit, with the goal of making project status easier to scan,
+          active work easier to focus on, and secondary information easier to access only when needed.
+        </p>
+
+        <div class="pd-change-list">
+          <article class="pd-change-pair">
+            <figure class="pd-change-state pd-change-state--before">
+              <div class="pd-change-media">
+                <img src="Before After/1a.png" alt="Project navigation before the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">Before</p>
+                <p class="pd-change-copy">Project types and statuses were mixed into the same navigation, making the
+                  page harder to scan. Clients had to work harder to understand what kind of work they were looking at
+                  and what needed attention.</p>
+              </figcaption>
+            </figure>
+            <figure class="pd-change-state pd-change-state--after">
+              <div class="pd-change-media">
+                <img src="Before After/1b.png" alt="Project navigation after the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">After</p>
+                <p class="pd-change-copy">Project type, status, and priority were separated into clearer layers with
+                  stronger visual signals. This made the list easier to scan and helped clients understand project
+                  context without opening each item.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="pd-change-pair">
+            <figure class="pd-change-state pd-change-state--before">
+              <div class="pd-change-media">
+                <img src="Before After/2a.png" alt="Project status rows before the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">Before</p>
+                <p class="pd-change-copy">Project rows relied on ambiguous color bars and activity text to signal what
+                  was happening. Clients had to interpret those cues before they could understand priority, status, or
+                  what needed attention.</p>
+              </figcaption>
+            </figure>
+            <figure class="pd-change-state pd-change-state--after">
+              <div class="pd-change-media">
+                <img src="Before After/2b.png" alt="Project status rows after the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">After</p>
+                <p class="pd-change-copy">Priority and status became explicit, scannable fields with clear labels and
+                  stronger hierarchy. This made urgent work easier to spot and reduced the need to open projects just
+                  to understand their state.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="pd-change-pair">
+            <figure class="pd-change-state pd-change-state--before">
+              <div class="pd-change-media">
+                <img src="Before After/3a.png" alt="Project messages before the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">Before</p>
+                <p class="pd-change-copy">Messages appeared as a flat stream, with weak separation between people,
+                  dates, text, and shared files. This made longer conversations harder to scan and reduced confidence
+                  about what was new or important.</p>
+              </figcaption>
+            </figure>
+            <figure class="pd-change-state pd-change-state--after">
+              <div class="pd-change-media">
+                <img src="Before After/3b.png" alt="Project messages after the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">After</p>
+                <p class="pd-change-copy">The conversation was restructured with clearer message grouping, stronger
+                  sender hierarchy, date breaks, and files shown in context. This made the thread easier to follow and
+                  helped clients review updates without losing the surrounding conversation.</p>
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="pd-change-pair">
+            <figure class="pd-change-state pd-change-state--before">
+              <div class="pd-change-media">
+                <img src="Before After/4a.png" alt="Project files before the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">Before</p>
+                <p class="pd-change-copy">Files were shown as a flat list with small previews and very little review
+                  context. This made it harder to understand versions, compare assets, and give feedback without
+                  switching back and forth.</p>
+              </figcaption>
+            </figure>
+            <figure class="pd-change-state pd-change-state--after">
+              <div class="pd-change-media">
+                <img src="Before After/4b.png" alt="Project file review after the redesign" width="904" height="662"
+                  loading="lazy" decoding="async">
+              </div>
+              <figcaption>
+                <p class="pd-change-label">After</p>
+                <p class="pd-change-copy">File review was expanded into a dedicated workspace with larger previews,
+                  grouped versions, and comments alongside the asset. This made review more focused and helped clients
+                  assess creative work and respond in context.</p>
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+
+      <section class="pd-context pd-learned pd-outcome" id="pd-outcome">
+        <p class="pd-context-eyebrow">Outcome</p>
+        <h2 class="pd-context-heading">
+          The redesign moved DarkRoast from a dense project management interface toward a clearer creative workspace.
+        </h2>
+        <p class="pd-context-body">
+          The final direction made project status easier to scan, gave collaboration more space, and brought files,
+          feedback, and reference information closer to the work they supported.
+        </p>
+        <p class="pd-context-body">
+          Rather than adding more features, the focus stayed on <strong>reducing friction, improving hierarchy, and
+            making progress easier to understand.</strong>
+        </p>
+
+        <div class="pd-learned-grid">
+          <article class="pd-learned-item">
+            <h3 class="pd-learned-title">Reflection</h3>
+            <p class="pd-context-body">
+              This project pushed me to think beyond individual screens and focus more on <strong>workflow,
+                information architecture, and product behaviour</strong>.
+            </p>
+          </article>
+
+          <article class="pd-learned-item">
+            <h3 class="pd-learned-title">The biggest lesson</h3>
+            <p class="pd-context-body">
+              The biggest lesson was that the right solution was not a complete redesign. It was understanding what
+              users needed to notice, what they needed to act on, and what could stay one step away.
+            </p>
+          </article>
+        </div>
+
+        <p class="pd-outcome-closing">
+          <strong>From audit to final interface, the goal stayed the same: make creative work easier to follow without
+            making clients manage the process.</strong>
+        </p>
+      </section>
+
+      <a class="pd-contact-cta" href="mailto:hello@aayushi.design?subject=DarkRoast%20case%20study"
+        aria-label="Email Aayushi at hello@aayushi.design about the DarkRoast case study">
         <span class="pd-contact-cta-title">
           Curious to know more?
           <span class="pd-contact-cta-arrow" aria-hidden="true">→</span>
@@ -238,9 +672,8 @@
     <div>
       <p class="site-footer-eyebrow">[ While you're here ]</p>
       <nav class="site-footer-links" aria-label="Social links">
-        <a href="https://linkedin.com/in/aayushi"
-           class="site-footer-link"
-           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="https://linkedin.com/in/aayushi" class="site-footer-link" target="_blank"
+          rel="noopener noreferrer">LinkedIn ↗</a>
         <a href="index.html#projects" class="site-footer-link">View Work ↗</a>
         <a href="contact.html" class="site-footer-link">Contact ↗</a>
       </nav>
@@ -261,4 +694,5 @@
   <script src="scripts/main.js"></script>
   <script src="scripts/pd-toc.js"></script>
 </body>
+
 </html>

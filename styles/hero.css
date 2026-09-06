@@ -62,7 +62,8 @@
   position: absolute;
   font-family: var(--f-body);
   font-size: var(--nav-size);
-  font-weight: 400;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-flat);
   letter-spacing: var(--nav-spacing);
   text-transform: uppercase;
   color: #ffffff;              /* white + difference = inverse of background */
@@ -188,8 +189,10 @@
 
 .bracket-inner {
   font-family: var(--f-body);
-  font-size: var(--fs-body-lg);
+  font-size: var(--bkt-text-size);
+  font-weight: var(--fw-light);
   font-style: italic;
+  letter-spacing: var(--ls-body);
   line-height: var(--bkt-text-lead);
   color: var(--c-ink);
   white-space: nowrap;

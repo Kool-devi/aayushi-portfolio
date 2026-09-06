@@ -5,13 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aayushi — Portfolio</title>
 
-  <!-- Google Fonts: Roboto Condensed (display) + Roboto (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Stack Sans — self-hosted, faces declared in styles/fonts.css -->
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="stack_sans/fonts/Text/webfonts/StackSansText%5Bwght%5D.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="stack_sans/fonts/Headline/webfonts/StackSansHeadline%5Bwght%5D.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="stack_sans/fonts/Notch/webfonts/StackSansNotch%5Bwght%5D.woff2">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/main.css?v=20260905-2">
+  <link rel="stylesheet" href="styles/selected-works.css">
+  <link rel="stylesheet" href="styles/home-simple.css">
 </head>
 <body>
 
@@ -24,16 +29,26 @@
     <a href="index.html"    class="nav-item nav--tl">Home</a>
     <a href="#projects"     class="nav-item nav--tr">Projects</a>
     <a href="contact.html"  class="nav-item nav--bl">Contact</a>
-    <a href="https://linkedin.com/in/aayushi"
-       target="_blank"
-       rel="noopener noreferrer"
-       class="nav-item nav--br">LinkedIn</a>
+    <a href="about.html" class="nav-item nav--br">About</a>
   </nav>
 
   <!-- ════════════════════════════════════════════════════════
        HOME PAGE — HERO SECTION
        ════════════════════════════════════════════════════════ -->
-  <section class="hero" id="home">
+  <main class="home-simple-main">
+    <section class="home-intro" id="home" aria-labelledby="home-intro-title">
+      <div class="home-intro-inner">
+        <div class="home-intro-copy">
+          <h1 id="home-intro-title">I’m Aayushi, a product designer built on systems thinking.</h1>
+          <p>I design clear digital products by connecting research, interaction, and the systems behind them.</p>
+          <p class="home-intro-note">Currently shaping product experiences for ambitious teams and global clients.</p>
+        </div>
+        <div class="home-intro-space" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="hero hero--retired" id="home-retired" hidden>
 
     <!-- ── Bracket Element ───────────────────────────────────
          Typographic decorative element, left side
@@ -84,7 +99,7 @@
   <!-- ════════════════════════════════════════════════════════
        SKILLS TICKER SECTION
        ════════════════════════════════════════════════════════ -->
-  <section class="skills-ticker" id="skills" aria-label="Skills">
+  <section class="skills-ticker skills-ticker--retired" id="skills" aria-label="Skills" hidden>
 
     <!-- ── Static label ──────────────────────────────────────── -->
     <p class="ticker-label">I am good at:</p>
@@ -132,7 +147,41 @@
        Left: black panel (text top, image bottom)
        Right: three numbered project cards
        ════════════════════════════════════════════════════════ -->
-  <section class="projects" id="projects">
+  <section class="selected-works" id="projects" aria-label="Selected work">
+    <div class="selected-works-inner">
+      <div class="selected-works-list">
+        <a class="selected-work" href="project-darkroast.html">
+          <figure class="selected-work-cover selected-work-cover--darkroast">
+            <img src="Mockups/DarkRoast/DarkRoast%20PMS%20Dashboard%20Main.png"
+              alt="DarkRoast project management dashboard" loading="lazy" decoding="async">
+            <span class="selected-work-cursor" aria-hidden="true">
+              <span class="selected-work-cursor-pill">View Case Study</span>
+            </span>
+          </figure>
+          <div class="selected-work-copy">
+            <p class="selected-work-meta">DarkRoast <span>•</span> Creative Operations <span>•</span> Product Design</p>
+            <h3 class="selected-work-title">Redesigning the project workspace for faster creative collaboration</h3>
+          </div>
+        </a>
+
+        <a class="selected-work" href="project-delicut.html">
+          <figure class="selected-work-cover selected-work-cover--delicut">
+            <img src="Mockups/Delicut/Project%20Landing.jpg"
+              alt="Delicut meal plan subscription app" loading="lazy" decoding="async">
+            <span class="selected-work-cursor" aria-hidden="true">
+              <span class="selected-work-cursor-pill">View Case Study</span>
+            </span>
+          </figure>
+          <div class="selected-work-copy">
+            <p class="selected-work-meta">Delicut <span>•</span> Meal Subscription <span>•</span> UAE <span>•</span> 2025</p>
+            <h3 class="selected-work-title">Making meal-plan subscriptions easier to understand and manage</h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects projects--legacy" id="projects-legacy" hidden>
 
     <!-- ── Left Panel ──────────────────────────────────────────
          Full-bleed image background (ProjectSectionImage.png)
@@ -156,7 +205,7 @@
          Three cards: odd cards have name top / number bottom;
          even cards flip so number sits top / name bottom.
     ──────────────────────────────────────────────────────────── -->
-    <div class="projects-right" data-projects-home>
+    <div class="projects-right">
 
       <a class="proj-card" href="project-darkroast.html">
         <span class="proj-card-name">DarkRoast</span>
@@ -262,5 +311,6 @@
   <script src="scripts/projects.js"></script>
   <script src="scripts/main.js"></script>
   <script src="scripts/nav-contrast.js"></script>
+  <script src="scripts/selected-works-cursor.js"></script>
 </body>
 </html>

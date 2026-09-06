@@ -25,15 +25,15 @@ window.PORTFOLIO.projects = [
     location: '',
     year: '',
     href: 'project-darkroast.html',
-    thumbnail: '',
-    preview: '',
+    thumbnail: 'Mockups/DarkRoast/DarkRoast PMS Dashboard Main.png',
+    preview: 'Mockups/DarkRoast/DarkRoast PMS Dashboard Main.png',
     emailSubject: 'DarkRoast case study',
     published: true
   },
   {
     id: 'delicut',
     name: 'Delicut',
-    title: "Delicut's meal plan subscription",
+    title: 'Making meal-plan subscriptions easier to understand and manage',
     category: 'Meal subscription',
     location: 'UAE',
     year: '2025',

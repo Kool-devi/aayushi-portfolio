@@ -7,53 +7,126 @@
   /* ── Colors ─────────────────────────────────────────────────
      Swap these to retheme the whole site instantly            */
   --c-ink:          #000000;   /* primary text, icons, lines  */
-  --c-bg-fallback:  #e8e0d5;   /* shown if bgimage fails      */
+  --c-bg-fallback:  #ffffff;
   --c-accent:       #000000;   /* brand accent – change later */
   --c-nav:          #ffffff;   /* white + mix-blend-mode:difference = always readable */
 
-  /* ── Font Families ──────────────────────────────────────── */
-  --f-display:      'Roboto Condensed', sans-serif;  /* headings  */
-  --f-body:         'Roboto', sans-serif;            /* body copy */
+  /* ── Font Families ──────────────────────────────────────────
+     One family, three optical cuts. Faces are declared in fonts.css.
+       --f-display  Notch Bold   titles, hero, poster & display moments
+       --f-head     Headline     headlines and sub-headings
+       --f-body     Text         body copy, labels, captions, UI
+  ────────────────────────────────────────────────────────────── */
+  --f-display:      'Stack Sans Notch', 'Helvetica Neue', Arial, sans-serif;
+  --f-head:         'Stack Sans Headline', 'Helvetica Neue', Arial, sans-serif;
+  --f-body:         'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Weights ─────────────────────────────────────────────────
+     Stack Sans runs a 200–700 axis. 700 is the heaviest weight that
+     exists — never ask for more or the browser fakes it.
+  ────────────────────────────────────────────────────────────── */
+  --fw-light:      300;
+  --fw-regular:    400;
+  --fw-medium:     500;
+  --fw-semibold:   600;
+  --fw-bold:       700;
 
   /* ── Type Scale ──────────────────────────────────────────────
-     Strict hierarchy (largest → smallest):
-       h1  = --hero-size  (defined below, viewport-aware)
-       h2  = --fs-h2      section headings
-       h3  = --fs-h3      sub-headings
-       ↓   = --fs-display large decorative / ticker text
-       ↓   = --fs-body-lg bracket inner / comfortable body
-       ↓   = --fs-label   eyebrows, sub-labels, nav, card names
-       ↓   = --fs-xs      smallest body (about nums & body copy)
+     Three tiers, each with its own cut. Steps are intentionally
+     uneven so hierarchy reads at a glance:
+
+     DISPLAY (Notch, 700) — poster moments, one per screen
+       --hero-size   viewport-driven hero (defined below)
+       --fs-h2       poster section heading ("Selected Works")
+       --fs-display  ticker / marquee
+       --fs-title    case-study page title
+
+     HEADLINE (Headline, 400–600) — the editorial spine
+       --fs-lead     opening deck / TL;DR statement
+       --fs-section  section heading (h2)
+       --fs-quote    pull quote, design decision, highlight
+       --fs-sub      sub-heading (h3)
+       --fs-h3       small capitalised heading (about labels)
+
+     TEXT (Text, 300–500) — everything you actually read
+       --fs-body-lg  comfortable body / lead-in paragraphs
+       --fs-body     default body copy and bullets
+       --fs-body-sm  dense body, metadata values
+       --fs-caption  captions and inline labels
+       --fs-label    tracked uppercase eyebrows, nav, card names
+       --fs-xs       smallest supporting copy
+
      All minimums ≥ 0.72 rem (~11.5 px) for WCAG readability.
   ────────────────────────────────────────────────────────────── */
-  --fs-h2:        clamp(2.2rem,  5vw,    6.5rem);
-  --fs-h3:        clamp(0.875rem, 1.05vw, 1.05rem);
-  --fs-display:   clamp(2.4rem,  5.5vw,  6.5rem);
-  --fs-body-lg:   clamp(0.875rem, 1.1vw,  1.05rem);
-  --fs-label:     clamp(0.75rem,  0.85vw, 0.875rem);
-  --fs-xs:        clamp(0.72rem,  0.75vw, 0.8rem);
+  --fs-h2:        clamp(2.1rem,   4.4vw,  5.25rem);
+  --fs-display:   clamp(2.1rem,   4.4vw,  5rem);
+  --fs-title:     clamp(2.25rem,  4.35vw, 3.75rem);
+
+  --fs-lead:      clamp(1.32rem,  1.95vw, 1.72rem);
+  --fs-section:   clamp(1.18rem,  1.5vw,  1.42rem);
+  --fs-quote:     clamp(1.1rem,   1.35vw, 1.28rem);
+  --fs-sub:       clamp(1.02rem,  1.2vw,  1.15rem);
+  --fs-h3:        clamp(0.88rem,  0.98vw, 0.98rem);
+
+  --fs-body-lg:   clamp(1.04rem,  1.22vw, 1.15rem);
+  --fs-body:      clamp(0.97rem,  1.1vw,  1.06rem);
+  --fs-body-sm:   clamp(0.9rem,   1vw,    0.98rem);
+  --fs-caption:   clamp(0.82rem,  0.92vw, 0.9rem);
+  --fs-label:     clamp(0.72rem,  0.84vw, 0.84rem);
+  --fs-xs:        clamp(0.74rem,  0.8vw,  0.84rem);
+
+  /* ── Line heights ────────────────────────────────────────────
+     Tight for display, snug for headings, slightly compressed
+     for body so long case-study pages feel composed, not airy.
+  ────────────────────────────────────────────────────────────── */
+  --lh-flat:      1;
+  --lh-display:   0.86;
+  --lh-title:     1.02;
+  --lh-section:   1.18;
+  --lh-lead:      1.28;
+  --lh-sub:       1.25;
+  --lh-quote:     1.28;
+  --lh-snug:      1.35;
+  --lh-body:      1.48;
+
+  /* ── Tracking ────────────────────────────────────────────────
+     Optical correction: the larger the type, the tighter it sets.
+     Uppercase micro-copy needs the opposite — open it up.
+     Stack Sans is already open, so caps tracking stays moderate.
+  ────────────────────────────────────────────────────────────── */
+  --ls-display:   -0.03em;
+  --ls-title:     -0.025em;
+  --ls-section:   -0.018em;
+  --ls-lead:      -0.015em;
+  --ls-quote:     -0.012em;
+  --ls-sub:       -0.01em;
+  --ls-body:      -0.005em;
+  --ls-caps:       0.1em;
+  --ls-caps-lg:    0.16em;
 
   /* ── Hero Headline ──────────────────────────────────────── */
-  /* min(15vw, 22vh) ensures text fits BOTH horizontally and vertically.
-     4 lines × 22vh × 0.82 line-height ≈ 72vh — stays inside the viewport. */
-  --hero-size:      clamp(3.5rem, min(15vw, 22vh), 20rem);
-  --hero-leading:   0.82;                        /* line-height  */
-  --hero-kern:      -0.04em;                     /* letter-spacing (reduced kerning) */
-  --hero-weight:    900;
+  /* min(13.5vw, 21vh) ensures text fits BOTH horizontally and vertically.
+     Stack Sans Notch sets noticeably wider than a condensed face, so the
+     horizontal cap is tighter than it was.
+     4 lines × 21vh × 0.86 line-height ≈ 72vh — stays inside the viewport. */
+  --hero-size:      clamp(3.25rem, min(13.5vw, 21vh), 18rem);
+  --hero-leading:   var(--lh-display);           /* line-height  */
+  --hero-kern:      var(--ls-display);           /* letter-spacing (reduced kerning) */
+  --hero-weight:    var(--fw-bold);
   --hero-left:      18vw;                        /* text block left offset */
 
   /* ── Corner Navigation ──────────────────────────────────── */
   --nav-size:       var(--fs-label);
-  --nav-spacing:    0.14em;
+  --nav-spacing:    var(--ls-caps);
   --nav-pad:        clamp(1.2rem, 1.8vw, 1.8rem);  /* edge inset */
 
   /* ── Bracket Element ─────────────────────────────────────── */
-  --bkt-paren-size: clamp(3rem, 6vw, 8rem);
-  --bkt-text-size:  clamp(0.72rem, 1vw, 1.05rem);
+  --bkt-paren-size: clamp(2.75rem, 5.4vw, 7rem);
+  --bkt-text-size:  clamp(0.78rem, 0.95vw, 1rem);
   --bkt-text-lead:  1.4;
-  --bkt-gap:        0.35em;   /* gap between ( text ) */
+  --bkt-gap:        0.3em;   /* gap between ( text ) */
   --bkt-left:       3.5vw;
-  --bkt-weight:     300;
+  --bkt-weight:     var(--fw-light);
 
   /* ── Floating Personal Image ────────────────────────────── */
   --img-width:      clamp(150px, 22vw, 330px);
@@ -82,61 +155,89 @@
 /* ── Tablet overrides (≤1024px) ─────────────────────────── */
 @media (max-width: 1024px) {
   :root {
-    --hero-size:      clamp(3rem, min(14vw, 22vh), 16rem);
+    --hero-size:      clamp(2.75rem, min(13vw, 21vh), 14.5rem);
     --hero-left:      14vw;
     --img-width:      clamp(130px, 24vw, 280px);
     --img-left:       54%;
     --bkt-left:       3vw;
-    --bkt-paren-size: clamp(2.5rem, 5.5vw, 7rem);
+    --bkt-paren-size: clamp(2.35rem, 5vw, 6rem);
     --star-size:      clamp(3rem, 5.5vw, 7.5rem);
     --arrow-size:     clamp(2.5rem, 5vw, 7rem);
-    --fs-h2:          clamp(2rem, 4.5vw, 5.5rem);
+    --fs-h2:          clamp(1.95rem, 4.3vw, 4.75rem);
   }
 }
 
 /* ── Large phone overrides (≤768px) ─────────────────────── */
 @media (max-width: 768px) {
   :root {
-    --hero-size:      clamp(2.8rem, 12vw, 7rem);
-    --hero-leading:   0.86;
+    --hero-size:      clamp(2.6rem, 11vw, 6.25rem);
+    --hero-leading:   0.9;
     --hero-left:      5vw;
     --img-width:      clamp(110px, 32vw, 200px);
-    --bkt-paren-size: clamp(2rem, 4.5vw, 4rem);
-    --bkt-text-size:  clamp(0.72rem, 1.6vw, 0.9rem);
+    --bkt-paren-size: clamp(1.9rem, 4.2vw, 3.5rem);
+    --bkt-text-size:  clamp(0.78rem, 1.7vw, 0.9rem);
     --star-size:      clamp(2.5rem, 6vw, 5rem);
     --arrow-size:     clamp(2.2rem, 5.5vw, 4.5rem);
     --nav-pad:        clamp(0.9rem, 2.5vw, 1.4rem);
-    --fs-h2:          clamp(1.8rem, 6vw, 3.5rem);
-    --fs-h3:          clamp(0.875rem, 2.5vw, 1.05rem);
-    --fs-display:     clamp(2rem, 8vw, 5rem);
-    --fs-label:       clamp(0.75rem, 2vw, 0.875rem);
-    --fs-xs:          clamp(0.72rem, 1.8vw, 0.85rem);
+
+    /* Display tier compresses hardest — a poster does not fit a phone */
+    --fs-h2:          clamp(1.75rem, 5.4vw, 3.1rem);
+    --fs-display:     clamp(1.9rem, 7.2vw, 4.25rem);
+    --fs-title:       clamp(1.95rem, 6.2vw, 2.7rem);
+
+    /* Editorial tier keeps its steps so hierarchy survives the phone */
+    --fs-lead:        clamp(1.22rem, 3.3vw, 1.5rem);
+    --fs-section:     clamp(1.12rem, 2.9vw, 1.32rem);
+    --fs-quote:       clamp(1.05rem, 2.6vw, 1.22rem);
+    --fs-sub:         clamp(1rem, 2.4vw, 1.1rem);
+    --fs-h3:          clamp(0.86rem, 2.3vw, 0.95rem);
+
+    --fs-body-lg:     clamp(1.02rem, 2.6vw, 1.1rem);
+    --fs-body:        clamp(0.97rem, 2.4vw, 1.04rem);
+    --fs-body-sm:     clamp(0.9rem, 2.2vw, 0.96rem);
+    --fs-caption:     clamp(0.82rem, 2vw, 0.88rem);
+    --fs-label:       clamp(0.72rem, 1.9vw, 0.82rem);
+    --fs-xs:          clamp(0.72rem, 1.7vw, 0.82rem);
   }
 }
 
 /* ── Small phone overrides (≤480px) ─────────────────────── */
 @media (max-width: 480px) {
   :root {
-    --hero-size:      clamp(2.5rem, 13.5vw, 5rem);
+    --hero-size:      clamp(2.35rem, 12.5vw, 4.5rem);
     --hero-left:      4vw;
     --img-width:      clamp(90px, 28vw, 150px);
-    --bkt-paren-size: clamp(1.8rem, 4vw, 3rem);
-    --nav-size:       clamp(0.65rem, 2.2vw, 0.75rem);
+    --bkt-paren-size: clamp(1.7rem, 3.8vw, 2.75rem);
+    --nav-size:       clamp(0.68rem, 2.2vw, 0.75rem);
     --nav-pad:        clamp(0.8rem, 3vw, 1.2rem);
     --star-size:      clamp(2rem, 6vw, 3.5rem);
     --arrow-size:     clamp(1.8rem, 6vw, 3rem);
-    --fs-h3:          clamp(0.875rem, 2.8vw, 1rem);
-    --fs-label:       clamp(0.72rem, 2.2vw, 0.82rem);
-    --fs-xs:          clamp(0.7rem, 2vw, 0.8rem);
+    --fs-title:       clamp(1.8rem, 7.6vw, 2.35rem);
+    --fs-lead:        clamp(1.15rem, 4.6vw, 1.35rem);
+    --fs-section:     clamp(1.08rem, 4.2vw, 1.24rem);
+    --fs-quote:       clamp(1.02rem, 3.9vw, 1.18rem);
+    --fs-sub:         clamp(0.96rem, 3.5vw, 1.05rem);
+    --fs-h3:          clamp(0.84rem, 2.6vw, 0.94rem);
+    --fs-label:       clamp(0.7rem, 2.1vw, 0.8rem);
+    --fs-xs:          clamp(0.7rem, 1.9vw, 0.78rem);
   }
 }
 
 /* ── Widescreen overrides (≥1600px) ─────────────────────── */
 @media (min-width: 1600px) {
   :root {
-    --fs-h2:          clamp(4rem, 4.5vw, 7rem);
-    --fs-display:     clamp(4rem, 5vw, 7rem);
-    --fs-label:       clamp(0.8rem, 0.6vw, 1rem);
-    --fs-xs:          clamp(0.75rem, 0.55vw, 0.9rem);
+    --fs-h2:          clamp(3.75rem, 4vw, 5.75rem);
+    --fs-display:     clamp(3.75rem, 4.3vw, 6rem);
+    --fs-title:       clamp(3.4rem, 3.3vw, 4.15rem);
+    --fs-lead:        clamp(1.7rem, 1.5vw, 1.95rem);
+    --fs-section:     clamp(1.4rem, 1.25vw, 1.6rem);
+    --fs-quote:       clamp(1.28rem, 1.15vw, 1.45rem);
+    --fs-sub:         clamp(1.15rem, 1.05vw, 1.28rem);
+    --fs-body-lg:     clamp(1.15rem, 1vw, 1.25rem);
+    --fs-body:        clamp(1.06rem, 0.92vw, 1.15rem);
+    --fs-body-sm:     clamp(0.98rem, 0.84vw, 1.06rem);
+    --fs-caption:     clamp(0.9rem, 0.76vw, 0.98rem);
+    --fs-label:       clamp(0.82rem, 0.64vw, 0.9rem);
+    --fs-xs:          clamp(0.84rem, 0.66vw, 0.9rem);
   }
 }

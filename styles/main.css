@@ -1,6 +1,7 @@
 /* ═══════════════════════════════════════════════════════════════
    MAIN STYLESHEET  —  import order matters
    ═══════════════════════════════════════════════════════════════ */
+@import url('./fonts.css');
 @import url('./variables.css');
 @import url('./reset.css');
 @import url('./hero.css');
@@ -9,5 +10,5 @@
 /* Additional page stylesheets will be imported below as they are built */
 @import url('./projects.css');
 @import url('./about.css');
-@import url('./footer.css');
+@import url('./footer.css?v=20260905-2');
 /* @import url('./contact.css');  */

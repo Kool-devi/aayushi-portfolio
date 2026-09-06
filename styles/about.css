@@ -69,30 +69,33 @@
   display: block;
   font-family: var(--f-body);
   font-size: var(--fs-xs);
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  opacity: 0.55;
-  margin-bottom: 0.4em;
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-flat);
+  letter-spacing: var(--ls-caps-lg);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.45;
+  margin-bottom: 0.55em;
 }
 
-/* Sub-heading label — Roboto Condensed to match heading convention */
+/* Sub-heading label — Headline cut, the site's heading voice */
 .about-label {
-  font-family: var(--f-display);
+  font-family: var(--f-head);
   font-size: var(--fs-h3);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-caps);
   text-transform: uppercase;
-  margin: 0 0 0.55em;
-  line-height: 1.3;
+  margin: 0 0 0.4em;
+  line-height: var(--lh-sub);
 }
 
 /* Body copy — sentence case, readable */
 .about-body {
   font-family: var(--f-body);
-  font-size: var(--fs-xs);
-  font-weight: 400;
-  letter-spacing: 0.03em;
-  line-height: 1.45;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  letter-spacing: var(--ls-body);
+  line-height: var(--lh-snug);
+  opacity: 0.72;
   margin: 0;
 }
 

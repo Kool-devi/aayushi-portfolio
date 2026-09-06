@@ -126,9 +126,9 @@
         var media = document.createElement('div');
         media.className = 'pd-related-media';
         var img = document.createElement('img');
-        img.src = project.thumbnail;
+        img.src = encodeURI(project.thumbnail);
         img.alt = project.title || project.name;
-        img.loading = 'lazy';
+        img.loading = 'eager';
         img.decoding = 'async';
         media.appendChild(img);
         card.appendChild(media);
@@ -166,6 +166,44 @@
     }
     cta.setAttribute('aria-label', label);
   }
+
+  /* The homepage uses scalable editorial cards rather than the original
+     fixed three-column numbered layout. */
+  renderHomepage = function () {
+    var root = document.querySelector('[data-projects-home]');
+    if (!root || !projects.length) return;
+
+    root.textContent = '';
+    publishedProjects().forEach(function (project, index) {
+      var card = document.createElement('a');
+      card.className = 'work-card';
+      card.href = project.href;
+
+      var media = document.createElement('div');
+      media.className = 'work-card-media';
+      var img = document.createElement('img');
+      img.src = project.thumbnail || project.preview || DEFAULT_PREVIEW;
+      img.alt = project.name + ' project preview';
+      img.loading = index === 0 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      media.appendChild(img);
+
+      var copy = document.createElement('div');
+      copy.className = 'work-card-copy';
+      var meta = document.createElement('p');
+      meta.className = 'work-card-meta';
+      meta.textContent = [project.name, project.category, project.location, project.year]
+        .filter(Boolean).join(' · ');
+      var title = document.createElement('h3');
+      title.className = 'work-card-title';
+      title.textContent = project.title || project.name;
+      copy.appendChild(meta);
+      copy.appendChild(title);
+      card.appendChild(media);
+      card.appendChild(copy);
+      root.appendChild(card);
+    });
+  };
 
   renderHomepage();
   renderRelated();
