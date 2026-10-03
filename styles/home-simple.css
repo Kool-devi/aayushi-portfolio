@@ -40,26 +40,21 @@ body {
 .home-intro-copy h1 {
   max-width: 100%;
   margin: 0;
-  font-family: var(--f-body);
-  font-size: clamp(2.8rem, 5.2vw, 5.25rem);
-  font-weight: var(--fw-medium);
+  font-family: var(--f-display);
+  font-size: clamp(2.4rem, 4vw, 4.25rem);
+  font-weight: var(--fw-semibold);
   line-height: 0.98;
   letter-spacing: -0.055em;
   text-wrap: balance;
 }
 
 .home-intro-copy > p {
-  max-width: 39rem;
-  margin: clamp(1.75rem, 3vw, 2.75rem) 0 0;
+  max-width: 46rem;
+  margin: clamp(2rem, 3.25vw, 3rem) 0 0;
   font-family: var(--f-body);
   font-size: clamp(1rem, 1.35vw, 1.2rem);
   line-height: 1.45;
   letter-spacing: -0.015em;
-}
-
-.home-intro-copy .home-intro-note {
-  margin-top: 0.25rem;
-  opacity: 0.58;
 }
 
 .home-intro-space {
@@ -87,7 +82,7 @@ body {
 
   .home-intro-copy h1 {
     max-width: 100%;
-    font-size: clamp(2.75rem, 13vw, 4.75rem);
+    font-size: clamp(2.25rem, 9.5vw, 3.75rem);
   }
 
   .home-intro-space {

@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="styles/main.css?v=20260905-2">
 
   <!-- Project detail page styles -->
-  <link rel="stylesheet" href="styles/project-detail.css?v=20260905-3">
+  <link rel="stylesheet" href="styles/project-detail.css?v=20260905-11">
   <link rel="stylesheet" href="styles/pd-states.css?v=20260905-4">
 </head>
 <body class="pd-page" data-project="delicut">
@@ -72,12 +72,9 @@
   <div class="pd-layout">
 
     <aside class="pd-toc" aria-label="Case study contents">
-      <a href="index.html" class="pd-toc-back">← Back</a>
-      <p class="pd-toc-project">Delicut</p>
+      <a href="index.html" class="pd-toc-back">← BACK TO HOME</a>
       <nav class="pd-toc-nav" aria-label="On this page">
-        <a href="#pd-tldr" class="pd-toc-link is-active">TLDR</a>
-        <a href="#pd-overview" class="pd-toc-link">Overview</a>
-        <a href="#pd-problem" class="pd-toc-link">Problem</a>
+        <a href="#pd-problem" class="pd-toc-link is-active">The Problem</a>
         <a href="#pd-goals" class="pd-toc-link">Goals</a>
         <a href="#pd-process" class="pd-toc-link">Design process</a>
         <a href="#pd-patterns" class="pd-toc-link">Key interaction patterns</a>
@@ -782,7 +779,7 @@
        ALSO CHECK OUT — filled from data/projects.js
        Hidden until another published case study exists.
   ════════════════════════════════════════════════════════════════ -->
-  <section class="pd-related" aria-label="More projects" hidden>
+  <section class="pd-related" id="pd-related" aria-label="More projects" hidden>
     <p class="pd-context-eyebrow">Also check out</p>
     <div class="pd-related-grid" data-projects-related></div>
   </section>
@@ -829,7 +826,7 @@
   <!-- Corner-nav scroll hide/show behaviour -->
   <script src="scripts/main.js"></script>
   <script src="scripts/pd-states.js"></script>
-  <script src="scripts/pd-toc.js"></script>
+  <script src="scripts/pd-toc.js?v=20260905-10"></script>
 
   <!-- ── Onboarding video: play/pause with visibility ─────────── -->
   <script>

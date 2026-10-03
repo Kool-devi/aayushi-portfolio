@@ -44,6 +44,19 @@ window.PORTFOLIO.projects = [
     published: true
   },
   {
+    id: 'attune',
+    name: 'Attune AI',
+    title: 'Designing emotionally intelligent AI support for couples',
+    category: 'AI relationship support',
+    location: '',
+    year: '',
+    href: 'project-attune.html',
+    thumbnail: '',
+    preview: '',
+    emailSubject: 'Attune AI case study',
+    published: true
+  },
+  {
     id: 'ux-research',
     name: 'UX Research',
     title: 'UX Research',
