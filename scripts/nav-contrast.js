@@ -17,10 +17,10 @@
   };
 
   /* Static text color per home-hero corner (diagonal light→dark bg). */
-  var HERO_CORNERS = { tl: 'black', tr: 'white', bl: 'black', br: 'white' };
+  var HERO_CORNERS = { tl: 'white', tr: 'white', bl: 'white', br: 'white' };
 
   var zones = Array.prototype.slice.call(
-    document.querySelectorAll('body > section, body > footer.site-footer')
+    document.querySelectorAll('body > section, body > main > section, body > footer.site-footer')
   );
   if (!zones.length) {
     zones = Array.prototype.slice.call(

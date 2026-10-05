@@ -1,7 +1,7 @@
-/* Simplified homepage landing composition. */
 html,
 body {
-  background: #ffffff;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
 
 .hero--retired[hidden],
@@ -11,54 +11,35 @@ body {
 
 .home-simple-main {
   width: 100%;
-  border-top: 1px solid rgba(20, 19, 17, 0.14);
 }
 
-.home-intro {
+#home {
+  --color-bg-primary: #0A0A0A;
+  --color-bg-secondary: #1A1A1A;
+  --color-text-primary: #F7F7F7;
+  --color-text-secondary: #8C8984;
+  --color-border: #2A2A2A;
+  --color-accent: #FF4D00;
+  overflow: hidden;
+  min-height: 100dvh;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+.hero-scene {
   width: 100%;
-  min-height: 52svh;
-  padding-inline: max(clamp(1.25rem, 4vw, 3rem), calc((100% - 1160px) / 2));
+  height: 100dvh;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--color-accent);
+  color: var(--color-text-primary);
 }
 
-.home-intro-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  width: 100%;
-  max-width: 1160px;
-  min-height: 52svh;
-  margin-inline: auto;
-  padding-block: clamp(7.5rem, 14vh, 10.5rem) clamp(3rem, 6vh, 5rem);
-}
-
-.home-intro-copy {
-  grid-column: 1 / -1;
-  align-self: end;
-  width: 100%;
-  max-width: none;
-}
-
-.home-intro-copy h1 {
-  max-width: 100%;
-  margin: 0;
-  font-family: var(--f-display);
-  font-size: clamp(2.4rem, 4vw, 4.25rem);
-  font-weight: var(--fw-semibold);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-  text-wrap: balance;
-}
-
-.home-intro-copy > p {
-  max-width: 46rem;
-  margin: clamp(2rem, 3.25vw, 3rem) 0 0;
-  font-family: var(--f-body);
-  font-size: clamp(1rem, 1.35vw, 1.2rem);
-  line-height: 1.45;
-  letter-spacing: -0.015em;
-}
-
-.home-intro-space {
-  min-width: 0;
+.hero-scene canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: pan-y;
 }
 
 .selected-works {
@@ -67,29 +48,4 @@ body {
 
 .selected-works-title {
   display: none;
-}
-
-@media (max-width: 768px) {
-  .home-intro,
-  .home-intro-inner {
-    min-height: 58svh;
-  }
-
-  .home-intro-inner {
-    grid-template-columns: 1fr;
-    padding-block: 7.5rem 3rem;
-  }
-
-  .home-intro-copy h1 {
-    max-width: 100%;
-    font-size: clamp(2.25rem, 9.5vw, 3.75rem);
-  }
-
-  .home-intro-space {
-    display: none;
-  }
-
-  .selected-works {
-    padding-top: 0;
-  }
 }

@@ -1,3 +1,5 @@
+node_modules/
+
 # Design source files — keep local, too large for GitHub
 *.psd
 *.af

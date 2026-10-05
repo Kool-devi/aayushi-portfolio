@@ -8,27 +8,21 @@
 }
 
 html {
-  /* scroll-behavior handled by Lenis — native smooth would double-ease */
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--f-body);
+  font-family: var(--font-sans);
   font-weight: var(--fw-regular);
   font-size: var(--fs-body);
   line-height: var(--lh-body);
-  color: var(--c-ink);
-  background-color: var(--c-bg-fallback);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*
-   * Stack Sans is already tightly fitted, so the old blanket -0.02em
-   * is dropped. Tracking is now applied per role via the --ls-* tokens:
-   * negative as type gets larger, positive for uppercase micro-copy.
-   */
   letter-spacing: var(--ls-body);
-  /* Never let the browser fake a weight the 200–700 axis does not have */
   font-synthesis-weight: none;
 }
 
@@ -37,7 +31,7 @@ body {
  * Neutralising the UA defaults keeps every heading level predictable.
  */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--f-head);
+  font-family: var(--font-sans);
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;

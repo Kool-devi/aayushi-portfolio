@@ -25,7 +25,7 @@
     + var(--pd-layout-gap)
   );
   /* Soft off-white — whiter than site beige, not pure white */
-  background-color: #f5f4f1;
+  background-color: var(--color-bg-primary);
   --pd-toc-accent: #e03820;
 }
 
@@ -40,7 +40,7 @@
   width: 100%;
   max-width: var(--pd-max);
   margin-inline: auto;
-  padding-inline: var(--pd-layout-pad);
+  padding-inline: var(--space-gutter);
   box-sizing: border-box;
   align-items: start;
   background: transparent;
@@ -78,7 +78,8 @@
   overflow: visible;
   isolation: isolate;
   gap: clamp(2rem, 4vw, 4.5rem);
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 1fr);
+  padding: var(--space-section) var(--space-gutter);
 }
 
 .pd-layout-main .pd-flow::before {
@@ -88,7 +89,7 @@
   bottom: 0;
   left: calc(-1 * var(--pd-flow-escape));
   width: 100vw;
-  background: #0d0d0d;
+  background: var(--color-bg-primary);
   z-index: -1;
   pointer-events: none;
 }
@@ -182,10 +183,15 @@
 }
 
 /* Light TOC while it sits over the full-bleed App Flow band */
+.pd-toc--on-dark {
+  --color-text-primary: #F7F7F7;
+  --color-text-secondary: #8C8984;
+}
+
 .pd-toc--on-dark .pd-toc-back,
 .pd-toc--on-dark .pd-toc-project,
 .pd-toc--on-dark .pd-toc-link {
-  color: #ffffff;
+  color: var(--color-text-primary);
 }
 
 .pd-toc--on-dark .pd-toc-link.is-active {
@@ -378,11 +384,10 @@
 
 .pd-overview {
   display: grid;
-  grid-template-columns: 36% 64%;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
-  padding-block: clamp(4rem, 7vw, 8rem);
-  padding-inline: max(clamp(2rem, 5vw, 6rem), calc((100% - var(--site-max)) / 2));
-  background: var(--c-bg-fallback);
+  padding: var(--space-section) var(--space-gutter);
+  background: var(--color-bg-secondary);
   gap: clamp(2rem, 4vw, 4rem);
   box-sizing: border-box;
 }
@@ -450,13 +455,13 @@
 
 /* ── Responsive (hero + overview) ────────────────────────────── */
 
-@media (max-width: 1024px) {
+@media (min-width: 768px) {
   .pd-overview {
-    grid-template-columns: 30% 70%;
+    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .pd-hero {
     min-height: 0;
     padding-top: clamp(4.75rem, 10vh, 6rem);
@@ -472,10 +477,12 @@
 
   /* Stack overview to single column on tablet/phone */
   .pd-overview {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: clamp(1.5rem, 3vw, 2.5rem);
-    padding-block: clamp(3rem, 6vw, 5rem);
-    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
+  }
+
+  .pd-overview-stats {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -490,8 +497,8 @@
   }
 
   .pd-overview-stats {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.8rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
   }
 }
 
@@ -583,18 +590,18 @@ h2.pd-flow-heading,
   margin-top: 0.7em;
 }
 
-/* Dark band overrides — App Flow only */
+/* Dark band overrides — App Flow uses the dark theme tokens. */
 .pd-flow-eyebrow {
-  color: #ffffff;
-  opacity: 0.42;
+  color: var(--color-text-secondary);
+  opacity: 1;
 }
 
 .pd-flow-heading {
-  color: #ffffff;
+  color: var(--color-text-primary);
 }
 
 .pd-flow-desc {
-  color: #ffffff;
+  color: var(--color-text-primary);
   opacity: 1;
 }
 
@@ -822,7 +829,7 @@ h2.pd-flow-heading,
 }
 
 /* Match Delicut to the typographic hierarchy used on DarkRoast:
-   section-scale Stack Sans leads followed by Inter body copy. */
+   section headings in Inter Bold, followed by Inter body copy. */
 [data-project="delicut"] .pd-tldr-heading {
   font-family: var(--f-head);
   font-size: var(--fs-section);
@@ -916,8 +923,8 @@ h2.pd-flow-heading,
   background: linear-gradient(
     to bottom,
     rgba(245, 244, 241, 0) 0%,
-    #f5f4f1 85%,
-    #f5f4f1 100%
+    var(--color-bg-primary) 85%,
+    var(--color-bg-primary) 100%
   );
   pointer-events: none;
 }
@@ -1213,7 +1220,7 @@ h2.pd-flow-heading,
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(1rem, 2vw, 1.75rem);
-  border-top: 1px solid rgba(0, 0, 0, 0.16);
+  border-top: 1px solid var(--color-border);
   padding-top: clamp(1.35rem, 2.2vw, 2rem);
 }
 
@@ -1290,17 +1297,11 @@ h2.pd-flow-heading,
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .pd-tldr-meta {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.15rem;
     row-gap: 1.75rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .pd-tldr-meta {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -1311,13 +1312,18 @@ h2.pd-flow-heading,
    ═══════════════════════════════════════════════════════════════ */
 
 .pd-flow {
+  --color-bg-primary: #0A0A0A;
+  --color-bg-secondary: #1A1A1A;
+  --color-text-primary: #F7F7F7;
+  --color-text-secondary: #8C8984;
+  --color-border: #2A2A2A;
   display: grid;
-  grid-template-columns: 52% 48%;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   min-height: 100dvh;
-  padding-block: clamp(3.5rem, 6.5vw, 6.5rem);
-  padding-inline: max(clamp(2rem, 6vw, 7rem), calc((100% - var(--site-max)) / 2));
-  background: #0d0d0d;
+  padding: var(--space-section) var(--space-gutter);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
   box-sizing: border-box;
   align-items: center;
   gap: clamp(1.5rem, 3vw, 3.25rem);
@@ -1485,28 +1491,19 @@ h2.pd-flow-heading,
 
 /* ── Responsive (flow section) ────────────────────────────────── */
 
-@media (max-width: 1200px) {
-  .pd-flow {
-    grid-template-columns: 55% 45%;
+@media (min-width: 768px) {
+  .pd-flow,
+  .pd-layout-main .pd-flow {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   }
 }
 
-@media (max-width: 1024px) {
-  .pd-flow {
-    grid-template-columns: 58% 42%;
-  }
-
-  .pd-flow-phone {
-    width: clamp(180px, 30vw, 300px);
-  }
-}
-
-@media (max-width: 768px) {
-  .pd-flow {
-    grid-template-columns: 1fr;
+@media (max-width: 767px) {
+  .pd-flow,
+  .pd-layout-main .pd-flow {
+    grid-template-columns: minmax(0, 1fr);
     min-height: auto;
-    padding-block: clamp(2.75rem, 5.5vw, 4.25rem);
-    padding-inline: max(clamp(1.5rem, 4vw, 3rem), calc((100% - var(--site-max)) / 2));
+    padding: var(--space-section) var(--space-gutter);
     gap: clamp(1.75rem, 4vw, 2.75rem);
   }
 

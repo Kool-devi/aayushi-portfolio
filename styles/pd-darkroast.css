@@ -192,9 +192,9 @@ html:has([data-project="darkroast"]) {
   margin-top: 0.9em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   [data-project="darkroast"] .pd-research-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-auto-rows: auto;
   }
 }

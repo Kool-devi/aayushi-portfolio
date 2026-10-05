@@ -116,7 +116,7 @@
 }
 
 .corner-nav--adaptive .nav-item {
-  color: #000000;
+  color: var(--color-text-primary);
   transition:
     transform 950ms var(--ease-expo),
     opacity   var(--t-fast) var(--ease-out),
@@ -124,11 +124,11 @@
 }
 
 .corner-nav--adaptive .nav-item.nav-item--black {
-  color: #000000;
+  color: #111111;
 }
 
 .corner-nav--adaptive .nav-item.nav-item--white {
-  color: #ffffff;
+  color: #F7F7F7;
 }
 
 

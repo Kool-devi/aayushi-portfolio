@@ -66,7 +66,7 @@
   line-height: var(--lh-flat);
   letter-spacing: var(--ls-caps-lg);
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.35);
+  color: var(--color-text-secondary);
   white-space: nowrap;
   z-index: 2;
   pointer-events: none;

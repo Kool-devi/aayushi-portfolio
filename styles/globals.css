@@ -1,0 +1,182 @@
+/* Inter is the only typeface on the site. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+
+:root {
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --color-bg-primary: #F3F4F1;
+  --color-bg-secondary: #FFFFFF;
+  --color-text-primary: #111111;
+  --color-text-secondary: #595959;
+  --color-border: #D1CDCE;
+  --color-accent: #FF4D00;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+  /* Loaded weights are 400, 500, 700, and 900. */
+  --fw-light: var(--fw-regular);
+  --fw-semibold: var(--fw-bold);
+
+  --fs-display: clamp(2.5rem, 6vw, 5rem);
+  --lh-display: 1.1;
+  --ls-display: -0.03em;
+
+  --fs-h2: clamp(1.75rem, 4vw, 3rem);
+  --lh-h2: 1.15;
+  --ls-h2: -0.02em;
+
+  --fs-overline: clamp(0.75rem, 0.9vw, 0.875rem);
+  --lh-overline: 1.2;
+  --ls-overline: 0.1em;
+
+  --fs-body: clamp(1rem, 1.5vw, 1.125rem);
+  --lh-body: 1.6;
+  --ls-body: 0em;
+
+  --fs-title: var(--fs-h2);
+  --fs-lead: clamp(1.125rem, 2vw, 1.5rem);
+  --fs-section: var(--fs-h2);
+  --fs-quote: clamp(1.05rem, 1.6vw, 1.25rem);
+  --fs-sub: clamp(1.05rem, 1.8vw, 1.35rem);
+  --fs-h3: var(--fs-overline);
+  --fs-body-lg: var(--fs-body);
+  --fs-body-sm: clamp(0.875rem, 1.2vw, 1rem);
+  --fs-caption: clamp(0.8125rem, 1vw, 0.9375rem);
+  --fs-label: var(--fs-overline);
+  --fs-xs: var(--fs-overline);
+
+  --lh-flat: 1;
+  --lh-title: var(--lh-h2);
+  --lh-section: var(--lh-h2);
+  --lh-lead: 1.45;
+  --lh-sub: 1.3;
+  --lh-quote: 1.4;
+  --lh-snug: 1.45;
+
+  --ls-title: var(--ls-h2);
+  --ls-section: var(--ls-h2);
+  --ls-lead: -0.015em;
+  --ls-quote: -0.01em;
+  --ls-sub: -0.01em;
+  --ls-caps: var(--ls-overline);
+  --ls-caps-lg: var(--ls-overline);
+
+  --hero-size: var(--fs-display);
+  --hero-leading: var(--lh-display);
+  --hero-kern: var(--ls-display);
+  --hero-weight: var(--fw-black);
+
+  --f-display: var(--font-sans);
+  --f-head: var(--font-sans);
+  --f-body: var(--font-sans);
+
+  /* px-4 / py-12, then md:px-8 md:py-24, then lg:px-12 */
+  --space-gutter: 1rem;
+  --space-section: 3rem;
+
+  --site-max: 1400px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --space-gutter: 2rem;
+    --space-section: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --space-gutter: 3rem;
+  }
+}
+
+:root[data-theme='dark'],
+.theme-dark {
+  --color-bg-primary: #0A0A0A;
+  --color-bg-secondary: #1A1A1A;
+  --color-text-primary: #F7F7F7;
+  --color-text-secondary: #8C8984;
+  --color-border: #2A2A2A;
+  --color-accent: #FF4D00;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/*
+ * Re-bind legacy names on each element so a dark theme override of
+ * --color-text-primary reaches color: var(--c-ink) on descendants.
+ */
+:where(*) {
+  --c-ink: var(--color-text-primary);
+  --c-bg-fallback: var(--color-bg-primary);
+  --c-accent: var(--color-accent);
+  --c-nav: var(--color-bg-secondary);
+}
+
+.text-display {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-display);
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-display);
+  color: var(--color-text-primary);
+}
+
+.text-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  letter-spacing: var(--ls-h2);
+  line-height: var(--lh-h2);
+  color: var(--color-text-primary);
+}
+
+.text-overline {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-overline);
+  line-height: var(--lh-overline);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  letter-spacing: var(--ls-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-primary);
+}
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-accent { color: var(--color-accent); }
+.bg-primary { background-color: var(--color-bg-primary); }
+.bg-secondary { background-color: var(--color-bg-secondary); }
+.border-token { border-color: var(--color-border); }
+
+.section-pad {
+  padding: var(--space-section) var(--space-gutter);
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+@media (min-width: 768px) {
+  .layout-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout-grid-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
