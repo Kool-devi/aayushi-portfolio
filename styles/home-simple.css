@@ -19,7 +19,7 @@ body {
   --color-text-primary: #F7F7F7;
   --color-text-secondary: #8C8984;
   --color-border: #2A2A2A;
-  --color-accent: #FF4D00;
+  --color-accent: #FF5900;
   overflow: hidden;
   min-height: 100dvh;
   background: var(--color-bg-primary);
@@ -27,12 +27,23 @@ body {
 }
 
 .hero-scene {
+  position: relative;
   width: 100%;
   height: 100dvh;
   min-height: 480px;
   overflow: hidden;
   background: var(--color-accent);
   color: var(--color-text-primary);
+  /* clip-path (unlike overflow) also clips the fixed pin, so the section's
+     bottom edge wipes over the pinned scene as it scrolls away. */
+  clip-path: inset(0);
+}
+
+.hero-scene-pin {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 100dvh;
+  min-height: 480px;
 }
 
 .hero-scene canvas {
@@ -40,12 +51,4 @@ body {
   width: 100% !important;
   height: 100% !important;
   touch-action: pan-y;
-}
-
-.selected-works {
-  padding-top: 0;
-}
-
-.selected-works-title {
-  display: none;
 }

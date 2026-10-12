@@ -404,7 +404,7 @@
 
 .work-card-media {
   aspect-ratio: 3 / 2;
-  border-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+  border-radius: 0;
 }
 
 .work-card-media::after {

@@ -1,96 +1,212 @@
 /* ═══════════════════════════════════════════════════════════════
    UNIVERSAL SITE FOOTER
-   Dark typographic sign-off used on every page.
+   Editorial poster layout: oversized wordmark behind a central
+   accent card, small info blocks pinned to the corners.
    Imported via main.css so it is always available.
    ═══════════════════════════════════════════════════════════════ */
 
 .site-footer {
-  --color-bg-primary: #0A0A0A;
-  --color-bg-secondary: #1A1A1A;
-  --color-text-primary: #F7F7F7;
-  --color-text-secondary: #8C8984;
-  --color-border: #2A2A2A;
-  --color-accent: #FF4D00;
+  --color-bg-primary: #FFFFFF;
+  --color-text-primary: #111111;
+  --color-text-secondary: #595959;
+  --color-border: #D1CDCE;
+  --color-accent: #FF5900;
+  --sf-card-w: minmax(15rem, 21vw);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr var(--sf-card-w) 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "brand   nav     status"
+    "contact card    vertical"
+    "social  feature legal";
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: clamp(1.25rem, 2vw, 2rem);
+  overflow: hidden;
+  /* Block padding clears the fixed corner nav. */
+  padding: calc(var(--nav-pad) * 2 + 1.25rem) var(--space-gutter);
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
-  border-top: 1px solid var(--color-border);
-  padding: var(--space-section) var(--space-gutter);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--t-mid) var(--ease-out);
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer-strong {
+  font-weight: var(--fw-bold);
+}
+
+
+/* ── Oversized wordmark — sits behind the card ─────────────── */
+
+.site-footer-wordmark {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  align-self: center;
+  z-index: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 38vh;
-}
-
-.site-footer-eyebrow {
-  font-family: var(--font-sans);
-  font-size: var(--fs-overline);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-overline);
-  letter-spacing: var(--ls-overline);
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-bottom: clamp(0.85rem, 1.75vw, 1.45rem);
+  align-items: center;
+  font-size: 19vw;
+  font-weight: var(--fw-black);
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 }
 
 
-/* ── Social / navigation links — bold condensed, accent on hover ── */
+/* ── Corner blocks ──────────────────────────────────────────── */
 
-.site-footer-links {
+.site-footer-brand   { grid-area: brand; }
+.site-footer-social  { grid-area: social; align-self: end; }
+.site-footer-legal   { grid-area: legal; align-self: end; justify-self: end; }
+
+.site-footer-nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer-status {
+  grid-area: status;
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.8rem, 2.5vw, 2rem);
-  row-gap: 0.4rem;
-  margin-bottom: auto;
-}
-
-.site-footer-link {
-  font-family: var(--font-sans);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-h2);
-  line-height: var(--lh-h2);
-  letter-spacing: var(--ls-h2);
-  color: var(--color-text-primary);
-  text-decoration: none;
-  border-bottom: 2px solid var(--color-border);
-  padding-bottom: 3px;
-  transition:
-    color        var(--t-mid) var(--ease-out),
-    border-color var(--t-mid) var(--ease-out);
-}
-
-.site-footer-link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-
-/* ── Footer strip ─────────────────────────────────────────────── */
-
-.site-footer-bottom {
-  padding-top: clamp(2rem, 4vw, 3.5rem);
-}
-
-.site-footer-rule {
-  border: none;
-  border-top: 1px solid var(--color-border);
-  margin: 0 0 clamp(0.9rem, 1.8vw, 1.4rem);
-}
-
-.site-footer-meta {
-  display: flex;
-  align-items: center;
   justify-content: space-between;
+  gap: 0.75rem 1.5rem;
 }
 
-.site-footer-credit,
-.site-footer-year {
-  font-family: var(--font-sans);
+.site-footer-underline {
+  display: inline-block;
+  margin-top: 1rem;
+  border-bottom: 1px solid currentColor;
+}
+
+.site-footer-social {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer-contact {
+  grid-area: contact;
+  align-self: end;
+  z-index: 1;
+}
+
+.site-footer-email {
+  display: inline-block;
+  font-size: var(--fs-sub);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-sub);
+  letter-spacing: var(--ls-sub);
+}
+
+.site-footer-vertical {
+  grid-area: vertical;
+  align-self: end;
+  justify-self: end;
+  z-index: 1;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.site-footer-vertical strong {
+  font-weight: var(--fw-bold);
+}
+
+.site-footer-feature {
+  grid-area: feature;
+}
+
+.site-footer .site-footer-feature-title {
+  margin-bottom: 0.35rem;
+  font-size: var(--fs-sub);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-sub);
+  letter-spacing: var(--ls-sub);
+}
+
+
+/* ── Accent card ────────────────────────────────────────────── */
+
+.site-footer-card {
+  grid-area: card;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1 / 2.05;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+.site-footer-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: clamp(0.75rem, 1vw, 1rem) clamp(0.85rem, 1.1vw, 1.15rem) 0;
+}
+
+.site-footer-card-eyebrow {
+  padding: clamp(1.25rem, 2vw, 2rem) clamp(0.85rem, 1.1vw, 1.15rem) 0;
   font-size: var(--fs-overline);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-overline);
   letter-spacing: var(--ls-overline);
   text-transform: uppercase;
-  color: var(--color-text-secondary);
+}
+
+.site-footer-card-copy {
+  padding: 0.6rem clamp(0.85rem, 1.1vw, 1.15rem) clamp(1rem, 1.6vw, 1.5rem);
+  font-size: clamp(1rem, 1.55vw, 1.75rem);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.site-footer-card-media {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.site-footer-card-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+.site-footer-card-media span {
+  position: absolute;
+  left: 0.04em;
+  bottom: 0;
+  color: #FFFFFF;
+  font-size: clamp(4.5rem, 9.5vw, 11rem);
+  font-weight: var(--fw-black);
+  line-height: 0.75;
+  letter-spacing: -0.06em;
+  transform: translateY(12%);
 }
 
 
@@ -98,17 +214,61 @@
    RESPONSIVE
    ══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 767px) {
-  .site-footer-links {
-    flex-direction: column;
-    gap: 0.2rem;
+@media (max-width: 1023px) {
+  .site-footer {
+    --sf-card-w: minmax(13rem, 27vw);
+  }
+
+  .site-footer-wordmark {
+    font-size: 20vw;
   }
 }
 
-@media (max-width: 480px) {
-  .site-footer-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+/* Phone: simple stack, wordmark in flow above the card. */
+@media (max-width: 767px) {
+  .site-footer {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "brand    nav"
+      "status   status"
+      "wordmark wordmark"
+      "card     card"
+      "contact  contact"
+      "feature  feature"
+      "vertical vertical"
+      "social   legal";
+    row-gap: 1.75rem;
+  }
+
+  .site-footer-wordmark {
+    grid-area: wordmark;
+    font-size: 23vw;
+    margin-bottom: -12vw;
+  }
+
+  .site-footer-card {
+    justify-self: center;
+    width: min(100%, 22rem);
+    aspect-ratio: auto;
+  }
+
+  .site-footer-card-copy {
+    font-size: 1.25rem;
+  }
+
+  .site-footer-card-media {
+    flex: none;
+    height: 20rem;
+  }
+
+  .site-footer-card-media span {
+    font-size: 6.5rem;
+  }
+
+  .site-footer-vertical {
+    justify-self: start;
+    writing-mode: horizontal-tb;
+    transform: none;
   }
 }

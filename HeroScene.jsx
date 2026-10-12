@@ -1,20 +1,30 @@
 'use client';
-import React, { Suspense, useRef, useMemo, useState, useLayoutEffect } from 'react';
+import React, { Suspense, useRef, useMemo, useState, useEffect, useLayoutEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text, MeshTransmissionMaterial, Center } from '@react-three/drei';
 import { configureTextBuilder } from 'troika-three-text';
 import * as THREE from 'three';
+import { mergeVertices } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 
 configureTextBuilder({ useWorker: false });
 
-const ACCENT_BG = '#FF4D00';
-const DARK_TEXT = '#F7F7F7';
+const ACCENT_BG = '#FF5900';
+const HERO_TEXT = '#111111';
+const TEXT_DEPTH = -2;
+const ARROW_DEPTH = 1.5;
+// Share of the visible width the widest headline line may fill.
+const TEXT_FIT = 0.9;
+// Scroll parallax, as multiples of page scroll speed. Both stay above 1 so the
+// content outruns the edge of the next section as it slides over the pinned
+// canvas, instead of being cut off by it.
+const TEXT_SPEED = 1.3;
+const ARROW_SPEED = 1.15;
 
 function readTheme(node) {
   const styles = getComputedStyle(node);
   return {
     bg: styles.getPropertyValue('--color-accent').trim() || ACCENT_BG,
-    text: styles.getPropertyValue('--color-text-primary').trim() || DARK_TEXT,
+    text: HERO_TEXT,
   };
 }
 
@@ -28,31 +38,79 @@ function ThemeBackground({ color }) {
   return null;
 }
 
-function GlassArrow() {
+const ARROW_CORNER_RADIUS = 0.45;
+
+function roundedShape(points, radius) {
+  const shape = new THREE.Shape();
+  const n = points.length;
+
+  const corner = (i) => {
+    const [px, py] = points[(i - 1 + n) % n];
+    const [cx, cy] = points[i];
+    const [nx, ny] = points[(i + 1) % n];
+    const inLen = Math.hypot(cx - px, cy - py);
+    const outLen = Math.hypot(nx - cx, ny - cy);
+    const r = Math.min(radius, inLen / 2, outLen / 2);
+    return {
+      start: [cx + ((px - cx) / inLen) * r, cy + ((py - cy) / inLen) * r],
+      ctrl: [cx, cy],
+      end: [cx + ((nx - cx) / outLen) * r, cy + ((ny - cy) / outLen) * r],
+    };
+  };
+
+  const first = corner(0);
+  shape.moveTo(...first.end);
+  for (let i = 1; i <= n; i++) {
+    const c = i === n ? first : corner(i);
+    shape.lineTo(...c.start);
+    shape.quadraticCurveTo(...c.ctrl, ...c.end);
+  }
+  return shape;
+}
+
+function GlassArrow({ scale }) {
   const meshRef = useRef();
 
-  const shape = useMemo(() => {
-    const s = new THREE.Shape();
-    s.moveTo(-1, 2.8);
-    s.lineTo(1, 0);
-    s.lineTo(-1, -2.8);
-    s.lineTo(0.2, -2.8);
-    s.lineTo(2.2, 0);
-    s.lineTo(0.2, 2.8);
-    s.lineTo(-1, 2.8);
-    return s;
+  const geometry = useMemo(() => {
+    const shape = roundedShape([
+      [-1.6, 2.8],
+      [0.4, 0],
+      [-1.6, -2.8],
+      [0.8, -2.8],
+      [2.8, 0],
+      [0.8, 2.8],
+    ], ARROW_CORNER_RADIUS);
+
+    const extruded = new THREE.ExtrudeGeometry(shape, {
+      depth: 1.1,
+      bevelEnabled: true,
+      bevelThickness: 0.4,
+      bevelSize: 0.32,
+      // Keeps the silhouette the same size as before the softer bevel.
+      bevelOffset: -0.32,
+      bevelSegments: 20,
+      curveSegments: 20,
+    });
+
+    // Welding vertices lets normals blend across cap/bevel seams instead of creasing.
+    extruded.deleteAttribute('normal');
+    extruded.deleteAttribute('uv');
+    const smooth = mergeVertices(extruded, 1e-4);
+    smooth.computeVertexNormals();
+    extruded.dispose();
+    return smooth;
   }, []);
 
-  const extrudeSettings = useMemo(() => ({
-    depth: 1.5,
-    bevelEnabled: true,
-    bevelThickness: 0.15,
-    bevelSize: 0.1,
-    bevelSegments: 8,
-    curveSegments: 24,
-  }), []);
+  useEffect(() => () => geometry.dispose(), [geometry]);
 
   const invalidate = useThree((state) => state.invalidate);
+
+  // frameloop="demand" never wakes on pointer movement by itself.
+  useEffect(() => {
+    const wake = () => invalidate();
+    window.addEventListener('pointermove', wake, { passive: true });
+    return () => window.removeEventListener('pointermove', wake);
+  }, [invalidate]);
 
   useFrame((state) => {
     const mesh = meshRef.current;
@@ -70,9 +128,8 @@ function GlassArrow() {
   });
 
   return (
-    <Center position={[0, 0, 1.5]}>
-      <mesh ref={meshRef} scale={[0.7, 0.7, 0.7]}>
-        <extrudeGeometry args={[shape, extrudeSettings]} />
+    <Center position={[0, 0, ARROW_DEPTH]}>
+      <mesh ref={meshRef} scale={0.7 * scale} geometry={geometry}>
         <MeshTransmissionMaterial
           thickness={4}
           roughness={0}
@@ -91,12 +148,17 @@ function GlassArrow() {
   );
 }
 
-function Typography({ color, scale }) {
-  const fontUrl = 'https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuBWYMZg.ttf';
+function Typography({ color, scale, onMeasure }) {
+  const fontUrl = 'https://fonts.gstatic.com/s/archivo/v25/k3k6o8UDI-1M0wlSV9XAw6lQkqWY8Q82sJaRE-NWIDdgffTTnTRp8A.ttf';
+
+  const measure = (text) => {
+    const bounds = text.textRenderInfo?.blockBounds;
+    if (bounds) onMeasure(bounds[2] - bounds[0]);
+  };
 
   return (
-    <group position={[0, 0, -2]} scale={scale}>
-      <Text position={[0, 2.2, 0]} fontSize={2.4} letterSpacing={-0.03} font={fontUrl}>
+    <group position={[0, 0, TEXT_DEPTH]} scale={scale}>
+      <Text position={[0, 2.2, 0]} fontSize={2.4} letterSpacing={-0.03} font={fontUrl} onSync={measure}>
         INNOVATE
         <meshBasicMaterial color={color} />
       </Text>
@@ -112,6 +174,50 @@ function Typography({ color, scale }) {
   );
 }
 
+// Scales headline and arrow together so the widest line ("INNOVATE")
+// always fits the visible width at its depth; never scales above 1.
+function HeroContent({ color }) {
+  const [textWidth, setTextWidth] = useState(0);
+  const textRef = useRef();
+  const arrowRef = useRef();
+  const viewport = useThree((state) => state.viewport);
+  const camera = useThree((state) => state.camera);
+  const size = useThree((state) => state.size);
+  const invalidate = useThree((state) => state.invalidate);
+
+  const textView = viewport.getCurrentViewport(camera, [0, 0, TEXT_DEPTH]);
+  const arrowView = viewport.getCurrentViewport(camera, [0, 0, ARROW_DEPTH]);
+  const scale = textWidth ? Math.min(1, (textView.width * TEXT_FIT) / textWidth) : 1;
+  // World units per CSS pixel at each layer's depth.
+  const textUnit = textView.height / size.height;
+  const arrowUnit = arrowView.height / size.height;
+
+  useEffect(() => {
+    const wake = () => invalidate();
+    window.addEventListener('scroll', wake, { passive: true });
+    return () => window.removeEventListener('scroll', wake);
+  }, [invalidate]);
+
+  useFrame(() => {
+    const y = window.scrollY;
+    if (textRef.current) textRef.current.position.y = y * TEXT_SPEED * textUnit;
+    if (arrowRef.current) arrowRef.current.position.y = y * ARROW_SPEED * arrowUnit;
+  });
+
+  return (
+    <>
+      <group ref={textRef}>
+        <Suspense fallback={null}>
+          <Typography color={color} scale={scale} onMeasure={setTextWidth} />
+        </Suspense>
+      </group>
+      <group ref={arrowRef}>
+        <GlassArrow scale={scale} />
+      </group>
+    </>
+  );
+}
+
 function FrameKick({ active }) {
   const invalidate = useThree((state) => state.invalidate);
 
@@ -124,24 +230,14 @@ function FrameKick({ active }) {
 
 export default function HeroScene() {
   const rootRef = useRef(null);
-  const [theme, setTheme] = useState({ bg: ACCENT_BG, text: DARK_TEXT });
-  const [scale, setScale] = useState(1);
+  const [theme, setTheme] = useState({ bg: ACCENT_BG, text: HERO_TEXT });
   const [frameloop, setFrameloop] = useState('demand');
 
   useLayoutEffect(() => {
     const node = rootRef.current;
     if (node) setTheme(readTheme(node));
 
-    const updateScale = () => {
-      const width = window.innerWidth;
-      setScale(Math.min(1, Math.max(0.52, width / 1100)));
-    };
-
-    updateScale();
-    window.addEventListener('resize', updateScale);
-
     let onScreen = true;
-    let scrollTimer = 0;
     let mode = 'demand';
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -151,34 +247,21 @@ export default function HeroScene() {
       setFrameloop(next);
     };
 
-    const apply = (scrolling) => {
-      setMode(!onScreen || reduced || scrolling ? 'never' : 'demand');
-    };
-
-    const onScroll = () => {
-      apply(true);
-      window.clearTimeout(scrollTimer);
-      scrollTimer = window.setTimeout(() => apply(false), 120);
-    };
-
+    // Rendering stops once the hero is mostly covered; by then the parallax
+    // has already carried the headline and arrow off the top of the screen.
     const observer = new IntersectionObserver(([entry]) => {
       onScreen = entry.intersectionRatio >= 0.15;
-      apply(false);
+      setMode(!onScreen || reduced ? 'never' : 'demand');
     }, { threshold: [0, 0.15, 0.5] });
 
     if (node) observer.observe(node);
-    window.addEventListener('scroll', onScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener('resize', updateScale);
-      window.removeEventListener('scroll', onScroll);
-      window.clearTimeout(scrollTimer);
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <div ref={rootRef} className="theme-dark hero-scene" data-theme="dark" data-frameloop={frameloop}>
+      <div className="hero-scene-pin">
       <Canvas
         frameloop={frameloop}
         dpr={[1, 1.25]}
@@ -191,11 +274,9 @@ export default function HeroScene() {
         <directionalLight position={[10, 10, 5]} intensity={4} color="#F7F7F7" />
         <directionalLight position={[-10, -10, -5]} intensity={2} color="#F7F7F7" />
 
-        <Suspense fallback={null}>
-          <Typography color={theme.text} scale={scale} />
-        </Suspense>
-        <GlassArrow />
+        <HeroContent color={theme.text} />
       </Canvas>
+      </div>
     </div>
   );
 }

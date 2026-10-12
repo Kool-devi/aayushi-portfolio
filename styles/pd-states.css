@@ -46,14 +46,12 @@
 }
 
 /* Marked up as an h3 because it nests inside the process section, but
-   it heads a full-viewport frame — so it takes the section-heading size. */
-.pd-states-heading {
+   it heads a full-viewport frame — so it takes H1. */
+.pd-states .pd-states-heading {
   grid-column: 1;
   grid-row: 1;
   margin: 0;
-  font-size: var(--fs-section);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
+  font: var(--pd-type-h1);
   padding-top: clamp(2.5rem, 7vh, 5.25rem);
   padding-right: clamp(1.25rem, 2.5vw, 2.5rem);
   max-width: 22em;
@@ -99,12 +97,7 @@
   grid-row: 3;
   align-self: end;
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0;
   transform: translateY(0.7em);
@@ -141,17 +134,13 @@
 .pd-states-title-wrap {
   position: relative;
   overflow: hidden;
-  min-height: calc(var(--fs-sub) * var(--lh-sub) * 1.1);
+  min-height: calc(var(--pd-line-h4) * 1.1);
 }
 
 .pd-states-title {
   margin: 0;
   max-width: none;
-  font-family: var(--f-head);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-sub);
-  line-height: var(--lh-sub);
-  letter-spacing: var(--ls-sub);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
   opacity: 1;
 }
@@ -174,7 +163,7 @@
   position: relative;
   overflow: hidden;
   /* Four lines of body copy — the longest of the three day states */
-  min-height: calc(var(--fs-body) * var(--lh-body) * 4);
+  min-height: calc(var(--pd-line-body-lg) * 4);
 }
 
 .pd-states-body {
@@ -219,7 +208,7 @@
   display: grid;
   grid-template-columns: max-content;
   overflow: hidden;
-  height: 2.15rem;
+  height: 2.25rem;
   width: max-content;
 }
 
@@ -227,15 +216,11 @@
   display: inline-flex;
   align-items: center;
   width: max-content;
-  padding: 0.4em 0.75em;
+  padding: 0.3em 0.75em;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.07);
   border: 1px solid rgba(0, 0, 0, 0.08);
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
-  line-height: 1.2;
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   white-space: nowrap;
   box-sizing: border-box;
@@ -468,7 +453,7 @@
     background: transparent;
   }
 
-  .pd-states-heading {
+  .pd-states .pd-states-heading {
     padding-top: 0;
     padding-right: 0;
     max-width: none;

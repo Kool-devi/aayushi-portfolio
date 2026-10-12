@@ -16,20 +16,6 @@ html:has([data-project="darkroast"]) {
   overflow-x: clip;
 }
 
-[data-project="darkroast"] .pd-hero-media {
-  border-radius: 0;
-  background: var(--pd-media-mat);
-  border: 1px solid var(--pd-media-line);
-  padding: var(--pd-media-pad);
-}
-
-[data-project="darkroast"] .pd-hero-media img {
-  height: auto;
-  min-height: 0;
-  object-fit: contain;
-  border-radius: 0;
-}
-
 [data-project="darkroast"] .pd-layout-main figure img {
   box-sizing: border-box;
   padding: var(--pd-media-pad);
@@ -41,18 +27,6 @@ html:has([data-project="darkroast"]) {
 [data-project="darkroast"] .pd-related-media {
   background: #ffffff;
 }
-
-/* Keep every case-study section on one typographic hierarchy:
-   label, large lead, then supporting body copy. */
-[data-project="darkroast"] .pd-tldr-heading {
-  font-family: var(--f-head);
-  font-size: var(--fs-section);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
-  margin-bottom: 0.6rem;
-}
-
 
 /* ── Solution — interactive prototype ───────────────────────── */
 
@@ -135,11 +109,7 @@ html:has([data-project="darkroast"]) {
 
 [data-project="darkroast"] .pd-research-label {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.55;
 }
@@ -167,24 +137,15 @@ html:has([data-project="darkroast"]) {
 }
 
 [data-project="darkroast"] .pd-research-text {
-  margin: 0.4rem 0 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-body-sm);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
+  margin: 0.25rem 0 0;
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
   opacity: 0.85;
 }
 
-/* Pull quote — same voice as a design decision, not a heading */
 [data-project="darkroast"] .pd-highlight {
   margin: clamp(1.25rem, 2vw, 1.75rem) 0 0;
-  font-family: var(--f-body);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-callout);
   color: var(--c-ink);
 }
 
@@ -283,16 +244,17 @@ html:has([data-project="darkroast"]) {
   pointer-events: none;
 }
 
-/* Six columns share one prose width, so this label stays a notch below
-   body size — it has to hold one line inside --pd-workflow-job-h. */
+/* Card and pane titles. */
 [data-project="darkroast"] .pd-workflow-job {
   margin: 0;
-  font-family: var(--f-head);
-  font-size: var(--fs-body-sm);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-sub);
-  letter-spacing: var(--ls-sub);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
+}
+
+/* Six columns share one prose width, so the map's step labels are
+   Body Small — each has to hold one line inside --pd-workflow-job-h. */
+[data-project="darkroast"] .pd-workflow-map .pd-workflow-job {
+  font: var(--pd-type-body-sm);
 }
 
 [data-project="darkroast"] .pd-workflow-node {
@@ -317,11 +279,7 @@ html:has([data-project="darkroast"]) {
 
 [data-project="darkroast"] .pd-workflow-need {
   margin: 0.25rem 0 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.55;
 }
@@ -620,7 +578,7 @@ html:has([data-project="darkroast"]) {
 }
 
 [data-project="darkroast"] .pd-outcome strong {
-  font-weight: var(--fw-semibold);
+  font-weight: 600;
 }
 
 [data-project="darkroast"] .pd-outcome-closing {
@@ -628,10 +586,7 @@ html:has([data-project="darkroast"]) {
   margin: clamp(2rem, 3.5vw, 3rem) 0 0;
   padding-top: clamp(1.25rem, 2vw, 1.75rem);
   border-top: 1px solid rgba(0, 0, 0, 0.12);
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-callout);
   color: var(--c-ink);
 }
 
@@ -683,13 +638,8 @@ html:has([data-project="darkroast"]) {
 }
 
 [data-project="darkroast"] .pd-change-label {
-  margin: 0 0 0.6rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps-lg);
-  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  font: var(--pd-type-body-sm);
 }
 
 [data-project="darkroast"] .pd-change-state--before .pd-change-label {
@@ -703,11 +653,7 @@ html:has([data-project="darkroast"]) {
 [data-project="darkroast"] .pd-change-copy {
   max-width: 45ch;
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
   opacity: 0.78;
 }

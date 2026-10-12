@@ -7,11 +7,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;600;700;800&family=Geist:wght@400;600&display=swap">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles/main.css?v=20260905-2">
-  <link rel="stylesheet" href="styles/selected-works.css?v=20260905-3">
-  <link rel="stylesheet" href="styles/home-simple.css?v=20261005-1">
+  <link rel="stylesheet" href="styles/main.css?v=20261010-type2">
+  <link rel="stylesheet" href="styles/selected-works.css?v=20261011-dark2">
+  <link rel="stylesheet" href="styles/home-simple.css?v=20261006-landing">
+  <link rel="stylesheet" href="styles/landing.css?v=20261010-1">
 </head>
 <body>
 
@@ -31,6 +33,53 @@
        HOME PAGE — HERO SECTION
        ════════════════════════════════════════════════════════ -->
   <main class="home-simple-main">
+    <!-- Editorial landing, kept for future use. Remove `hidden` here and add it to section#home to switch. -->
+    <section id="landing" class="landing theme-dark" aria-labelledby="landing-word" hidden>
+      <p class="landing-sr">I'm Aayushi, a product designer who turns complex problems into calm, human-centred products for web, mobile and AI, from first sketch to launch.</p>
+
+      <div class="landing-scatter" aria-hidden="true">
+        <span style="--col: 1; --row: 1">I'm Aayushi,</span>
+        <span style="--col: 1; --row: 2">A product</span>
+        <span style="--col: 1; --row: 3">designer who</span>
+        <span style="--col: 1; --row: 4">turns</span>
+        <span style="--col: 1; --row: 5">complex</span>
+        <span style="--col: 8; --row: 1">problems</span>
+        <span style="--col: 8; --row: 5">into</span>
+        <span style="--col: 11; --row: 3">calm,</span>
+        <span style="--col: 12; --row: 4">human-centred</span>
+        <span style="--col: 16; --row: 1">products</span>
+        <span style="--col: 16; --row: 5">for web,</span>
+        <span class="is-end" style="--row: 1">mobile</span>
+        <span class="is-end" style="--row: 2">and AI,</span>
+        <span class="is-end" style="--row: 3">from first</span>
+        <span class="is-end" style="--row: 4">sketch</span>
+        <span class="is-end" style="--row: 5">to launch</span>
+      </div>
+
+      <div class="landing-stage">
+        <h1 class="landing-word" id="landing-word">Aayushi</h1>
+
+        <figure class="landing-image">
+          <img src="Personal%20Image.webp" alt="Portrait of Aayushi" decoding="async" fetchpriority="high">
+        </figure>
+
+        <p class="landing-caption">Aayushi<br>(Product design<br>UX research<br>Design systems<br>Prototyping)</p>
+
+        <dl class="landing-meta">
+          <dt>Menu</dt>
+          <dd>
+            <nav class="landing-nav" aria-label="Primary">
+              <a href="#projects">Projects</a>
+              <a href="about.html">About</a>
+              <a href="contact.html">Contact</a>
+            </nav>
+          </dd>
+          <dt>Say hello</dt>
+          <dd><a href="mailto:hello@aayushi.design">hello@aayushi.design</a></dd>
+        </dl>
+      </div>
+    </section>
+
     <section id="home" class="theme-dark" aria-label="Innovate with purpose">
       <div id="home-landing-root"></div>
     </section>
@@ -132,61 +181,88 @@
 
   <!-- ════════════════════════════════════════════════════════
        PROJECTS SECTION
-       Left: black panel (text top, image bottom)
-       Right: three numbered project cards
+       Pinned horizontal scroll: vertical scroll drives the card
+       track sideways (scripts/selected-works-scroll.js).
        ════════════════════════════════════════════════════════ -->
-  <section class="selected-works" id="projects" aria-label="Selected work">
-    <div class="selected-works-inner">
-      <div class="selected-works-list">
-        <a class="selected-work" href="project-darkroast.html">
-          <figure class="selected-work-cover selected-work-cover--darkroast">
-            <img src="Mockups/DarkRoast/DarkRoast%20PMS%20Dashboard%20Main.png"
-              alt="DarkRoast project management dashboard" loading="lazy" decoding="async">
-            <span class="selected-work-cursor" aria-hidden="true">
-              <span class="selected-work-cursor-pill">View Case Study</span>
+  <section class="selected-works" id="projects" aria-labelledby="sw-title" data-sw>
+    <div class="sw-pin" data-sw-pin>
+      <header class="sw-head">
+        <h2 class="sw-title" id="sw-title">Selected Work</h2>
+        <div class="sw-progress" aria-hidden="true">
+          <span class="sw-count"><span data-sw-current>01</span> / <span data-sw-total>04</span></span>
+          <span class="sw-bar"><span class="sw-bar-fill"></span></span>
+        </div>
+      </header>
+
+      <p class="sw-intro">Product design across creative operations, consumer subscriptions and AI-driven experiences.</p>
+
+      <div class="sw-track" data-sw-track>
+        <a class="sw-card" href="project-darkroast.html">
+          <div class="sw-card-media sw-card-media--darkroast">
+            <img src="Mockups/DarkRoast/Home%20Page%20Image.jpg"
+              alt="Laptop showing the DarkRoast logo, resting on a green sofa"
+              loading="lazy" decoding="async" draggable="false">
+            <span class="sw-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </span>
-          </figure>
-          <div class="selected-work-copy">
-            <p class="selected-work-meta">DarkRoast <span>•</span> Creative Operations <span>•</span> Product Design</p>
-            <h3 class="selected-work-title">Redesigning the project workspace for faster creative collaboration</h3>
+          </div>
+          <div class="sw-card-caption">
+            <h3 class="sw-card-name">DarkRoast</h3>
+            <p class="sw-card-desc">Redesigning the project workspace for faster creative collaboration.</p>
+            <p class="sw-card-tags">Creative Operations • Product Design</p>
           </div>
         </a>
 
-        <a class="selected-work" href="project-delicut.html">
-          <figure class="selected-work-cover selected-work-cover--delicut">
-            <img src="Mockups/Delicut/Project%20Landing.jpg"
-              alt="Delicut meal plan subscription app" loading="lazy" decoding="async">
-            <span class="selected-work-cursor" aria-hidden="true">
-              <span class="selected-work-cursor-pill">View Case Study</span>
+        <a class="sw-card" href="project-delicut.html">
+          <div class="sw-card-media sw-card-media--delicut">
+            <img src="Mockups/Delicut/Home%20Page%20Image.jpg"
+              alt="Delicut meal subscription app screens"
+              loading="lazy" decoding="async" draggable="false">
+            <span class="sw-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </span>
-          </figure>
-          <div class="selected-work-copy">
-            <p class="selected-work-meta">Delicut <span>•</span> Meal Subscription <span>•</span> UAE <span>•</span> 2025</p>
-            <h3 class="selected-work-title">Making meal-plan subscriptions easier to understand and manage</h3>
+          </div>
+          <div class="sw-card-caption">
+            <h3 class="sw-card-name">Delicut</h3>
+            <p class="sw-card-desc">Making meal-plan subscriptions easier to understand and manage.</p>
+            <p class="sw-card-tags">Meal Subscription • UAE • 2025</p>
           </div>
         </a>
 
-        <a class="selected-work" href="project-attune.html">
-          <figure class="selected-work-cover selected-work-cover--attune">
-            <div class="selected-work-placeholder" role="img"
-              aria-label="Attune AI product preview placeholder">
+        <a class="sw-card" href="project-attune.html">
+          <div class="sw-card-media sw-card-media--attune">
+            <div class="selected-work-placeholder" aria-hidden="true">
               <div class="selected-work-placeholder-copy">
                 <span>Attune AI</span>
                 <strong>What do you need right now?</strong>
               </div>
-              <div class="selected-work-placeholder-phone" aria-hidden="true">
+              <div class="selected-work-placeholder-phone">
                 <span></span>
               </div>
             </div>
-            <span class="selected-work-cursor" aria-hidden="true">
-              <span class="selected-work-cursor-pill">View Case Study</span>
+            <span class="sw-card-cta" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M4 12L12 4M5.5 4H12v6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
             </span>
-          </figure>
-          <div class="selected-work-copy">
-            <p class="selected-work-meta">Attune AI <span>•</span> AI Relationship Support <span>•</span> Product Design</p>
-            <h3 class="selected-work-title">Designing emotionally intelligent AI support for couples</h3>
+          </div>
+          <div class="sw-card-caption">
+            <h3 class="sw-card-name">Attune AI</h3>
+            <p class="sw-card-desc">Designing emotionally intelligent AI support for couples.</p>
+            <p class="sw-card-tags">AI Relationship Support • Product Design</p>
           </div>
         </a>
+
+        <div class="sw-card sw-card--soon">
+          <div class="sw-card-media sw-card-media--soon">
+            <div class="selected-work-soon">
+              <span>Coming Soon</span>
+            </div>
+          </div>
+          <div class="sw-card-caption">
+            <h3 class="sw-card-name">In Progress</h3>
+            <p class="sw-card-desc">A new case study is on its way.</p>
+            <p class="sw-card-tags">Coming 2026</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -261,11 +337,9 @@
       <p class="about-body">I treat every brief as a systems problem — clarity of thinking first, aesthetics second.</p>
     </div>
 
-    <!-- ── Personal portrait — bottom centre ────────────────────
-         Grayscale applied via CSS. Swap src when ready.
-    ──────────────────────────────────────────────────────────── -->
+    <!-- ── Personal portrait — bottom centre ──────────────────── -->
     <figure class="about-portrait">
-      <img src="Personal%20Image.webp" alt="Aayushi">
+      <img src="About%20Image.jpg" alt="Aayushi">
     </figure>
 
     <!-- ── Fact 04 — lower-left: right edge at image left ────── -->
@@ -289,38 +363,74 @@
   <!-- ════════════════════════════════════════════════════════════
        UNIVERSAL SITE FOOTER
        ════════════════════════════════════════════════════════════ -->
-  <footer class="site-footer theme-dark" aria-label="Site footer">
+  <footer class="site-footer" aria-label="Site footer">
 
-    <div>
-      <p class="site-footer-eyebrow">[ While you're here ]</p>
-      <nav class="site-footer-links" aria-label="Social links">
-        <a href="https://linkedin.com/in/aayushi"
-           class="site-footer-link"
-           target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-        <a href="#projects"
-           class="site-footer-link">View Work ↗</a>
-        <a href="contact.html"
-           class="site-footer-link">Contact ↗</a>
-      </nav>
+    <div class="site-footer-wordmark" aria-hidden="true">
+      <span>Aayushi</span>
+      <span>Design</span>
     </div>
 
-    <div class="site-footer-bottom">
-      <hr class="site-footer-rule">
-      <div class="site-footer-meta">
-        <span class="site-footer-credit">Aayushi — UX Designer</span>
-        <span class="site-footer-year">© 2025</span>
+    <div class="site-footer-brand">
+      <p class="site-footer-strong">Aayushi</p>
+      <p>Product Designer since 2020</p>
+    </div>
+
+    <nav class="site-footer-nav" aria-label="Footer navigation">
+      <a href="index.html#projects">Selected Work</a>
+      <a href="about.html">About Me</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="site-footer-status">
+      <div>
+        <p>Available for</p>
+        <p class="site-footer-strong">Freelance, Full-time<br>&amp; Collaborations</p>
+        <a class="site-footer-underline" href="contact.html">Start a Project</a>
       </div>
+      <p>Open to work in 2026</p>
     </div>
+
+    <article class="site-footer-card" aria-label="About Aayushi">
+      <div class="site-footer-card-head">
+        <span class="site-footer-strong">Aayushi</span>
+        <a href="about.html">Details</a>
+      </div>
+      <p class="site-footer-card-eyebrow">Since 2020</p>
+      <p class="site-footer-card-copy">Designing products that turn complex problems into clear, human experiences.</p>
+      <figure class="site-footer-card-media">
+        <img src="Personal%20Image.webp" alt="Portrait of Aayushi" loading="lazy" decoding="async">
+        <span aria-hidden="true">AY</span>
+      </figure>
+    </article>
+
+    <div class="site-footer-contact">
+      <a class="site-footer-email" href="mailto:hello@aayushi.design">hello@aayushi.design</a>
+      <p>Let's connect today</p>
+    </div>
+
+    <p class="site-footer-vertical"><strong>03 Case Studies</strong> &mdash; 06 Years</p>
+
+    <div class="site-footer-social">
+      <a href="https://linkedin.com/in/aayushi" target="_blank" rel="noopener noreferrer">LinkedIn &#8599;</a>
+      <a href="#" target="_blank" rel="noopener noreferrer">Behance &#8599;</a>
+    </div>
+
+    <div class="site-footer-feature">
+      <p class="site-footer-feature-title">Selected Work &mdash; Crafted with Care</p>
+      <p>Portfolio Edition 06.10.2026</p>
+    </div>
+
+    <p class="site-footer-legal">&copy; 2026 Aayushi</p>
 
   </footer>
   <!-- /site-footer -->
 
 
-  <script type="module" src="scripts/landing-build/home-landing.js?v=20261005-orange"></script>
+  <script type="module" src="scripts/landing-build/home-landing.js?v=20261011-parallax4"></script>
   <script src="data/projects.js"></script>
   <script src="scripts/projects.js"></script>
-  <script src="scripts/main.js"></script>
-  <script src="scripts/nav-contrast.js"></script>
-  <script src="scripts/selected-works-cursor.js"></script>
+  <script src="scripts/main.js?v=20261010-3d"></script>
+  <script src="scripts/nav-contrast.js?v=20261011-dark"></script>
+  <script src="scripts/selected-works-scroll.js?v=20261011-2"></script>
 </body>
 </html>

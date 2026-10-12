@@ -13,15 +13,6 @@ html:has([data-project="attune"]) {
   --pd-toc-accent: var(--attune-accent);
 }
 
-[data-project="attune"] .pd-tldr-heading {
-  font-family: var(--f-head);
-  font-size: var(--fs-section);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
-  margin-bottom: 0.7rem;
-}
-
 /* Hero */
 
 [data-project="attune"] .attune-hero-media {
@@ -50,14 +41,9 @@ html:has([data-project="attune"]) {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-caps);
-  line-height: var(--lh-flat);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--attune-dark);
-  opacity: 0.54;
+  opacity: 0.6;
 }
 
 .attune-hero-modes {
@@ -75,9 +61,7 @@ html:has([data-project="attune"]) {
   min-height: clamp(7rem, 12vw, 11rem);
   padding: clamp(1rem, 2vw, 1.5rem);
   background: rgba(255, 255, 255, 0.5);
-  font-family: var(--f-head);
-  font-size: var(--fs-section);
-  font-weight: var(--fw-semibold);
+  font: var(--pd-type-h3);
   color: var(--attune-dark);
 }
 
@@ -108,18 +92,12 @@ html:has([data-project="attune"]) {
 }
 
 .attune-hero-phone span {
-  font-family: var(--f-body);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  letter-spacing: var(--ls-caps);
+  font: var(--pd-type-body-sm);
 }
 
 .attune-hero-phone strong {
   margin-top: 1rem;
-  font-family: var(--f-head);
-  font-size: clamp(1.2rem, 2vw, 1.65rem);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-section);
+  font: var(--pd-type-h4);
 }
 
 .attune-hero-phone i {
@@ -135,15 +113,10 @@ html:has([data-project="attune"]) {
 
 .attune-card-label {
   display: block;
-  margin: 0 0 0.55rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .attune-highlight {
@@ -151,11 +124,7 @@ html:has([data-project="attune"]) {
   margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
   padding-top: clamp(1.25rem, 2vw, 1.75rem);
   border-top: 1px solid var(--attune-line);
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-callout);
   color: var(--c-ink);
 }
 
@@ -167,11 +136,9 @@ html:has([data-project="attune"]) {
 }
 
 .attune-scope span {
-  padding: 0.55rem 0.75rem;
+  padding: 0.3rem 0.75rem;
   border: 1px solid var(--attune-line);
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  line-height: var(--lh-flat);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
 }
 
@@ -196,10 +163,7 @@ html:has([data-project="attune"]) {
 
 .attune-question-card p {
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
 }
 
@@ -220,14 +184,9 @@ html:has([data-project="attune"]) {
   justify-content: space-between;
   padding: 0.75rem 0.9rem;
   background: #f5f4f1;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .attune-mode-card {
@@ -243,27 +202,19 @@ html:has([data-project="attune"]) {
 
 .attune-mode-number {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
+  font: var(--pd-type-body-sm);
   color: var(--attune-accent);
 }
 
 .attune-mode-card h3 {
-  margin: 2.75rem 0 0.35rem;
-  font-family: var(--f-head);
-  font-size: var(--fs-sub);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-sub);
+  margin: 2.5rem 0 0.35rem;
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
 .attune-mode-card p {
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.62;
 }
@@ -279,23 +230,21 @@ html:has([data-project="attune"]) {
   background: #fff;
 }
 
-.attune-decision strong,
-.attune-decision p {
+.attune-decision strong {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-body-sm);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
 .attune-decision p {
   margin: 0.35rem 0 0;
+  font: var(--pd-type-body-sm);
+  color: var(--c-ink);
   opacity: 0.62;
 }
 
 .attune-decision-arrow {
-  font-family: var(--f-head);
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font: var(--pd-type-h3);
   color: var(--attune-accent);
 }
 
@@ -329,7 +278,7 @@ html:has([data-project="attune"]) {
   width: clamp(7rem, 18vw, 12rem);
   aspect-ratio: 9 / 18;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: clamp(1rem, 2vw, 1.75rem);
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.58);
   transform: translate(-50%, -58%);
 }
@@ -348,7 +297,7 @@ html:has([data-project="attune"]) {
   width: clamp(6rem, 15vw, 10rem);
   aspect-ratio: 9 / 18;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: clamp(1rem, 2vw, 1.75rem);
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.58);
 }
 
@@ -373,27 +322,20 @@ html:has([data-project="attune"]) {
 
 .attune-placeholder-index {
   margin-bottom: auto;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
+  font: var(--pd-type-body-sm);
   color: var(--attune-accent);
 }
 
 .attune-placeholder-title {
   padding-right: 0.3rem;
-  font-family: var(--f-head);
-  font-size: var(--fs-sub);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-sub);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
 .attune-placeholder-copy {
   margin-top: 0.3rem;
   padding-right: 0.3rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.55;
 }
@@ -415,11 +357,7 @@ html:has([data-project="attune"]) {
 
 .attune-mode-detail-head h3 {
   margin: 0;
-  font-family: var(--f-head);
-  font-size: var(--fs-section);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
+  font: var(--pd-type-h3);
   color: var(--c-ink);
 }
 
@@ -465,18 +403,14 @@ html:has([data-project="attune"]) {
 
 .attune-flow span {
   display: block;
-  margin-bottom: 0.3rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-xs);
+  margin-bottom: 0.2rem;
+  font: var(--pd-type-body-sm);
   color: var(--attune-accent);
 }
 
 .attune-flow strong {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
 }
 
@@ -510,15 +444,12 @@ html:has([data-project="attune"]) {
   margin-bottom: 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 50%;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
 }
 
 .attune-resolve-diagram strong {
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
 }
 
@@ -538,27 +469,16 @@ html:has([data-project="attune"]) {
   color: #fff;
 }
 
-.attune-trust-card h3,
-.attune-subheading {
+.attune-trust-card h3 {
   margin: 0 0 0.65rem;
-  font-family: var(--f-head);
-  font-size: var(--fs-sub);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-sub);
-  color: inherit;
-}
-
-.attune-trust-card > p,
-.attune-trust-card .attune-card-takeaway {
-  font-family: var(--f-body);
-  font-size: var(--fs-body-sm);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-h4);
   color: inherit;
 }
 
 .attune-trust-card > p {
   margin: 0;
+  font: var(--pd-type-body-sm);
+  color: inherit;
   opacity: 0.72;
 }
 
@@ -582,9 +502,7 @@ html:has([data-project="attune"]) {
   padding: 0.65rem 0;
   border-top: 1px solid currentColor;
   counter-increment: attune-step;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-body-sm);
   color: inherit;
   opacity: 0.68;
 }
@@ -600,7 +518,8 @@ html:has([data-project="attune"]) {
 
 .attune-card-takeaway {
   margin-top: auto;
-  font-weight: var(--fw-semibold);
+  font: var(--pd-type-callout);
+  color: inherit;
 }
 
 /* System, iterations, outcomes */
@@ -616,24 +535,19 @@ html:has([data-project="attune"]) {
 }
 
 .attune-system-stat strong {
-  font-family: var(--f-display);
-  font-size: clamp(3.25rem, 7vw, 6.5rem);
-  font-weight: var(--fw-bold);
-  line-height: 0.8;
-  letter-spacing: var(--ls-title);
+  font: var(--pd-type-h1);
   color: var(--attune-accent);
 }
 
 .attune-system-stat span {
   max-width: 28ch;
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  line-height: var(--lh-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
 }
 
 .attune-subheading {
-  margin-top: clamp(2.5rem, 4vw, 3.5rem);
+  margin: clamp(2.5rem, 4vw, 3.5rem) 0 1rem;
+  font: var(--pd-type-h3);
   color: var(--c-ink);
 }
 
@@ -656,32 +570,21 @@ html:has([data-project="attune"]) {
 
 .attune-iteration-grid span,
 .attune-outcome-grid article > span {
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--attune-accent);
 }
 
 .attune-iteration-grid h4,
 .attune-outcome-grid h3 {
-  margin: 1.8rem 0 0.4rem;
-  font-family: var(--f-head);
-  font-size: var(--fs-sub);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-sub);
+  margin: 1.5rem 0 0.4rem;
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
 .attune-iteration-grid p,
 .attune-outcome-grid p {
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-body-sm);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.68;
 }
@@ -708,20 +611,15 @@ html:has([data-project="attune"]) {
 
 .attune-reflection-kicker {
   margin: 1.25rem 0 0.45rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  line-height: var(--lh-snug);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.6;
 }
 
+/* Pull quotes are the one place H2 is used. */
 .attune-reflection blockquote {
   margin: 0;
-  font-family: var(--f-head);
-  font-size: var(--fs-lead);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-lead);
-  letter-spacing: var(--ls-lead);
+  font: var(--pd-type-h2);
   color: var(--attune-dark);
 }
 
@@ -768,7 +666,7 @@ html:has([data-project="attune"]) {
   .attune-hero-modes span {
     min-height: 3.5rem;
     padding: 0.75rem;
-    font-size: var(--fs-sub);
+    font: var(--pd-type-h4);
   }
 
   .attune-hero-phone {

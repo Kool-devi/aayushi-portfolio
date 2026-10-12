@@ -6,6 +6,43 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
+   TYPE SYSTEM
+   Every text style on a case study page is one of these seven roles.
+   Components apply a role with `font: var(--pd-type-…)` and never set
+   family, size, weight or line-height on their own.
+
+     H1          Archivo 44 / 800 / 1.0    section headings, page title
+     H2          Archivo 32 / 300 / 1.2    pull quotes (use sparingly)
+     H3          Archivo 36 / 700 / 1.15   sub-sections inside a section
+     H4          Archivo 22 / 600 / 1.25   eyebrows, card titles
+     Body Large  Geist   20 / 400 / 1.55   running copy
+     Body Small  Geist   16 / 400 / 1.5    captions, labels, chips, meta
+     Callout     Geist   19 / 600 / 1.45   decisions, highlights
+
+   A section reads: H4 eyebrow → H1 heading → Body Large.
+   The role tokens live in globals.css so the home page shares them.
+   Fonts are loaded by a <link> in each page's <head>.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-page {
+  /* Single-line heights, for wrappers that reserve space for animated text */
+  --pd-line-h4: calc(1.375rem * 1.25);
+  --pd-line-body-lg: calc(1.25rem * 1.55);
+}
+
+/* Case-study content only — the shared nav and footer keep the site font. */
+.pd-hero,
+.pd-layout {
+  --font-sans: var(--pd-font-body);
+  --f-display: var(--pd-font-heading);
+  --f-head: var(--pd-font-heading);
+  --f-body: var(--pd-font-body);
+  font: var(--pd-type-body-lg);
+  letter-spacing: 0;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    DELICUT PAGE SHELL
    Sticky TOC only above 1200px. App Flow black is full-bleed via
    a pseudo-element so no beige edge gaps remain.
@@ -26,7 +63,7 @@
   );
   /* Soft off-white — whiter than site beige, not pure white */
   background-color: var(--color-bg-primary);
-  --pd-toc-accent: #e03820;
+  --pd-toc-accent: #FF5900;
 }
 
 [data-project="darkroast"].pd-page {
@@ -124,12 +161,7 @@
 }
 
 .pd-toc-back {
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: 0;
-  text-transform: none;
+  font: var(--pd-type-body-sm);
   text-decoration: none;
   color: var(--c-ink);
   opacity: 0.72;
@@ -142,11 +174,7 @@
 }
 
 .pd-toc-project {
-  font-family: var(--f-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(1.45rem, 2vw, 1.85rem);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-title);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
   margin: 0;
   transition: color 0.25s ease;
@@ -160,12 +188,7 @@
 }
 
 .pd-toc-link {
-  font-family: var(--f-body);
-  font-size: clamp(0.78rem, 0.9vw, 0.9rem);
-  font-weight: var(--fw-medium);
-  line-height: 1.25;
-  letter-spacing: 0;
-  text-transform: none;
+  font: var(--pd-type-body-sm);
   text-decoration: none;
   color: var(--c-ink);
   opacity: 0.42;
@@ -299,23 +322,14 @@
 
 .pd-hero-meta {
   margin: 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .pd-hero-title {
   margin: 0;
-  font-family: var(--f-display);
-  font-weight: var(--fw-bold);
-  font-size: var(--fs-title);
-  line-height: var(--lh-title);
-  letter-spacing: var(--ls-title);
+  font: var(--pd-type-h1);
   color: var(--c-ink);
   text-align: left;
   position: static;
@@ -328,12 +342,7 @@
   align-items: center;
   gap: 0.55em;
   margin-top: 0.15rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   text-decoration: none;
   width: fit-content;
@@ -363,7 +372,7 @@
   flex: 1 1 auto;
   width: 100%;
   min-height: max(55dvh, 28rem);
-  border-radius: clamp(0.85rem, 1.5vw, 1.25rem);
+  border-radius: 0;
   overflow: hidden;
   background: #d5ebe3;
 }
@@ -377,89 +386,7 @@
 }
 
 
-/* ═══════════════════════════════════════════════════════════════
-   OVERVIEW SECTION
-   Two-column: section label left, body copy + stats right.
-   ═══════════════════════════════════════════════════════════════ */
-
-.pd-overview {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  width: 100%;
-  padding: var(--space-section) var(--space-gutter);
-  background: var(--color-bg-secondary);
-  gap: clamp(2rem, 4vw, 4rem);
-  box-sizing: border-box;
-}
-
-/* ── Left: bracketed section label ───────────────────────────── */
-
-.pd-overview-label {
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
-  color: var(--c-ink);
-  opacity: 0.5;
-  padding-top: 0.4em;
-}
-
-/* ── Right: body copy ─────────────────────────────────────────── */
-
-.pd-overview-body {
-  font-family: var(--f-head);
-  font-size: var(--fs-lead);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-lead);
-  letter-spacing: var(--ls-lead);
-  color: var(--c-ink);
-  margin: 0 0 clamp(1.85rem, 3.25vw, 3.5rem);
-}
-
-/* ── Right: stats row ─────────────────────────────────────────── */
-
-.pd-overview-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 2vw, 2rem);
-}
-
-.pd-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45em;
-}
-
-.pd-stat-num {
-  font-family: var(--f-display);
-  font-weight: var(--fw-bold);
-  font-size: clamp(1.8rem, 2.8vw, 3rem);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-title);
-  font-variant-numeric: tabular-nums;
-  color: var(--c-ink);
-}
-
-.pd-stat-label {
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
-  color: var(--c-ink);
-  opacity: 0.55;
-}
-
-
-/* ── Responsive (hero + overview) ────────────────────────────── */
-
-@media (min-width: 768px) {
-  .pd-overview {
-    grid-template-columns: minmax(0, 0.36fr) minmax(0, 0.64fr);
-  }
-}
+/* ── Responsive (hero) ───────────────────────────────────────── */
 
 @media (max-width: 767px) {
   .pd-hero {
@@ -474,112 +401,60 @@
   .pd-hero-media img {
     height: max(48dvh, 20rem);
   }
-
-  /* Stack overview to single column on tablet/phone */
-  .pd-overview {
-    grid-template-columns: minmax(0, 1fr);
-    gap: clamp(1.5rem, 3vw, 2.5rem);
-  }
-
-  .pd-overview-stats {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 @media (max-width: 480px) {
   .pd-hero-media {
     min-height: max(40dvh, 17rem);
-    border-radius: 0.75rem;
   }
 
   .pd-hero-media img {
     height: max(40dvh, 17rem);
-  }
-
-  .pd-overview-stats {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
   }
 }
 
 
 /* ═══════════════════════════════════════════════════════════════
    SHARED SECTION TYPE
-   The reading spine of every case study, largest → smallest:
+   Every section opens the same way:
 
-     eyebrow   Text 500, uppercase, tracked   — where am I
-     lead      Headline 400, --fs-lead        — the opening statement
-     heading   Headline 600, --fs-section     — h2, a real section head
-     subhead   Headline 600, --fs-sub         — h3, a step inside a section
-     body      Text 400, --fs-body            — what you actually read
+     eyebrow   H4          — where am I
+     heading   H1          — the section's point (h2 in the markup)
+     body      Body Large  — what you actually read
 
-   Eyebrow, heading and body sit tight together as one group; the air
-   goes between sections instead, so the page reads in blocks.
+   An h3.pd-context-heading is a sub-section inside a section and
+   takes H3. Eyebrow, heading and body sit tight together as one
+   group; the air goes between sections instead.
    ═══════════════════════════════════════════════════════════════ */
 
 .pd-tldr-eyebrow,
-.pd-tldr-problem-eyebrow,
 .pd-context-eyebrow,
-.pd-flow-eyebrow,
-.pd-states-eyebrow {
+.pd-flow-eyebrow {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-h4);
   color: var(--c-ink);
-  opacity: 0.48;
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.75rem;
 }
 
-/* Base = sub-heading. h2 promotes itself to a full section heading
-   below, so the same class can serve both levels of the markup. */
 .pd-tldr-heading,
-.pd-tldr-problem-heading,
 .pd-context-heading,
 .pd-flow-heading {
-  font-family: var(--f-head);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-sub);
-  line-height: var(--lh-sub);
-  letter-spacing: var(--ls-sub);
+  font: var(--pd-type-h1);
   color: var(--c-ink);
-  margin: 0 0 0.55rem;
+  margin: 0 0 1rem;
   max-width: none;
 }
 
-h2.pd-tldr-problem-heading,
-h2.pd-context-heading,
-h2.pd-flow-heading,
-.pd-flow-heading {
-  font-size: var(--fs-section);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
-  margin-bottom: 0.6rem;
-}
-
-/* The TL;DR opener is a deck, not a heading — bigger but lighter,
-   so it reads as the summary paragraph it is. */
-.pd-tldr-heading {
-  font-size: var(--fs-lead);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-lead);
-  letter-spacing: var(--ls-lead);
-  margin-bottom: 0.8rem;
+h3.pd-context-heading {
+  font: var(--pd-type-h3);
+  margin-bottom: 0.75rem;
 }
 
 .pd-tldr-body,
-.pd-tldr-problem-sub,
 .pd-context-body,
 .pd-flow-desc,
 .pd-states-body {
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
   opacity: 0.78;
   max-width: none;
@@ -674,12 +549,7 @@ h2.pd-flow-heading,
 
 .pd-problem-caption {
   margin: 0.5rem 0 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
-  text-transform: none;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.55;
 }
@@ -740,22 +610,13 @@ h2.pd-flow-heading,
 }
 
 .pd-goal-label {
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .pd-goal-text {
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
   opacity: 0.78;
   margin: 0;
@@ -778,11 +639,7 @@ h2.pd-flow-heading,
 .pd-process-list li {
   position: relative;
   padding-left: 1.1em;
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   color: var(--c-ink);
   opacity: 0.78;
 }
@@ -805,46 +662,16 @@ h2.pd-flow-heading,
 }
 
 .pd-process-decision-label {
-  margin: 0 0 0.5rem;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
-/* Pull-quote voice: Headline at medium weight so it reads as a
-   statement rather than competing with the section heading above. */
 .pd-process-decision-text {
   margin: 0;
-  font-family: var(--f-head);
-  font-size: var(--fs-quote);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-quote);
-  letter-spacing: var(--ls-quote);
+  font: var(--pd-type-callout);
   color: var(--c-ink);
-}
-
-/* Match Delicut to the typographic hierarchy used on DarkRoast:
-   section headings in Inter Bold, followed by Inter body copy. */
-[data-project="delicut"] .pd-tldr-heading {
-  font-family: var(--f-head);
-  font-size: var(--fs-section);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
-  margin-bottom: 0.6rem;
-}
-
-[data-project="delicut"] .pd-process-decision-text {
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-semibold);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
 }
 
 .pd-process-block {
@@ -1011,8 +838,10 @@ h2.pd-flow-heading,
   align-items: start;
 }
 
-.pd-expiry-state .pd-problem-caption {
-  margin: 0 0 0.55em;
+.pd-expiry-state-title {
+  margin: 0 0 0.5rem;
+  font: var(--pd-type-h4);
+  color: var(--c-ink);
 }
 
 .pd-expiry-state .pd-context-body + .pd-context-body {
@@ -1036,11 +865,7 @@ h2.pd-flow-heading,
 
 .pd-learned-title {
   margin: 0 0 0.55rem;
-  font-family: var(--f-head);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-sub);
-  line-height: var(--lh-sub);
-  letter-spacing: var(--ls-sub);
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
@@ -1070,21 +895,13 @@ h2.pd-flow-heading,
   display: flex;
   align-items: baseline;
   gap: 0.5em;
-  margin: 0 0 0.55rem;
-  font-family: var(--f-head);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-section);
-  line-height: var(--lh-section);
-  letter-spacing: var(--ls-section);
+  margin: 0 0 1rem;
+  font: var(--pd-type-h1);
 }
 
 .pd-contact-cta-copy {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-body);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-lg);
   opacity: 0.78;
 }
 
@@ -1155,23 +972,14 @@ h2.pd-flow-heading,
 
 .pd-related-meta {
   margin: 0.85rem 0 0;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .pd-related-title {
-  margin: 0.45rem 0 0;
-  font-family: var(--f-head);
-  font-weight: var(--fw-semibold);
-  font-size: var(--fs-sub);
-  line-height: var(--lh-sub);
-  letter-spacing: var(--ls-sub);
+  margin: 0.35rem 0 0;
+  font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
@@ -1232,43 +1040,15 @@ h2.pd-flow-heading,
 
 .pd-tldr-meta-label {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
 .pd-tldr-meta-value {
-  font-family: var(--f-body);
-  font-size: var(--fs-body-sm);
-  font-weight: var(--fw-regular);
-  line-height: var(--lh-snug);
-  letter-spacing: var(--ls-body);
+  font: var(--pd-type-body-sm);
   color: var(--c-ink);
   margin: 0;
-}
-
-
-/* ── Problem ────────────────────────────────────────────────── */
-
-.pd-tldr-problem {
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  padding: 0;
-  border-radius: 0;
-}
-
-.pd-tldr-problem-heading {
-  max-width: none;
-}
-
-.pd-tldr-problem-sub {
-  margin-top: 0;
 }
 
 
@@ -1282,7 +1062,6 @@ h2.pd-flow-heading,
   }
 
   .pd-tldr-heading,
-  .pd-tldr-problem-heading,
   .pd-context-heading,
   .pd-flow-heading {
     max-width: 100%;
@@ -1338,10 +1117,6 @@ h2.pd-flow-heading,
   gap: 0; /* shared type owns label → heading → body spacing */
 }
 
-.pd-flow-heading {
-  margin-bottom: 0.8rem;
-}
-
 
 /* ── Description text with swipe-up animation ─────────────────── */
 
@@ -1352,7 +1127,7 @@ h2.pd-flow-heading,
     Fixed height accommodates ~4 lines of body text.
     Prevents layout shift during the animation swap.
   */
-  min-height: calc(var(--fs-body) * var(--lh-body) * 4);
+  min-height: calc(var(--pd-line-body-lg) * 4);
 }
 
 .pd-flow-desc {
@@ -1517,7 +1292,7 @@ h2.pd-flow-heading,
   }
 
   .pd-flow-desc-wrap {
-    min-height: calc(var(--fs-body) * var(--lh-body) * 5);
+    min-height: calc(var(--pd-line-body-lg) * 5);
   }
 }
 
@@ -1527,6 +1302,21 @@ h2.pd-flow-heading,
   }
 
   .pd-flow-desc-wrap {
-    min-height: calc(var(--fs-body) * var(--lh-body) * 6);
+    min-height: calc(var(--pd-line-body-lg) * 6);
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   TYPE ROLE CLASSES
+   For new markup that has no component class of its own.
+   Kept last so a role class wins over a component's default.
+   ═══════════════════════════════════════════════════════════════ */
+
+.pd-h1      { font: var(--pd-type-h1); }
+.pd-h2      { font: var(--pd-type-h2); }
+.pd-h3      { font: var(--pd-type-h3); }
+.pd-h4      { font: var(--pd-type-h4); }
+.pd-body-lg { font: var(--pd-type-body-lg); }
+.pd-body-sm { font: var(--pd-type-body-sm); }
+.pd-callout { font: var(--pd-type-callout); }

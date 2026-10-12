@@ -9,7 +9,7 @@
   --color-text-primary: #111111;
   --color-text-secondary: #595959;
   --color-border: #D1CDCE;
-  --color-accent: #FF4D00;
+  --color-accent: #FF5900;
 
   --fw-regular: 400;
   --fw-medium: 500;
@@ -77,6 +77,19 @@
   --space-section: 3rem;
 
   --site-max: 1400px;
+
+  /* Content type roles (see TYPE SYSTEM in project-detail.css).
+     Archivo + Geist load via a <link> in each page that uses them. */
+  --pd-font-heading: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --pd-font-body: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+
+  --pd-type-h1: 800 2.75rem/1 var(--pd-font-heading);
+  --pd-type-h2: 300 2rem/1.2 var(--pd-font-heading);
+  --pd-type-h3: 700 2.25rem/1.15 var(--pd-font-heading);
+  --pd-type-h4: 600 1.375rem/1.25 var(--pd-font-heading);
+  --pd-type-body-lg: 400 1.25rem/1.55 var(--pd-font-body);
+  --pd-type-body-sm: 400 1rem/1.5 var(--pd-font-body);
+  --pd-type-callout: 600 1.1875rem/1.45 var(--pd-font-body);
 }
 
 @media (min-width: 768px) {
@@ -99,7 +112,7 @@
   --color-text-primary: #F7F7F7;
   --color-text-secondary: #8C8984;
   --color-border: #2A2A2A;
-  --color-accent: #FF4D00;
+  --color-accent: #FF5900;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
 }

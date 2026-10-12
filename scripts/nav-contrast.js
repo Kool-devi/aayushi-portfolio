@@ -17,7 +17,7 @@
   };
 
   /* Static text color per home-hero corner (diagonal light→dark bg). */
-  var HERO_CORNERS = { tl: 'white', tr: 'white', bl: 'white', br: 'white' };
+  var HERO_CORNERS = { tl: 'black', tr: 'black', bl: 'black', br: 'black' };
 
   var zones = Array.prototype.slice.call(
     document.querySelectorAll('body > section, body > main > section, body > footer.site-footer')
@@ -69,18 +69,13 @@
     if (!zone) return 'black';
 
     if (zone.id === 'home') return HERO_CORNERS[corner] || 'black';
+    if (zone.id === 'landing') return 'white';
 
     if (zone.id === 'skills' || zone.id === 'about' || zone.id === 'contact') {
       return 'black';
     }
 
-    if (zone.id === 'projects') {
-      var left = zone.querySelector('.projects-left');
-      if (left && contains(left.getBoundingClientRect(), x, y)) return 'white';
-      return 'black';
-    }
-
-    if (zone.classList.contains('site-footer')) return 'white';
+    if (zone.id === 'projects') return 'white';
 
     return 'black';
   }

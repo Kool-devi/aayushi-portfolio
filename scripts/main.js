@@ -6,12 +6,25 @@
 
 
 /* ── Corner nav — scroll hide / show ───────────────────────────
+   Home page: hidden while the landing (which has its own menu) is
+   on screen, then slides in from the corners once it is scrolled past.
+   Other pages:
    Scrolling DOWN  → adds .nav--hidden to .corner-nav.
    Scrolling UP    → removes .nav--hidden.
 ──────────────────────────────────────────────────────────────── */
 (function () {
   var nav = document.querySelector('.corner-nav');
   if (!nav) return;
+
+  var landing = document.querySelector('.landing:not([hidden])');
+  if (landing && 'IntersectionObserver' in window) {
+    nav.classList.add('nav--landing');
+    // Landing counts as "on screen" until its bottom edge passes 15% from the top.
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle('nav--landing', entries[0].isIntersecting);
+    }, { rootMargin: '-15% 0px -84% 0px' }).observe(landing);
+    return;
+  }
 
   var THRESHOLD = 50;
   var lastScrollY = window.scrollY;

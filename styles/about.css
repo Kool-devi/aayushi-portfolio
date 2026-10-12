@@ -46,7 +46,6 @@
   object-fit: cover;
   object-position: top center;
   display: block;
-  filter: grayscale(100%);
 }
 
 
@@ -61,41 +60,27 @@
   position: absolute;
   max-width: clamp(140px, 19vw, 250px);
   color: var(--c-ink);
+  letter-spacing: 0;
   z-index: 1;   /* sit above the portrait which is rendered later in the DOM */
 }
 
 /* Small number tag */
 .about-num {
   display: block;
-  font-family: var(--f-body);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-medium);
-  line-height: var(--lh-flat);
-  letter-spacing: var(--ls-caps-lg);
+  font: var(--pd-type-body-sm);
   font-variant-numeric: tabular-nums;
-  opacity: 0.45;
-  margin-bottom: 0.55em;
+  opacity: 0.55;
+  margin-bottom: 0.35rem;
 }
 
-/* Sub-heading label — Headline cut, the site's heading voice */
 .about-label {
-  font-family: var(--f-head);
-  font-size: var(--fs-h3);
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--ls-caps);
-  text-transform: uppercase;
-  margin: 0 0 0.4em;
-  line-height: var(--lh-sub);
+  font: var(--pd-type-h4);
+  margin: 0 0 0.5rem;
 }
 
-/* Body copy — sentence case, readable */
 .about-body {
-  font-family: var(--f-body);
-  font-size: var(--fs-caption);
-  font-weight: var(--fw-regular);
-  letter-spacing: var(--ls-body);
-  line-height: var(--lh-snug);
-  opacity: 0.72;
+  font: var(--pd-type-body-lg);
+  opacity: 0.78;
   margin: 0;
 }
 
