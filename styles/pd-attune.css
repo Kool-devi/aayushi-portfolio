@@ -119,35 +119,19 @@ html:has([data-project="attune"]) {
   opacity: 0.55;
 }
 
-.attune-highlight {
-  max-width: var(--pd-prose-max);
-  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0;
-  padding-top: clamp(1.25rem, 2vw, 1.75rem);
-  border-top: 1px solid var(--attune-line);
-  font: var(--pd-type-callout);
-  color: var(--c-ink);
-}
-
-.attune-scope {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: clamp(1.5rem, 2.5vw, 2rem);
-}
-
-.attune-scope span {
-  padding: 0.3rem 0.75rem;
-  border: 1px solid var(--attune-line);
-  font: var(--pd-type-body-sm);
-  color: var(--c-ink);
-}
-
 .attune-question-grid,
-.attune-trust-grid,
-.attune-outcome-grid {
+.attune-trust-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(0.85rem, 1.6vw, 1.15rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.attune-question-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.attune-question-grid + .pd-context-body {
   margin-top: clamp(1.75rem, 3vw, 2.5rem);
 }
 
@@ -169,83 +153,368 @@ html:has([data-project="attune"]) {
 
 /* Product model */
 
-.attune-mode-map {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
-  border: 1px solid var(--attune-line);
-  background: var(--attune-line);
-}
-
 .attune-mode-axis {
-  grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
-  padding: 0.75rem 0.9rem;
-  background: #f5f4f1;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
   font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.55;
 }
 
-.attune-mode-card {
+.attune-mode-axis span:not(.attune-mode-axis-line) {
+  opacity: 0.6;
+}
+
+.attune-mode-axis-line {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+}
+
+.attune-mode-axis-line::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.attune-mode-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  margin: 0.85rem 0 clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.attune-mode-photo {
+  position: relative;
   min-width: 0;
-  min-height: 11rem;
-  padding: clamp(1rem, 2vw, 1.4rem);
-  background: #fff;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  background: #2b2b2b;
 }
 
-.attune-mode-card--shared {
-  background: var(--attune-accent-soft);
-}
-
-.attune-mode-number {
+.attune-mode-photo img {
+  position: absolute;
+  inset: 0;
   display: block;
-  font: var(--pd-type-body-sm);
-  color: var(--attune-accent);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.attune-mode-card h3 {
-  margin: 2.5rem 0 0.35rem;
+/* Keeps white copy legible over the lighter parts of each photo */
+.attune-mode-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 45%, rgba(0, 0, 0, 0) 70%);
+}
+
+.attune-mode-photo-copy {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  padding: clamp(0.7rem, 1.2vw, 1rem);
+  color: #fff;
+}
+
+.attune-mode-photo-copy h3 {
+  margin: 0 0 0.3rem;
+  font: var(--pd-type-h4);
+  color: inherit;
+}
+
+.attune-mode-photo-copy p {
+  margin: 0;
+  font: var(--pd-type-body-sm);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: inherit;
+  opacity: 0.88;
+}
+
+.attune-mode-cards + .pd-context-body + .pd-process-decision {
+  margin-top: 0.6rem;
+}
+
+.attune-mode-cards ~ .pd-process-decision + .pd-context-body {
+  margin-top: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+/* Explored layout vs. final prototype */
+
+/* Each phone is capped at ~68% of the viewport height so both fit in one fold */
+.attune-mode-compare {
+  --attune-phone-w: min(calc((100% - clamp(0.75rem, 1.5vw, 1rem)) / 2), calc(68svh * 440 / 914));
+  display: grid;
+  grid-template-columns: repeat(2, var(--attune-phone-w));
+  justify-content: center;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.attune-mode-compare-item {
+  min-width: 0;
+  margin: 0;
+}
+
+.attune-mode-compare .attune-mode-compare-frame {
+  aspect-ratio: 440 / 914;
+}
+
+/* Same 20px-around-a-400px-phone crop as the prototype beside it */
+.attune-mode-explored {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--attune-line);
+  background: #ccc;
+}
+
+.attune-mode-explored img {
+  display: block;
+  width: calc(400 / 440 * 100%);
+  height: auto;
+}
+
+/* The prototype's mode transition is computed from its viewport and breaks in a
+   narrow frame, so it runs at 1920×1080 (phone centred at 760,103, 400×874) and
+   is cropped to the phone with a 20px margin, then scaled to fit */
+.attune-mode-prototype {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  border: 1px solid var(--attune-line);
+  background: #ccc;
+}
+
+.attune-mode-prototype iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  transform: scale(calc(100cqi / 440px)) translate(-740px, -83px);
+  transform-origin: top left;
+}
+
+/* The four modes — sticky scroll
+   Desktop: a 100vh sticky frame like Delicut's day states. Every mode's copy
+   shares one grid cell on the left and every phone shares one masked cell on
+   the right; scroll progress decides which pair is active.
+   Mobile (≤768px): stacked copy + phone per mode, no stickiness. */
+
+.attune-modes-scroll {
+  --attune-modes-count: 4;
+  --attune-modes-phone-w: min(336px, 26vw, calc(78dvh * 400 / 874));
+  position: relative;
+  height: calc(var(--attune-modes-count) * 100vh);
+}
+
+.attune-modes-pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.attune-modes-pin .attune-modes-heading {
+  margin: 0;
+  padding-top: clamp(2.5rem, 7vh, 5.25rem);
+}
+
+.attune-modes-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--attune-modes-phone-w);
+  grid-template-rows: 1fr auto 1fr;
+  column-gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  min-height: 0;
+}
+
+.attune-modes-item {
+  display: contents;
+}
+
+.attune-modes-copy {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 30rem;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3rem);
+  pointer-events: none;
+}
+
+.attune-modes-copy .attune-card-label {
+  margin: 0;
+}
+
+.attune-modes-title {
+  margin: 0;
   font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
-.attune-mode-card p {
+.attune-modes-body {
   margin: 0;
   font: var(--pd-type-body-sm);
   color: var(--c-ink);
-  opacity: 0.62;
+  opacity: 0.78;
 }
 
-.attune-decision {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: clamp(2rem, 3.5vw, 3rem);
-  padding: clamp(1rem, 2vw, 1.4rem);
-  border: 1px solid var(--attune-line);
-  background: #fff;
+.attune-modes-copy .pd-process-decision {
+  margin-top: 0.35rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--attune-accent);
 }
 
-.attune-decision strong {
-  display: block;
-  font: var(--pd-type-h4);
-  color: var(--c-ink);
+.attune-modes-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.attune-decision p {
-  margin: 0.35rem 0 0;
-  font: var(--pd-type-body-sm);
-  color: var(--c-ink);
-  opacity: 0.62;
+.attune-modes-chips li {
+  display: flex;
 }
 
-.attune-decision-arrow {
-  font: var(--pd-type-h3);
-  color: var(--attune-accent);
+.attune-modes-item.is-before .attune-modes-copy {
+  transform: translateY(-3rem);
+}
+
+.attune-modes-item.is-active .attune-modes-copy {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+
+.attune-modes-scroll--ready .attune-modes-copy {
+  transition:
+    transform 0.55s var(--ease-expo),
+    opacity 0.45s ease,
+    visibility 0s linear 0.55s;
+}
+
+.attune-modes-scroll--ready .attune-modes-item.is-active .attune-modes-copy {
+  transition-delay: 0.08s, 0.08s, 0s;
+}
+
+/* Each phone has its own mask in the same cell, so the outgoing and incoming
+   phones read as one track sliding past a single device-sized window. */
+.attune-modes-media {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  width: var(--attune-modes-phone-w);
+  aspect-ratio: 400 / 874;
+  overflow: hidden;
+  overflow: clip;
+  clip-path: inset(0);
+  pointer-events: none;
+}
+
+.attune-modes-item.is-active .attune-modes-media {
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* The mask would crop a soft drop shadow into visible corner patches */
+.attune-modes-phone {
+  height: 100%;
+  aspect-ratio: auto;
+  box-shadow: none;
+  transform: translateY(100%);
+}
+
+.attune-modes-item.is-before .attune-modes-phone {
+  transform: translateY(-100%);
+}
+
+.attune-modes-item.is-active .attune-modes-phone {
+  transform: none;
+}
+
+.attune-modes-scroll--ready .attune-modes-phone {
+  transition: transform 0.75s var(--ease-expo);
+}
+
+.attune-modes-phone .pd-states-phone-screen {
+  inset: 6px;
+  border-radius: calc(clamp(28px, 3.5vw, 48px) - 6px);
+}
+
+/* Prototypes run at 1920×1080 with a 400×874 phone (40px corner radius); the
+   iframe is cropped to that phone and scaled to fit. --proto-x/--proto-y are
+   the phone's top-left inside each prototype file. */
+.attune-modes-phone--prototype {
+  --proto-x: 760px;
+  --proto-y: 44px;
+  container-type: inline-size;
+  border-radius: 10% / calc(10% * 400 / 874);
+  background: #f7f7f7;
+}
+
+.attune-modes-phone--prototype::before {
+  display: none;
+}
+
+.attune-modes-phone--prototype iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  border: 0;
+  transform: scale(calc(100cqi / 400px)) translate(calc(-1 * var(--proto-x)), calc(-1 * var(--proto-y)));
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.attune-modes-item.is-active .attune-modes-phone--interactive iframe {
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .attune-modes-phone--interactive iframe {
+    pointer-events: auto;
+  }
+}
+
+.attune-modes-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem 1.1rem 1.25rem;
+  background:
+    linear-gradient(var(--attune-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--attune-line) 1px, transparent 1px),
+    var(--attune-panel);
+  background-size: 2.5rem 2.5rem;
+}
+
+.attune-modes-hint {
+  grid-column: 1;
+  grid-row: 3;
 }
 
 /* Media placeholders */
@@ -311,6 +580,30 @@ html:has([data-project="attune"]) {
   transform: translate(-50%, -50%);
 }
 
+.attune-screen-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+}
+
+.attune-media-placeholder--screen {
+  aspect-ratio: 9 / 19.5;
+  padding: clamp(0.8rem, 1.4vw, 1.1rem);
+  background-size: clamp(1.5rem, 3vw, 2.25rem) clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.attune-media-placeholder--screen::after {
+  display: none;
+}
+
+.attune-screen-grid + .pd-problem-caption {
+  margin-top: 0.85rem;
+}
+
+.attune-stop .attune-media-figure + .pd-context-body {
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
 .attune-placeholder-index,
 .attune-placeholder-title,
 .attune-placeholder-copy {
@@ -338,6 +631,57 @@ html:has([data-project="attune"]) {
   font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.55;
+}
+
+/* Turning points */
+
+.attune-turning-point .pd-context-body + .pd-context-body {
+  margin-top: 0.75em;
+}
+
+.attune-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.4vw, 1rem);
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.attune-detail-card {
+  margin: 0;
+}
+
+.attune-media-placeholder--detail {
+  aspect-ratio: 4 / 5;
+  padding: clamp(0.85rem, 1.6vw, 1.2rem);
+}
+
+.attune-media-placeholder--detail::after {
+  display: none;
+}
+
+.attune-detail-card .pd-problem-caption {
+  margin-top: 0.75rem;
+}
+
+.attune-fade-carousel {
+  display: grid;
+  margin-top: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.attune-fade-slide {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.attune-fade-slide.is-active {
+  opacity: 1;
+}
+
+.attune-fade-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /* Modes */
@@ -568,69 +912,22 @@ html:has([data-project="attune"]) {
   grid-column: 1 / -1;
 }
 
-.attune-iteration-grid span,
-.attune-outcome-grid article > span {
+.attune-iteration-grid span {
   font: var(--pd-type-body-sm);
   color: var(--attune-accent);
 }
 
-.attune-iteration-grid h4,
-.attune-outcome-grid h3 {
+.attune-iteration-grid h4 {
   margin: 1.5rem 0 0.4rem;
   font: var(--pd-type-h4);
   color: var(--c-ink);
 }
 
-.attune-iteration-grid p,
-.attune-outcome-grid p {
+.attune-iteration-grid p {
   margin: 0;
   font: var(--pd-type-body-sm);
   color: var(--c-ink);
   opacity: 0.68;
-}
-
-.attune-outcome-grid article {
-  min-height: 11rem;
-  padding: clamp(1rem, 2vw, 1.4rem);
-  border: 1px solid var(--attune-line);
-  background: #fff;
-}
-
-.attune-outcome-grid h3 {
-  margin-top: 2.6rem;
-}
-
-/* Reflection */
-
-.attune-reflection {
-  margin-top: clamp(2rem, 4vw, 4rem);
-  padding: clamp(2rem, 4vw, 3.5rem);
-  max-width: var(--pd-prose-max);
-  background: var(--attune-accent-soft);
-}
-
-.attune-reflection-kicker {
-  margin: 1.25rem 0 0.45rem;
-  font: var(--pd-type-body-sm);
-  color: var(--c-ink);
-  opacity: 0.6;
-}
-
-/* Pull quotes are the one place H2 is used. */
-.attune-reflection blockquote {
-  margin: 0;
-  font: var(--pd-type-h2);
-  color: var(--attune-dark);
-}
-
-.attune-reflection blockquote + .attune-reflection-kicker {
-  margin-top: 1.4rem;
-}
-
-.attune-reflection .pd-context-body {
-  margin-top: clamp(1.75rem, 3vw, 2.5rem);
-  padding-top: clamp(1.25rem, 2vw, 1.75rem);
-  border-top: 1px solid rgba(108, 79, 97, 0.22);
 }
 
 /* Responsive */
@@ -646,10 +943,6 @@ html:has([data-project="attune"]) {
 
   .attune-hero-modes span {
     min-height: 4.5rem;
-  }
-
-  .attune-mode-map {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -677,7 +970,6 @@ html:has([data-project="attune"]) {
 
   .attune-question-grid,
   .attune-trust-grid,
-  .attune-outcome-grid,
   .attune-iteration-grid {
     grid-template-columns: 1fr;
   }
@@ -727,9 +1019,84 @@ html:has([data-project="attune"]) {
     aspect-ratio: 4 / 3;
   }
 
+  .attune-screen-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .attune-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .attune-media-placeholder--screen {
+    aspect-ratio: 9 / 19.5;
+  }
+
   .attune-system-stat {
     grid-template-columns: 1fr;
     align-items: start;
+  }
+
+  .attune-modes-scroll {
+    height: auto;
+  }
+
+  .attune-modes-pin {
+    position: static;
+    height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .attune-modes-pin .attune-modes-heading {
+    padding-top: 0;
+  }
+
+  .attune-modes-stage {
+    display: block;
+  }
+
+  .attune-modes-item {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.35rem, 4vw, 1.85rem);
+    padding-top: clamp(2rem, 5.5vw, 2.75rem);
+  }
+
+  .attune-modes-item + .attune-modes-item {
+    margin-top: clamp(1.75rem, 4.5vw, 2.5rem);
+    border-top: 1px solid var(--attune-line);
+  }
+
+  .attune-modes-copy,
+  .attune-modes-item.is-before .attune-modes-copy,
+  .attune-modes-scroll--ready .attune-modes-copy {
+    max-width: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .attune-modes-body {
+    font: var(--pd-type-body-lg);
+  }
+
+  .attune-modes-media {
+    align-self: center;
+    width: clamp(168px, 52vw, 236px);
+    pointer-events: auto;
+  }
+
+  .attune-modes-phone,
+  .attune-modes-item.is-before .attune-modes-phone,
+  .attune-modes-scroll--ready .attune-modes-phone {
+    transform: none;
+    transition: none;
+  }
+
+  .attune-modes-hint {
+    display: none;
   }
 }
 
@@ -752,24 +1119,15 @@ html:has([data-project="attune"]) {
     width: 10.5rem;
   }
 
-  .attune-mode-map {
-    grid-template-columns: 1fr;
+  .attune-mode-cards {
+    grid-template-columns: repeat(4, 10.5rem);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
 
-  .attune-mode-card {
-    min-height: 8.5rem;
-  }
-
-  .attune-mode-axis {
-    display: none;
-  }
-
-  .attune-decision {
-    grid-template-columns: 1fr;
-  }
-
-  .attune-decision-arrow {
-    transform: rotate(90deg);
+  .attune-mode-photo {
+    scroll-snap-align: start;
   }
 
   .attune-resolve-diagram {
@@ -787,11 +1145,6 @@ html:has([data-project="attune"]) {
   .attune-media-placeholder--split::after {
     left: 65%;
   }
-
-  .attune-reflection {
-    margin-inline: 0;
-    padding: 1.5rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -799,5 +1152,10 @@ html:has([data-project="attune"]) {
   [data-project="attune"] .pd-hero-title,
   [data-project="attune"] .pd-hero-media {
     animation: none;
+  }
+
+  .attune-modes-scroll--ready .attune-modes-copy,
+  .attune-modes-scroll--ready .attune-modes-phone {
+    transition: none;
   }
 }

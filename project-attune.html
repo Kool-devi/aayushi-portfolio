@@ -11,9 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;600;700;800&family=Geist:wght@400;600&display=swap">
 
-  <link rel="stylesheet" href="styles/main.css?v=20261010-type2">
+  <link rel="stylesheet" href="styles/main.css?v=20261012-nav2">
   <link rel="stylesheet" href="styles/project-detail.css?v=20261010-type2">
-  <link rel="stylesheet" href="styles/pd-attune.css?v=20261010-type">
+  <link rel="stylesheet" href="styles/pd-states.css?v=20261010-type">
+  <link rel="stylesheet" href="styles/pd-attune.css?v=20261012-13">
 </head>
 
 <body class="pd-page" data-project="attune">
@@ -23,6 +24,16 @@
     <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
     <a href="contact.html" class="nav-item nav--bl">Contact</a>
     <a href="about.html" class="nav-item nav--br">About</a>
+    <div class="nav--tc">
+      <button type="button" class="nav-copy" data-copy-email="hello@aayushi.design" title="Copy hello@aayushi.design">
+        <span class="nav-copy-label" aria-live="polite">Copy email</span>
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="1.5"/><path d="M10.5 3.5V3A1.5 1.5 0 0 0 9 1.5H3A1.5 1.5 0 0 0 1.5 3v6A1.5 1.5 0 0 0 3 10.5h.5"/></svg>
+      </button>
+      <a href="https://drive.google.com/file/d/RESUME_FILE_ID/view" class="nav-resume" target="_blank" rel="noopener noreferrer">
+        Resume
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+      </a>
+    </div>
   </nav>
 
   <header class="pd-hero" id="pd-hero">
@@ -58,12 +69,17 @@
       <a href="index.html" class="pd-toc-back">← BACK TO HOME</a>
       <nav class="pd-toc-nav" aria-label="On this page">
         <a href="#pd-problem" class="pd-toc-link is-active">The problem</a>
-        <a href="#pd-model" class="pd-toc-link">Product model</a>
+        <a href="#pd-goals" class="pd-toc-link">Goals</a>
+        <a href="#pd-process" class="pd-toc-link">Design process</a>
+        <a href="#pd-turning" class="pd-toc-link">Turning points</a>
+        <!-- Hidden for now — restore with their sections below.
+        <a href="#pd-ai-stop" class="pd-toc-link">Where AI should stop</a>
         <a href="#pd-modes" class="pd-toc-link">Designing the modes</a>
         <a href="#pd-trust" class="pd-toc-link">Personalization & safety</a>
         <a href="#pd-system" class="pd-toc-link">System & handoff</a>
+        -->
         <a href="#pd-outcome" class="pd-toc-link">Outcome</a>
-        <a href="#pd-reflection" class="pd-toc-link">Reflection</a>
+        <a href="#pd-learned" class="pd-toc-link">What I learned</a>
       </nav>
     </aside>
 
@@ -72,12 +88,17 @@
         <div class="pd-tldr-overview">
           <p class="pd-tldr-eyebrow">TL;DR</p>
           <h2 class="pd-tldr-heading">
-            Attune already had its core modules. My role was to turn them into one coherent AI-first product—without
-            flattening the emotional differences between reflection, conflict, growth, and safety.
+            Attune supports couples in different moments — from private reflection to conflict, repair, and long-term
+            growth.
           </h2>
           <p class="pd-tldr-body">
-            I worked across the full mobile experience, from product architecture and interaction design to live AI
-            sessions, assessments, scheduling, system consistency, prototyping, and developer handoff.
+            I worked across the product to define a clearer interaction model, create stronger privacy and consent
+            boundaries, simplify complex shared flows, and build a reusable system that could survive a major
+            development-team change.
+          </p>
+          <p class="pd-tldr-body">
+            The biggest lesson was that designing AI was less about what it should say and more about what role it
+            should have in each moment.
           </p>
         </div>
 
@@ -104,121 +125,496 @@
       <section class="pd-context" id="pd-overview">
         <p class="pd-context-eyebrow">Overview</p>
         <h2 class="pd-context-heading">
-          Attune is a relationship app for committed couples who want support before, during, or after difficult
-          conversations.
+          Attune is an AI-powered relationship app for couples.
         </h2>
         <p class="pd-context-body">
-          The product was already built when I joined. Its core functionality existed, but the experience felt
-          fragmented across modes, assessments, safety, and shared sessions. I focused on giving that existing product
-          a clear design direction and an interaction model that felt consistent, emotionally appropriate, and
-          buildable.
+          I joined after the main product and modules had already been defined. My role was to help turn those pieces
+          into one clear experience across the relationship modes, assessments, safety flows, shared sessions, and
+          design system.
         </p>
-
-        <div class="attune-scope" aria-label="Areas of the product included in the project">
-          <span>Choose a mode</span>
-          <span>Repair</span>
-          <span>Resolve</span>
-          <span>Refine</span>
-          <span>Assessments</span>
-          <span>Safety</span>
-          <span>Live AI sessions</span>
-          <span>Scheduling</span>
-          <span>Design system</span>
-          <span>Motion</span>
-          <span>Handoff</span>
-        </div>
+        <p class="pd-context-body">
+          The challenge was not adding more features. It was making very different emotional moments feel like they
+          belonged to the same product.
+        </p>
       </section>
 
       <section class="pd-context" id="pd-problem">
         <p class="pd-context-eyebrow">The problem</p>
         <h2 class="pd-context-heading">
-          Multiple emotionally different experiences needed to feel like one product—but not like the same AI chat.
+          Attune already had a lot of functionality.
         </h2>
         <p class="pd-context-body">
-          A private reflection, a conflict-resolution session, a relationship assessment, and a crisis-safety moment
-          each need different behaviours. At the same time, couples need to understand how those experiences relate
-          and when each one is appropriate.
+          But a private conversation with AI, a conflict between two partners, a relationship assessment, and a crisis
+          moment cannot all behave the same way. We needed to answer three questions:
         </p>
 
-        <div class="attune-question-grid">
+        <div class="attune-question-grid attune-question-grid--three">
           <article class="attune-question-card">
-            <span class="attune-card-label">Who we designed for</span>
-            <p>Serious couples—living together or long-distance—who need both individual self-work and shared support.</p>
+            <span class="attune-card-label">Question 01</span>
+            <p>What does the user need in this moment?</p>
+          </article>
+          <article class="attune-question-card">
+            <span class="attune-card-label">Question 02</span>
+            <p>Is this experience private or shared?</p>
           </article>
           <article class="attune-question-card attune-question-card--accent">
-            <span class="attune-card-label">The design question</span>
-            <p>How might one product support reflection, repair, conflict, growth, personalization, and safety without
-              treating every need the same way?</p>
+            <span class="attune-card-label">Question 03</span>
+            <p>What role should AI play here?</p>
+          </article>
+        </div>
+
+        <p class="pd-context-body">
+          Without those answers, the product risked feeling like the same chatbot repeated across different screens.
+        </p>
+      </section>
+
+      <section class="pd-context pd-goals" id="pd-goals">
+        <p class="pd-context-eyebrow">Goals</p>
+
+        <div class="pd-goals-list">
+          <article class="pd-goal-pair">
+            <div class="pd-goal-icon" aria-hidden="true"></div>
+            <div class="pd-goal-copy">
+              <div class="pd-goal">
+                <span class="pd-goal-label">Make the product easier to understand</span>
+                <p class="pd-goal-text">
+                  Help users quickly know which experience fits what they need.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pd-goal-pair">
+            <div class="pd-goal-icon" aria-hidden="true"></div>
+            <div class="pd-goal-copy">
+              <div class="pd-goal">
+                <span class="pd-goal-label">Design AI around context</span>
+                <p class="pd-goal-text">
+                  Change the role of AI depending on whether someone is reflecting alone, reconnecting, or talking with a
+                  partner.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <article class="pd-goal-pair">
+            <div class="pd-goal-icon" aria-hidden="true"></div>
+            <div class="pd-goal-copy">
+              <div class="pd-goal">
+                <span class="pd-goal-label">Build trust</span>
+                <p class="pd-goal-text">
+                  Make privacy, consent, safety, and shared information clear throughout the experience.
+                </p>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="pd-context attune-model" id="pd-model">
-        <p class="pd-context-eyebrow">Defining the product model</p>
-        <h2 class="pd-context-heading">The first useful design decision was structural, not visual.</h2>
+      <section class="pd-context pd-process attune-model" id="pd-process">
+        <p class="pd-context-eyebrow">Design process</p>
+        <h2 class="pd-context-heading">Define the product model</h2>
+        <p class="pd-context-body">
+          Before designing the visuals, I needed to make a structural design decision.
+        </p>
         <p class="pd-context-body">
           I defined what kind of relationship support each mode represented and whether it belonged to one person or
           to the couple. This private/shared distinction became the foundation for the rest of the product.
         </p>
 
-        <div class="attune-mode-map" aria-label="Attune's four modes arranged from private to shared support">
-          <div class="attune-mode-axis" aria-hidden="true">
-            <span>Private</span>
-            <span>Shared</span>
-          </div>
-          <article class="attune-mode-card">
-            <span class="attune-mode-number">01</span>
-            <h3>Reflect</h3>
-            <p>Understand what I am feeling.</p>
+        <div class="attune-mode-axis" aria-hidden="true">
+          <span>Private</span>
+          <span class="attune-mode-axis-line"></span>
+          <span>Shared</span>
+        </div>
+        <div class="attune-mode-cards" aria-label="Attune's four modes arranged from private to shared support">
+          <article class="attune-mode-photo">
+            <img src="Mockups/Attune/Reflect.jpg" alt="" width="700" height="700" loading="lazy" decoding="async">
+            <div class="attune-mode-photo-copy">
+              <h3>Reflect</h3>
+              <p>I need to understand what I am feeling.</p>
+            </div>
           </article>
-          <article class="attune-mode-card">
-            <span class="attune-mode-number">02</span>
-            <h3>Repair</h3>
-            <p>Steady myself and reconnect.</p>
+          <article class="attune-mode-photo">
+            <img src="Mockups/Attune/Repair.jpg" alt="" width="700" height="700" loading="lazy" decoding="async">
+            <div class="attune-mode-photo-copy">
+              <h3>Repair</h3>
+              <p>I need to calm down and process what happened.</p>
+            </div>
           </article>
-          <article class="attune-mode-card attune-mode-card--shared">
-            <span class="attune-mode-number">03</span>
-            <h3>Resolve</h3>
-            <p>Work through conflict together.</p>
+          <article class="attune-mode-photo">
+            <img src="Mockups/Attune/Resolve.jpg" alt="" width="700" height="700" loading="lazy" decoding="async">
+            <div class="attune-mode-photo-copy">
+              <h3>Resolve</h3>
+              <p>We need to work through something together.</p>
+            </div>
           </article>
-          <article class="attune-mode-card attune-mode-card--shared">
-            <span class="attune-mode-number">04</span>
-            <h3>Refine</h3>
-            <p>Keep growing together.</p>
+          <article class="attune-mode-photo">
+            <img src="Mockups/Attune/Refine.jpg" alt="" width="700" height="700" loading="lazy" decoding="async">
+            <div class="attune-mode-photo-copy">
+              <h3>Refine</h3>
+              <p>We want to keep strengthening the relationship.</p>
+            </div>
           </article>
         </div>
 
-        <p class="attune-highlight">
-          The modes are related, but they are not a forced funnel. A user can stop after Reflect, move into Repair,
-          enter Resolve with a partner, or continue into Refine later.
-        </p>
+        <p class="pd-context-body">This helped establish a simple product model:</p>
+        <aside class="pd-process-decision" aria-label="Product model">
+          <p class="pd-process-decision-text">Private self-work → Shared couple-work</p>
+        </aside>
+        <p class="pd-context-body">The modes are connected, but they are not a required sequence.</p>
 
-        <div class="attune-decision">
-          <div>
-            <span class="attune-card-label">Early pattern</span>
-            <strong>Four dashboard cards</strong>
-            <p>Easy to scan, but the product felt like four separate features.</p>
-          </div>
-          <span class="attune-decision-arrow" aria-hidden="true">→</span>
-          <div>
-            <span class="attune-card-label">Final direction</span>
-            <strong>Full-screen mode switcher</strong>
-            <p>Each mode became its own emotional space while staying connected to the wider system.</p>
+        <div class="pd-process-block">
+          <h2 class="pd-context-heading">Make the modes feel connected</h2>
+          <p class="pd-context-body">
+            A simple solution would have been four cards. I moved away from that because it made the modes feel like
+            separate features.
+          </p>
+          <p class="pd-context-body">
+            Instead, I designed them as full-screen spaces users could move between. Each mode has its own mood, copy,
+            and visual treatment, while the same navigation keeps them connected.
+          </p>
+          <aside class="pd-process-decision" aria-label="Why">
+            <p class="pd-process-decision-label">Why</p>
+            <p class="pd-process-decision-text">
+              The interface needed to communicate a change in emotional context, not just a change in feature.
+            </p>
+          </aside>
+
+          <div class="attune-mode-compare">
+            <figure class="attune-mode-compare-item">
+              <div class="attune-mode-compare-frame attune-mode-explored">
+                <img src="Mockups/Attune/Four Cards Explored.jpg"
+                  alt="Explored Attune layout with Reflect, Repair, Resolve, and Refine stacked as four cards on one screen"
+                  width="697" height="1523" loading="lazy" decoding="async">
+              </div>
+              <figcaption class="pd-problem-caption">Explored: four mode cards on a single screen</figcaption>
+            </figure>
+
+            <figure class="attune-mode-compare-item">
+              <div class="attune-mode-compare-frame attune-mode-prototype">
+                <iframe src="prototypes/attune-choose-a-mode.html"
+                  title="Attune interactive prototype: swipe between the four relationship modes"
+                  loading="lazy"></iframe>
+              </div>
+              <figcaption class="pd-problem-caption">Final: full-screen, swipeable modes (interactive)</figcaption>
+            </figure>
           </div>
         </div>
 
-        <figure class="attune-media-figure">
-          <div class="attune-media-placeholder attune-media-placeholder--wide" role="img"
-            aria-label="Placeholder for the Attune swipeable mode switcher screens">
-            <span class="attune-placeholder-index">01</span>
-            <span class="attune-placeholder-title">Swipeable mode switcher</span>
-            <span class="attune-placeholder-copy">Screen sequence / motion placeholder</span>
+        <!-- ── The four modes ─────────────────────────────────────
+             Desktop: a 100vh sticky frame. Scroll progress swaps the
+             copy on the left and slides the matching phone in on the right.
+             Mobile: each mode stacks as copy followed by its phone. -->
+        <div class="pd-process-block attune-modes-block">
+          <div class="attune-modes-scroll" id="attune-modes-scroll" style="--attune-modes-count: 4"
+            aria-label="Reflect, Repair, Resolve, and Refine prototypes">
+            <div class="attune-modes-pin">
+              <h2 class="pd-context-heading attune-modes-heading">The four modes</h2>
+
+              <div class="attune-modes-stage">
+                <div class="attune-modes-item is-active" data-mode="0">
+                  <div class="attune-modes-copy">
+                    <span class="attune-card-label">01 / 04 · Private</span>
+                    <h4 class="attune-modes-title">Reflect</h4>
+                    <p class="attune-modes-body">
+                      Reflect is a private space where users can talk through what they are feeling before deciding
+                      whether to act on it or involve their partner.
+                    </p>
+                    <p class="attune-modes-body">
+                      I kept the layout close to familiar AI chat patterns, with text, voice, and starter prompts all
+                      easy to access. That reduces learning and keeps the focus on processing the issue itself.
+                    </p>
+                    <aside class="pd-process-decision" aria-label="Design decision">
+                      <p class="pd-process-decision-label">Design decision</p>
+                      <p class="pd-process-decision-text">
+                        Use a familiar chat model and keep the flow lightweight so users can start reflecting quickly.
+                      </p>
+                    </aside>
+                  </div>
+                  <div class="attune-modes-media">
+                    <div class="pd-states-phone attune-modes-phone" role="img"
+                      aria-label="Placeholder for the Reflect prototype">
+                      <div class="pd-states-phone-notch"></div>
+                      <div class="pd-states-phone-screen">
+                        <div class="attune-modes-placeholder">
+                          <span class="attune-placeholder-index">01</span>
+                          <span class="attune-placeholder-title">Reflect</span>
+                          <span class="attune-placeholder-copy">Prototype placeholder</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="attune-modes-item" data-mode="1">
+                  <div class="attune-modes-copy">
+                    <span class="attune-card-label">02 / 04 · Private</span>
+                    <h4 class="attune-modes-title">Repair</h4>
+                    <p class="attune-modes-body">
+                      Repair is for after conflict, when the user may still feel activated and is not ready to reconnect
+                      yet.
+                    </p>
+                    <p class="attune-modes-body">
+                      The flow starts with a body check-in and short grounding exercise, then moves into AI-guided
+                      reflection and optional preparation for reconnecting with a partner.
+                    </p>
+                    <aside class="pd-process-decision" aria-label="Design decision">
+                      <p class="pd-process-decision-label">Design decision</p>
+                      <p class="pd-process-decision-text">
+                        Slow the flow down and keep every shared step explicit, so the user controls when private
+                        reflection becomes a partner conversation.
+                      </p>
+                    </aside>
+                  </div>
+                  <div class="attune-modes-media">
+                    <div class="pd-states-phone attune-modes-phone attune-modes-phone--prototype">
+                      <iframe src="Repair%20Autoplay%20(offline)%2015-09-26.html"
+                        title="Attune Repair prototype: body check-in, grounding, guided processing, and reconnecting"
+                        loading="lazy" tabindex="-1"></iframe>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="attune-modes-item" data-mode="2">
+                  <div class="attune-modes-copy">
+                    <span class="attune-card-label">03 / 04 · Shared</span>
+                    <h4 class="attune-modes-title">Resolve</h4>
+                    <p class="attune-modes-body">
+                      Resolve is a shared mode for couples working through an active conflict with AI guiding the
+                      conversation.
+                    </p>
+                    <p class="attune-modes-body">
+                      It starts with mutual consent and shared ground rules, then uses turn-taking, protected speaking
+                      time, and AI clarification checks to keep the discussion balanced.
+                    </p>
+                    <aside class="pd-process-decision" aria-label="Design decision">
+                      <p class="pd-process-decision-label">Design decision</p>
+                      <p class="pd-process-decision-text">
+                        Structure the conversation around consent, equal speaking time, and clarification so both
+                        partners have a fair way to be heard.
+                      </p>
+                    </aside>
+                  </div>
+                  <div class="attune-modes-media">
+                    <div class="pd-states-phone attune-modes-phone attune-modes-phone--prototype attune-modes-phone--interactive"
+                      style="--proto-x: 752.4px; --proto-y: 111.3px">
+                      <iframe src="Resolve%20Prototype%20animation%20(standalone).html"
+                        title="Attune Resolve interactive prototype: consent, turn-taking, and AI-guided shared sessions"
+                        loading="lazy"></iframe>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="attune-modes-item" data-mode="3">
+                  <div class="attune-modes-copy">
+                    <span class="attune-card-label">04 / 04 · Shared</span>
+                    <h4 class="attune-modes-title">Refine</h4>
+                    <p class="attune-modes-body">
+                      Refine is for couples who want to keep working on their relationship even when there is no active
+                      conflict.
+                    </p>
+                    <p class="attune-modes-body">
+                      Unlike Resolve, it is more open-ended. Couples can schedule a session, repeat it over time, and
+                      work through guided prompts or small activities together. I also added light AI interventions,
+                      like appreciation prompts and focus warnings, to keep the conversation useful without taking it
+                      over.
+                    </p>
+                    <p class="attune-modes-body">
+                      If the conversation starts becoming too intense, the app can suggest moving into Repair instead.
+                    </p>
+                    <aside class="pd-process-decision" aria-label="Design decision">
+                      <p class="pd-process-decision-label">Design decision</p>
+                      <p class="pd-process-decision-text">
+                        Make Refine feel flexible and repeatable, with enough guidance to support growth without turning
+                        every session into conflict resolution.
+                      </p>
+                    </aside>
+                  </div>
+                  <div class="attune-modes-media">
+                    <div class="pd-states-phone attune-modes-phone" role="img"
+                      aria-label="Placeholder for the Refine prototype">
+                      <div class="pd-states-phone-notch"></div>
+                      <div class="pd-states-phone-screen">
+                        <div class="attune-modes-placeholder">
+                          <span class="attune-placeholder-index">04</span>
+                          <span class="attune-placeholder-title">Refine</span>
+                          <span class="attune-placeholder-copy">Prototype placeholder</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <figcaption class="pd-problem-caption">Future asset: mode switcher screens or transition video</figcaption>
-        </figure>
+        </div>
       </section>
 
-      <section class="pd-context attune-modes" id="pd-modes">
+      <section class="pd-context attune-turning" id="pd-turning">
+        <p class="pd-context-eyebrow">Turning points</p>
+
+        <article class="attune-turning-point">
+          <span class="attune-card-label">Turning point 01</span>
+          <h2 class="pd-context-heading">When I realised the safest AI action was sometimes to stop</h2>
+          <p class="pd-context-body">
+            One of the hardest questions came from the Safety flow. What should happen if someone says something that
+            is bigger than a relationship app should handle?
+          </p>
+          <p class="pd-context-body">
+            Instead of asking the AI to keep the conversation going, we designed it to pause the session, check on the
+            user, and surface real-world crisis support.
+          </p>
+          <p class="pd-context-body">
+            The standalone Safety area also gives users access to region-aware resources and makes it clear that Attune
+            is not a crisis service.
+          </p>
+          <aside class="pd-process-decision" aria-label="Why this mattered to me">
+            <p class="pd-process-decision-label">Why this mattered to me</p>
+            <p class="pd-process-decision-text">
+              Responsible AI is not only about giving better answers. Sometimes the responsible decision is knowing when
+              the product should step aside.
+            </p>
+          </aside>
+
+          <div class="attune-detail-grid">
+            <figure class="attune-detail-card">
+              <div class="attune-media-placeholder attune-media-placeholder--detail" role="img"
+                aria-label="Placeholder for the paused session detail">
+                <span class="attune-placeholder-index">01</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+              <figcaption class="pd-problem-caption">The live session pauses instead of continuing</figcaption>
+            </figure>
+            <figure class="attune-detail-card">
+              <div class="attune-media-placeholder attune-media-placeholder--detail" role="img"
+                aria-label="Placeholder for the safety check-in detail">
+                <span class="attune-placeholder-index">02</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+              <figcaption class="pd-problem-caption">The product checks on the user first</figcaption>
+            </figure>
+            <figure class="attune-detail-card">
+              <div class="attune-media-placeholder attune-media-placeholder--detail" role="img"
+                aria-label="Placeholder for the region-aware crisis resources detail">
+                <span class="attune-placeholder-index">03</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+              <figcaption class="pd-problem-caption">Region-aware crisis resources come forward</figcaption>
+            </figure>
+          </div>
+        </article>
+
+        <article class="attune-turning-point pd-process-block">
+          <span class="attune-card-label">Turning point 02</span>
+          <h2 class="pd-context-heading">When the development team changed mid-project</h2>
+          <p class="pd-context-body">
+            Partway through the project, the client replaced the development team and the handoff timeline suddenly
+            became much tighter.
+          </p>
+          <p class="pd-context-body">
+            That changed the importance of the design system. What had started as good organisation became essential.
+          </p>
+          <p class="pd-context-body">
+            We went screen by screen, identified repeating elements, checked whether a component already existed, and
+            used variants instead of creating duplicates.
+          </p>
+          <p class="pd-context-body">
+            We also organised the product module by module so a new team could understand what to build without
+            reopening every design decision. In total, the handoff covered roughly 169 screens.
+          </p>
+          <aside class="pd-process-decision" aria-label="Why">
+            <p class="pd-process-decision-label">Why</p>
+            <p class="pd-process-decision-text">
+              A design system is not just about consistency. It is also how design knowledge survives when the people
+              building the product change.
+            </p>
+          </aside>
+
+          <div class="attune-fade-carousel" data-attune-fade aria-label="Design system and handoff images">
+            <div class="attune-fade-slide is-active">
+              <div class="attune-media-placeholder attune-media-placeholder--wide" role="img"
+                aria-label="Placeholder for the component library">
+                <span class="attune-placeholder-index">01</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+            </div>
+            <div class="attune-fade-slide">
+              <div class="attune-media-placeholder attune-media-placeholder--wide" role="img"
+                aria-label="Placeholder for component variants">
+                <span class="attune-placeholder-index">02</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+            </div>
+            <div class="attune-fade-slide">
+              <div class="attune-media-placeholder attune-media-placeholder--wide" role="img"
+                aria-label="Placeholder for module-by-module handoff">
+                <span class="attune-placeholder-index">03</span>
+                <span class="attune-placeholder-copy">Image placeholder</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="pd-context attune-stop" id="pd-ai-stop" hidden>
+        <p class="pd-context-eyebrow">The part I cared about most</p>
+        <h2 class="pd-context-heading">Designing where AI should stop</h2>
+        <p class="pd-context-body">
+          The most important design decision was not about what AI should say. It was about knowing when AI should no
+          longer be the right support.
+        </p>
+        <p class="pd-context-body">
+          Attune includes a safety layer that can pause a live session when something serious is disclosed, surface
+          region-aware crisis resources, and guide the user toward real-world help.
+        </p>
+
+        <figure class="attune-media-figure">
+          <div class="attune-screen-grid">
+            <div class="attune-media-placeholder attune-media-placeholder--screen" role="img"
+              aria-label="Placeholder for the session pause screen">
+              <span class="attune-placeholder-index">01</span>
+              <span class="attune-placeholder-title">Session paused</span>
+              <span class="attune-placeholder-copy">Image placeholder</span>
+            </div>
+            <div class="attune-media-placeholder attune-media-placeholder--screen" role="img"
+              aria-label="Placeholder for the safety check screen">
+              <span class="attune-placeholder-index">02</span>
+              <span class="attune-placeholder-title">Safety check</span>
+              <span class="attune-placeholder-copy">Image placeholder</span>
+            </div>
+            <div class="attune-media-placeholder attune-media-placeholder--screen" role="img"
+              aria-label="Placeholder for the region-aware crisis resources screen">
+              <span class="attune-placeholder-index">03</span>
+              <span class="attune-placeholder-title">Crisis resources</span>
+              <span class="attune-placeholder-copy">Image placeholder</span>
+            </div>
+            <div class="attune-media-placeholder attune-media-placeholder--screen" role="img"
+              aria-label="Placeholder for the continue when ready screen">
+              <span class="attune-placeholder-index">04</span>
+              <span class="attune-placeholder-title">Continue when ready</span>
+              <span class="attune-placeholder-copy">Image placeholder</span>
+            </div>
+          </div>
+          <figcaption class="pd-problem-caption">
+            Pausing a live session, checking safety, surfacing region-aware resources, and returning only when ready
+          </figcaption>
+        </figure>
+
+        <p class="pd-context-body">
+          The user can continue when they are ready, but the product does not try to keep them engaged at all costs.
+        </p>
+        <p class="pd-context-body">That principle shaped a lot of the wider experience:</p>
+        <ul class="pd-process-list">
+          <li>Private conversations stay private.</li>
+          <li>Partners consent before shared sessions.</li>
+          <li>Difficult conversations have structure.</li>
+          <li>Sessions can pause instead of forcing resolution.</li>
+          <li>Real-world support takes priority when needed.</li>
+        </ul>
+      </section>
+
+      <section class="pd-context attune-modes" id="pd-modes" hidden>
         <p class="pd-context-eyebrow">Designing the modes</p>
         <h2 class="pd-context-heading">
           Each mode uses the same product language, then changes its pacing and interaction rules to fit the moment.
@@ -320,7 +716,7 @@
         </article>
       </section>
 
-      <section class="pd-context attune-trust" id="pd-trust">
+      <section class="pd-context attune-trust" id="pd-trust" hidden>
         <p class="pd-context-eyebrow">Personalization & safety</p>
         <h2 class="pd-context-heading">Personalization needed to feel useful without becoming invisible or intrusive.</h2>
 
@@ -371,7 +767,7 @@
         </figure>
       </section>
 
-      <section class="pd-context attune-system" id="pd-system">
+      <section class="pd-context attune-system" id="pd-system" hidden>
         <p class="pd-context-eyebrow">Designing the system</p>
         <h2 class="pd-context-heading">The work had to survive a major implementation change—not just look complete.</h2>
         <p class="pd-context-body">
@@ -428,49 +824,52 @@
       <section class="pd-context attune-outcome" id="pd-outcome">
         <p class="pd-context-eyebrow">Outcome</p>
         <h2 class="pd-context-heading">
-          Attune moved from a fragmented application toward a coherent product system with clearer emotional roles and
-          safer AI behaviour.
+          The project moved from a set of existing modules toward a more coherent product system.
         </h2>
+        <p class="pd-context-body">The final direction created:</p>
+        <ul class="pd-process-list">
+          <li>Clearer roles for each relationship mode.</li>
+          <li>Stronger private vs. shared boundaries.</li>
+          <li>Different AI behaviours for different emotional contexts.</li>
+          <li>Explicit consent in sensitive flows.</li>
+          <li>A more useful Safety layer.</li>
+          <li>Repeatable patterns across the product.</li>
+          <li>A cleaner system for development and handoff.</li>
+        </ul>
 
-        <div class="attune-outcome-grid">
-          <article>
-            <span>01</span>
-            <h3>Clearer product architecture</h3>
-            <p>Private and shared experiences now follow one understandable model.</p>
+        <aside class="pd-process-decision" aria-label="Takeaway">
+          <p class="pd-process-decision-text">
+            The strongest outcome was not one screen. It was making the product feel consistent without making every
+            experience feel the same.
+          </p>
+        </aside>
+      </section>
+
+      <section class="pd-context pd-learned" id="pd-learned">
+        <p class="pd-context-eyebrow">What I learned</p>
+        <h2 class="pd-context-heading">Attune changed the way I think about AI products.</h2>
+
+        <div class="pd-learned-grid">
+          <article class="pd-learned-item">
+            <p class="pd-process-decision-label">At the start, it was easy to focus on questions like:</p>
+            <h3 class="pd-learned-title">What should the AI say?</h3>
           </article>
-          <article>
-            <span>02</span>
-            <h3>Emotionally appropriate UX</h3>
-            <p>Each mode uses different pacing, tone, and interaction rules.</p>
-          </article>
-          <article>
-            <span>03</span>
-            <h3>Responsible AI boundaries</h3>
-            <p>Consent, privacy, session limits, and safety are built into the experience.</p>
-          </article>
-          <article>
-            <span>04</span>
-            <h3>Scalable handoff</h3>
-            <p>Reusable components and documentation made the product easier to continue building.</p>
+
+          <article class="pd-learned-item">
+            <p class="pd-process-decision-label">By the end, the more useful questions were:</p>
+            <h3 class="pd-learned-title">Why is AI here?</h3>
+            <h3 class="pd-learned-title">What should it know?</h3>
+            <h3 class="pd-learned-title">What should stay private?</h3>
+            <h3 class="pd-learned-title">When should it stop?</h3>
           </article>
         </div>
 
-        <p class="attune-highlight">
-          The strongest outcome was not one hero screen. It was making very different experiences feel like they
-          belonged to the same product without removing the differences that made each one useful.
-        </p>
-      </section>
-
-      <section class="pd-context attune-reflection" id="pd-reflection">
-        <p class="pd-context-eyebrow">Reflection</p>
-        <p class="attune-reflection-kicker">The hardest question was not:</p>
-        <blockquote>“What should the AI say?”</blockquote>
-        <p class="attune-reflection-kicker">It was:</p>
-        <blockquote>“What role should AI have here—and what should it not be allowed to do?”</blockquote>
-        <p class="pd-context-body">
-          Attune pushed me to think about AI as part of a wider interaction system. Privacy, consent, pacing,
-          emotional safety, repeated use, and handoff mattered as much as the conversation itself.
-        </p>
+        <aside class="pd-process-decision" aria-label="Takeaway">
+          <p class="pd-process-decision-text">
+            The shift from designing AI responses to designing AI boundaries was the most important thing I took from
+            the project.
+          </p>
+        </aside>
       </section>
 
       <a class="pd-contact-cta" href="mailto:hello@aayushi.design?subject=Attune%20AI%20case%20study"
@@ -554,8 +953,10 @@
 
   <script src="data/projects.js?v=20260915-1"></script>
   <script src="scripts/projects.js?v=20260905-2"></script>
-  <script src="scripts/main.js"></script>
+  <script src="scripts/main.js?v=20261012-nav2"></script>
   <script src="scripts/pd-toc.js?v=20260905-10"></script>
+  <script src="scripts/attune-modes-scroll.js?v=20261012-1"></script>
+  <script src="scripts/attune-fade-carousel.js?v=20261012-1"></script>
 </body>
 
 </html>

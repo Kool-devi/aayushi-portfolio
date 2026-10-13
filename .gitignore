@@ -6,6 +6,7 @@ node_modules/
 *.zip
 __MACOSX/
 Mockups/Delicut/Free-iPhone-16-Pro-Mockup-on-Bright-Concrete-Surface-with-Shadows/
+Mockups/*/originals/
 
 # Local visual-review output
 .shots/
