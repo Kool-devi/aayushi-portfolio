@@ -14,6 +14,8 @@
     tr: nav.querySelector('.nav--tr'),
     bl: nav.querySelector('.nav--bl'),
     br: nav.querySelector('.nav--br'),
+    tc: nav.querySelector('.nav--tc'),
+    burger: nav.querySelector('.nav-burger'),
   };
 
   /* Static text color per home-hero corner (diagonal light→dark bg). */
@@ -28,7 +30,7 @@
     );
   }
 
-  var last = { tl: '', tr: '', bl: '', br: '' };
+  var last = { tl: '', tr: '', bl: '', br: '', tc: '', burger: '' };
   var ticking = false;
 
   function contains(rect, x, y) {
@@ -59,7 +61,8 @@
     var vh = window.innerHeight;
 
     if (key === 'tl') return { x: padLeft + w / 2, y: padTop + h / 2 };
-    if (key === 'tr') return { x: vw - padRight - w / 2, y: padTop + h / 2 };
+    if (key === 'tr' || key === 'burger') return { x: vw - padRight - w / 2, y: padTop + h / 2 };
+    if (key === 'tc') return { x: vw / 2, y: padTop + h / 2 };
     if (key === 'bl') return { x: padLeft + w / 2, y: vh - padBottom - h / 2 };
     if (key === 'br') return { x: vw - padRight - w / 2, y: vh - padBottom - h / 2 };
     return null;
@@ -88,7 +91,7 @@
 
   function update() {
     ticking = false;
-    var corners = ['tl', 'tr', 'bl', 'br'];
+    var corners = ['tl', 'tr', 'bl', 'br', 'tc', 'burger'];
 
     for (var i = 0; i < corners.length; i++) {
       var key = corners[i];

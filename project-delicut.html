@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;600;700;800&family=Geist:wght@400;600&display=swap">
 
   <!-- Shared design system (tokens + reset + corner-nav) -->
-  <link rel="stylesheet" href="styles/main.css?v=20261010-type2">
+  <link rel="stylesheet" href="styles/main.css?v=20261012-nav2">
 
   <!-- Project detail page styles -->
   <link rel="stylesheet" href="styles/project-detail.css?v=20261010-type2">
@@ -27,6 +27,16 @@
     <a href="index.html#projects" class="nav-item nav--tr">Projects</a>
     <a href="contact.html"        class="nav-item nav--bl">Contact</a>
     <a href="about.html" class="nav-item nav--br">About</a>
+    <div class="nav--tc">
+      <button type="button" class="nav-copy" data-copy-email="hello@aayushi.design" title="Copy hello@aayushi.design">
+        <span class="nav-copy-label" aria-live="polite">Copy email</span>
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="1.5"/><path d="M10.5 3.5V3A1.5 1.5 0 0 0 9 1.5H3A1.5 1.5 0 0 0 1.5 3v6A1.5 1.5 0 0 0 3 10.5h.5"/></svg>
+      </button>
+      <a href="https://drive.google.com/file/d/RESUME_FILE_ID/view" class="nav-resume" target="_blank" rel="noopener noreferrer">
+        Resume
+        <svg class="nav-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6"/></svg>
+      </a>
+    </div>
   </nav>
 
 
@@ -855,7 +865,7 @@
   <script src="data/projects.js?v=20260905-2"></script>
   <script src="scripts/projects.js?v=20260905-2"></script>
   <!-- Corner-nav scroll hide/show behaviour -->
-  <script src="scripts/main.js"></script>
+  <script src="scripts/main.js?v=20261012-nav2"></script>
   <script src="scripts/pd-states.js"></script>
   <script src="scripts/pd-toc.js?v=20260905-10"></script>
 

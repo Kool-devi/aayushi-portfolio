@@ -177,6 +177,11 @@
   transform: translate(calc(100% + var(--nav-pad) + 1rem), calc(100% + var(--nav-pad) + 1rem));
 }
 
+.corner-nav.nav--landing .nav--tc {
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - var(--nav-pad) - 1rem));
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE
