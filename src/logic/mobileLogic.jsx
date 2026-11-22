@@ -188,7 +188,7 @@ export default class MobileLogic extends React.Component {
         onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
         ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
           rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
-          rcR: o ? '120%' : '0px', rcTr: o ? 'clip-path 1.5s cubic-bezier(.45,0,.2,1)' : 'clip-path .9s cubic-bezier(.45,0,.2,1)',
+          rcR: o ? '150%' : '0px' /* 150% of the pill's reference size reaches past its far (left) edge; 120% fell short */, rcTr: o ? 'clip-path 1.5s cubic-bezier(.45,0,.2,1)' : 'clip-path .9s cubic-bezier(.45,0,.2,1)',
           rcTxtOp: o ? 1 : 0, rcTxtY: o ? '0px' : '6px', rcTxtTr: o ? 'opacity .8s ease .55s, transform .9s cubic-bezier(.2,.8,.2,1) .55s' : 'opacity .2s ease, transform .2s ease',
           rcInsight: ['Users weren’t slow — the workflow was.', 'Clarity sells better than discounts.', 'Listen first; the design follows.'][i],
           rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
