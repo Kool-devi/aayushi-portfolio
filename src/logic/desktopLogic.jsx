@@ -7,6 +7,8 @@ import { stickyOffset } from '../app/smoothScroll.js';
 // Case-study pages: which state key holds the highlighted chapter pill.
 const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
 
+const DL_PHONE_H = 480; // Delicut day-pattern phone height (design px)
+
 const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
 
 export default class DesktopLogic extends React.Component {
@@ -49,6 +51,10 @@ export default class DesktopLogic extends React.Component {
       // Delicut "Time-based pattern": the day block crossing the middle of the screen drives the phone video.
       const steps = document.querySelectorAll('[data-dlstep]');
       if (steps.length) {
+        // pin the phone midway between the sticky bars and the bottom of the window (equal space above and below)
+        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
+        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - DL_PHONE_H) / 2));
+        if (this.state.dlPT !== pt) this.setState({ dlPT: pt });
         const mid = window.innerHeight * 0.55;
         let day = 0;
         steps.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) day = i; });
@@ -161,7 +167,7 @@ export default class DesktopLogic extends React.Component {
       dlOnb: ['Activity level', 'Height', 'Current weight', 'Target weight', 'Fitness device'].map((t, i) => ({ t, n: n2(i) })),
       dlAxes: ['Plan status', 'Selected date', 'Delivery status', 'Meal assignment', 'Cut‑off rules'],
       dlDays: days.map((d, i) => { const on = i === dy; return { ...d, n: n2(i), stepOp: on ? 1 : 0.3, vid: U(d.vid), op: on ? 1 : 0, bg: on ? '#FCEB3F' : 'transparent', fg: on ? '#0B0B0B' : '#FFFFFF', k: on ? '#E5322B' : '#FFFFFF80', onPick: () => this.dlGo(i), onEnd: () => i === (this.state.dlD ?? 0) && this.dlGo(i) /* replay: scrolling, not the clock, moves to the next day */, ref: this.dlRef(i) }; }),
-      dlDay: days[dy],
+      dlDay: days[dy], dlPhoneTop: (S.dlPT ?? 170) + 'px',
       dlPatterns: [{ n: 'Pattern 01', t: 'Skip & resume', src: U('Mockups/Delicut/Delicut Skip Resume.png'), d: 'Manage delivery days from one calendar — active, skipped or unavailable at a glance. Pause and resume stay tied to specific dates, not the whole subscription.' }, { n: 'Pattern 02', t: 'Cut‑off drawer', src: U('Mockups/Delicut/Delicut Cut-off Drawer.png'), d: 'When a delivery can’t be changed, a bottom sheet explains exactly why and shows the cut‑off that passed — no dead‑end taps on a locked day.' }],
       dlExp: exp.map((e, i) => { const on = i === ex; return { t: e.t, n: n2(i), bg: on ? '#FCEB3F' : 'transparent', fg: '#0B0B0B', ring: on ? '#FCEB3F' : '#0B0B0B26', cardBg: on ? '#0B0B0B' : '#FFFFFF', cardFg: on ? '#FFFFFF' : '#0B0B0B', cardSh: on ? '0 14px 28px -14px rgba(0,0,0,.5)' : '0 1px 2px rgba(0,0,0,.05)', hint: on ? 'Showing now' : i < ex ? 'Seen' : 'Up next', hintC: on ? '#FCEB3F' : '#6E6E69',
         // progress bar: earlier stages full, the current one fills over EXP_MS, later ones empty

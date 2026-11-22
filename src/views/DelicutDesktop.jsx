@@ -705,7 +705,7 @@ export default function DelicutDesktop({ v }) {
             {/* Scroll story: the phone stays pinned while the three days scroll past beside it; the video follows the day in view. */}
             <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
               {" "}
-              <div style={{ position: "sticky", top: "170px", width: "232px", height: "480px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "sticky", top: v.dlPhoneTop, width: "232px", height: "480px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#FFFFFF" }}>
                   {(v.dlDays || []).map((d, $index) => (
                     <React.Fragment key={$index}>
