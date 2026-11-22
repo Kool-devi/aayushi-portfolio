@@ -9,7 +9,6 @@
 @keyframes wob{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(6deg) scale(1.06)}}
 @keyframes floaty{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-2deg)}}
 
-html { scroll-behavior: smooth; }
 body { margin: 0; background: #EFEFEC; font-family: 'Geist', system-ui, sans-serif; overflow-x: hidden; }
 a { color: var(--color-accent-700); text-underline-offset: 4px; }
 a:hover { color: var(--color-accent-600); }
@@ -17,6 +16,3 @@ a:hover { color: var(--color-accent-600); }
 .site-frame { width: 100%; display: flex; justify-content: center; }
 .site-page { flex: none; overflow: clip; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}

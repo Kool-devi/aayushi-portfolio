@@ -7,6 +7,7 @@ import '../styles/base.css';
 import '../styles/site.css';
 import '../styles/desktop-hover.css';
 import '../styles/mobile-hover.css';
+import { startSmoothScroll } from './smoothScroll.js';
 
 export const DESKTOP_MIN = 1024; // px of window width
 const DESKTOP_W = 1278; // the design boards’ content width
@@ -78,4 +79,5 @@ export function mount(loaders) {
   const desktop = lazy(() => loaders.desktop().then((m) => ({ default: m.default })));
   const mobile = lazy(() => loaders.mobile().then((m) => ({ default: m.default })));
   createRoot(document.getElementById('root')).render(<Frame desktop={desktop} mobile={mobile} />);
+  startSmoothScroll();
 }
