@@ -723,7 +723,11 @@ export default function DelicutMobile({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ height: "260px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20States%20Table.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+          {/* Table zoomed to fill the frame from the top; a fade at the bottom hints at more rows below. */}
+          <div style={{ position: "relative", height: "230px", borderRadius: "20px", overflow: "hidden", padding: "14px 6px 0", boxSizing: "border-box", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            <div role="img" aria-label="Table of home and delivery states" style={{ height: "100%", background: "url('Mockups/Delicut/Delicut%20States%20Table.png') top center/100% auto no-repeat" }}></div>
+            <div aria-hidden="true" style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "110px", background: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,.85) 60%, #FFFFFF 100%)", pointerEvents: "none" }}></div>
+          </div>
         </div>
       </section>
       <section id="day" style={{ margin: "55px 20px 0", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
