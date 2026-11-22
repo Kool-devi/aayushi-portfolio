@@ -7,16 +7,26 @@ import { css, show } from '../lib/template.js';
 // The hero fills the window: its height (in design px) is the window height divided by the
 // page zoom, plus half the ticker, so the ticker peeks in at the bottom edge as a scroll cue.
 // The design was drawn at 748px tall; extra (or missing) height is split evenly above and
-// below the content. Very short, wide windows bottom out at HERO_MIN.
+// below the content. In short windows (laptops, or a 1080p screen minus the browser's
+// toolbars) the content would collide with the ticker, so there the whole hero is zoomed
+// down a little instead (never below HERO_MIN_ZOOM).
 const DESIGN_W = 1278; // must match DESKTOP_W in app/mount.jsx
 const HERO_DESIGN = 748;
-const HERO_MIN = 720;
 const TICKER_PEEK = 28; // half of the 56px ticker
+const MAX_LIFT = 20; // content may move up at most this much (keeps it clear of the header)
+const HERO_TIGHT = 680; // shortest hero (design px) that fits the content at MAX_LIFT
+const HERO_MIN_ZOOM = 0.8;
 
 function heroSize() {
   const zoom = (document.documentElement.clientWidth || window.innerWidth) / DESIGN_W;
-  const height = Math.max(HERO_MIN, Math.round(window.innerHeight / zoom + TICKER_PEEK));
-  return { height, shift: Math.round((height - HERO_DESIGN) / 2) };
+  const room = window.innerHeight / zoom; // window height in design px
+  const height = Math.round(room + TICKER_PEEK);
+  if (height >= HERO_TIGHT) {
+    return { height, shift: Math.max(-MAX_LIFT, Math.round((height - HERO_DESIGN) / 2)), zoom: 1 };
+  }
+  // Zoom the hero so its visible part (HERO_TIGHT minus the peek) exactly fills the window.
+  const heroZoom = Math.max(HERO_MIN_ZOOM, room / (HERO_TIGHT - TICKER_PEEK));
+  return { height: HERO_TIGHT, shift: -MAX_LIFT, zoom: heroZoom };
 }
 
 function useHeroSize() {
@@ -34,7 +44,7 @@ export default function HomeDesktop({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: `${hero.height}px`, "--hero-shift": `${hero.shift}px`, overflow: "hidden", userSelect: "none", touchAction: "none" }}>
+      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: `${hero.height}px`, zoom: hero.zoom, "--hero-shift": `${hero.shift}px`, overflow: "hidden", userSelect: "none", touchAction: "none" }}>
         {" "}
         <div style={{ position: "absolute", inset: "0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 80px) / 10) 100%", backgroundPosition: "40px 0" }}>
           {" "}
@@ -124,7 +134,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "360px", top: "calc(270px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "706px", top: "calc(270px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               03
             </span>
@@ -151,7 +161,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <span style={{ position: "absolute", left: "40px", top: "calc(662px + var(--hero-shift, 0px))", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <span style={{ position: "absolute", left: "40px", top: "min(calc(662px + var(--hero-shift, 0px)), calc(100% - 76px))", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             wireframe_v3.fig — the thinking
           </span>
           {" "}
