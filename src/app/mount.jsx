@@ -7,7 +7,7 @@ import '../styles/base.css';
 import '../styles/site.css';
 import '../styles/desktop-hover.css';
 import '../styles/mobile-hover.css';
-import { startSmoothScroll } from './smoothScroll.js';
+import { scrollToSection, startSmoothScroll } from './smoothScroll.js';
 
 export const DESKTOP_MIN = 1024; // px of window width
 const DESKTOP_W = 1278; // the design boards’ content width
@@ -42,7 +42,7 @@ function ScrollToHash() {
   useEffect(() => {
     const id = decodeURIComponent(location.hash.slice(1));
     if (!id) return;
-    const go = () => document.getElementById(id)?.scrollIntoView({ behavior: 'instant' });
+    const go = () => { const el = document.getElementById(id); if (el) scrollToSection(el, { instant: true }); };
     go();
     // fonts and images can shift the layout a little after first paint
     const t = setTimeout(go, 400);

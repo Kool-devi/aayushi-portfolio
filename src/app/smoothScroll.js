@@ -9,6 +9,22 @@ const LERP = 0.12;
 
 let lenis = null;
 
+// Height (in screen px) of the bars that stay stuck to the top of the page (marked
+// data-sticky, e.g. the site nav and chapter bar on case studies), so a section scrolled
+// to lands just below them rather than hidden underneath.
+export function stickyOffset() {
+  let h = 0;
+  document.querySelectorAll('[data-sticky]').forEach((el) => { h += el.getBoundingClientRect().height; });
+  return h;
+}
+
+// Scroll so `target` sits just below the sticky bars.
+export function scrollToSection(target, { instant = false } = {}) {
+  const offset = -stickyOffset();
+  if (lenis) lenis.scrollTo(target, { offset, immediate: instant, force: true });
+  else window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY + offset, behavior: instant ? 'instant' : 'smooth' });
+}
+
 // In-page links such as “Projects” (#work) glide instead of jumping. Lenis's own `anchors`
 // option doesn't stop the browser's jump, and the two fight (the page overshoots), so the
 // click is handled here instead.
@@ -21,7 +37,7 @@ function onAnchorClick(event) {
   const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
   if (!target) return;
   event.preventDefault();
-  lenis.scrollTo(target);
+  scrollToSection(target);
   if (url.hash !== location.hash) history.pushState(null, '', url.hash);
 }
 

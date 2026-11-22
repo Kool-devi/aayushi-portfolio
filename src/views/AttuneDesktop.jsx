@@ -7,7 +7,8 @@ import { css, show } from '../lib/template.js';
 export default function AttuneDesktop({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
-      <header style={{ background: "#FCEB3F", padding: "14px 40px 0" }}>
+      {/* Site navigation: sticks to the top while scrolling; the chapter bar below docks under it. */}
+      <div data-sticky style={{ position: "sticky", top: "0", zIndex: "6", height: "66px", boxSizing: "border-box", background: "#FCEB3F", padding: "14px 40px 0" }}>
         {" "}
         <div style={{ height: "1px", background: "#0B0B0B" }}></div>
         {" "}
@@ -42,10 +43,12 @@ export default function AttuneDesktop({ v }) {
           </button>
           {" "}
         </div>
+      </div>
+      <header style={{ background: "#FCEB3F", padding: "0 40px" }}>
         {" "}
-        <div style={{ position: "relative", padding: "56px 0 40px", display: "grid", gridTemplateColumns: "minmax(0,8fr) minmax(0,4fr)", gap: "40px", alignItems: "end" }}>
+        <div style={{ position: "relative", padding: "43.35px 0 40px", display: "grid", gridTemplateColumns: "minmax(0,8fr) minmax(0,4fr)", gap: "40px", alignItems: "end" }}>
           {" "}
-          <svg width="560" height="160" viewBox="0 0 760 230" style={{ position: "absolute", left: "330px", top: "112px", pointerEvents: "none", overflow: "visible" }}>
+          <svg width="560" height="160" viewBox="0 0 760 230" style={{ position: "absolute", left: "330px", top: "99.35px", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="380" cy="115" rx="378" ry="100" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-5 380 115)"></ellipse>
           </svg>
           {" "}
@@ -119,7 +122,7 @@ export default function AttuneDesktop({ v }) {
           {" "}
         </div>
       </header>
-      <nav style={{ position: "sticky", top: "0", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 40px" }}>
+      <nav data-sticky style={{ position: "sticky", top: "66px", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 40px" }}>
         {" "}
         <div style={{ display: "flex", alignItems: "center", gap: "6px", height: "64px", overflow: "hidden" }}>
           {" "}
