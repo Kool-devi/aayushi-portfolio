@@ -360,7 +360,7 @@ export default function DelicutDesktop({ v }) {
                 {" "}
               </div>
               {" "}
-              <div style={{ position: "relative", padding: "28px 0 28px 0" }}>
+              <div style={{ position: "relative", width: "88%", padding: "28px 0 28px 0" }}>
                 {" "}
                 <span className="dh9" style={{ position: "absolute", left: "14%", top: "-2px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(-4deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
                   <span style={{ fontSize: "10px", opacity: ".75" }}>
@@ -397,7 +397,7 @@ export default function DelicutDesktop({ v }) {
                   Came back
                 </span>
                 {" "}
-                <div style={{ position: "relative", height: "440px", borderRadius: "22px", background: "#FFFFFF url('Mockups/Delicut/Delicut_Real.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "32px", boxSizing: "border-box", outline: "2px solid #E5322B", outlineOffset: "6px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+                <div style={{ position: "relative", height: "240px", borderRadius: "18px", background: "#FFFFFF url('Mockups/Delicut/Delicut_Real.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "18px 24px", boxSizing: "border-box", outline: "2px solid #E5322B", outlineOffset: "6px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
                   {" "}
                   <span style={{ position: "absolute", left: "18px", top: "-12px", padding: "6px 11px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "12px", fontWeight: "600" }}>
                     Real
