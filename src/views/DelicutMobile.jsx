@@ -661,7 +661,7 @@ export default function DelicutMobile({ v }) {
                 {" "}
               </div>
               {" "}
-              <div style={{ height: "300px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Onboarding%20Elements.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+              <img src="Mockups/Delicut/Delicut%20Onboarding%20Elements.png" alt="Onboarding screens: height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto", borderRadius: "20px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }} />
               {" "}
               <p style={{ margin: "0", fontSize: "15.5px", lineHeight: "1.55", color: "#3C3C38" }}>
                 If the plan hasn’t started yet, users don’t land on an empty dashboard — they see when it starts, when meals are assigned and when the first delivery arrives.
