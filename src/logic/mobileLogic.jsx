@@ -5,6 +5,8 @@ import React from 'react';
 import { stickyOffset } from '../app/smoothScroll.js';
 
 // Case-study pages: which state key holds the highlighted chapter pill.
+const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
+
 const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
 
 export default class MobileLogic extends React.Component {
@@ -40,6 +42,9 @@ export default class MobileLogic extends React.Component {
       });
       const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
       if (atEnd) active = links.length - 1;
+      // Delicut expiry flow: only cycle while the section is on screen
+      const exEl = document.getElementById('expiry');
+      if (exEl) { const r = exEl.getBoundingClientRect(), on = r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25; if (!!this.state.dlEV !== on) this.setState({ dlEV: on }); }
       if (this.state[this.chKey] !== active) {
         this.setState({ [this.chKey]: active });
         const pill = links[active], strip = pill.parentElement;
@@ -137,7 +142,7 @@ export default class MobileLogic extends React.Component {
   dlVals() {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const chap = [['TL;DR','tldr'],['Overview','overview'],['Problem','problem'],['Goals','goals'],['Process','process'],['Onboarding','onboarding'],['27 states','states'],['Day pattern','day'],['Patterns','patterns'],['Expiry','expiry'],['Learned','learned']];
-    const ch = S.dlCh ?? 0, jo = S.dlJ ?? 0, go = S.dlG ?? 0, dy = S.dlD ?? 1, ex = S.dlE ?? 1;
+    const ch = S.dlCh ?? 0, jo = S.dlJ ?? 0, go = S.dlG ?? 0, dy = S.dlD ?? 1, ex = S.dlE ?? 0;
     const jr = [{ t: 'Original', src: U('Mockups/Delicut/Delicut_Original.png'), cap: 'Expected: choose → start → receive → finish', bg: '#FFFFFF', fg: '#0B0B0B' }, { t: 'Real', src: U('Mockups/Delicut/Delicut_Real.png'), cap: 'Reality: skips, pauses, address changes, returns', bg: '#E5322B', fg: '#FFFFFF' }];
     const goals = [['Know what meals are coming, when they arrive, and what can still be changed.', 'Reduce confusion around meal schedules, cut‑offs and delivery rules.'], ['Skip, resume, change meals or update delivery details without getting lost.', 'Make subscription management self‑serve and reduce support dependency.'], ['Keep track of past, current and upcoming plan activity in one place.', 'Support retention by making renewal and continued plan management clearer.']];
     const days = [
@@ -162,9 +167,12 @@ export default class MobileLogic extends React.Component {
       dlDays: days.map((d, i) => { const on = i === dy; return { ...d, n: n2(i), vid: U(d.vid), op: on ? 1 : 0, bg: on ? '#FCEB3F' : 'transparent', fg: on ? '#0B0B0B' : '#FFFFFF', k: on ? '#E5322B' : '#FFFFFF80', onPick: () => this.dlGo(i), onEnd: () => i === (this.state.dlD ?? 1) && this.dlGo((i + 1) % 3), ref: this.dlRef(i) }; }),
       dlDay: days[dy],
       dlPatterns: [{ n: 'Pattern 01', t: 'Skip & resume', src: U('Mockups/Delicut/Delicut Skip Resume.png'), d: 'Manage delivery days from one calendar — active, skipped or unavailable at a glance. Pause and resume stay tied to specific dates, not the whole subscription.' }, { n: 'Pattern 02', t: 'Cut‑off drawer', src: U('Mockups/Delicut/Delicut Cut-off Drawer.png'), d: 'When a delivery can’t be changed, a bottom sheet explains exactly why and shows the cut‑off that passed — no dead‑end taps on a locked day.' }],
-      dlExp: exp.map((e, i) => { const on = i === ex; return { t: e.t, n: n2(i), bg: on ? '#FCEB3F' : 'transparent', fg: '#0B0B0B', ring: on ? '#FCEB3F' : '#0B0B0B', cardBg: on ? '#0B0B0B' : '#FFFFFF', hoverBg: on ? '#0B0B0B' : '#F7F7F4', cardFg: on ? '#FFFFFF' : '#0B0B0B', cardSh: on ? '0 14px 28px -14px rgba(0,0,0,.5)' : '0 1px 2px rgba(0,0,0,.05)', hint: on ? 'Showing now' : 'View state', hintC: on ? '#FCEB3F' : '#6E6E69', arrOp: on ? 0 : 0.5, onPick: pick('dlE', i) }; }),
-      dlExpPrev: () => this.setState({ dlE: ((this.state.dlE ?? 1) + 3) % 4 }), dlExpNext: () => this.setState({ dlE: ((this.state.dlE ?? 1) + 1) % 4 }),
-      dlExpBar: (ex / 3 * 75) + '%', dlExpCur: { ...exp[ex], n: n2(ex) }
+      dlExp: exp.map((e, i) => { const on = i === ex; return { t: e.t, n: n2(i), bg: on ? '#FCEB3F' : 'transparent', fg: '#0B0B0B', ring: on ? '#FCEB3F' : '#0B0B0B26', cardBg: on ? '#0B0B0B' : '#FFFFFF', cardFg: on ? '#FFFFFF' : '#0B0B0B', cardSh: on ? '0 14px 28px -14px rgba(0,0,0,.5)' : '0 1px 2px rgba(0,0,0,.05)', hint: on ? 'Showing now' : i < ex ? 'Seen' : 'Up next', hintC: on ? '#FCEB3F' : '#6E6E69',
+        // progress bar: earlier stages full, the current one fills over EXP_MS, later ones empty
+        track: on ? '#FFFFFF26' : '#0B0B0B14', fillC: on ? '#FCEB3F' : '#0B0B0B', fill: i < ex ? '100%' : '0%', anim: on ? `prog ${EXP_MS}ms linear forwards` : 'none', runKey: on ? 'run' + (S.dlEK ?? 0) : 'idle',
+        onEnd: on ? () => this.setState(s => ({ dlE: ((s.dlE ?? 0) + 1) % 4, dlEK: (s.dlEK ?? 0) + 1 })) : undefined,
+        onPick: () => this.setState(s => ({ dlE: i, dlEK: (s.dlEK ?? 0) + 1 })) }; }),
+      dlExpPlay: S.dlEV ? 'running' : 'paused', dlExpCur: { ...exp[ex], n: n2(ex) }
     };
   }
   csVals() {

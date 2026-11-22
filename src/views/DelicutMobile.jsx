@@ -880,60 +880,29 @@ export default function DelicutMobile({ v }) {
             {" not one screen."}
           </h2>
           {" "}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
-            {" "}
-            <span style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#3C3C38" }}>
-              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5322B" }}></span>
-              Click a stage to see what the home screen shows at that moment
-            </span>
-            {" "}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginRight: "6px" }}>
-                {"Stage "}{show(v.dlExpCur?.n)}{" / 04"}
-              </span>
-              {" "}
-              <button className="mh6" type="button" onClick={v.dlExpPrev} aria-label="Previous stage" style={{ all: "unset", cursor: "pointer", width: "40px", height: "40px", borderRadius: "50%", background: "#FFFFFF", display: "grid", placeItems: "center", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
-                ←
-              </button>
-              {" "}
-              <button className="mh0" type="button" onClick={v.dlExpNext} aria-label="Next stage" style={{ all: "unset", cursor: "pointer", width: "40px", height: "40px", borderRadius: "50%", background: "#0B0B0B", color: "#FFFFFF", display: "grid", placeItems: "center" }}>
-                →
-              </button>
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "6px", padding: "6px", borderRadius: "20px", background: "#E2E2DE" }}>
-            {" "}
-            <span style={{ position: "absolute", left: "31px", top: "34px", bottom: "34px", width: "1.5px", background: "#0B0B0B26" }}></span>
+          {/* Stages play on their own: each row's bar fills over a few seconds, then the next stage takes over, looping. A tap jumps. */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px", padding: "6px", borderRadius: "20px", background: "#E2E2DE" }}>
             {" "}
             {(v.dlExp || []).map((e, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onClick={e?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", display: "grid", gridTemplateColumns: "40px minmax(0,1fr) 16px", alignItems: "center", gap: "14px", minHeight: "56px", padding: "8px 14px 8px 10px", boxSizing: "border-box", borderRadius: "14px", background: e?.cardBg, color: e?.cardFg, boxShadow: e?.cardSh, transition: "background .3s, color .3s, box-shadow .3s" }}>
+                <button type="button" onClick={e?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", display: "flex", alignItems: "center", gap: "14px", minHeight: "62px", padding: "16px 14px 10px 12px", boxSizing: "border-box", borderRadius: "14px", background: e?.cardBg, color: e?.cardFg, boxShadow: e?.cardSh, transition: "background .4s, color .4s, box-shadow .4s" }}>
+                  <span aria-hidden="true" style={{ position: "absolute", left: "14px", right: "14px", top: "7px", height: "3px", borderRadius: "999px", background: e?.track, overflow: "hidden", transition: "background .4s" }}>
+                    <span key={e?.runKey} onAnimationEnd={e?.onEnd} style={{ display: "block", height: "100%", borderRadius: "999px", background: e?.fillC, width: e?.fill, animation: e?.anim, animationPlayState: v.dlExpPlay }}></span>
+                  </span>
                   {" "}
-                  <span style={{ width: "40px", height: "40px", borderRadius: "50%", background: e?.bg, color: e?.fg, border: `1.5px solid ${e?.ring ?? ""}`, boxSizing: "border-box", display: "grid", placeItems: "center", fontSize: "12.5px", fontWeight: "600", transition: "all .3s" }}>
+                  <span style={{ flex: "none", width: "36px", height: "36px", borderRadius: "50%", background: e?.bg, color: e?.fg, border: `1.5px solid ${e?.ring ?? ""}`, boxSizing: "border-box", display: "grid", placeItems: "center", fontSize: "12.5px", fontWeight: "600", transition: "all .4s" }}>
                     {show(e?.n)}
                   </span>
                   {" "}
                   <span style={{ display: "flex", flexDirection: "column", gap: "3px", minWidth: "0" }}>
-                    {" "}
                     <span style={{ fontSize: "15px", fontWeight: "600", lineHeight: "1.2", letterSpacing: "-.01em" }}>
                       {show(e?.t)}
                     </span>
-                    {" "}
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: e?.hintC }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: e?.hintC, transition: "color .4s" }}>
                       {show(e?.hint)}
                     </span>
-                    {" "}
                   </span>
-                  {" "}
-                  <span style={{ fontSize: "14px", textAlign: "right", opacity: e?.arrOp }}>
-                    →
-                  </span>
-                  {" "}
                 </button>
                 {" "}
               </React.Fragment>
