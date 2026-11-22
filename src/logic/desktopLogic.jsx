@@ -5,7 +5,7 @@ import React from 'react';
 import { stickyOffset } from '../app/smoothScroll.js';
 
 // Case-study pages: which state key holds the highlighted chapter pill.
-const EXP_MS = 4500; // Delicut expiry flow: how long each stage shows before the next
+const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
 
 const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
 
