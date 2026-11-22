@@ -1,14 +1,40 @@
 /* eslint-disable */
 // Home page — desktop layout. Generated from the Claude Design board 11a, then hand-tuned.
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import { css, show } from '../lib/template.js';
 
+// The hero fills the window: its height (in design px) is the window height divided by the
+// page zoom, plus half the ticker, so the ticker peeks in at the bottom edge as a scroll cue.
+// The design was drawn at 748px tall; extra (or missing) height is split evenly above and
+// below the content. Very short, wide windows bottom out at HERO_MIN.
+const DESIGN_W = 1278; // must match DESKTOP_W in app/mount.jsx
+const HERO_DESIGN = 748;
+const HERO_MIN = 720;
+const TICKER_PEEK = 28; // half of the 56px ticker
+
+function heroSize() {
+  const zoom = (document.documentElement.clientWidth || window.innerWidth) / DESIGN_W;
+  const height = Math.max(HERO_MIN, Math.round(window.innerHeight / zoom + TICKER_PEEK));
+  return { height, shift: Math.round((height - HERO_DESIGN) / 2) };
+}
+
+function useHeroSize() {
+  const [size, setSize] = useState(heroSize);
+  useEffect(() => {
+    const on = () => setSize(heroSize());
+    window.addEventListener('resize', on);
+    return () => window.removeEventListener('resize', on);
+  }, []);
+  return size;
+}
+
 export default function HomeDesktop({ v }) {
+  const hero = useHeroSize();
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: "748px", overflow: "hidden", userSelect: "none", touchAction: "none" }}>
+      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: `${hero.height}px`, "--hero-shift": `${hero.shift}px`, overflow: "hidden", userSelect: "none", touchAction: "none" }}>
         {" "}
         <div style={{ position: "absolute", inset: "0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 80px) / 10) 100%", backgroundPosition: "40px 0" }}>
           {" "}
@@ -50,37 +76,37 @@ export default function HomeDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "128px", width: "92px", height: "92px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(128px + var(--hero-shift, 0px))", width: "92px", height: "92px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Arrow cue
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "36px", top: "236px", width: "820px", height: "246px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "820px", height: "246px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             H1 · Funnel Sans 400 / 128 · italic on the verb
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "40px", top: "96px", width: "300px", height: "340px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", right: "40px", top: "calc(96px + var(--hero-shift, 0px))", width: "300px", height: "340px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Portrait · 3:4
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "40px", top: "476px", width: "300px", height: "104px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", right: "40px", top: "calc(476px + var(--hero-shift, 0px))", width: "300px", height: "104px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Proof · 2 metrics
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "500px", width: "420px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(500px + var(--hero-shift, 0px))", width: "420px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Lede
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "572px", width: "210px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Primary CTA
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "560px", top: "500px", width: "128px", height: "128px", borderRadius: "50%", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "560px", top: "calc(500px + var(--hero-shift, 0px))", width: "128px", height: "128px", borderRadius: "50%", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Status
           </div>
           {" "}
           <div style={{ position: "absolute", left: "0", right: "0", bottom: "0", height: "56px", borderTop: "1px dashed #0B0B0B59" }}></div>
           {" "}
-          <div style={{ position: "absolute", left: "160px", top: "140px", width: "220px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "160px", top: "calc(140px + var(--hero-shift, 0px))", width: "220px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               01
             </span>
@@ -89,7 +115,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "470px", top: "104px", width: "240px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "470px", top: "calc(104px + var(--hero-shift, 0px))", width: "240px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               02
             </span>
@@ -98,7 +124,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "360px", top: "270px", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", right: "360px", top: "calc(270px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               03
             </span>
@@ -107,7 +133,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "720px", top: "510px", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "720px", top: "calc(510px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               04
             </span>
@@ -116,7 +142,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "280px", top: "586px", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "280px", top: "calc(586px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               05
             </span>
@@ -125,7 +151,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <span style={{ position: "absolute", left: "40px", bottom: "72px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <span style={{ position: "absolute", left: "40px", top: "calc(662px + var(--hero-shift, 0px))", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             wireframe_v3.fig — the thinking
           </span>
           {" "}
@@ -167,23 +193,23 @@ export default function HomeDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "84px", whiteSpace: "nowrap", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(84px + var(--hero-shift, 0px))", whiteSpace: "nowrap", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
             Since 2020
             <br />
             Halifax, Canada
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "128px" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(128px + var(--hero-shift, 0px))" }}>
             <svg width="92" height="92" viewBox="0 0 100 100" style={{ display: "block" }}>
               <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" strokeWidth="7" strokeLinecap="square"></path>
             </svg>
           </div>
           {" "}
-          <svg width="560" height="210" viewBox="0 0 560 210" style={{ position: "absolute", left: "300px", top: "340px", pointerEvents: "none", overflow: "visible" }}>
+          <svg width="560" height="210" viewBox="0 0 560 210" style={{ position: "absolute", left: "300px", top: "calc(340px + var(--hero-shift, 0px))", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
           </svg>
           {" "}
-          <h1 style={{ position: "absolute", left: "36px", top: "236px", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "128px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
+          <h1 style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "128px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
             Innovate
             <br />
             {"with "}
@@ -192,11 +218,11 @@ export default function HomeDesktop({ v }) {
             </span>
           </h1>
           {" "}
-          <div style={{ position: "absolute", right: "40px", top: "96px", width: "300px", height: "340px", background: "#E9DA2E" }}>
+          <div style={{ position: "absolute", right: "40px", top: "calc(96px + var(--hero-shift, 0px))", width: "300px", height: "340px", background: "#E9DA2E" }}>
             <ImageSlot id="v9d-portrait" shape="rect" placeholder="Portrait — 3:4" />
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "40px", top: "444px", width: "300px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
+          <div style={{ position: "absolute", right: "40px", top: "calc(444px + var(--hero-shift, 0px))", width: "300px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
             <span>
               Fig. 01 — Aayushi
             </span>
@@ -205,7 +231,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", right: "40px", top: "476px", width: "300px", display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid #0B0B0B" }}>
+          <div style={{ position: "absolute", right: "40px", top: "calc(476px + var(--hero-shift, 0px))", width: "300px", display: "grid", gridTemplateColumns: "1fr 1fr", borderTop: "1px solid #0B0B0B" }}>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "12px" }}>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "58px", lineHeight: ".85" }}>
@@ -231,11 +257,11 @@ export default function HomeDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <p style={{ position: "absolute", left: "40px", top: "500px", width: "420px", margin: "0", fontSize: "17px", lineHeight: "1.45", letterSpacing: "-.01em" }}>
+          <p style={{ position: "absolute", left: "40px", top: "calc(500px + var(--hero-shift, 0px))", width: "420px", margin: "0", fontSize: "17px", lineHeight: "1.45", letterSpacing: "-.01em" }}>
             Designing products that turn complex problems into clear, human experiences.
           </p>
           {" "}
-          <a className="dh0" href="mailto:aayushipatel2002@gmail.com" style={{ position: "absolute", left: "40px", top: "572px", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
+          <a className="dh0" href="mailto:aayushipatel2002@gmail.com" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
             {"Contact now "}
             <span style={{ display: "block", width: "14px" }}>
               <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
@@ -244,7 +270,7 @@ export default function HomeDesktop({ v }) {
             </span>
           </a>
           {" "}
-          <a href="mailto:aayushipatel2002@gmail.com" aria-label="Open to work — email Aayushi" style={{ position: "absolute", left: "560px", top: "500px", width: "128px", height: "128px", display: "block", color: "#0B0B0B", textDecoration: "none" }}>
+          <a href="mailto:aayushipatel2002@gmail.com" aria-label="Open to work — email Aayushi" style={{ position: "absolute", left: "560px", top: "calc(500px + var(--hero-shift, 0px))", width: "128px", height: "128px", display: "block", color: "#0B0B0B", textDecoration: "none" }}>
             {" "}
             <div style={{ position: "absolute", inset: "0", animation: "spin 36s linear infinite" }}>
               {" "}
