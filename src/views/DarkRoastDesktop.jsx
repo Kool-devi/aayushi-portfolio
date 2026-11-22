@@ -352,15 +352,15 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
           <div style={{ display: "flex", alignItems: "flex-end", gap: "28px" }}>
             {" "}
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "180px", lineHeight: ".78", letterSpacing: "-.07em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "120px", lineHeight: ".78", letterSpacing: "-.07em" }}>
               ~150
             </span>
             {" "}
-            <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05", maxWidth: "16ch" }}>
+            <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1.05", maxWidth: "20ch" }}>
               {"clients told us what they "}
               <span style={{ fontStyle: "italic" }}>
                 wanted improved.
@@ -383,7 +383,7 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csSurvey || []).map((s, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onMouseEnter={s?.onIn} onMouseLeave={s?.onOut} onFocus={s?.onIn} onBlur={s?.onOut} style={{ all: "unset", cursor: "pointer", height: "260px", perspective: "900px" }}>
+                <button type="button" onMouseEnter={s?.onIn} onMouseLeave={s?.onOut} onFocus={s?.onIn} onBlur={s?.onOut} style={{ all: "unset", cursor: "pointer", height: "220px", perspective: "900px" }}>
                   {" "}
                   <div style={{ position: "relative", width: "100%", height: "100%", transformStyle: "preserve-3d", transform: `rotateY(${s?.rot ?? ""})`, transition: "transform .7s cubic-bezier(.3,.9,.3,1)" }}>
                     {" "}
@@ -454,9 +454,9 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.05" }}>
             {"The survey said "}
             <span style={{ fontStyle: "italic" }}>
               what
@@ -658,11 +658,11 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {" "}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
             {" "}
-            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05", maxWidth: "20ch" }}>
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05", maxWidth: "20ch" }}>
               {"Testing the balance between "}
               <span style={{ fontStyle: "italic" }}>
                 density
@@ -691,7 +691,7 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "12px" }}>
             {" "}
-            <div style={{ position: "relative", height: "540px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            <div style={{ position: "relative", height: "350px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
               {" "}
               {(v.csIters || []).map((x, $index) => (
                 <React.Fragment key={$index}>
