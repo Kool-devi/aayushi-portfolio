@@ -2,10 +2,47 @@
 // Page state and behaviour for the desktop layout, ported from the Claude Design prototype.
 // One class serves all four pages; each page renders only its own view.
 import React from 'react';
+import { stickyOffset } from '../app/smoothScroll.js';
+
+// Case-study pages: which state key holds the highlighted chapter pill.
+const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
+
 export default class DesktopLogic extends React.Component {
   state = { copied: false, hov: 0, mx: null, now: new Date() };
-  componentDidMount() { this.clk = setInterval(() => this.setState({ now: new Date() }), 30000); }
-  componentWillUnmount() { clearInterval(this.clk); }
+  componentDidMount() {
+    this.clk = setInterval(() => this.setState({ now: new Date() }), 30000);
+    const page = location.pathname.split('/').pop().replace(/\.html$/, '');
+    this.chKey = CHAPTER_KEY[page];
+    if (this.chKey) {
+      window.addEventListener('scroll', this.onScrollSpy, { passive: true });
+      window.addEventListener('resize', this.onScrollSpy);
+      this.onScrollSpy();
+    }
+  }
+  componentWillUnmount() {
+    clearInterval(this.clk);
+    window.removeEventListener('scroll', this.onScrollSpy);
+    window.removeEventListener('resize', this.onScrollSpy);
+    cancelAnimationFrame(this.spyRaf);
+  }
+  // Scroll spy: the chapter pill follows the section being read — the last chapter whose
+  // section has reached the bottom of the sticky bars (or the last one at the page's end).
+  onScrollSpy = () => {
+    cancelAnimationFrame(this.spyRaf);
+    this.spyRaf = requestAnimationFrame(() => {
+      const links = document.querySelectorAll('nav[data-sticky] a[href^="#"]');
+      if (!links.length) return;
+      const line = stickyOffset() + 24;
+      let active = 0;
+      links.forEach((a, i) => {
+        const el = document.getElementById(a.getAttribute('href').slice(1));
+        if (el && el.getBoundingClientRect().top <= line) active = i;
+      });
+      const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atEnd) active = links.length - 1;
+      if (this.state[this.chKey] !== active) this.setState({ [this.chKey]: active });
+    });
+  };
   copyEmail = () => {
     try { navigator.clipboard.writeText('aayushipatel2002@gmail.com'); } catch (e) {}
     this.setState({ copied: true });
