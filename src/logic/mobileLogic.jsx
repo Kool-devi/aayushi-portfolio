@@ -184,13 +184,13 @@ export default class MobileLogic extends React.Component {
     const folders9 = works.map((w, i) => {
       const depth = i === fo ? 0 : order.indexOf(i) + 1;
       return { ...w, href: sfx === 'd' && ({ darkroast: 'project-darkroast.html', delicut: 'project-delicut.html', case3: 'project-attune.html' })[w.key] || w.href, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 286) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
-        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: ['Lead Product Designer','Product Designer','Product Designer'][i], platform: ['Web app','Web + mobile','Web'][i], year: ['2025','2024','2026'][i], filter: depth === 0 ? 'none' : 'grayscale(1)',
+        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Lead Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web + mobile', case3: 'Web' }[w.key], year: { darkroast: '2025', delicut: '2024', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
         onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
         ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
           rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
           rcR: o ? '150%' : '0px' /* 150% of the pill's reference size reaches past its far (left) edge; 120% fell short */, rcTr: o ? 'clip-path 1.5s cubic-bezier(.45,0,.2,1)' : 'clip-path .9s cubic-bezier(.45,0,.2,1)',
           rcTxtOp: o ? 1 : 0, rcTxtY: o ? '0px' : '6px', rcTxtTr: o ? 'opacity .8s ease .55s, transform .9s cubic-bezier(.2,.8,.2,1) .55s' : 'opacity .2s ease, transform .2s ease',
-          rcInsight: ['Users weren’t slow — the workflow was.', 'Clarity sells better than discounts.', 'Listen first; the design follows.'][i],
+          rcInsight: { darkroast: 'Users weren’t slow — the workflow was.', delicut: 'Clarity sells better than discounts.', case3: 'Listen first; the design follows.' }[w.key],
           rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
     });
     const list = allCmds.filter(c => ['why', 'about', 'email', 'resume'].includes(c.id));
@@ -220,9 +220,10 @@ export default class MobileLogic extends React.Component {
     return sfx ? Object.fromEntries(Object.entries(out).map(([k, v]) => [k.replace('9', '9' + sfx), v])) : out;
   }
   renderVals() {
+    // The order here is the order of the case studies in the Projects section.
     const works = [
-      { key: 'darkroast', title: 'DarkRoast', desc: 'Redesigning the project workspace for faster creative collaboration.', tags: 'Creative Operations · Product Design', href: 'index.html' },
       { key: 'delicut', title: 'Delicut', desc: 'Making meal‑plan subscriptions easier to understand and manage.', tags: 'Subscriptions · Product Design', href: 'project-delicut.html' },
+      { key: 'darkroast', title: 'DarkRoast', desc: 'Redesigning the project workspace for faster creative collaboration.', tags: 'Creative Operations · Product Design', href: 'index.html' },
       { key: 'case3', title: 'Attune AI', desc: 'Designing emotionally intelligent AI support for couples.', tags: 'AI Product · Relationship Support', href: 'project-attune.html' }
     ].map(w => ({ ...w, placeholder: w.title + ' cover' }));
     const about = [
@@ -232,13 +233,13 @@ export default class MobileLogic extends React.Component {
       { n: '04', title: 'Current Experience', body: 'Designing full‑stack digital products for global clients, balancing craft with delivery speed.' },
       { n: '05', title: 'Inspiration', body: 'Architecture, long walks, and late‑night reading fuel most of my best ideas.' }
     ];
-    const extra = [
-      { frame: 'Frame 02 — DarkRoast / Desktop', metric: '−28% task time', tag1: 'Creative Ops' },
-      { frame: 'Frame 03 — Delicut / Mobile', metric: '−35% handoff', tag1: 'Subscriptions' },
-      { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Research‑led', tag1: 'Product' }
-    ];
+    const extra = {
+      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: '−28% task time', tag1: 'Creative Ops' },
+      delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: '−35% handoff', tag1: 'Subscriptions' },
+      case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Research‑led', tag1: 'Product' }
+    };
     const tilts = ['-2deg', '1.5deg', '-1deg'];
-    works.forEach((w, i) => Object.assign(w, extra[i], { tilt: tilts[i] }));
+    works.forEach((w, i) => Object.assign(w, extra[w.key], { tilt: tilts[i] }));
     const hov = this.state.hov ?? 0;
     const worksC = works.map((w, i) => ({
       ...w, num: '(' + String(i + 1).padStart(2, '0') + ')',

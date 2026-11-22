@@ -967,8 +967,8 @@ export default function AttuneMobile({ v }) {
               </span>
             </a>
             {" "}
-            <a className="mh4" href="project-delicut.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
-              ← Delicut
+            <a className="mh4" href="project-darkroast.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
+              ← DarkRoast
             </a>
             {" "}
           </div>

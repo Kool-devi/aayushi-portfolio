@@ -21,7 +21,7 @@ export default function DarkRoastDesktop({ v }) {
           </a>
           {" "}
           <span style={{ gridColumn: "span 3" }}>
-            Case study 01 / 03
+            Case study 02 / 03
             <br />
             DarkRoast
           </span>
@@ -1003,7 +1003,11 @@ export default function DarkRoastDesktop({ v }) {
             </a>
             {" "}
             <a className="dh8" href="project-delicut.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
-              Next: Delicut →
+              ← Delicut
+            </a>
+            {" "}
+            <a className="dh8" href="project-attune.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
+              Next: Attune →
             </a>
             {" "}
           </div>
@@ -1015,7 +1019,7 @@ export default function DarkRoastDesktop({ v }) {
             ← Back to home
           </a>
           <span>
-            Case study 01 / 03 — DarkRoast
+            Case study 02 / 03 — DarkRoast
           </span>
           <span>
             © 2026 Aayushi Patel

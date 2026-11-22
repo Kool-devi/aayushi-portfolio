@@ -24,7 +24,7 @@ export default function DelicutMobile({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "12px" }}>
             <span>
-              Case study 02 / 03 · Delicut
+              Case study 01 / 03 · Delicut
             </span>
             <span style={{ display: "flex", gap: "14px" }}>
               <a href="index.html#work" style={{ color: "#0B0B0B", textDecoration: "none" }}>
@@ -1084,26 +1084,14 @@ export default function DelicutMobile({ v }) {
               </span>
             </a>
             {" "}
-            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", gap: "10px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "10px" }}>
               {" "}
-              <a className="mh7" href="project-darkroast.html" style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "16px", borderRadius: "16px", background: "#FFFFFF12", border: "1px solid #FFFFFF1F", color: "#FFFFFF", textDecoration: "none" }}>
-                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
-                  Previous
-                </span>
-                <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "16px", fontWeight: "600", letterSpacing: "-.01em" }}>
-                  <span>
-                    ←
-                  </span>
-                  {" DarkRoast"}
-                </span>
-              </a>
-              {" "}
-              <a className="mh7" href="project-attune.html" style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "16px", borderRadius: "16px", background: "#FFFFFF12", border: "1px solid #FFFFFF1F", color: "#FFFFFF", textDecoration: "none", alignItems: "flex-end", textAlign: "right" }}>
+              <a className="mh7" href="project-darkroast.html" style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "16px", borderRadius: "16px", background: "#FFFFFF12", border: "1px solid #FFFFFF1F", color: "#FFFFFF", textDecoration: "none", alignItems: "flex-end", textAlign: "right" }}>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
                   Next case
                 </span>
                 <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "16px", fontWeight: "600", letterSpacing: "-.01em" }}>
-                  {"Attune AI "}
+                  {"DarkRoast "}
                   <span>
                     →
                   </span>
@@ -1121,7 +1109,7 @@ export default function DelicutMobile({ v }) {
             ← Back to home
           </a>
           <span>
-            Case study 02 / 03 — Delicut
+            Case study 01 / 03 — Delicut
           </span>
           <span>
             © 2026 Aayushi Patel

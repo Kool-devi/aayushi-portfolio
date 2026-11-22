@@ -25,7 +25,7 @@ export default function DarkRoastMobile({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "12px" }}>
             <span>
-              Case study 01 / 03 · DarkRoast
+              Case study 02 / 03 · DarkRoast
             </span>
             <span style={{ display: "flex", gap: "14px" }}>
               <a href="index.html#work" style={{ color: "#0B0B0B", textDecoration: "none" }}>
@@ -1053,7 +1053,11 @@ export default function DarkRoastMobile({ v }) {
             </a>
             {" "}
             <a className="mh4" href="project-delicut.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
-              Next: Delicut →
+              ← Delicut
+            </a>
+            {" "}
+            <a className="mh4" href="project-attune.html" style={{ height: "56px", padding: "0 24px", borderRadius: "999px", background: "#FFFFFF14", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", fontSize: "15px", fontWeight: "500" }}>
+              Next: Attune →
             </a>
             {" "}
           </div>
@@ -1065,7 +1069,7 @@ export default function DarkRoastMobile({ v }) {
             ← Back to home
           </a>
           <span>
-            Case study 01 / 03 — DarkRoast
+            Case study 02 / 03 — DarkRoast
           </span>
           <span>
             © 2026 Aayushi Patel
