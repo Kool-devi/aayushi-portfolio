@@ -784,9 +784,9 @@ export default function DelicutDesktop({ v }) {
             Key interaction patterns
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1.05" }}>
             {"Two small patterns that remove "}
             <span style={{ fontStyle: "italic" }}>
               dead ends.
@@ -798,18 +798,23 @@ export default function DelicutDesktop({ v }) {
             {(v.dlPatterns || []).map((p, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div style={{ borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden", display: "flex", flexDirection: "column" }}>
+                <div style={{ height: "452px", borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden", display: "grid", gridTemplateColumns: "auto minmax(0,1fr)" }}>
                   {" "}
-                  <div className="dha" style={{ height: "400px", background: `#EFEFEC url(${p?.src ?? ""}) center/contain no-repeat`, transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }}></div>
+                  {/* the phone screen fills the card's height; text sits beside it */}
+                  <div style={{ padding: "16px", background: "#EFEFEC", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
+                    <img className="dha" src={p?.src} alt={p?.t} style={{ display: "block", height: "420px", width: "auto", maxWidth: "none", borderRadius: "18px", boxShadow: "0 1px 2px rgba(0,0,0,.06), 0 18px 34px -20px rgba(0,0,0,.35)", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+                  </div>
                   {" "}
-                  <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "10px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-                      {show(p?.n)}
-                    </span>
-                    <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                      {show(p?.t)}
-                    </span>
-                    <span style={{ fontSize: "15px", lineHeight: "1.55", color: "#3C3C38" }}>
+                  <div style={{ padding: "26px 22px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "12px" }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+                        {show(p?.n)}
+                      </span>
+                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "30px", lineHeight: "1", letterSpacing: "-.04em" }}>
+                        {show(p?.t)}
+                      </span>
+                    </div>
+                    <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#3C3C38" }}>
                       {show(p?.d)}
                     </span>
                   </div>
