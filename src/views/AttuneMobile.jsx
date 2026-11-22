@@ -212,7 +212,7 @@ export default function AttuneMobile({ v }) {
           </h2>
           {" "}
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-            Click a move to jump
+            Tap a move to jump
           </span>
           {" "}
         </div>
@@ -429,9 +429,9 @@ export default function AttuneMobile({ v }) {
             {" "}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
               {" "}
-              <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
-                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0", background: "#FFFFFF" }}></iframe>
+                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", left: "-70px", top: "-70px", width: "600px", height: "1074px", border: "0", background: "#FFFFFF", transform: "scale(.7)", transformOrigin: "0 0" }} /* the prototype draws a 400px phone inside 100px of padding: line that phone up with this screen */></iframe>
                 </div>
               </div>
               {" "}
@@ -484,7 +484,7 @@ export default function AttuneMobile({ v }) {
               {" "}
               <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#E5322B" }}></span>
-                Playing each flow · click to jump
+                Playing each flow · tap to jump
               </span>
               {" "}
             </div>
@@ -508,7 +508,7 @@ export default function AttuneMobile({ v }) {
               </span>
             </div>
             {" "}
-            <div style={{ width: "310px", height: "640px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+            <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
               <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
                 {(v.atModes || []).map((m, $index) => (
                   <React.Fragment key={$index}>
@@ -703,7 +703,7 @@ export default function AttuneMobile({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center", padding: "32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center", padding: "28px 14px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
@@ -726,12 +726,12 @@ export default function AttuneMobile({ v }) {
               ))}
               {" "}
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginTop: "8px" }}>
-                Hover a step — the screen reacts →
+                Tap a step — the screen reacts ↓
               </span>
               {" "}
             </div>
             {" "}
-            <div style={{ width: "290px", height: "600px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+            <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
               <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
                 <div style={{ position: "absolute", inset: "0", background: "#F4F3EE" }}></div>
                 {" "}

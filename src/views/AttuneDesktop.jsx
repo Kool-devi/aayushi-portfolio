@@ -368,7 +368,7 @@ export default function AttuneDesktop({ v }) {
               {" "}
               <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
-                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0", background: "#FFFFFF" }}></iframe>
+                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", left: "-70px", top: "-70px", width: "600px", height: "1074px", border: "0", background: "#FFFFFF", transform: "scale(.7)", transformOrigin: "0 0" }} /* the prototype draws a 400px phone inside 100px of padding: line that phone up with this screen */></iframe>
                 </div>
               </div>
               {" "}
