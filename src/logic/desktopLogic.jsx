@@ -41,6 +41,14 @@ export default class DesktopLogic extends React.Component {
       const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
       if (atEnd) active = links.length - 1;
       if (this.state[this.chKey] !== active) this.setState({ [this.chKey]: active });
+      // Delicut "Time-based pattern": the day block crossing the middle of the screen drives the phone video.
+      const steps = document.querySelectorAll('[data-dlstep]');
+      if (steps.length) {
+        const mid = window.innerHeight * 0.55;
+        let day = 0;
+        steps.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) day = i; });
+        if ((this.state.dlD ?? 0) !== day) this.dlGo(day);
+      }
     });
   };
   copyEmail = () => {
@@ -120,12 +128,12 @@ export default class DesktopLogic extends React.Component {
     };
   }
   dlGo(i) { this.setState({ dlD: i }, () => this.dlSync()); }
-  dlSync() { const cur = this.state.dlD ?? 1; (this._dlEls || []).forEach((v, k) => { if (!v) return; if (k === cur) { v.currentTime = 0; v.play().catch(() => {}); } else { v.pause(); } }); }
-  dlRef(i) { this._dlR = this._dlR || []; return this._dlR[i] || (this._dlR[i] = el => { this._dlEls = this._dlEls || []; this._dlEls[i] = el; if (el) { el.muted = true; if (i === (this.state.dlD ?? 1)) el.play().catch(() => {}); else el.pause(); } }); }
+  dlSync() { const cur = this.state.dlD ?? 0; (this._dlEls || []).forEach((v, k) => { if (!v) return; if (k === cur) { v.currentTime = 0; v.play().catch(() => {}); } else { v.pause(); } }); }
+  dlRef(i) { this._dlR = this._dlR || []; return this._dlR[i] || (this._dlR[i] = el => { this._dlEls = this._dlEls || []; this._dlEls[i] = el; if (el) { el.muted = true; if (i === (this.state.dlD ?? 0)) el.play().catch(() => {}); else el.pause(); } }); }
   dlVals() {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const chap = [['TL;DR','tldr'],['Overview','overview'],['Problem','problem'],['Goals','goals'],['Process','process'],['Onboarding','onboarding'],['27 states','states'],['Day pattern','day'],['Patterns','patterns'],['Expiry','expiry'],['Learned','learned']];
-    const ch = S.dlCh ?? 0, jo = S.dlJ ?? 0, go = S.dlG ?? 0, dy = S.dlD ?? 1, ex = S.dlE ?? 1;
+    const ch = S.dlCh ?? 0, jo = S.dlJ ?? 0, go = S.dlG ?? 0, dy = S.dlD ?? 0, ex = S.dlE ?? 1;
     const jr = [{ t: 'Original', src: U('Mockups/Delicut/Delicut_Original.png'), cap: 'Expected: choose → start → receive → finish', bg: '#FFFFFF', fg: '#0B0B0B' }, { t: 'Real', src: U('Mockups/Delicut/Delicut_Real.png'), cap: 'Reality: skips, pauses, address changes, returns', bg: '#E5322B', fg: '#FFFFFF' }];
     const goals = [['Know what meals are coming, when they arrive, and what can still be changed.', 'Reduce confusion around meal schedules, cut‑offs and delivery rules.'], ['Skip, resume, change meals or update delivery details without getting lost.', 'Make subscription management self‑serve and reduce support dependency.'], ['Keep track of past, current and upcoming plan activity in one place.', 'Support retention by making renewal and continued plan management clearer.']];
     const days = [
@@ -147,7 +155,7 @@ export default class DesktopLogic extends React.Component {
       dlKnow: ['What information users had already provided', 'What choices had already been made', 'What they’d expect to see after subscribing', 'Which parts should continue naturally into mobile'].map((t, i) => ({ t, n: n2(i) })),
       dlOnb: ['Activity level', 'Height', 'Current weight', 'Target weight', 'Fitness device'].map((t, i) => ({ t, n: n2(i) })),
       dlAxes: ['Plan status', 'Selected date', 'Delivery status', 'Meal assignment', 'Cut‑off rules'],
-      dlDays: days.map((d, i) => { const on = i === dy; return { ...d, vid: U(d.vid), op: on ? 1 : 0, bg: on ? '#FCEB3F' : 'transparent', fg: on ? '#0B0B0B' : '#FFFFFF', k: on ? '#E5322B' : '#FFFFFF80', onPick: () => this.dlGo(i), onEnd: () => i === (this.state.dlD ?? 1) && this.dlGo((i + 1) % 3), ref: this.dlRef(i) }; }),
+      dlDays: days.map((d, i) => { const on = i === dy; return { ...d, n: n2(i), stepOp: on ? 1 : 0.3, vid: U(d.vid), op: on ? 1 : 0, bg: on ? '#FCEB3F' : 'transparent', fg: on ? '#0B0B0B' : '#FFFFFF', k: on ? '#E5322B' : '#FFFFFF80', onPick: () => this.dlGo(i), onEnd: () => i === (this.state.dlD ?? 0) && this.dlGo(i) /* replay: scrolling, not the clock, moves to the next day */, ref: this.dlRef(i) }; }),
       dlDay: days[dy],
       dlPatterns: [{ n: 'Pattern 01', t: 'Skip & resume', src: U('Mockups/Delicut/Delicut Skip Resume.png'), d: 'Manage delivery days from one calendar — active, skipped or unavailable at a glance. Pause and resume stay tied to specific dates, not the whole subscription.' }, { n: 'Pattern 02', t: 'Cut‑off drawer', src: U('Mockups/Delicut/Delicut Cut-off Drawer.png'), d: 'When a delivery can’t be changed, a bottom sheet explains exactly why and shows the cut‑off that passed — no dead‑end taps on a locked day.' }],
       dlExp: exp.map((e, i) => { const on = i === ex; return { t: e.t, n: n2(i), bg: on ? '#FCEB3F' : 'transparent', fg: '#0B0B0B', ring: on ? '#FCEB3F' : '#0B0B0B', cardBg: on ? '#0B0B0B' : '#FFFFFF', hoverBg: on ? '#0B0B0B' : '#F7F7F4', cardFg: on ? '#FFFFFF' : '#0B0B0B', cardSh: on ? '0 14px 28px -14px rgba(0,0,0,.5)' : '0 1px 2px rgba(0,0,0,.05)', hint: on ? 'Showing now' : 'View state', hintC: on ? '#FCEB3F' : '#6E6E69', arrOp: on ? 0 : 0.5, onPick: pick('dlE', i) }; }),

@@ -707,27 +707,11 @@ export default function DelicutDesktop({ v }) {
               {" depending on the day you’re looking at."}
             </h2>
             {" "}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "8px", padding: "6px", borderRadius: "999px", background: "#FFFFFF14" }}>
+            {/* Scroll story: the phone stays pinned while the three days scroll past beside it; the video follows the day in view. */}
+            <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
               {" "}
-              {(v.dlDays || []).map((d, $index) => (
-                <React.Fragment key={$index}>
-                  {" "}
-                  <button type="button" onClick={d?.onPick} style={{ all: "unset", cursor: "pointer", height: "56px", borderRadius: "999px", background: d?.bg, color: d?.fg, display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", fontSize: "16px", fontWeight: "500", transition: "all .35s" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: d?.k }}>
-                      {show(d?.rel)}
-                    </span>
-                    {show(d?.t)}
-                  </button>
-                  {" "}
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-            <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: "40px", alignItems: "center" }}>
-              {" "}
-              <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
+              <div style={{ position: "sticky", top: "170px", width: "232px", height: "480px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#FFFFFF" }}>
                   {(v.dlDays || []).map((d, $index) => (
                     <React.Fragment key={$index}>
                       <video src={d?.vid} ref={d?.ref} onEnded={d?.onEnd} muted playsInline preload="auto" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", opacity: d?.op, transition: "opacity .5s" }}></video>
@@ -736,36 +720,43 @@ export default function DelicutDesktop({ v }) {
                 </div>
               </div>
               {" "}
-              <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+              <div style={{ display: "flex", flexDirection: "column" }}>
                 {" "}
-                <div style={{ display: "flex", gap: "8px" }}>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
-                    Active plan
-                  </span>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
-                    {show(v.dlDay?.badge)}
-                  </span>
-                </div>
-                {" "}
-                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "76px", lineHeight: ".9", letterSpacing: "-.06em" }}>
-                  {show(v.dlDay?.t)}
-                </span>
-                {" "}
-                <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", color: "#FFFFFFcc", maxWidth: "46ch" }}>
-                  {show(v.dlDay?.d)}
-                </p>
-                {" "}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                  {" "}
-                  {(v.dlDay?.acts || []).map((a, $index) => (
-                    <React.Fragment key={$index}>
-                      <span style={{ padding: "10px 14px", borderRadius: "999px", border: "1px solid #FFFFFF33", fontSize: "14px" }}>
-                        {show(a)}
+                {(v.dlDays || []).map((d, $index) => (
+                  <React.Fragment key={$index}>
+                    <div data-dlstep={$index} style={{ minHeight: "440px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "20px", opacity: d?.stepOp, transition: "opacity .45s" }}>
+                      {" "}
+                      <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F", marginRight: "4px" }}>
+                          {show(d?.n)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
+                          {show(d?.rel)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
+                          {show(d?.badge)}
+                        </span>
+                      </div>
+                      {" "}
+                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "64px", lineHeight: ".9", letterSpacing: "-.06em" }}>
+                        {show(d?.t)}
                       </span>
-                    </React.Fragment>
-                  ))}
-                  {" "}
-                </div>
+                      {" "}
+                      <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", color: "#FFFFFFcc", maxWidth: "46ch" }}>
+                        {show(d?.d)}
+                      </p>
+                      {" "}
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+                        {(d?.acts || []).map((a, k) => (
+                          <span key={k} style={{ padding: "10px 14px", borderRadius: "999px", border: "1px solid #FFFFFF33", fontSize: "14px" }}>
+                            {show(a)}
+                          </span>
+                        ))}
+                      </div>
+                      {" "}
+                    </div>
+                  </React.Fragment>
+                ))}
                 {" "}
               </div>
               {" "}
