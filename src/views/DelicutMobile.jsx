@@ -601,13 +601,11 @@ export default function DelicutMobile({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ padding: "26px 30px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", alignItems: "center" }}>
+          <div style={{ padding: "22px 24px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-              Design
-              <br />
-              decision
+              Design decision
             </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "25px", lineHeight: "1.15", letterSpacing: "-.04em" }}>
               {"Treat the app as the next step in the same customer journey — "}
               <span style={{ fontStyle: "italic" }}>
                 not a separate product.
@@ -673,13 +671,11 @@ export default function DelicutMobile({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ padding: "26px 30px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "18px", alignItems: "center" }}>
+          <div style={{ padding: "22px 24px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "10px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-              Design
-              <br />
-              decision
+              Design decision
             </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "25px", lineHeight: "1.15", letterSpacing: "-.04em" }}>
               {"The end of onboarding needed to explain "}
               <span style={{ fontStyle: "italic" }}>
                 what happens next
