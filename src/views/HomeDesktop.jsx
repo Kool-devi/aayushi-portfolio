@@ -358,7 +358,7 @@ export default function HomeDesktop({ v }) {
         {" "}
         <div onPointerDown={v.onSeam9dDown} style={{ position: "absolute", top: "64px", bottom: "56px", left: v.seam9dLeft, width: "40px", marginLeft: "-20px", cursor: "ew-resize", display: "flex", justifyContent: "center" }}>
           {" "}
-          <span style={{ width: "1px", height: "100%", background: "#0B0B0B" }}></span>
+          <span style={{ width: "1px", height: "calc(100% + 50px)", marginTop: "-50px", background: "#0B0B0B" }}></span>
           {" "}
           <span style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", width: "54px", height: "54px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "17px" }}>
             ⟷
