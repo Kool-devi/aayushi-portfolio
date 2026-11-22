@@ -8,7 +8,8 @@ export default function DarkRoastMobile({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <header style={{ background: "#FCEB3F", padding: "14px 20px 0" }}>
+      {/* Site navigation: sticks to the top while scrolling; the chapter bar below docks under it. */}
+      <div data-sticky style={{ position: "sticky", top: "0", zIndex: "6", height: "70px", boxSizing: "border-box", background: "#FCEB3F", padding: "14px 20px 0" }}>
         {" "}
         <div style={{ height: "1px", background: "#0B0B0B" }}></div>
         {" "}
@@ -39,9 +40,11 @@ export default function DarkRoastMobile({ v }) {
           {" "}
         </div>
         {" "}
-        <div style={{ position: "relative", padding: "20px 0 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "end" }}>
+      </div>
+      <header style={{ background: "#FCEB3F", padding: "0 20px" }}>
+        <div style={{ position: "relative", padding: "13.3px 0 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "end" }}>
           {" "}
-          <svg width="279" height="77" viewBox="0 0 760 230" style={{ position: "absolute", left: "-20px", top: "96px", pointerEvents: "none", overflow: "visible" }}>
+          <svg width="279" height="77" viewBox="0 0 760 230" style={{ position: "absolute", left: "-20px", top: "89.3px", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="380" cy="115" rx="378" ry="100" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-5 380 115)"></ellipse>
           </svg>
           {" "}
@@ -106,7 +109,7 @@ export default function DarkRoastMobile({ v }) {
         {" "}
       </header>
       {" "}
-      <nav style={{ position: "sticky", top: "0", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 20px" }}>
+      <nav data-sticky style={{ position: "sticky", top: "70px", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 20px" }}>
         {" "}
         <div style={{ display: "flex", alignItems: "center", gap: "6px", height: "64px", overflowX: "auto", scrollbarWidth: "none" }}>
           {" "}
