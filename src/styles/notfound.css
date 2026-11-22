@@ -1,0 +1,35 @@
+/* 404 page base styles (from the design). */
+body{margin:0;background:#FCEB3F;color:#0B0B0B;font-family:'Geist',sans-serif;overflow-x:hidden}
+a{color:#0B0B0B;text-underline-offset:4px}
+a:hover{color:#E5322B}
+input::placeholder{color:#6E6E69}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* Phones: the design was drawn for desktop, so restack it for narrow screens. */
+@media (max-width: 760px) {
+  .nf-screen { height: auto !important; min-height: 100svh !important; }
+  .nf-head { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; row-gap: 8px !important; }
+  .nf-head > :first-child, .nf-head > :nth-child(2) { grid-column: span 3 !important; }
+  .nf-pokes, .nf-cursor { display: none !important; }
+  .nf-main {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    padding: 20px 20px 36px !important;
+    column-gap: 4vw !important;
+    row-gap: 0 !important;
+    align-content: center;
+  }
+  .nf-four { font-size: 46vw !important; line-height: .78 !important; }
+  .nf-four-a { grid-column: 1 !important; grid-row: 1 !important; justify-self: start !important; }
+  .nf-four-b { grid-column: 2 !important; grid-row: 3 !important; justify-self: end !important; }
+  .nf-ring { grid-column: 1 / -1; grid-row: 2; justify-self: center; width: min(80vw, 330px) !important; margin: -16vw 0 -14vw; z-index: 2; }
+  .nf-sticker { font-size: 10px !important; padding: 6px 9px !important; }
+  .nf-sticker:nth-of-type(1), .nf-sticker:nth-of-type(2), .nf-sticker:nth-of-type(4) { display: none !important; }
+  .nf-sticker:nth-of-type(3) { bottom: 8% !important; left: 5% !important; right: auto !important; }
+  .nf-bottom { grid-template-columns: minmax(0, 1fr) !important; padding: 0 20px 20px !important; gap: 16px !important; }
+  .nf-bottom p { font-size: 26px !important; }
+  .nf-links { justify-content: flex-start !important; }
+}

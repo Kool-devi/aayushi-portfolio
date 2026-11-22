@@ -1,0 +1,379 @@
+/* eslint-disable */
+// Page state and behaviour for the desktop layout, ported from the Claude Design prototype.
+// One class serves all four pages; each page renders only its own view.
+import React from 'react';
+export default class DesktopLogic extends React.Component {
+  state = { copied: false, hov: 0, mx: null, now: new Date() };
+  componentDidMount() { this.clk = setInterval(() => this.setState({ now: new Date() }), 30000); }
+  componentWillUnmount() { clearInterval(this.clk); }
+  copyEmail = () => {
+    try { navigator.clipboard.writeText('aayushipatel2002@gmail.com'); } catch (e) {}
+    this.setState({ copied: true });
+    clearTimeout(this.t); this.t = setTimeout(() => this.setState({ copied: false }), 1800);
+  };
+  atGo(i) { this.setState({ atM: i, atSt: 0, atK: 0 }); }
+  atStart() { if (this._atInt) return; this._atInt = setInterval(() => { if (!this._atEl || !document.body.contains(this._atEl)) { clearInterval(this._atInt); this._atInt = null; return; } this.setState(s => { const L = 5, m = s.atM ?? 0, st = s.atSt ?? 0, k = (s.atK ?? 0) + 1; if (k < L) return { atK: k }; if (st < 3) return { atSt: st + 1, atK: 0 }; return { atM: (m + 1) % 4, atSt: 0, atK: 0 }; }); }, 1000); }
+  atVals() {
+    const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
+    const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
+    const L = 5, m = S.atM ?? 0, st = S.atSt ?? 0, k = S.atK ?? 0;
+    const chap = [['Moves','moves'],['Problem','problem'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
+    const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
+    const modes = [
+      { t: 'Reflect', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
+        { t: 'Start anywhere', note: 'Familiar chat pattern — nothing new to learn.', k: 'Reflect · private', title: 'What’s on your mind?', chips: ['I felt ignored today', 'Something’s bothering me', 'Help me put it into words'], sel: 0, input: true },
+        { t: 'Talk it through', note: 'Text or voice — whatever’s easier in the moment.', k: 'Reflect · private', title: 'Take your time.', bubbles: [['me', 'I felt ignored at dinner tonight.'], ['ai', 'That sounds lonely. What did you need in that moment?'], ['me', 'Just for him to ask about my day.']], input: true },
+        { t: 'AI reflects back', note: 'AI mirrors feelings — it doesn’t judge or advise.', k: 'Reflect · private', title: 'Here’s what I’m hearing.', card: ['Reflection', 'You want to feel noticed — not to win an argument.'], chips: ['Lonely', 'Unseen', 'Hopeful'], sel: 1 },
+        { t: 'You choose what’s next', note: 'Nothing is shared unless you decide.', k: 'Reflect · private', title: 'What would help now?', btns: [['Keep this private', 1], ['Prepare to talk to my partner', 0], ['Move to Repair', 0]] }] },
+      { t: 'Repair', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
+        { t: 'Body check‑in', note: 'Start with the body, not the argument.', k: 'Repair · step 1 of 4', title: 'Where do you feel it right now?', chips: ['Chest', 'Jaw', 'Stomach', 'Hands'], sel: 0, card: ['Intensity', '●●●●●●●○○○  7 / 10'] },
+        { t: 'Ground yourself', note: 'Slow the flow down before any reflection.', k: 'Repair · step 2 of 4', title: 'Let’s slow down together.', circle: 'breath' },
+        { t: 'Guided reflection', note: 'One gentle question at a time.', k: 'Repair · step 3 of 4', title: 'What happened?', bubbles: [['ai', 'In a few words, what happened?'], ['me', 'We argued about money again.'], ['ai', 'What were you feeling underneath the anger?']] },
+        { t: 'Reconnect — only if ready', note: 'Every shared step is explicit and opt‑in.', k: 'Repair · step 4 of 4', title: 'Ready to reconnect?', card: ['🔒 Private', 'Your partner sees nothing until you choose to share.'], btns: [['Not yet', 0], ['Prepare a message', 1]] }] },
+      { t: 'Resolve', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
+        { t: 'Both opt in', note: 'Mutual consent — no one gets ambushed.', k: 'Resolve · together', title: 'Start only when you’re both ready.', bubbles: [['p', 'Aanya joined ✓'], ['me', 'Sam joined ✓']], btns: [['Start together', 1]] },
+        { t: 'Agree ground rules', note: 'Agreed before anyone speaks.', k: 'Resolve · together', title: 'Our ground rules', chips: ['One speaker at a time', 'No interrupting', 'Pause anytime', 'Assume good intent'], sel: 9, all: true },
+        { t: 'Take turns', note: 'Protected, equal speaking time.', k: 'Resolve · Sam’s turn', title: 'Sam has the floor.', circle: 'timer' },
+        { t: 'AI checks understanding', note: 'AI clarifies — it never picks a side.', k: 'Resolve · clarify', title: 'Quick check, Aanya.', card: ['Attune', 'Did you hear Sam say he feels unappreciated?'], btns: [['Yes, that’s right', 1], ['Not quite', 0]] }] },
+      { t: 'Refine', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
+        { t: 'Plan a session', note: 'Growth on your own rhythm — schedule and repeat.', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
+        { t: 'Guided prompt', note: 'Small prompts and activities, not therapy homework.', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
+        { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺'], ['ai', '✦ Nice — try saying why it mattered.']] },
+        { t: 'Knows when to switch', note: 'If it gets too intense, it suggests Repair.', k: 'Refine · focus check', title: 'This feels heavy.', card: ['Attune', 'Want to pause and move into Repair instead?'], btns: [['Switch to Repair', 1], ['Keep going', 0]] }] }];
+    const cur = modes[m];
+    const mkScreen = (s, j) => {
+      const on = j === st, kk = on ? k : 0, vis = d => on && kk >= d;
+      const bub = (s.bubbles || []).map(([side, t], b) => ({ t, al: side === 'me' ? 'flex-end' : 'flex-start', r: side === 'me' ? '14px 14px 4px 14px' : '14px 14px 14px 4px', bg: side === 'me' ? '#FFFFFF' : side === 'p' ? '#FCEB3F' : 'rgba(255,255,255,.18)', fg: side === 'ai' ? '#FFFFFF' : '#0B0B0B', op: vis(b) ? 1 : 0, y: vis(b) ? '0px' : '10px' }));
+      const chips = (s.chips || []).map((t, c) => { const lit = s.all ? vis(c) : (c === s.sel && vis(2)); return { t, bg: lit ? '#FFFFFF' : 'transparent', fg: lit ? '#0B0B0B' : '#FFFFFF' }; });
+      const btns = (s.btns || []).map(([t, p], b) => ({ t, bg: p ? '#FFFFFF' : 'transparent', fg: p ? '#0B0B0B' : '#FFFFFF', op: vis(b + 1) ? 1 : 0, y: vis(b + 1) ? '0px' : '10px' }));
+      const breath = s.circle === 'breath', timer = s.circle === 'timer';
+      return { k: s.k, title: s.title, bubbles: bub, chips, btns, hasInput: !!s.input, hasCard: !!s.card, ck: s.card ? s.card[0] : '', ct: s.card ? s.card[1] : '', cardOp: vis(1) ? 1 : 0, cardY: vis(1) ? '0px' : '10px',
+        hasCircle: !!s.circle, cs: breath ? (kk % 2 ? 1 : 0.5) : timer ? (0.3 + 0.7 * (kk + 1) / L) : 1, cl: breath ? (kk % 2 ? 'Breathe out' : 'Breathe in') : timer ? 'Sam · 0:' + String(45 - kk * 7).padStart(2, '0') + '\nleft' : '',
+        op: on ? 1 : 0, x: j < st ? '-24px' : j > st ? '24px' : '0px' };
+    };
+    const safe = [
+      { t: 'Pause the live session', sheetK: 'Session paused', sheetT: 'Let’s pause here for a moment.', btns: [{ t: 'Take a breath', r: '→', bg: '#0B0B0B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Check on the user first', sheetK: 'Checking in', sheetT: 'Before we continue — are you safe right now?', btns: [{ t: 'I’m safe', r: '→', bg: '#EFEFEC', fg: '#0B0B0B' }, { t: 'I need support', r: '→', bg: '#E5322B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Bring real support forward', sheetK: 'Support near you', sheetT: 'You don’t have to handle this alone.', btns: [{ t: 'Local crisis line', r: 'Call', bg: '#0B0B0B', fg: '#FFFFFF' }, { t: 'Emergency services', r: 'Call', bg: '#EFEFEC', fg: '#0B0B0B' }], live: ['Ended', '#E5322B'] }];
+    const groups = ['Button', 'Card', 'Input', 'Chip'];
+    const tiles = Array.from({ length: 16 }, (_, i) => ({ g: i % 4, v: Math.floor(i / 4) }));
+    const mix = [5, 12, 2, 9, 14, 0, 7, 11, 3, 15, 6, 1, 10, 13, 4, 8];
+    const roleRows = [['Who’s in it', x => x.who === 1 ? 'Just me' : 'Both of us', x => x.who === 1 ? '●' : '●●'], ['AI’s role', x => x.role, () => ''], ['Pace', x => x.pace, () => '']];
+    return {
+      atChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
+      atHeroModes: modes.map((x, i) => ({ t: x.t, k: x.k, q: x.q, n: n2(i), img: U(x.img), flex: i === hm ? 3 : 1, qOp: i === hm ? 1 : 0, onPick: pick('atH', i) })),
+      atMoves: [['Gave every mode a role', 'roles'], ['Mapped private → shared', 'model'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
+      atSame: ['Alone with a thought', 'Right after a fight', 'Conflict, together', 'A crisis moment'].map((t, i) => ({ t, n: n2(i) })),
+      atRoleCols: modes.map((x, i) => ({ t: x.t, n: n2(i), bg: i === rc ? '#0B0B0B' : 'transparent', fg: i === rc ? '#FFFFFF' : '#0B0B0B', nc: i === rc ? '#FCEB3F' : '#E5322B', onPick: pick('atRc', i) })),
+      atRoleRows: roleRows.map(([kk, f, d]) => ({ k: kk, cells: modes.map((x, i) => ({ t: f(x), dots: d(x), bg: i === rc ? '#0B0B0B' : 'transparent', fg: i === rc ? '#FFFFFF' : '#0B0B0B', bd: i === rc ? '#FFFFFF1F' : '#0B0B0B14' })) })),
+      atModelDot: ['12.5%', '37.5%', '62.5%', '87.5%'][md],
+      atModelCards: modes.map((x, i) => ({ t: x.t, q: x.q, img: U(x.img), lift: i === md ? '-8px' : '0px', sh: i === md ? '0 24px 40px -20px rgba(0,0,0,.45)' : '0 1px 2px rgba(0,0,0,.05)', onPick: pick('atMd', i) })),
+      atModes: modes.map((x, i) => { const on = i === m; return { t: x.t, k: x.k, n: n2(i), img: U(x.img), onMode: () => this.atGo(i), tabBg: on ? '#FCEB3F' : 'transparent', tabFg: on ? '#0B0B0B' : '#FFFFFF', tabK: on ? '#E5322B' : '#FFFFFF80', prog: on ? ((st * L + k + 1) / (4 * L) * 100) + '%' : '0%', op: on ? 1 : 0, sc: on ? 1.06 : 1.14, pillBg: on ? '#FFFFFF' : 'transparent', pillFg: on ? '#0B0B0B' : '#FFFFFF' }; }),
+      atMode: { t: cur.t, k: cur.k, role: cur.role, kBg: cur.k === 'Private' ? '#FFFFFF' : '#FCEB3F' },
+      atScreens: cur.steps.map(mkScreen),
+      atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
+      atModesRef: el => { this._atEl = el; if (el) this.atStart(); },
+      atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
+      atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
+      atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
+      atSysCap: sy ? 'After: 4 components with variants, organised module by module.' : 'Before: near‑identical one‑offs scattered across screens.',
+      atTiles: tiles.map((x, i) => { const master = x.v === 0; return sy ? { ord: x.g * 4 + x.v, t: groups[x.g], k: master ? 'Component' : 'Variant /' + (x.v + 1), bg: master ? '#0B0B0B' : '#FFFFFF', fg: master ? '#FFFFFF' : '#0B0B0B', bd: master ? '#0B0B0B' : '#0B0B0B33', kc: master ? '#FCEB3F' : '#E5322B' } : { ord: mix[i], t: groups[x.g] + ' copy ' + (x.v + 2), k: 'Screen ' + (mix[i] + 12), bg: '#EFEFEC', fg: '#6E6E69', bd: '#EFEFEC', kc: '#6E6E69' }; }),
+      atOut: ['Clear role per mode', 'Private vs. shared boundaries', 'Context‑aware AI behaviour', 'Explicit consent', 'A real Safety layer', 'Handoff‑ready system'],
+      atLearn: ['Why is AI here?', 'What should it know?', 'What stays private?', 'When should it stop?'].map((t, i) => ({ t, n: n2(i) }))
+    };
+  }
+  dlGo(i) { this.setState({ dlD: i }, () => this.dlSync()); }
+  dlSync() { const cur = this.state.dlD ?? 1; (this._dlEls || []).forEach((v, k) => { if (!v) return; if (k === cur) { v.currentTime = 0; v.play().catch(() => {}); } else { v.pause(); } }); }
+  dlRef(i) { this._dlR = this._dlR || []; return this._dlR[i] || (this._dlR[i] = el => { this._dlEls = this._dlEls || []; this._dlEls[i] = el; if (el) { el.muted = true; if (i === (this.state.dlD ?? 1)) el.play().catch(() => {}); else el.pause(); } }); }
+  dlVals() {
+    const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
+    const chap = [['TL;DR','tldr'],['Overview','overview'],['Problem','problem'],['Goals','goals'],['Process','process'],['Onboarding','onboarding'],['27 states','states'],['Day pattern','day'],['Patterns','patterns'],['Expiry','expiry'],['Learned','learned']];
+    const ch = S.dlCh ?? 0, jo = S.dlJ ?? 0, go = S.dlG ?? 0, dy = S.dlD ?? 1, ex = S.dlE ?? 1;
+    const jr = [{ t: 'Original', src: U('Mockups/Delicut/Delicut_Original.png'), cap: 'Expected: choose → start → receive → finish', bg: '#FFFFFF', fg: '#0B0B0B' }, { t: 'Real', src: U('Mockups/Delicut/Delicut_Real.png'), cap: 'Reality: skips, pauses, address changes, returns', bg: '#E5322B', fg: '#FFFFFF' }];
+    const goals = [['Know what meals are coming, when they arrive, and what can still be changed.', 'Reduce confusion around meal schedules, cut‑offs and delivery rules.'], ['Skip, resume, change meals or update delivery details without getting lost.', 'Make subscription management self‑serve and reduce support dependency.'], ['Keep track of past, current and upcoming plan activity in one place.', 'Support retention by making renewal and continued plan management clearer.']];
+    const days = [
+      { rel: 'Past', t: 'Yesterday', badge: 'Rate meal', vid: 'Videos/Delicut/4New.mov', d: 'Past days have a different purpose. Delivery controls give way to reviewing and rating meals — and if the delivery was skipped, rating isn’t shown at all.', acts: ['Rate meals', 'Review delivery'] },
+      { rel: 'Locked', t: 'Today', badge: 'View only', vid: 'Videos/Delicut/2New.mov', d: 'Today’s delivery is already locked. Users see assigned meals and delivery details but can’t change them — the restriction is clear without the screen feeling disabled.', acts: ['See assigned meals', 'Delivery details'] },
+      { rel: 'Flexible', t: 'Tomorrow', badge: 'Manage delivery', vid: 'Videos/Delicut/3New.mov', d: 'Before the cut‑off, future days are the most action‑heavy state. The priority: make options easy to find without overcrowding the meal cards.', acts: ['Change meal', 'Skip delivery', 'Resume delivery', 'Change address'] }];
+    const exp = [
+      { t: 'Active', d: 'The full daily experience — meals, deliveries and every time‑based action.', shows: 'meals & delivery controls' },
+      { t: 'Expiring soon', d: 'With only a short time left, the customer sees the plan approaching its end — creating space to renew before deliveries stop.', shows: '7‑day renewal banner' },
+      { t: 'Expired', d: 'Future meal controls disappear. The product shifts toward one clear next step, without feeling broken or empty.', shows: 'last plan + Renew plan' },
+      { t: 'Renewed', d: 'Returning customers find a familiar way back into Delicut — plan details they recognise, minimal friction to restart.', shows: 'back to active' }];
+    const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
+    return {
+      dlChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ dlCh: i }) })),
+      dlJourneys: jr.map((j, i) => ({ ...j, op: i === jo ? 1 : 0, y: i === jo ? '0px' : '12px', w: i === jo ? 600 : 500, onPick: pick('dlJ', i) })),
+      dlJourneysN: 2, dlJourneysW: 'calc(50% - 4px)', dlJourneyLeft: jo ? '50%' : '4px', dlJourneyCur: jr[jo],
+      dlGoals: goals.map(([u, b], i) => { const on = i === go; return { u, b, n: n2(i), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', k: on ? '#FCEB3F' : '#6E6E69', dot: on ? '#FCEB3F' : '#EFEFEC', onPick: pick('dlG', i) }; }),
+      dlPath: [['Website', 'Visit the site'], ['Website', 'Select a meal plan'], ['Website', 'Enter details'], ['Website', 'Subscribe'], ['App', 'Open the app — continue, don’t restart']].map(([where, t], i) => { const app = i === 4; return { where, t, n: n2(i), bg: app ? '#0B0B0B' : '#FFFFFF', fg: app ? '#FFFFFF' : '#0B0B0B', k: app ? '#FCEB3F' : '#E5322B' }; }),
+      dlKnow: ['What information users had already provided', 'What choices had already been made', 'What they’d expect to see after subscribing', 'Which parts should continue naturally into mobile'].map((t, i) => ({ t, n: n2(i) })),
+      dlOnb: ['Activity level', 'Height', 'Current weight', 'Target weight', 'Fitness device'].map((t, i) => ({ t, n: n2(i) })),
+      dlAxes: ['Plan status', 'Selected date', 'Delivery status', 'Meal assignment', 'Cut‑off rules'],
+      dlDays: days.map((d, i) => { const on = i === dy; return { ...d, vid: U(d.vid), op: on ? 1 : 0, bg: on ? '#FCEB3F' : 'transparent', fg: on ? '#0B0B0B' : '#FFFFFF', k: on ? '#E5322B' : '#FFFFFF80', onPick: () => this.dlGo(i), onEnd: () => i === (this.state.dlD ?? 1) && this.dlGo((i + 1) % 3), ref: this.dlRef(i) }; }),
+      dlDay: days[dy],
+      dlPatterns: [{ n: 'Pattern 01', t: 'Skip & resume', src: U('Mockups/Delicut/Delicut Skip Resume.png'), d: 'Manage delivery days from one calendar — active, skipped or unavailable at a glance. Pause and resume stay tied to specific dates, not the whole subscription.' }, { n: 'Pattern 02', t: 'Cut‑off drawer', src: U('Mockups/Delicut/Delicut Cut-off Drawer.png'), d: 'When a delivery can’t be changed, a bottom sheet explains exactly why and shows the cut‑off that passed — no dead‑end taps on a locked day.' }],
+      dlExp: exp.map((e, i) => { const on = i === ex; return { t: e.t, n: n2(i), bg: on ? '#FCEB3F' : 'transparent', fg: '#0B0B0B', ring: on ? '#FCEB3F' : '#0B0B0B', cardBg: on ? '#0B0B0B' : '#FFFFFF', hoverBg: on ? '#0B0B0B' : '#F7F7F4', cardFg: on ? '#FFFFFF' : '#0B0B0B', cardSh: on ? '0 14px 28px -14px rgba(0,0,0,.5)' : '0 1px 2px rgba(0,0,0,.05)', hint: on ? 'Showing now' : 'View state', hintC: on ? '#FCEB3F' : '#6E6E69', arrOp: on ? 0 : 0.5, onPick: pick('dlE', i) }; }),
+      dlExpPrev: () => this.setState({ dlE: ((this.state.dlE ?? 1) + 3) % 4 }), dlExpNext: () => this.setState({ dlE: ((this.state.dlE ?? 1) + 1) % 4 }),
+      dlExpBar: (ex / 3 * 75) + '%', dlExpCur: { ...exp[ex], n: n2(ex) }
+    };
+  }
+  csVals() {
+    const S = this.state, U = p => encodeURI(p);
+    const chap = [['TL;DR','tldr'],['Prototype','proto'],['Problem','problem'],['Research','research'],['Workflow','workflow'],['Mental model','model'],['Iterations','iter'],['Final design','final'],['Outcome','outcome'],['Reflection','reflect']];
+    const ch = S.csCh ?? 0;
+    const au = S.csAudit ?? 0;
+    const audits = [['Main dashboard', 'Mockups/DarkRoast/Main Screen Audit.png'], ['Project detail', 'Mockups/DarkRoast/Project Detail Screen Audit.png']];
+    const fl = S.csFlip || {};
+    const survey = [['Needs better mobile experience', 'Poor use of space across screen sizes'], ['Needs better file management', 'Previewing and finding the right file inside long conversations'], ['Issues with text, links and spacing', 'Less reliability — and decreased trust'], ['Providing small updates felt too formal', 'The product had a heavy management workflow']];
+    const steps = [['Share intent', 'Turn rough goals into clear creative direction.'], ['Start work', 'Create new work quickly using existing context.'], ['Track progress', 'See what needs attention without opening every project.'], ['Review work', 'Check quality and direction at a glance.'], ['Give feedback', 'Iterate without re‑briefing or heavy process.'], ['Reuse & scale', 'Carry past work and brand context into future projects.']];
+    const st = S.csStep ?? 2;
+    const md = S.csMode ?? 0;
+    const modes = [
+      { k: 'Mode A', t: 'Active', d: 'Where the work happens.', tag: 'Priority', items: ['Messaging', 'Feedback', 'Coordination', 'File sharing', 'Decisions'] },
+      { k: 'Mode B', t: 'Reference', d: 'Where users check context.', tag: 'One step away', items: ['Project brief', 'Metadata', 'Summaries', 'History'] }];
+    const sets = [
+      { t: 'Project listing', k: 'Grouping · status · priority · capacity', d: 'I reworked the Projects page first — the place clients scan active work and decide what needs attention. Each direction tested which signals must stay prominent and which could be reduced.', items: [['Default — grouped list with status pills', 'Dark Roast Project Listing Page Iterations/Project listing _ Default.png'], ['Progress bars for capacity & completion', 'Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png'], ['Denser layout with status tooltips', 'Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png'], ['Client view — priority & attention', 'Dark Roast Project Listing Page Iterations/Client _ Project listing.png']] },
+      { t: 'Detail header', k: 'Less metadata · smarter actions', d: 'Keep title and status visible, cut secondary metadata, group utility actions, keep Messages ↔ Files one tap apart, and move AI Summary and Project Details out of the working area.', items: [['First screen — variation 1', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'], ['First screen — variation 2', 'Dark Roast Project Detail Page Iterations/First screen - Variation 2.png'], ['Refined header — screen 1', 'Dark Roast Project Detail Page Iterations/Screen 1.png']] }];
+    const si = S.csSet ?? 0, set = sets[si];
+    const ii = Math.min(S.csIt ?? 0, set.items.length - 1);
+    const pairs = [
+      { t: 'Navigation', before: 'Before After/1a.png', after: 'Before After/1b.png', b: 'Project types and statuses were mixed into the same navigation, so clients worked harder to understand what they were looking at and what needed attention.', a: 'Type, status and priority split into clearer layers with stronger signals — the list scans faster and context is clear without opening each item.' },
+      { t: 'Status rows', before: 'Before After/2a.png', after: 'Before After/2b.png', b: 'Rows relied on ambiguous colour bars and activity text; clients had to decode cues before understanding priority or status.', a: 'Priority and status became explicit, labelled fields — urgent work is easy to spot without opening projects.' },
+      { t: 'Messages', before: 'Before After/3a.png', after: 'Before After/3b.png', b: 'A flat stream with weak separation between people, dates, text and files — long threads were hard to scan.', a: 'Clear grouping, sender hierarchy, date breaks and in‑context files — updates are reviewable without losing the thread.' },
+      { t: 'File review', before: 'Before After/4a.png', after: 'Before After/4b.png', b: 'A flat list with small previews and little review context — versions were hard to compare.', a: 'A dedicated review workspace: large previews, grouped versions and comments beside the asset.' }];
+    const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
+    return {
+      csChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ csCh: i }) })),
+      csAudits: audits.map(([t, p], i) => ({ t, src: U(p), op: i === au ? 1 : 0, w: i === au ? 600 : 500, onPick: () => this.setState({ csAudit: i }) })),
+      csAuditLeft: au ? '50%' : '4px',
+      csSymptoms: ['Higher cognitive load', 'Slower triage', 'More context switching', 'Unnecessary navigation', 'Weaker confidence in status', 'Client ↔ designer friction'].map((t, i) => ({ t, n: String(i + 1).padStart(2, '0') })),
+      csSurvey: survey.map(([q, a], i) => ({ q, a, n: String(i + 1).padStart(2, '0'), rot: fl[i] ? '180deg' : '0deg', onIn: () => this.setState(st => ({ csFlip: { ...(st.csFlip || {}), [i]: true } })), onOut: () => this.setState(st => ({ csFlip: { ...(st.csFlip || {}), [i]: false } })) })),
+      csSteps: steps.map(([t, d], i) => { const on = i === st; return { t, d, n: String(i + 1), isNow: i === 2, size: on ? '72px' : '56px', pad: [56, 20, 0, 0, 20, 56][i] + 'px', bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FCEB3F' : '#0B0B0B', sh: on ? '0 16px 30px -14px rgba(0,0,0,.5)' : 'none', fw: on ? 600 : 500, onPick: () => this.state.csStep !== i && this.setState({ csStep: i }) }; }),
+      csStep: { n: '0' + (st + 1), t: steps[st][0], d: steps[st][1] },
+      csStepPrev: () => this.setState({ csStep: (st + 5) % 6 }), csStepNext: () => this.setState({ csStep: (st + 1) % 6 }),
+      csModes: modes.map((m, i) => { const on = i === md; return { ...m, bg: i === 0 ? '#0B0B0B' : '#FFFFFF', fg: i === 0 ? '#FFFFFF' : '#0B0B0B', chip: i === 0 ? '#FFFFFF1A' : '#EFEFEC', tagBg: i === 0 ? '#FCEB3F' : '#EFEFEC', tagFg: '#0B0B0B', s: on ? 1 : 0.97, op: on ? 1 : 0.62, onPick: () => this.state.csMode !== i && this.setState({ csMode: i }) }; }),
+      csPriorities: [['Make progress obvious', 'Understand what’s happening across projects without opening each one.'], ['Give active work more space', 'Messaging, feedback and collaboration take priority inside a project.'], ['Reduce persistent information', 'Reference content stays accessible without competing with the task.']].map(([t, d], i) => ({ t, d, n: '0' + (i + 1) })),
+      csIterSets: sets.map((s, i) => ({ t: s.t, w: i === si ? 600 : 500, onPick: () => this.setState({ csSet: i, csIt: 0 }) })),
+      csIterLeft: si ? '50%' : '4px', csIterSet: set,
+      csIters: set.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p), op: i === ii ? 1 : 0, s: i === ii ? 1 : 1.03, bg: i === ii ? '#FFFFFF' : '#E2E2DE', onPick: () => this.state.csIt !== i && this.setState({ csIt: i }) })),
+      csIterCur: { n: 'V' + (ii + 1), t: set.items[ii][0] },
+      csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', onPick: () => this.setState({ csPair: i, csCmp: 50 }) }; }),
+      csPair: { ...pairs[pi], before: U(pairs[pi].before), after: U(pairs[pi].after) },
+      csCmpLeft: cmp + '%', csCmpRight: (100 - cmp) + '%',
+      onCmpDown: (e) => { e.preventDefault(); this.cmpDrag = true; },
+      onCmpMove: (e) => { if (!this.cmpDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ csCmp: Math.max(2, Math.min(98, (e.clientX - r.left) / r.width * 100)) }); },
+      onCmpUp: () => { this.cmpDrag = false; }
+    };
+  }
+  vals9(works, allCmds, sfx = '', pal = null) {
+    const P = pal || { bg: ['#FAF8EE', '#E6E2D1', '#D6D1BE'], dot: '#E3DC4A', ink: '#3A3226', paper: '#F1EEDC' };
+    const st = (k) => this.state[k + sfx];
+    const seam = st('seam9') ?? 71;
+    const fo = st('folder9') ?? 0;
+    const order = [0, 1, 2].filter(i => i !== fo);
+    const folders9 = works.map((w, i) => {
+      const depth = i === fo ? 0 : order.indexOf(i) + 1;
+      return { ...w, href: sfx === 'd' && ({ darkroast: 'project-darkroast.html', delicut: 'project-delicut.html', case3: 'project-attune.html' })[w.key] || w.href, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 286) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
+        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: ['Lead Product Designer','Product Designer','Product Designer'][i], platform: ['Web app','Web + mobile','Web'][i], year: ['2025','2024','2026'][i], filter: depth === 0 ? 'none' : 'grayscale(1)',
+        onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
+        ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
+          rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
+          rcR: o ? '120%' : '0px', rcTr: o ? 'clip-path 1.5s cubic-bezier(.45,0,.2,1)' : 'clip-path .9s cubic-bezier(.45,0,.2,1)',
+          rcTxtOp: o ? 1 : 0, rcTxtY: o ? '0px' : '6px', rcTxtTr: o ? 'opacity .8s ease .55s, transform .9s cubic-bezier(.2,.8,.2,1) .55s' : 'opacity .2s ease, transform .2s ease',
+          rcInsight: ['Users weren’t slow — the workflow was.', 'Clarity sells better than discounts.', 'Listen first; the design follows.'][i],
+          rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
+    });
+    const list = allCmds.filter(c => ['why', 'about', 'email', 'resume'].includes(c.id));
+    const q = (st('q9') || '').toLowerCase().trim();
+    const f = list.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
+    const sel = f.some(c => c.id === st('sel9')) ? st('sel9') : (f[0] && f[0].id);
+    const raw = list.find(c => c.id === sel) || list[0];
+    const cur9 = { ...raw, href: raw.href === '#3c' ? (sfx === 'd' ? '#about' : sfx === 'c' ? '#10a-ask' : sfx ? '#9b-ask' : '#9a-ask') : raw.href, onAct: raw.act ? (e) => { e.preventDefault(); this.copyEmail(); } : undefined };
+    if (sfx === 'd' && cur9.cta) cur9.cta = cur9.cta.replace(/\s*[↗→↑]\s*$/, '');
+    const out = {
+      segLeft9: 'calc((100% - 8px) / 3 * ' + fo + ')', segCount9: String(fo + 1).padStart(2, '0'), cardR9: fo === 0 ? '0 24px 24px 24px' : '24px',
+      onPrev9: () => this.setState({ ['folder9' + sfx]: (fo + 2) % 3 }), onNext9: () => this.setState({ ['folder9' + sfx]: (fo + 1) % 3 }),
+      folders9, cur9, q9: st('q9') || '', empty9: f.length === 0,
+      cmds9: f.map(c => { const on = c.id === sel; return { ...c, idx: String(list.indexOf(c) + 1).padStart(2, '0'), chev: on ? 1 : 0, bg: on ? (P.selBg || P.ink) : 'transparent', fg: on ? (P.selFg || P.paper) : P.ink, bd: 'transparent', onPick: () => st('sel9') !== c.id && this.setState({ ['sel9' + sfx]: c.id }) }; }),
+      onQ9: (e) => this.setState({ ['q9' + sfx]: e.target.value }),
+      onKey9: (e) => {
+        const ix = f.findIndex(c => c.id === sel);
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const n = f[(ix + (e.key === 'ArrowDown' ? 1 : -1) + f.length) % f.length]; n && this.setState({ ['sel9' + sfx]: n.id }); }
+        if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank'); }
+      },
+      seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
+      seam9Hint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
+      onSeam9Down: (e) => { e.preventDefault(); this['seam9Drag' + sfx] = true; },
+      onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); },
+      onSeam9Up: () => { this['seam9Drag' + sfx] = false; }
+    };
+    return sfx ? Object.fromEntries(Object.entries(out).map(([k, v]) => [k.replace('9', '9' + sfx), v])) : out;
+  }
+  renderVals() {
+    const works = [
+      { key: 'darkroast', title: 'DarkRoast', desc: 'Redesigning the project workspace for faster creative collaboration.', tags: 'Creative Operations · Product Design', href: 'index.html' },
+      { key: 'delicut', title: 'Delicut', desc: 'Making meal‑plan subscriptions easier to understand and manage.', tags: 'Subscriptions · Product Design', href: 'project-delicut.html' },
+      { key: 'case3', title: 'Attune AI', desc: 'Designing emotionally intelligent AI support for couples.', tags: 'AI Product · Relationship Support', href: 'project-attune.html' }
+    ].map(w => ({ ...w, placeholder: w.title + ' cover' }));
+    const about = [
+      { n: '01', title: 'Background', body: 'Trained in industrial design before moving into digital products — I still design for how things get built.' },
+      { n: '02', title: 'Past Experience', body: 'I’ve led product design at two early‑stage startups, shipping zero‑to‑one apps from concept to launch.' },
+      { n: '03', title: 'Approach', body: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second.' },
+      { n: '04', title: 'Current Experience', body: 'Designing full‑stack digital products for global clients, balancing craft with delivery speed.' },
+      { n: '05', title: 'Inspiration', body: 'Architecture, long walks, and late‑night reading fuel most of my best ideas.' }
+    ];
+    const extra = [
+      { frame: 'Frame 02 — DarkRoast / Desktop', metric: '−28% task time', tag1: 'Creative Ops' },
+      { frame: 'Frame 03 — Delicut / Mobile', metric: '−35% handoff', tag1: 'Subscriptions' },
+      { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Research‑led', tag1: 'Product' }
+    ];
+    const tilts = ['-2deg', '1.5deg', '-1deg'];
+    works.forEach((w, i) => Object.assign(w, extra[i], { tilt: tilts[i] }));
+    const hov = this.state.hov ?? 0;
+    const worksC = works.map((w, i) => ({
+      ...w, num: '(' + String(i + 1).padStart(2, '0') + ')',
+      color: i === hov ? '#FF5B1F' : '#F2EFE8',
+      fvs: i === hov ? "'wdth' 100, 'wght' 900" : "'wdth' 62, 'wght' 800",
+      op: i === hov ? 1 : 0,
+      onEnter: () => this.state.hov !== i && this.setState({ hov: i })
+    }));
+    const mx = this.state.mx;
+    const letters = 'AAYUSHI'.split('').map((ch, i) => {
+      const d = mx == null ? 0.5 : Math.min(1, Math.abs(mx * 6 - i) / 3);
+      const k = 1 - d;
+      return { ch, fvs: `'wght' ${Math.round(200 + 700 * k)}, 'wdth' ${Math.round(62 + 50 * k)}`, color: k > 0.8 ? '#FF5B1F' : '#F2EFE8' };
+    });
+    const pal = ['#E8D84A', '#F7F6F2', '#F2A07B', '#C9C0FF', '#E8D84A'];
+    const rots = ['-1.5deg', '1deg', '-0.5deg', '1.5deg', '-1deg'];
+    const rooms = ['I', 'II', 'III'];
+    const works3 = works.map((w, i) => ({ ...w, room: rooms[i], cols: i % 2 ? '5fr 7fr' : '7fr 5fr', imgOrder: i % 2 ? 2 : 1, txtOrder: i % 2 ? 1 : 2 }));
+    const ex = this.state.ex ?? 0;
+    const worksB = works.map((w, i) => ({ ...w, num: String(i + 1).padStart(2, '0'), flex: i === ex ? 3 : 1, op: i === ex ? 1 : 0, onEnter: () => this.state.ex !== i && this.setState({ ex: i }) }));
+    const quick = (this.state.read ?? 'quick') === 'quick';
+    const allCmds = [
+      { id: 'why', label: 'Why hire Aayushi?', kind: 'ASK', title: 'Why hire Aayushi?', body: '3+ years across enterprise, e‑commerce and ed‑tech. Cut task completion time 28% and design‑to‑dev handoff 35%. Authorized to work full‑time in Canada — open to work in 2026.', cta: 'Download résumé ↗', href: 'resume.pdf', target: '_blank' },
+      ...works.map(w => ({ id: w.key, label: 'View ' + w.title, kind: 'PROJECT', title: w.title, body: w.desc + ' — ' + w.metric, cta: 'Open case study →', href: w.href, target: '_self', hasImg: true, key: w.key, ph: w.title + ' preview' })),
+      { id: 'about', label: 'About me', kind: 'PAGE', title: 'About me', body: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second. I’ve led product design at two early‑stage startups, shipping zero‑to‑one apps from concept to launch.', cta: 'Read more →', href: '#3c', target: '_self' },
+      { id: 'email', label: 'Copy email', kind: 'ACTION', title: 'aayushipatel2002@gmail.com', body: 'Available for Freelance, Full‑time & Collaborations. Let’s connect today.', cta: this.state.copied ? 'Copied ✓' : 'Copy email', href: '#3c', target: '_self', act: true },
+      { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé — 2026', body: 'One page. Experience, outcomes and toolkit.', cta: 'Download ↗', href: 'resume.pdf', target: '_blank' }
+    ];
+    const q = (this.state.cmdQ || '').toLowerCase().trim();
+    const filtered = allCmds.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
+    const selId = filtered.some(c => c.id === this.state.cmdSel) ? this.state.cmdSel : (filtered[0] && filtered[0].id);
+    const curRaw = allCmds.find(c => c.id === selId) || allCmds[0];
+    const cur = { hasImg: false, key: 'x', ph: '', ...curRaw, onAct: curRaw.act ? (e) => { e.preventDefault(); this.copyEmail(); } : undefined };
+    const cmds = filtered.map(c => ({ ...c, bg: c.id === selId ? '#2A2B2E' : 'transparent', fg: c.id === selId ? '#E9E4DA' : '#BDB7AC', onPick: () => this.state.cmdSel !== c.id && this.setState({ cmdSel: c.id }) }));
+    const D = this.deskDefs || (this.deskDefs = [
+      { id: 'hero', type: 'hero', w: 520, x: 300, y: 250, r: -2, tx: 40, ty: 40 },
+      { id: 'p0', type: 'photo', wi: 0, w: 260, x: 60, y: 70, r: -8, tx: 600, ty: 40 },
+      { id: 'p1', type: 'photo', wi: 1, w: 260, x: 880, y: 60, r: 7, tx: 880, ty: 40 },
+      { id: 'p2', type: 'photo', wi: 2, w: 250, x: 940, y: 470, r: -5, tx: 600, ty: 470 },
+      { id: 'card', type: 'card', w: 340, x: 80, y: 600, r: 6, tx: 40, ty: 440 },
+      { id: 'ticket', type: 'ticket', w: 300, x: 560, y: 690, r: -9, tx: 40, ty: 660 },
+      { id: 'sticky', type: 'sticky', w: 190, x: 700, y: 40, r: 4, tx: 880, ty: 470 },
+      { id: 'floppy', type: 'floppy', w: 170, x: 360, y: 60, r: -12, tx: 400, ty: 680 },
+      { id: 'b1', type: 'badge', w: 130, x: 830, y: 350, r: 14, tx: 1090, ty: 470, title: 'since 2020', bg: '#FF7A3D', fg: '#16130F', fs: '24px' },
+      { id: 'b2', type: 'badge', w: 110, x: 230, y: 470, r: -10, tx: 1090, ty: 620, title: '3+ yrs', bg: '#FFE14D', fg: '#16130F', fs: '26px' }
+    ]);
+    const pos = this.state.pos || {};
+    const tidy = !!this.state.tidy, drag = this.state.drag;
+    const z = this.state.zs || {};
+    const desk = D.map((d, i) => {
+      const p = pos[d.id] || (tidy ? { x: d.tx, y: d.ty } : { x: d.x, y: d.y });
+      const w = d.type === 'photo' ? works[d.wi] : {};
+      const isDrag = drag && drag.id === d.id;
+      return {
+        ...d, key: w.key, title: d.title || w.title, desc: w.desc, href: w.href, ph: (w.title || '') + ' shot',
+        isHero: d.type === 'hero', isPhoto: d.type === 'photo', isCard: d.type === 'card', isTicket: d.type === 'ticket', isSticky: d.type === 'sticky', isFloppy: d.type === 'floppy', isBadge: d.type === 'badge',
+        x: p.x + 'px', y: p.y + 'px', w: d.w + 'px', r: (isDrag ? 0 : tidy ? 0 : d.r) + 'deg', s: isDrag ? 1.04 : 1,
+        z: z[d.id] || i + 1, sh: isDrag ? '26px' : '10px',
+        tr: isDrag ? 'transform .15s, filter .15s' : 'left .7s cubic-bezier(.2,.9,.2,1.1), top .7s cubic-bezier(.2,.9,.2,1.1), transform .5s, filter .2s',
+        onDown: (e) => {
+          if (e.button) return;
+          const mat = e.currentTarget.parentElement.getBoundingClientRect ? e.currentTarget.offsetParent.getBoundingClientRect() : null;
+          const k = mat ? mat.width / 1240 : 1;
+          this.zTop = (this.zTop || 20) + 1;
+          this.setState({ drag: { id: d.id, sx: e.clientX, sy: e.clientY, ox: p.x, oy: p.y, k }, zs: { ...z, [d.id]: this.zTop } });
+        }
+      };
+    });
+    const pl = this.state.track ?? 0, playing = !!this.state.playing;
+    const colors = ['#FFE14D', '#B9A7FF', '#7FD6B0', '#FF6A2B'];
+    const durs = ['2:28', '3:35', '4:03', '6:00'];
+    const tlist = [...works.map((w, i) => ({ ...w, num: String(i + 1).padStart(2, '0'), sub: w.tags, dur: durs[i], color: colors[i] })),
+      { key: 'about', num: '04', title: 'About me (bonus)', sub: 'Background · approach · inspiration', dur: durs[3], color: colors[3], desc: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second.', metric: '06 years', href: '#4b-notes' }];
+    const tracks = tlist.map((t, i) => ({ ...t, bg: i === pl ? '#E9DCC6' : 'transparent', btnBg: i === pl && playing ? '#FF6A2B' : 'transparent', icon: i === pl && playing ? '❚❚' : '▶',
+      onPlay: () => this.setState(s => (s.track ?? 0) === i ? { playing: !s.playing } : { track: i, playing: true }) }));
+    const cur4 = { ...tlist[pl], title: tlist[pl].title.replace(' (bonus)', '') };
+    const seam = this.state.seam ?? 71;
+    const fo = this.state.folder ?? 0;
+    const order = [0, 1, 2].filter(i => i !== fo);
+    const folders = works.map((w, i) => {
+      const depth = i === fo ? 0 : order.indexOf(i) + 1;
+      return { ...w, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 276) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
+        bg: ['#F6F5F2', '#D6D3CC', '#C4C0B8'][depth], dot: depth === 0 ? '#FF4A1C' : '#8A877F', filter: depth === 0 ? 'none' : 'grayscale(1)',
+        onOpen: () => this.setState({ folder: i }) };
+    });
+    const sp = [{ x: '40px', y: '210px', align: 'left' }, { x: '40px', y: '480px', align: 'left' }, { x: '940px', y: '170px', align: 'left' }, { x: '940px', y: '370px', align: 'left' }, { x: '940px', y: '560px', align: 'left' }];
+    const specs = about.map((a, i) => ({ ...a, ...sp[i] }));
+    return {
+      folders, specs,
+      seamLeft: seam + '%', seamRight: (100 - seam) + '%',
+      seamHint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
+      onSeamDown: (e) => { e.preventDefault(); this.seamDrag = true; },
+      onSeamMove: (e) => { if (!this.seamDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ seam: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); },
+      onSeamUp: () => { this.seamDrag = false; },
+      desk, tracks, cur4,
+      playState: playing ? 'running' : 'paused',
+      vinylLeft: playing ? '330px' : '20px',
+      armLeft: '790px',
+      armRot: playing ? '22deg' : '-4deg',
+      nowLabel: playing ? 'NOW PLAYING — ' + cur4.title.toUpperCase() : 'PAUSED — PRESS ▶ ON A TRACK',
+      tidyLabel: tidy ? '↺ Make a mess' : '✦ Tidy up',
+      deskHint: tidy ? 'tidy.fig — everything on the grid' : 'drag anything · then press “Tidy up”',
+      toggleTidy: () => this.setState({ tidy: !tidy, pos: {} }),
+      stop: (e) => e.stopPropagation(),
+      stopSoft: (e) => { if (e.detail > 1) e.stopPropagation(); },
+      onDeskMove: (e) => { const d = this.state.drag; if (!d) return; this.setState({ pos: { ...(this.state.pos || {}), [d.id]: { x: d.ox + (e.clientX - d.sx) / d.k, y: d.oy + (e.clientY - d.sy) / d.k } } }); },
+      onDeskUp: () => this.state.drag && this.setState({ drag: null }),
+      about4: about.map((a, i) => ({ ...a, bg: ['#2742E8', '#FF7A3D', '#FFE14D', '#B9A7FF', '#16130F'][i], fg: ['#F3EFE6', '#16130F', '#16130F', '#16130F', '#F3EFE6'][i] })),
+      cmds6: filtered.map(c => { const on = c.id === selId; return { ...c, bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#18171C' : '#4A4750', sh: on ? '0 1px 0 #ECE6DC, 0 6px 14px -8px #8A3A1F44' : 'none', dot: on ? '#FF5A36' : '#D9D2C6', onPick: () => this.state.cmdSel !== c.id && this.setState({ cmdSel: c.id }) }; }),
+      cmdChips: ['why', 'delicut', 'email'].map(q => ({ q, onPick: () => this.setState({ cmdQ: q, cmdSel: null }) })),
+      cmds7: filtered.map(c => { const on = c.id === selId; return { ...c, bg: on ? '#231A14' : 'transparent', fg: on ? '#F6F4EA' : '#3E342B', fw: on ? 600 : 500, tagBg: on ? '#E8343F' : '#E3E8CF', tagFg: on ? '#F6F4EA' : '#5C5246', onPick: () => this.state.cmdSel !== c.id && this.setState({ cmdSel: c.id }) }; }),
+      works7: works.map((w, i) => ({ ...w, bg: ['#231A14', '#F6F4EA', '#C9D4A6'][i], fg: ['#F6F4EA', '#231A14', '#231A14'][i], imgBg: ['#3A2E25', '#E3E8CF', '#B5C28C'][i] })),
+      cmds8: filtered.map((c, i) => { const on = c.id === selId; return { ...c, idx: String(i + 1).padStart(2, '0'), bg: on ? '#1C24F5' : 'transparent', fg: on ? '#F2F0EA' : '#0B0B2A', numFg: on ? '#C9CCFF' : '#5A5A78', fw: on ? 700 : 500, onPick: () => this.state.cmdSel !== c.id && this.setState({ cmdSel: c.id }) }; }),
+      ...this.atVals(),
+      ...this.dlVals(),
+      ...this.csVals(),
+      ...this.vals9(works, allCmds),
+      ...this.vals9(works, allCmds, 'c', { bg: ['#F7F3E3', '#E6E0C8', '#D2CBAF'], dot: '#E2531B', ink: '#211A12', paper: '#F3EEDA', selBg: '#211A12', selFg: '#DDD51C' }),
+      ...this.vals9(works, allCmds, 'd', { bg: ['#FFFFFF', '#E6E6E2', '#D4D4CF'], dot: '#0B0B0B', ink: '#0B0B0B', paper: '#FFFFFF', selBg: '#F1F1EE', selFg: '#0B0B0B' }),
+      ...this.vals9(works, allCmds, 'b', { bg: ['#FAF6EE', '#EDB29C', '#CBD3B4'], dot: '#1C1712', ink: '#1C1712', paper: '#F4EEE2', selBg: '#E2EC4E', selFg: '#1C1712' }),
+      works3, worksB, cmds, cur, cmdEmpty: filtered.length === 0, cmdQ: this.state.cmdQ || '',
+      onCmdQ: (e) => this.setState({ cmdQ: e.target.value }),
+      onCmdKey: (e) => {
+        const ix = filtered.findIndex(c => c.id === selId);
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const n = filtered[(ix + (e.key === 'ArrowDown' ? 1 : -1) + filtered.length) % filtered.length]; n && this.setState({ cmdSel: n.id }); }
+        if (e.key === 'Enter' && cur.act) this.copyEmail();
+      },
+      isQuick: quick, isDeep: !quick,
+      quickBg: quick ? '#111' : 'transparent', quickFg: quick ? '#F4F3EF' : '#111',
+      deepBg: quick ? 'transparent' : '#111', deepFg: quick ? '#111' : '#F4F3EF',
+      setQuick: () => this.setState({ read: 'quick' }), setDeep: () => this.setState({ read: 'deep' }),
+      spotX: (this.state.sx ?? 640) + 'px', spotY: (this.state.sy ?? 360) + 'px',
+      onSpot: (e) => { const r = e.currentTarget.getBoundingClientRect(); const k = r.width / 1280; this.setState({ sx: (e.clientX - r.left) / k, sy: (e.clientY - r.top) / k }); },
+      onSpotLeave: () => this.setState({ sx: 640, sy: 360 }),
+      worksC, letters,
+      previewTop: (hov * 141 - 40) + 'px',
+      onNameMove: (e) => { const r = e.currentTarget.getBoundingClientRect(); this.setState({ mx: (e.clientX - r.left) / r.width }); },
+      onNameLeave: () => this.setState({ mx: null }),
+      localTime: (this.state.now || new Date()).toLocaleTimeString('en-CA', { timeZone: 'America/Halifax', hour: 'numeric', minute: '2-digit' }),
+      about2: about.map((a, i) => ({ ...a, bg: pal[i], rot: rots[i], })),
+      works, workCount: String(works.length).padStart(2, '0'),
+      about, aboutLeft: about.filter((_, i) => i % 2 === 0), aboutRight: about.filter((_, i) => i % 2 === 1),
+      copyEmail: this.copyEmail,
+      copyLabel: this.state.copied ? 'Copied ✓' : 'Copy Email'
+    };
+  }
+}
