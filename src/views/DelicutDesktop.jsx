@@ -836,9 +836,9 @@ export default function DelicutDesktop({ v }) {
             Expiry flow
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1" }}>
             {"Expiry was a "}
             <span style={{ fontStyle: "italic" }}>
               journey,
@@ -846,58 +846,29 @@ export default function DelicutDesktop({ v }) {
             {" not one screen."}
           </h2>
           {" "}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px" }}>
-            {" "}
-            <span style={{ display: "flex", alignItems: "center", gap: "10px", fontSize: "14px", color: "#3C3C38" }}>
-              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#E5322B" }}></span>
-              Click a stage to see what the home screen shows at that moment
-            </span>
-            {" "}
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginRight: "6px" }}>
-                {"Stage "}{show(v.dlExpCur?.n)}{" / 04"}
-              </span>
-              {" "}
-              <button className="dhb" type="button" onClick={v.dlExpPrev} aria-label="Previous stage" style={{ all: "unset", cursor: "pointer", width: "40px", height: "40px", borderRadius: "50%", background: "#FFFFFF", display: "grid", placeItems: "center", boxShadow: "0 2px 8px rgba(0,0,0,.06)" }}>
-                ←
-              </button>
-              {" "}
-              <button className="dh4" type="button" onClick={v.dlExpNext} aria-label="Next stage" style={{ all: "unset", cursor: "pointer", width: "40px", height: "40px", borderRadius: "50%", background: "#0B0B0B", color: "#FFFFFF", display: "grid", placeItems: "center" }}>
-                →
-              </button>
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px", padding: "6px", borderRadius: "22px", background: "#E2E2DE" }}>
+          {/* Stages play on their own: each card's bar fills over a few seconds, then the next stage takes over, looping. Hover pauses; a click jumps. */}
+          <div onMouseEnter={v.dlExpPause} onMouseLeave={v.dlExpResume} style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px", padding: "6px", borderRadius: "22px", background: "#E2E2DE" }}>
             {" "}
             {(v.dlExp || []).map((e, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button className="dhc" type="button" onClick={e?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", display: "flex", alignItems: "center", gap: "14px", padding: "14px 16px", borderRadius: "16px", background: e?.cardBg, color: e?.cardFg, boxShadow: e?.cardSh, transition: "background .3s, color .3s, box-shadow .3s" }}>
+                <button type="button" onClick={e?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", display: "flex", alignItems: "center", gap: "12px", padding: "20px 16px 14px", borderRadius: "16px", background: e?.cardBg, color: e?.cardFg, boxShadow: e?.cardSh, transition: "background .4s, color .4s, box-shadow .4s" }}>
+                  <span aria-hidden="true" style={{ position: "absolute", left: "16px", right: "16px", top: "9px", height: "3px", borderRadius: "999px", background: e?.track, overflow: "hidden", transition: "background .4s" }}>
+                    <span key={e?.runKey} onAnimationEnd={e?.onEnd} style={{ display: "block", height: "100%", borderRadius: "999px", background: e?.fillC, width: e?.fill, animation: e?.anim, animationPlayState: v.dlExpPlay }}></span>
+                  </span>
                   {" "}
-                  <span style={{ flex: "none", width: "40px", height: "40px", borderRadius: "50%", background: e?.bg, color: e?.fg, border: `1.5px solid ${e?.ring ?? ""}`, boxSizing: "border-box", display: "grid", placeItems: "center", fontSize: "13px", fontWeight: "600", transition: "all .3s" }}>
+                  <span style={{ flex: "none", width: "34px", height: "34px", borderRadius: "50%", background: e?.bg, color: e?.fg, border: `1.5px solid ${e?.ring ?? ""}`, boxSizing: "border-box", display: "grid", placeItems: "center", fontSize: "12px", fontWeight: "600", transition: "all .4s" }}>
                     {show(e?.n)}
                   </span>
                   {" "}
                   <span style={{ display: "flex", flexDirection: "column", gap: "3px", minWidth: "0" }}>
-                    {" "}
                     <span style={{ fontSize: "15px", fontWeight: "600", letterSpacing: "-.01em" }}>
                       {show(e?.t)}
                     </span>
-                    {" "}
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: e?.hintC }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: e?.hintC, transition: "color .4s" }}>
                       {show(e?.hint)}
                     </span>
-                    {" "}
                   </span>
-                  {" "}
-                  <span style={{ marginLeft: "auto", fontSize: "15px", opacity: e?.arrOp }}>
-                    →
-                  </span>
-                  {" "}
                 </button>
                 {" "}
               </React.Fragment>
@@ -907,19 +878,19 @@ export default function DelicutDesktop({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,5fr)", gap: "12px" }}>
             {" "}
-            <div style={{ height: "440px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Expiry%20Screen.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+            <div style={{ height: "276px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Expiry%20Screen.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "14px", boxSizing: "border-box", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
             {" "}
-            <div style={{ padding: "28px", borderRadius: "20px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "16px" }}>
+            <div style={{ padding: "24px", borderRadius: "20px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "12px" }}>
               {" "}
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
                 {show(v.dlExpCur?.n)}{" · State"}
               </span>
               {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: ".95", letterSpacing: "-.05em" }}>
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: ".95", letterSpacing: "-.05em" }}>
                 {show(v.dlExpCur?.t)}
               </span>
               {" "}
-              <span style={{ fontSize: "16px", lineHeight: "1.55" }}>
+              <span style={{ fontSize: "15px", lineHeight: "1.5" }}>
                 {show(v.dlExpCur?.d)}
               </span>
               {" "}
@@ -931,13 +902,13 @@ export default function DelicutDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ padding: "26px 30px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "28px", alignItems: "center" }}>
+          <div style={{ padding: "18px 26px", borderRadius: "20px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "28px", alignItems: "center" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
               Design
               <br />
               decision
             </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "22px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
               {"When the plan ends, meal‑level actions go. Familiar plan details stay — with a "}
               <span style={{ fontStyle: "italic" }}>
                 strong renewal path
