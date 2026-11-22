@@ -645,15 +645,15 @@ export default function DelicutDesktop({ v }) {
             Mapping the system
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
           <div style={{ display: "flex", alignItems: "flex-end", gap: "28px" }}>
             {" "}
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "180px", lineHeight: ".78", letterSpacing: "-.07em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "120px", lineHeight: ".78", letterSpacing: "-.07em" }}>
               27
             </span>
             {" "}
-            <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05", maxWidth: "18ch" }}>
+            <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1.05", maxWidth: "20ch" }}>
               {"home & delivery states, mapped "}
               <span style={{ fontStyle: "italic" }}>
                 before any screen.
@@ -678,7 +678,7 @@ export default function DelicutDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ height: "520px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20States%20Table.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+          <div style={{ height: "370px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20States%20Table.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
         </div>
       </section>
       <section id="day" style={{ margin: "100px 40px 0", padding: "48px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
