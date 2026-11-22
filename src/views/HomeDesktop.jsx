@@ -557,7 +557,7 @@ export default function HomeDesktop({ v }) {
                       {" "}
                     </div>
                     {" "}
-                    <a href={f?.href} onMouseEnter={f?.rcIn} onMouseLeave={f?.rcOut} style={{ position: "relative", overflow: "hidden", marginTop: "10px", height: "56px", padding: "0 10px 0 24px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "15px", fontWeight: "500", letterSpacing: "-.01em" }}>
+                    <a href={f?.href} onMouseEnter={f?.rcIn} onMouseLeave={f?.rcOut} style={{ position: "relative", overflow: "hidden", marginTop: "10px", height: "56px", padding: "0 10px 0 24px", borderRadius: "999px", backgroundColor: f?.rcBg, transition: f?.rcBgTr, color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "15px", fontWeight: "500", letterSpacing: "-.01em" }}>
                       {" "}
                       <span>
                         Read the case study
