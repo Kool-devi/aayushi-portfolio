@@ -442,9 +442,6 @@ export default function DelicutDesktop({ v }) {
                 business twin.
               </span>
             </h2>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-              Hover a pair
-            </span>
           </div>
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -452,14 +449,14 @@ export default function DelicutDesktop({ v }) {
             {(v.dlGoals || []).map((g, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div onMouseEnter={g?.onPick} onClick={g?.onPick} style={{ cursor: "pointer", display: "grid", gridTemplateColumns: "56px 1fr 44px 1fr", gap: "16px", alignItems: "center", padding: "20px 22px", borderRadius: "18px", background: g?.bg, color: g?.fg, transition: "background .3s, color .3s" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "56px 1fr 44px 1fr", gap: "16px", alignItems: "center", padding: "20px 22px", borderRadius: "18px", background: "#FFFFFF", color: "#0B0B0B" }}>
                   {" "}
                   <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: ".9", letterSpacing: "-.05em" }}>
                     {show(g?.n)}
                   </span>
                   {" "}
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: g?.k }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                       User goal
                     </span>
                     <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
@@ -467,12 +464,12 @@ export default function DelicutDesktop({ v }) {
                     </span>
                   </div>
                   {" "}
-                  <span style={{ width: "36px", height: "36px", borderRadius: "50%", background: g?.dot, color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
+                  <span style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#EFEFEC", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
                     ⇄
                   </span>
                   {" "}
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: g?.k }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                       Business goal
                     </span>
                     <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
