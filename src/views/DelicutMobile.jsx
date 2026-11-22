@@ -53,7 +53,7 @@ export default function DelicutMobile({ v }) {
               Delicut · Meal subscription · UAE · 2025
             </span>
             {" "}
-            <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
+            <h1 style={{ margin: "0", maxWidth: "348px" /* keep the phone line breaks so the ellipse stays on its words */, fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
               {"Delicut’s meal plan subscription — designed for how customers "}
               <span style={{ fontStyle: "italic" }}>
                 really behave.

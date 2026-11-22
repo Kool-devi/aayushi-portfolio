@@ -53,7 +53,7 @@ export default function AttuneMobile({ v }) {
               Attune AI · AI relationship app for couples
             </span>
             {" "}
-            <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
+            <h1 style={{ margin: "0", maxWidth: "348px" /* keep the phone line breaks so the ellipse stays on its words */, fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
               {"I designed when AI should listen, guide, step back — "}
               <span style={{ fontStyle: "italic" }}>
                 and stop.

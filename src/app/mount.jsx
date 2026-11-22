@@ -12,7 +12,7 @@ import { scrollToSection, startSmoothScroll } from './smoothScroll.js';
 export const DESKTOP_MIN = 1024; // px of window width
 const DESKTOP_W = 1278; // the design boards’ content width
 const MOBILE_W = 388;
-const MOBILE_MAX = 560; // the mobile column never grows wider than this
+const MOBILE_MAX = 560; // the mobile layout's text stops growing at this window width
 
 function viewportWidth() {
   return document.documentElement.clientWidth || window.innerWidth;
@@ -55,8 +55,10 @@ function Frame({ desktop, mobile }) {
   const w = useViewport();
   const isDesktop = w >= DESKTOP_MIN;
   const Page = isDesktop ? desktop : mobile;
-  const width = isDesktop ? DESKTOP_W : MOBILE_W;
+  // Mobile layout: scales up with the window until MOBILE_MAX, then (tablets, small laptops)
+  // keeps that text size and grows wider to fill the window instead of leaving empty side gutters.
   const zoom = isDesktop ? w / DESKTOP_W : Math.min(w, MOBILE_MAX) / MOBILE_W;
+  const width = isDesktop ? DESKTOP_W : w / zoom;
 
   useEffect(() => {
     document.documentElement.dataset.layout = isDesktop ? 'desktop' : 'mobile';

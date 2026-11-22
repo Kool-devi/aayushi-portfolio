@@ -54,7 +54,7 @@ export default function DarkRoastMobile({ v }) {
               DarkRoast · Creative operations · Dashboard redesign
             </span>
             {" "}
-            <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
+            <h1 style={{ margin: "0", maxWidth: "348px" /* keep the phone line breaks so the ellipse stays on its words */, fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
               {"Redesigning the project workspace for "}
               <span style={{ fontStyle: "italic" }}>
                 faster creative collaboration
