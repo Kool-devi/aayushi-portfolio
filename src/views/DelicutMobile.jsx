@@ -31,7 +31,7 @@ export default function DelicutMobile({ v }) {
                 Work
               </a>
               <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-                Résumé ↗
+                CV ↗
               </a>
             </span>
           </div>
