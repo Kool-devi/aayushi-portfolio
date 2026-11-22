@@ -572,9 +572,9 @@ export default function DelicutDesktop({ v }) {
             Onboarding
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1.05" }}>
             {"Set the app up around the user — "}
             <span style={{ fontStyle: "italic" }}>
               without it feeling like a long form.
@@ -583,13 +583,13 @@ export default function DelicutDesktop({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: "32px", alignItems: "center" }}>
             {" "}
-            <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
+            <div style={{ width: "170px", height: "350px", flex: "none", borderRadius: "28px", background: "#0B0B0B", padding: "7px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "22px", overflow: "hidden", background: "#FFFFFF" }}>
                 <video src="Videos/Delicut/Onboarding.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}></video>
               </div>
             </div>
             {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               {" "}
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                 What it collects
@@ -599,7 +599,7 @@ export default function DelicutDesktop({ v }) {
                 {" "}
                 {(v.dlOnb || []).map((o, $index) => (
                   <React.Fragment key={$index}>
-                    <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", borderRadius: "999px", background: "#FFFFFF", fontSize: "14px" }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "13px" }}>
                       <span style={{ fontSize: "10.5px", color: "#E5322B" }}>
                         {show(o?.n)}
                       </span>
@@ -610,9 +610,9 @@ export default function DelicutDesktop({ v }) {
                 {" "}
               </div>
               {" "}
-              <div style={{ height: "300px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Onboarding%20Elements.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+              <div style={{ height: "170px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Onboarding%20Elements.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "12px", boxSizing: "border-box", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
               {" "}
-              <p style={{ margin: "0", fontSize: "15.5px", lineHeight: "1.55", color: "#3C3C38" }}>
+              <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.5", color: "#3C3C38" }}>
                 If the plan hasn’t started yet, users don’t land on an empty dashboard — they see when it starts, when meals are assigned and when the first delivery arrives.
               </p>
               {" "}
@@ -620,13 +620,13 @@ export default function DelicutDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ padding: "26px 30px", borderRadius: "22px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "28px", alignItems: "center" }}>
+          <div style={{ padding: "18px 26px", borderRadius: "20px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "auto 1fr", gap: "28px", alignItems: "center" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
               Design
               <br />
               decision
             </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "22px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
               {"The end of onboarding needed to explain "}
               <span style={{ fontStyle: "italic" }}>
                 what happens next
