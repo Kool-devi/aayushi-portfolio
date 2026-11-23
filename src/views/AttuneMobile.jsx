@@ -90,12 +90,12 @@ export default function AttuneMobile({ v }) {
           {" "}
         </div>
         {" "}
-        <div style={{ position: "relative", height: "280px", margin: "0 -20px", background: "#4A4A48", overflow: "hidden" }}>
+        <div style={{ position: "relative", height: "280px", margin: "0 -20px", background: "#7A5A40", overflow: "hidden" }}>
           {" "}
-          <img src="Mockups/Attune/Banner-mobile.webp" alt="Attune AI on two phones, showing the Repair and Refine modes" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="Mockups/Attune/Hero-resolve-mobile.webp" alt="Attune AI in a shared Resolve session, held in two hands" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
-            Fig. 01 — Attune's Repair and Refine modes
+            Fig. 01 — A shared Resolve session
           </span>
           {" "}
         </div>
