@@ -494,7 +494,7 @@ export default function HomeMobile({ v }) {
                 {" "}
                 <article style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "14px", padding: "10px 10px 12px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)" }}>
                   {" "}
-                  <div style={{ position: "relative", height: "210px", borderRadius: "14px", overflow: "hidden", background: "#EDEDEA" }}>
+                  <div style={{ position: "relative", aspectRatio: "1.6", borderRadius: "14px", overflow: "hidden", background: "#EDEDEA" }}>
                     {" "}
                     <ImageSlot id={`v9d-${f?.key ?? ""}`} shape="rect" placeholder={f?.placeholder} />
                     {" "}
