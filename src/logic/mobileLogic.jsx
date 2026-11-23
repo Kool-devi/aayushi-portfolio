@@ -63,7 +63,7 @@ export default class MobileLogic extends React.Component {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
     const L = 5, m = S.atM ?? 0, st = S.atSt ?? 0, k = S.atK ?? 0;
-    const chap = [['Moves','moves'],['Problem','problem'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
+    const chap = [['Moves','moves'],['Problem','problem'],['Roles','roles'],['Private / shared','model'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
     const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
     const modes = [
       { t: 'Reflect', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
@@ -106,7 +106,7 @@ export default class MobileLogic extends React.Component {
     const mix = [5, 12, 2, 9, 14, 0, 7, 11, 3, 15, 6, 1, 10, 13, 4, 8];
     const roleRows = [['Who’s in it', x => x.who === 1 ? 'Just me' : 'Both of us', x => x.who === 1 ? '●' : '●●'], ['AI’s role', x => x.role, () => ''], ['Pace', x => x.pace, () => '']];
     return {
-      atChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
+      atChapters: chap.map(([t, id], i) => ({ t, n: String(i + 1).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
       atHeroModes: modes.map((x, i) => ({ t: x.t, k: x.k, q: x.q, n: n2(i), img: U(x.img), flex: i === hm ? 3 : 1, qOp: i === hm ? 1 : 0, zs: i === hm ? 1.06 : 1, fw: i === hm ? 600 : 400, lc: i === hm ? '#FCEB3F' : '#FFFFFF99', onPick: pick('atH', i), onTap: () => { this._heroUser = true; this.setState({ atH: i }); } })),
       atHeroCur: { t: modes[hm].t, q: modes[hm].q, k: modes[hm].k, n: n2(hm) }, atHeroThumb: (12.5 + hm * 25) + '%',
       atHeroRef: (el) => { if (this._heroInt) { clearInterval(this._heroInt); this._heroInt = null; } if (!el) return; this._heroInt = setInterval(() => { if (this._heroUser) return; this.setState(s => ({ atH: ((s.atH ?? 0) + 1) % 4 })); }, 3800); },

@@ -2,6 +2,7 @@
 // Attune page — desktop layout. Generated from the Claude Design board 14a, then hand-tuned.
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import AttuneArchitecture from './AttuneArchitecture.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneDesktop({ v }) {
@@ -125,6 +126,14 @@ export default function AttuneDesktop({ v }) {
         </div>
       </nav>
       <section id="moves" style={{ padding: "100px 40px 20px", display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <span style={{ color: "#E5322B" }}>
+            01
+          </span>
+          <span>
+            Overview — five moves
+          </span>
+        </div>
         {" "}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
           {" "}
@@ -171,7 +180,7 @@ export default function AttuneDesktop({ v }) {
       <section id="problem" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            00
+            02
           </span>
           <span>
             The problem
@@ -238,7 +247,7 @@ export default function AttuneDesktop({ v }) {
       <section id="roles" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            01
+            03
           </span>
           <span>
             Move 01 — Give every mode a role
@@ -293,10 +302,11 @@ export default function AttuneDesktop({ v }) {
           </div>
         </div>
       </section>
+      <AttuneArchitecture num="04" />
       <section id="rooms" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            03
+            05
           </span>
           <span>
             Move 03 — Rooms, not cards
@@ -372,7 +382,7 @@ export default function AttuneDesktop({ v }) {
             {" "}
             <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
               <span style={{ color: "#FCEB3F" }}>
-                04
+                06
               </span>
               <span>
                 Move 04 — Choreograph each room
@@ -600,7 +610,7 @@ export default function AttuneDesktop({ v }) {
       <section id="safety" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            05
+            07
           </span>
           <span>
             Move 05 — Design when AI stops
@@ -729,7 +739,7 @@ export default function AttuneDesktop({ v }) {
       <section id="system" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            06
+            08
           </span>
           <span>
             Bonus — Ready for handoff
@@ -807,7 +817,7 @@ export default function AttuneDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
             <span style={{ color: "#E5322B" }}>
-              07
+              09
             </span>
             <span>
               What changed — in the product, and in me
