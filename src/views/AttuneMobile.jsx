@@ -303,43 +303,29 @@ export default function AttuneMobile({ v }) {
             </span>
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
-              Four cards on one screen
-            </span>
-            <span style={{ color: "#E5322B" }}>
-              →
-            </span>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontWeight: "500" }}>
-              Swipeable, mood‑led spaces
-            </span>
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center" }}>
-            {" "}
-            <div style={{ position: "relative", height: "280px", borderRadius: "22px", background: "#E2E2DE url('Mockups/Attune/Four%20Cards%20Explored.jpg') center/contain no-repeat", filter: "grayscale(.7)", opacity: ".8" }}>
-              {" "}
-              <span style={{ position: "absolute", left: "16px", top: "16px", padding: "7px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "12.5px", fontWeight: "600" }}>
-                ✕ Explored
-              </span>
-              {" "}
-            </div>
-            {" "}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "36px" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              {" "}
-              <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
+              <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
+                  <img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                </div>
+              </div>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500" }}>
+                <span style={{ color: "#E5322B" }}>✕</span>
+                Explored — four cards on one screen
+              </span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
+              <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
                   <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", left: "-70px", top: "-70px", width: "600px", height: "1074px", border: "0", background: "#FFFFFF", transform: "scale(.7)", transformOrigin: "0 0" }} /* the prototype draws a 400px phone inside 100px of padding: line that phone up with this screen */></iframe>
                 </div>
               </div>
-              {" "}
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
                 Final · live — try swiping
               </span>
-              {" "}
             </div>
-            {" "}
           </div>
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
