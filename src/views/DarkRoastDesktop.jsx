@@ -758,9 +758,9 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "46px", lineHeight: "1" }}>
             {"Four high‑impact changes, "}
             <span style={{ fontStyle: "italic" }}>
               each traced back to the research.
@@ -772,7 +772,7 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csPairs || []).map((p, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "16px 18px", borderRadius: "16px", background: p?.bg, color: p?.fg, display: "flex", flexDirection: "column", gap: "6px", transition: "background .25s, color .25s" }}>
+                <button type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "12px 16px", borderRadius: "14px", background: p?.bg, color: p?.fg, display: "flex", flexDirection: "column", gap: "6px", transition: "background .25s, color .25s" }}>
                   <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", color: p?.nc }}>
                     {show(p?.n)}
                   </span>
@@ -786,7 +786,8 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerLeave={v.onCmpUp} style={{ position: "relative", height: "560px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", userSelect: "none", touchAction: "none" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 272px", gap: "12px", alignItems: "stretch" }}>
+          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerLeave={v.onCmpUp} style={{ position: "relative", aspectRatio: "904 / 662", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", userSelect: "none", touchAction: "none" }}>
             {" "}
             <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${v.csPair?.after ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#FFFFFF", pointerEvents: "none" }}></div>
             {" "}
@@ -816,26 +817,27 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {" "}
-            <div style={{ padding: "22px 24px", borderRadius: "18px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "10px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                 Before
               </span>
-              <span style={{ fontSize: "15px", lineHeight: "1.55" }}>
+              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
                 {show(v.csPair?.b)}
               </span>
             </div>
             {" "}
-            <div style={{ padding: "22px 24px", borderRadius: "18px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "10px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
                 After
               </span>
-              <span style={{ fontSize: "15px", lineHeight: "1.55" }}>
+              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
                 {show(v.csPair?.a)}
               </span>
             </div>
             {" "}
+          </div>
           </div>
           {" "}
         </div>
