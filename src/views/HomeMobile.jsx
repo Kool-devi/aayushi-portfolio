@@ -296,7 +296,7 @@ export default function HomeMobile({ v }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
               <div style={{ position: "relative", height: "200px", background: "#E9DA2E" }}>
-                <ImageSlot id="v9d-portrait" shape="rect" placeholder="Portrait — wide crop" />
+                <ImageSlot id="v9d-portraitWide" shape="rect" placeholder="Aayushi Patel giving a talk" />
               </div>
               {" "}
               <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
