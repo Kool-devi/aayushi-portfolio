@@ -188,7 +188,6 @@ export default class DesktopLogic extends React.Component {
     const survey = [['Needs better mobile experience', 'Poor use of space across screen sizes'], ['Needs better file management', 'Previewing and finding the right file inside long conversations'], ['Issues with text, links and spacing', 'Less reliability — and decreased trust'], ['Providing small updates felt too formal', 'The product had a heavy management workflow']];
     const steps = [['Share intent', 'Turn rough goals into clear creative direction.'], ['Start work', 'Create new work quickly using existing context.'], ['Track progress', 'See what needs attention without opening every project.'], ['Review work', 'Check quality and direction at a glance.'], ['Give feedback', 'Iterate without re‑briefing or heavy process.'], ['Reuse & scale', 'Carry past work and brand context into future projects.']];
     const st = S.csStep ?? 2;
-    const md = S.csMode ?? 0;
     const modes = [
       { k: 'Mode A', t: 'Active', d: 'Where the work happens.', tag: 'Priority', items: ['Messaging', 'Feedback', 'Coordination', 'File sharing', 'Decisions'] },
       { k: 'Mode B', t: 'Reference', d: 'Where users check context.', tag: 'One step away', items: ['Project brief', 'Metadata', 'Summaries', 'History'] }];
@@ -212,7 +211,7 @@ export default class DesktopLogic extends React.Component {
       csSteps: steps.map(([t, d], i) => { const on = i === st; return { t, d, n: String(i + 1), isNow: i === 2, size: on ? '72px' : '56px', pad: [56, 20, 0, 0, 20, 56][i] + 'px', bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FCEB3F' : '#0B0B0B', sh: on ? '0 16px 30px -14px rgba(0,0,0,.5)' : 'none', fw: on ? 600 : 500, onPick: () => this.state.csStep !== i && this.setState({ csStep: i }) }; }),
       csStep: { n: '0' + (st + 1), t: steps[st][0], d: steps[st][1] },
       csStepPrev: () => this.setState({ csStep: (st + 5) % 6 }), csStepNext: () => this.setState({ csStep: (st + 1) % 6 }),
-      csModes: modes.map((m, i) => { const on = i === md; return { ...m, bg: i === 0 ? '#0B0B0B' : '#FFFFFF', fg: i === 0 ? '#FFFFFF' : '#0B0B0B', chip: i === 0 ? '#FFFFFF1A' : '#EFEFEC', tagBg: i === 0 ? '#FCEB3F' : '#EFEFEC', tagFg: '#0B0B0B', s: on ? 1 : 0.97, op: on ? 1 : 0.62, onPick: () => this.state.csMode !== i && this.setState({ csMode: i }) }; }),
+      csModes: modes.map((m, i) => ({ ...m, bg: i === 0 ? '#0B0B0B' : '#FFFFFF', fg: i === 0 ? '#FFFFFF' : '#0B0B0B', chip: i === 0 ? '#FFFFFF1A' : '#EFEFEC', tagBg: i === 0 ? '#FCEB3F' : '#EFEFEC', tagFg: '#0B0B0B' })),
       csPriorities: [['Make progress obvious', 'Understand what’s happening across projects without opening each one.'], ['Give active work more space', 'Messaging, feedback and collaboration take priority inside a project.'], ['Reduce persistent information', 'Reference content stays accessible without competing with the task.']].map(([t, d], i) => ({ t, d, n: '0' + (i + 1) })),
       csIterSets: sets.map((s, i) => ({ t: s.t, w: i === si ? 600 : 500, onPick: () => this.setState({ csSet: i, csIt: 0 }) })),
       csIterLeft: si ? '50%' : '4px', csIterSet: set,
