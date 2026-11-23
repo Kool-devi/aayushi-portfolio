@@ -57,31 +57,43 @@ export default class MobileLogic extends React.Component {
     this.setState({ copied: true });
     clearTimeout(this.t); this.t = setTimeout(() => this.setState({ copied: false }), 1800);
   };
+  // Attune "Choreograph each room": each mode's prototype plays (from the start) while its phone is on screen.
+  atPhoneRef(i) {
+    this._atPR = this._atPR || [];
+    return this._atPR[i] || (this._atPR[i] = (el) => {
+      if (!this._atIO) this._atIO = new IntersectionObserver((es) => es.forEach((e) => {
+        const k = +e.target.dataset.atphone, cur = (this.state.atMV || {})[k] || 0;
+        if (e.isIntersecting && !cur) this.setState((s) => ({ atMV: { ...(s.atMV || {}), [k]: (this._atRunN = (this._atRunN || 0) + 1) } }));
+        else if (!e.isIntersecting && cur) this.setState((s) => ({ atMV: { ...(s.atMV || {}), [k]: 0 } }));
+      }), { threshold: 0.4 });
+      if (el) this._atIO.observe(el);
+    });
+  }
   atGo(i) { this.setState({ atM: i, atSt: 0, atK: 0 }); }
   atStart() { if (this._atInt) return; this._atInt = setInterval(() => { if (!this._atEl || !document.body.contains(this._atEl)) { clearInterval(this._atInt); this._atInt = null; return; } this.setState(s => { const L = 5, m = s.atM ?? 0, st = s.atSt ?? 0, k = (s.atK ?? 0) + 1; if (k < L) return { atK: k }; if (st < 3) return { atSt: st + 1, atK: 0 }; return { atM: (m + 1) % 4, atSt: 0, atK: 0 }; }); }, 1000); }
   atVals() {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
     const L = 5, m = S.atM ?? 0, st = S.atSt ?? 0, k = S.atK ?? 0;
-    const chap = [['Moves','moves'],['Problem','problem'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
+    const chap = [['Moves','moves'],['Problem','problem'],['Private / shared','model'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
     const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
     const modes = [
-      { t: 'Reflect', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
+      { t: 'Reflect', proto: 'prototypes/attune-reflect.html', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
         { t: 'Start anywhere', note: 'Familiar chat pattern — nothing new to learn.', k: 'Reflect · private', title: 'What’s on your mind?', chips: ['I felt ignored today', 'Something’s bothering me', 'Help me put it into words'], sel: 0, input: true },
         { t: 'Talk it through', note: 'Text or voice — whatever’s easier in the moment.', k: 'Reflect · private', title: 'Take your time.', bubbles: [['me', 'I felt ignored at dinner tonight.'], ['ai', 'That sounds lonely. What did you need in that moment?'], ['me', 'Just for him to ask about my day.']], input: true },
         { t: 'AI reflects back', note: 'AI mirrors feelings — it doesn’t judge or advise.', k: 'Reflect · private', title: 'Here’s what I’m hearing.', card: ['Reflection', 'You want to feel noticed — not to win an argument.'], chips: ['Lonely', 'Unseen', 'Hopeful'], sel: 1 },
         { t: 'You choose what’s next', note: 'Nothing is shared unless you decide.', k: 'Reflect · private', title: 'What would help now?', btns: [['Keep this private', 1], ['Prepare to talk to my partner', 0], ['Move to Repair', 0]] }] },
-      { t: 'Repair', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
+      { t: 'Repair', proto: 'prototypes/attune-repair.html', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
         { t: 'Body check‑in', note: 'Start with the body, not the argument.', k: 'Repair · step 1 of 4', title: 'Where do you feel it right now?', chips: ['Chest', 'Jaw', 'Stomach', 'Hands'], sel: 0, card: ['Intensity', '●●●●●●●○○○  7 / 10'] },
         { t: 'Ground yourself', note: 'Slow the flow down before any reflection.', k: 'Repair · step 2 of 4', title: 'Let’s slow down together.', circle: 'breath' },
         { t: 'Guided reflection', note: 'One gentle question at a time.', k: 'Repair · step 3 of 4', title: 'What happened?', bubbles: [['ai', 'In a few words, what happened?'], ['me', 'We argued about money again.'], ['ai', 'What were you feeling underneath the anger?']] },
         { t: 'Reconnect — only if ready', note: 'Every shared step is explicit and opt‑in.', k: 'Repair · step 4 of 4', title: 'Ready to reconnect?', card: ['🔒 Private', 'Your partner sees nothing until you choose to share.'], btns: [['Not yet', 0], ['Prepare a message', 1]] }] },
-      { t: 'Resolve', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
+      { t: 'Resolve', proto: 'prototypes/attune-resolve.html', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
         { t: 'Both opt in', note: 'Mutual consent — no one gets ambushed.', k: 'Resolve · together', title: 'Start only when you’re both ready.', bubbles: [['p', 'Aanya joined ✓'], ['me', 'Sam joined ✓']], btns: [['Start together', 1]] },
         { t: 'Agree ground rules', note: 'Agreed before anyone speaks.', k: 'Resolve · together', title: 'Our ground rules', chips: ['One speaker at a time', 'No interrupting', 'Pause anytime', 'Assume good intent'], sel: 9, all: true },
         { t: 'Take turns', note: 'Protected, equal speaking time.', k: 'Resolve · Sam’s turn', title: 'Sam has the floor.', circle: 'timer' },
         { t: 'AI checks understanding', note: 'AI clarifies — it never picks a side.', k: 'Resolve · clarify', title: 'Quick check, Aanya.', card: ['Attune', 'Did you hear Sam say he feels unappreciated?'], btns: [['Yes, that’s right', 1], ['Not quite', 0]] }] },
-      { t: 'Refine', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
+      { t: 'Refine', proto: 'prototypes/attune-refine.html', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
         { t: 'Plan a session', note: 'Growth on your own rhythm — schedule and repeat.', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
         { t: 'Guided prompt', note: 'Small prompts and activities, not therapy homework.', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
         { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺'], ['ai', '✦ Nice — try saying why it mattered.']] },
@@ -106,14 +118,14 @@ export default class MobileLogic extends React.Component {
     const mix = [5, 12, 2, 9, 14, 0, 7, 11, 3, 15, 6, 1, 10, 13, 4, 8];
     const roleRows = [['Who’s in it', x => x.who === 1 ? 'Just me' : 'Both of us', x => x.who === 1 ? '●' : '●●'], ['AI’s role', x => x.role, () => ''], ['Pace', x => x.pace, () => '']];
     return {
-      atChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
+      atChapters: chap.map(([t, id], i) => ({ t, n: String(i + 1).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
       atHeroModes: modes.map((x, i) => ({ t: x.t, k: x.k, q: x.q, n: n2(i), img: U(x.img), flex: i === hm ? 3 : 1, qOp: i === hm ? 1 : 0, zs: i === hm ? 1.06 : 1, fw: i === hm ? 600 : 400, lc: i === hm ? '#FCEB3F' : '#FFFFFF99', onPick: pick('atH', i), onTap: () => { this._heroUser = true; this.setState({ atH: i }); } })),
       atHeroCur: { t: modes[hm].t, q: modes[hm].q, k: modes[hm].k, n: n2(hm) }, atHeroThumb: (12.5 + hm * 25) + '%',
       atHeroRef: (el) => { if (this._heroInt) { clearInterval(this._heroInt); this._heroInt = null; } if (!el) return; this._heroInt = setInterval(() => { if (this._heroUser) return; this.setState(s => ({ atH: ((s.atH ?? 0) + 1) % 4 })); }, 3800); },
-      atMoves: [['Gave every mode a role', 'roles'], ['Mapped private → shared', 'model'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
+      atMoves: [['Mapped private → shared', 'model'], ['Gave every mode a role', 'roles'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
       atSame: ['Alone with a thought', 'Right after a fight', 'Conflict, together', 'A crisis moment'].map((t, i) => ({ t, n: n2(i) })),
-      atRoleCols: modes.map((x, i) => ({ t: x.t, n: n2(i), bg: i === rc ? '#0B0B0B' : 'transparent', fg: i === rc ? '#FFFFFF' : '#0B0B0B', nc: i === rc ? '#FCEB3F' : '#E5322B', onPick: pick('atRc', i) })),
-      atRoleRows: roleRows.map(([kk, f, d]) => ({ k: kk, cells: modes.map((x, i) => ({ t: f(x), dots: d(x), bg: i === rc ? '#0B0B0B' : 'transparent', fg: i === rc ? '#FFFFFF' : '#0B0B0B', bd: i === rc ? '#FFFFFF1F' : '#0B0B0B14' })) })),
+      atRoleCols: modes.map((x, i) => ({ t: x.t, n: n2(i), bg: 'transparent', fg: '#0B0B0B', nc: '#E5322B' })),
+      atRoleRows: roleRows.map(([kk, f, d]) => ({ k: kk, cells: modes.map((x, i) => ({ t: f(x), dots: d(x), bg: 'transparent', fg: '#0B0B0B', bd: '#0B0B0B14' })) })),
       atModelDot: ['12.5%', '37.5%', '62.5%', '87.5%'][md],
       atModelCards: modes.map((x, i) => ({ t: x.t, q: x.q, img: U(x.img), lift: i === md ? '-8px' : '0px', sh: i === md ? '0 24px 40px -20px rgba(0,0,0,.45)' : '0 1px 2px rgba(0,0,0,.05)', onPick: pick('atMd', i) })),
       atModes: modes.map((x, i) => { const on = i === m; return { t: x.t, k: x.k, n: n2(i), img: U(x.img), onMode: () => this.atGo(i), tabBg: on ? '#FCEB3F' : 'transparent', tabFg: on ? '#0B0B0B' : '#FFFFFF', tabK: on ? '#E5322B' : '#FFFFFF80', prog: on ? ((st * L + k + 1) / (4 * L) * 100) + '%' : '0%', op: on ? 1 : 0, sc: on ? 1.06 : 1.14, pillBg: on ? '#FFFFFF' : 'transparent', pillFg: on ? '#0B0B0B' : '#FFFFFF' }; }),
@@ -121,7 +133,7 @@ export default class MobileLogic extends React.Component {
       atScreens: cur.steps.map(mkScreen),
       atStepCur: { n: n2(st), t: cur.steps[st].t, note: cur.steps[st].note },
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { fill: j < st ? '100%' : on ? ((k + 1) / L * 100) + '%' : '0%', t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atModesRef: el => { this._atEl = el; if (el) this.atStart(); },
+      atFlow: modes.map((x, i) => { const r = (S.atMV || {})[i]; return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), poster: U(x.proto.replace('prototypes/attune-', 'Mockups/Attune/proto-').replace('.html', '-start.webp')), play: !!r, run: i + '-' + (r || 0), phoneRef: this.atPhoneRef(i), steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })) }; }),
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
@@ -131,7 +143,7 @@ export default class MobileLogic extends React.Component {
       protoBoxRef: (el) => { if (this._pro) { this._pro.disconnect(); this._pro = null; } if (!el) return; const fit = () => { const f = el.querySelector('iframe'); if (f) f.style.transform = 'scale(' + (el.clientWidth / 1440) + ')'; }; fit(); if (window.ResizeObserver) { this._pro = new ResizeObserver(fit); this._pro.observe(el); } },
       mSeamTop: (this.state.mSeam ?? 52) + '%', mSeamBottom: (100 - (this.state.mSeam ?? 52)) + '%',
       onMSeamDown: (e) => { e.preventDefault(); this._mDrag = true; },
-      onMSeamMove: (e) => { if (!this._mDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ mSeam: Math.max(4, Math.min(97, (e.clientY - r.top) / r.height * 100)) }); },
+      onMSeamMove: (e) => { if (!this._mDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ mSeam: Math.max(4, Math.min(100, (e.clientY - r.top) / r.height * 100)) }); },
       onMSeamUp: () => { this._mDrag = false; },
       atLearn: ['Why is AI here?', 'What should it know?', 'What stays private?', 'When should it stop?'].map((t, i) => ({ t, n: n2(i) }))
     };

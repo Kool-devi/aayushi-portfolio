@@ -2,9 +2,12 @@
 // Attune page — desktop layout. Generated from the Claude Design board 14a, then hand-tuned.
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import AttuneArchitecture from './AttuneArchitecture.jsx';
+import ProtoFrame, { usePrefetchProtos } from '../components/ProtoFrame.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneDesktop({ v }) {
+  usePrefetchProtos((v.atFlow || []).map((m) => m.proto));
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {/* Site navigation: sticks to the top while scrolling; the chapter bar below docks under it. */}
@@ -94,33 +97,16 @@ export default function AttuneDesktop({ v }) {
           {" "}
         </div>
         {" "}
-        <div style={{ display: "flex", gap: "8px", height: "500px", margin: "0 -40px" }}>
+        <div style={{ position: "relative", height: "560px", margin: "0 -40px", background: "#7A5A40", overflow: "hidden" }}>
           {" "}
-          {(v.atHeroModes || []).map((m, $index) => (
-            <React.Fragment key={$index}>
-              {" "}
-              <button type="button" onMouseEnter={m?.onPick} onClick={m?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", flex: m?.flex, minWidth: "0", overflow: "hidden", background: `#1A1A18 url(${m?.img ?? ""}) center/cover no-repeat`, transition: "flex .7s cubic-bezier(.3,.9,.3,1)" }}>
-                {" "}
-                <span style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.6) 100%)" }}></span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", top: "22px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "rgba(255,255,255,.85)", color: "#0B0B0B" }}>
-                  {show(m?.n)}{" · "}{show(m?.k)}
-                </span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", right: "24px", bottom: "96px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: ".9", color: "#FFFFFF", whiteSpace: "nowrap" }}>
-                  {show(m?.t)}
-                </span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", right: "24px", top: "calc(100% - 84px)", fontSize: "15px", lineHeight: "1.4", color: "#FFFFFF", opacity: m?.qOp, transition: "opacity .5s", maxWidth: "30ch" }}>
-                  {"“"}{show(m?.q)}{"”"}
-                </span>
-                {" "}
-              </button>
-              {" "}
-            </React.Fragment>
-          ))}
+          <img src="Mockups/Attune/Hero-resolve.webp" alt="Attune AI in a shared Resolve session, held in two hands" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          {" "}
+          <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
+            Fig. 01 — A shared Resolve session
+          </span>
           {" "}
         </div>
+        {" "}
       </header>
       <nav data-sticky style={{ position: "sticky", top: "66px", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 40px" }}>
         {" "}
@@ -142,6 +128,14 @@ export default function AttuneDesktop({ v }) {
         </div>
       </nav>
       <section id="moves" style={{ padding: "100px 40px 20px", display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <span style={{ color: "#E5322B" }}>
+            01
+          </span>
+          <span>
+            Overview — five moves
+          </span>
+        </div>
         {" "}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
           {" "}
@@ -188,7 +182,7 @@ export default function AttuneDesktop({ v }) {
       <section id="problem" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            00
+            02
           </span>
           <span>
             The problem
@@ -252,13 +246,14 @@ export default function AttuneDesktop({ v }) {
           </div>
         </div>
       </section>
+      <AttuneArchitecture num="03" />
       <section id="roles" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            01
+            04
           </span>
           <span>
-            Move 01 — Give every mode a role
+            Move 02 — Give every mode a role
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
@@ -271,32 +266,20 @@ export default function AttuneDesktop({ v }) {
             {" clear."}
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
-              One chatbot everywhere
-            </span>
-            <span style={{ color: "#E5322B" }}>
-              →
-            </span>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontWeight: "500" }}>
-              A role per mode
-            </span>
-          </div>
-          {" "}
           <div style={{ display: "grid", gridTemplateColumns: "140px repeat(4, minmax(0,1fr))", borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden" }}>
             {" "}
             <span></span>
             {" "}
             {(v.atRoleCols || []).map((c, $index) => (
               <React.Fragment key={$index}>
-                <button type="button" onMouseEnter={c?.onPick} style={{ all: "unset", cursor: "default", padding: "18px 18px 14px", background: c?.bg, color: c?.fg, transition: "background .3s, color .3s", display: "flex", flexDirection: "column", gap: "4px" }}>
+                <div style={{ padding: "18px 18px 14px", background: c?.bg, color: c?.fg, display: "flex", flexDirection: "column", gap: "4px" }}>
                   <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: c?.nc }}>
                     {show(c?.n)}
                   </span>
                   <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1", letterSpacing: "-.04em" }}>
                     {show(c?.t)}
                   </span>
-                </button>
+                </div>
               </React.Fragment>
             ))}
             {" "}
@@ -309,10 +292,8 @@ export default function AttuneDesktop({ v }) {
                 {" "}
                 {(r?.cells || []).map((x, $index) => (
                   <React.Fragment key={$index}>
-                    <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em", transition: "background .3s, color .3s" }}>
-                      <span style={{ display: "flex", gap: "3px" }}>
-                        {show(x?.dots)}
-                      </span>
+                    <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em" }}>
+                      {x?.dots ? <span style={{ display: "flex", gap: "3px" }}>{show(x?.dots)}</span> : null}
                       {show(x?.t)}
                     </span>
                   </React.Fragment>
@@ -327,7 +308,7 @@ export default function AttuneDesktop({ v }) {
       <section id="rooms" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            03
+            05
           </span>
           <span>
             Move 03 — Rooms, not cards
@@ -342,43 +323,30 @@ export default function AttuneDesktop({ v }) {
             </span>
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
-              Four cards on one screen
-            </span>
-            <span style={{ color: "#E5322B" }}>
-              →
-            </span>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontWeight: "500" }}>
-              Swipeable, mood‑led spaces
-            </span>
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "28px", alignItems: "center" }}>
-            {" "}
-            <div style={{ position: "relative", height: "560px", borderRadius: "22px", background: "#E2E2DE url('Mockups/Attune/Four%20Cards%20Explored.jpg') center/contain no-repeat", filter: "grayscale(.7)", opacity: ".8" }}>
-              {" "}
-              <span style={{ position: "absolute", left: "16px", top: "16px", padding: "7px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "12.5px", fontWeight: "600" }}>
-                ✕ Explored
-              </span>
-              {" "}
-            </div>
-            {" "}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              {" "}
-              <div style={{ width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
-                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", left: "-70px", top: "-70px", width: "600px", height: "1074px", border: "0", background: "#FFFFFF", transform: "scale(.7)", transformOrigin: "0 0" }} /* the prototype draws a 400px phone inside 100px of padding: line that phone up with this screen */></iframe>
+              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
+                  <img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
                 </div>
               </div>
-              {" "}
+              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500" }}>
+                <span style={{ color: "#E5322B" }}>✕</span>
+                Explored — four cards on one screen
+              </span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
+              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
+                  <img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <ProtoFrame src="prototypes/attune-choose-a-mode.html#z=.525" title="Attune — choose a mode prototype" width="210px" height="459px" />
+                </div>
+              </div>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
                 Final · live — try swiping
               </span>
-              {" "}
             </div>
-            {" "}
           </div>
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
@@ -395,258 +363,113 @@ export default function AttuneDesktop({ v }) {
           </div>
         </div>
       </section>
-      <section id="flows" ref={v.atModesRef} style={{ margin: "110px 40px 0", padding: "48px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
+      <section id="flows" style={{ margin: "110px 40px 0", padding: "48px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px", alignItems: "end" }}>
-            {" "}
-            <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-              <span style={{ color: "#FCEB3F" }}>
-                04
-              </span>
-              <span>
-                Move 04 — Choreograph each room
-              </span>
-            </div>
-            {" "}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
-              {" "}
-              <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-                {"One product, "}
-                <span style={{ fontStyle: "italic" }}>
-                  four emotional rooms.
-                </span>
-              </h2>
-              {" "}
-              <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#E5322B" }}></span>
-                Playing each flow · click to jump
-              </span>
-              {" "}
-            </div>
-            {" "}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+            <span style={{ color: "#FCEB3F" }}>
+              06
+            </span>
+            <span>
+              Move 04 — Choreograph each room
+            </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "6px", padding: "6px", borderRadius: "999px", background: "#FFFFFF14" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             {" "}
-            {(v.atModes || []).map((m, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <button type="button" onClick={m?.onMode} style={{ all: "unset", cursor: "pointer", position: "relative", overflow: "hidden", height: "52px", borderRadius: "999px", background: m?.tabBg, color: m?.tabFg, display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", fontSize: "15px", fontWeight: "500", transition: "background .3s, color .3s" }}>
-                  {" "}
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: m?.tabK }}>
-                    {show(m?.n)}{" · "}{show(m?.k)}
-                  </span>
-                  {show(m?.t)}{"\n          "}
-                  <span style={{ position: "absolute", left: "0", bottom: "0", height: "3px", width: m?.prog, background: "#E5322B", transition: "width 1s linear" }}></span>
-                  {" "}
-                </button>
-                {" "}
-              </React.Fragment>
-            ))}
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
+              {"One product, "}
+              <span style={{ fontStyle: "italic" }}>
+                four emotional rooms.
+              </span>
+            </h2>
             {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: "56px", alignItems: "center" }}>
-            {" "}
-            <div style={{ width: "310px", height: "640px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
-                {(v.atModes || []).map((m, $index) => (
+            {/* Scroll story (as on the Delicut page): the phone stays pinned while the four modes scroll past beside it; the screen follows the mode in view. */}
+            <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
+              {" "}
+              <div style={{ position: "sticky", top: v.atPhoneTop, width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#1A1A18" }}>
+                  {/* stills of each prototype's first screen, so the phone is never blank while one loads */}
+                  {(v.atFlow || []).map((m, $index) => (
+                    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: m?.op, transition: "opacity .5s" }} />
+                  ))}
+                  {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
+                  {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (
+                    <div key={$index} style={{ position: "absolute", inset: "0", zIndex: m?.play ? 2 : 1 }}>
+                      <ProtoFrame key={m?.run} src={m?.proto + "#z=.54"} title={`Attune ${m?.t} prototype`} width="216px" height="472px" onReady={m?.onReady} />
+                    </div>
+                  ) : null))}
+                </div>
+              </div>
+              {" "}
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {(v.atFlow || []).map((m, $index) => (
                   <React.Fragment key={$index}>
-                    <div style={{ position: "absolute", inset: "0", background: `#1A1A18 url(${m?.img ?? ""}) center/cover no-repeat`, opacity: m?.op, transform: `scale(${m?.sc ?? ""})`, transition: "opacity .8s, transform 1.6s cubic-bezier(.3,.9,.3,1)" }}></div>
-                  </React.Fragment>
-                ))}
-                {" "}
-                <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.42) 45%, rgba(0,0,0,.7) 100%)" }}></div>
-                {" "}
-                <div style={{ position: "absolute", left: "12px", right: "12px", top: "40px", zIndex: "2", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", padding: "3px", borderRadius: "999px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}>
-                  {" "}
-                  {(v.atModes || []).map((m, $index) => (
-                    <React.Fragment key={$index}>
-                      <span style={{ height: "26px", borderRadius: "999px", background: m?.pillBg, color: m?.pillFg, display: "grid", placeItems: "center", fontSize: "11px", fontWeight: "600", transition: "all .3s" }}>
+                    <div data-atstep={$index} style={{ minHeight: "560px", display: "flex", flexDirection: "column", justifyContent: "center", gap: "20px", opacity: m?.stepOp, transition: "opacity .45s" }}>
+                      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F", marginRight: "4px" }}>
+                          {show(m?.n)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
+                          {show(m?.dots)}{" "}{show(m?.k)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
+                          {"AI role · "}{show(m?.role)}
+                        </span>
+                      </div>
+                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "64px", lineHeight: ".9", letterSpacing: "-.06em" }}>
                         {show(m?.t)}
                       </span>
-                    </React.Fragment>
-                  ))}
-                  {" "}
-                </div>
-                {" "}
-                {(v.atScreens || []).map((s, $index) => (
-                  <React.Fragment key={$index}>
-                    {" "}
-                    <div style={{ position: "absolute", inset: "0", padding: "88px 16px 20px", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "10px", color: "#FFFFFF", opacity: s?.op, transform: `translateX(${s?.x ?? ""})`, transition: "opacity .55s, transform .65s cubic-bezier(.3,.9,.3,1)", pointerEvents: "none" }}>
-                      {" "}
-                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#FCEB3F" }}>
-                        {show(s?.k)}
-                      </span>
-                      {" "}
-                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.02", letterSpacing: "-.04em" }}>
-                        {show(s?.title)}
-                      </span>
-                      {" "}
-                      {s?.hasCircle ? (
-                        <>
-                        {" "}
-                        <div style={{ alignSelf: "center", margin: "14px 0 6px", position: "relative", width: "150px", height: "150px", borderRadius: "50%", border: "1.5px solid rgba(255,255,255,.6)", display: "grid", placeItems: "center" }}>
-                          {" "}
-                          <span style={{ position: "absolute", inset: "0", borderRadius: "50%", background: "rgba(252,235,63,.28)", transform: `scale(${s?.cs ?? ""})`, transition: "transform 1s ease-in-out" }}></span>
-                          {" "}
-                          <span style={{ position: "relative", fontSize: "14px", fontWeight: "600", textAlign: "center", lineHeight: "1.3" }}>
-                            {show(s?.cl)}
-                          </span>
-                          {" "}
-                        </div>
-                        {" "}
-                        </>
-                      ) : null}
-                      {" "}
-                      {s?.hasCard ? (
-                        <>
-                        {" "}
-                        <div style={{ padding: "14px", borderRadius: "16px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", display: "flex", flexDirection: "column", gap: "6px", opacity: s?.cardOp, transform: `translateY(${s?.cardY ?? ""})`, transition: "all .5s" }}>
-                          {" "}
-                          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#FCEB3F" }}>
-                            {show(s?.ck)}
-                          </span>
-                          {" "}
-                          <span style={{ fontSize: "14px", lineHeight: "1.35", fontWeight: "500" }}>
-                            {show(s?.ct)}
-                          </span>
-                          {" "}
-                        </div>
-                        {" "}
-                        </>
-                      ) : null}
-                      {" "}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                        {" "}
-                        {(s?.bubbles || []).map((b, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ alignSelf: b?.al, maxWidth: "82%", padding: "9px 12px", borderRadius: b?.r, background: b?.bg, color: b?.fg, fontSize: "12px", lineHeight: "1.4", opacity: b?.op, transform: `translateY(${b?.y ?? ""})`, transition: "opacity .5s, transform .5s cubic-bezier(.3,1.2,.4,1)" }}>
-                              {show(b?.t)}
+                      <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", color: "#FFFFFFcc", maxWidth: "46ch" }}>
+                        {"“"}{show(m?.q)}{"”"}
+                      </p>
+                      <ol style={{ listStyle: "none", margin: "0", padding: "0", display: "flex", flexDirection: "column", borderTop: "1px solid #FFFFFF26" }}>
+                        {(m?.steps || []).map((s, k) => (
+                          <li key={k} style={{ display: "grid", gridTemplateColumns: "36px minmax(0,1fr)", gap: "10px", padding: "12px 0", borderBottom: "1px solid #FFFFFF26" }}>
+                            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F", paddingTop: "3px" }}>
+                              {show(s?.n)}
                             </span>
-                          </React.Fragment>
+                            <span style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                              <span style={{ fontSize: "17px", fontWeight: "500", letterSpacing: "-.02em" }}>
+                                {show(s?.t)}
+                              </span>
+                              <span style={{ fontSize: "14px", lineHeight: "1.45", color: "#FFFFFFb3" }}>
+                                {show(s?.note)}
+                              </span>
+                            </span>
+                          </li>
                         ))}
-                        {" "}
-                      </div>
-                      {" "}
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                        {" "}
-                        {(s?.chips || []).map((c, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ padding: "7px 11px", borderRadius: "999px", background: c?.bg, color: c?.fg, border: "1px solid rgba(255,255,255,.35)", fontSize: "11.5px", fontWeight: "500", transition: "all .4s" }}>
-                              {show(c?.t)}
-                            </span>
-                          </React.Fragment>
-                        ))}
-                        {" "}
-                      </div>
-                      {" "}
-                      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "7px" }}>
-                        {" "}
-                        {(s?.btns || []).map((b, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ height: "42px", borderRadius: "999px", background: b?.bg, color: b?.fg, border: "1px solid rgba(255,255,255,.4)", display: "grid", placeItems: "center", fontSize: "12.5px", fontWeight: "600", opacity: b?.op, transform: `translateY(${b?.y ?? ""})`, transition: "all .5s" }}>
-                              {show(b?.t)}
-                            </span>
-                          </React.Fragment>
-                        ))}
-                        {" "}
-                        {s?.hasInput ? (
-                          <>
-                          {" "}
-                          <div style={{ height: "44px", borderRadius: "999px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px 0 16px", fontSize: "12px", color: "#FFFFFFb3" }}>
-                            Type, or hold to talk
-                            <span style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "13px" }}>
-                              🎙
-                            </span>
-                          </div>
-                          {" "}
-                          </>
-                        ) : null}
-                        {" "}
-                      </div>
-                      {" "}
+                      </ol>
                     </div>
-                    {" "}
                   </React.Fragment>
                 ))}
               </div>
             </div>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-              {" "}
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: v.atMode?.kBg, color: "#0B0B0B" }}>
-                  {show(v.atMode?.k)}
-                </span>
-                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
-                  {"AI role · "}{show(v.atMode?.role)}
-                </span>
-              </div>
-              {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "84px", lineHeight: ".86", letterSpacing: "-.06em" }}>
-                {show(v.atMode?.t)}
-              </span>
-              {" "}
-              <div style={{ display: "flex", flexDirection: "column", borderTop: "1px solid #FFFFFF26" }}>
-                {" "}
-                {(v.atSteps || []).map((s, $index) => (
-                  <React.Fragment key={$index}>
-                    {" "}
-                    <button type="button" onClick={s?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", display: "grid", gridTemplateColumns: "44px 1fr", gap: "12px", padding: "14px 0", borderBottom: "1px solid #FFFFFF26", opacity: s?.op, transition: "opacity .4s" }}>
-                      {" "}
-                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: s?.nc, paddingTop: "4px" }}>
-                        {show(s?.n)}
-                      </span>
-                      {" "}
-                      <span style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                        {" "}
-                        <span style={{ fontSize: "18px", fontWeight: "500", letterSpacing: "-.02em" }}>
-                          {show(s?.t)}
-                        </span>
-                        {" "}
-                        <span style={{ fontSize: "14px", lineHeight: "1.45", color: "#FCEB3F", maxHeight: s?.mh, overflow: "hidden", transition: "max-height .5s" }}>
-                          {show(s?.note)}
-                        </span>
-                        {" "}
-                      </span>
-                      {" "}
-                      <span style={{ position: "absolute", left: "0", bottom: "-1px", height: "2px", width: s?.prog, background: "#FCEB3F", transition: "width 1s linear" }}></span>
-                      {" "}
-                    </button>
-                    {" "}
-                  </React.Fragment>
-                ))}
-                {" "}
-              </div>
-              {" "}
-            </div>
-            {" "}
           </div>
-          {" "}
         </div>
       </section>
       <section id="safety" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            05
+            07
           </span>
           <span>
             Move 05 — Design when AI stops
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1" }}>
             {"The safest AI action is sometimes "}
             <span style={{ fontStyle: "italic" }}>
               to stop.
             </span>
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "center", padding: "24px 32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            {" "}
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px", marginBottom: "10px" }}>
             <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
               Keep the chat going
             </span>
@@ -658,9 +481,6 @@ export default function AttuneDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "center", padding: "32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
               {(v.atSafe || []).map((s, $index) => (
                 <React.Fragment key={$index}>
@@ -684,10 +504,24 @@ export default function AttuneDesktop({ v }) {
                 Hover a step — the screen reacts →
               </span>
               {" "}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "16px", marginTop: "14px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
+              Why
+            </span>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "21px", lineHeight: "1.2", letterSpacing: "-.035em" }}>
+              {"Responsible AI isn’t only better answers — it’s knowing "}
+              <span style={{ fontStyle: "italic" }}>
+                when the product should step aside.
+              </span>
+            </span>
+          </div>
+              {" "}
             </div>
             {" "}
-            <div style={{ width: "290px", height: "600px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
+            <div style={{ flex: "none", width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#F4F3EE" }}>
+                {/* the screen is laid out at 270x590 and scaled down to the frame */}
+                <div style={{ position: "absolute", left: "0", top: "0", width: "270px", height: "590px", transform: "scale(.8)", transformOrigin: "0 0" }}>
                 <div style={{ position: "absolute", inset: "0", background: "#F4F3EE" }}></div>
                 {" "}
                 <div style={{ position: "absolute", left: "0", right: "0", top: "0", padding: "46px 18px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", fontWeight: "600", color: "#0B0B0B", borderBottom: "1px solid #0B0B0B14" }}>
@@ -739,28 +573,18 @@ export default function AttuneDesktop({ v }) {
                     {" "}
                   </React.Fragment>
                 ))}
+                </div>
               </div>
             </div>
             {" "}
           </div>
           {" "}
-          <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
-              Why
-            </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1.15", letterSpacing: "-.035em" }}>
-              {"Responsible AI isn’t only better answers — it’s knowing "}
-              <span style={{ fontStyle: "italic" }}>
-                when the product should step aside.
-              </span>
-            </span>
-          </div>
         </div>
       </section>
       <section id="system" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            06
+            08
           </span>
           <span>
             Bonus — Ready for handoff
@@ -838,7 +662,7 @@ export default function AttuneDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
             <span style={{ color: "#E5322B" }}>
-              07
+              09
             </span>
             <span>
               What changed — in the product, and in me

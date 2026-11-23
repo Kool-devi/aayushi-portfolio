@@ -1,6 +1,6 @@
 // Photo placeholder. Put a photo in images/ with one of the names below (jpg, png or webp),
 // run `npm run build`, and it replaces the neutral grey box.
-//   images/portrait.jpg  ·  images/cover-darkroast.jpg  ·  images/cover-delicut.jpg  ·  images/cover-attune.jpg
+//   images/portrait.jpg (desktop)  ·  images/portrait-wide.jpg (phone)  ·  images/cover-darkroast.jpg  ·  images/cover-delicut.jpg  ·  images/cover-attune.jpg
 import React from 'react';
 
 const found = import.meta.glob('../../images/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' });
@@ -10,6 +10,7 @@ const byName = Object.fromEntries(
 
 const NAMES = {
   portrait: 'portrait',
+  portraitWide: 'portrait-wide', // the phone layout's wide crop of the same photo
   darkroast: 'cover-darkroast',
   delicut: 'cover-delicut',
   case3: 'cover-attune',

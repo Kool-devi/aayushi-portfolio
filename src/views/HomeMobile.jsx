@@ -8,7 +8,7 @@ export default function HomeMobile({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none", touchAction: "pan-x" }}>
+      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none" }}>
         {" "}
         <div aria-hidden="true" style={{ gridArea: "1 / 1", minWidth: "0" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "14px 20px 0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 40px) / 4) 100%", backgroundPosition: "20px 0" }}>
@@ -296,7 +296,7 @@ export default function HomeMobile({ v }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
               <div style={{ position: "relative", height: "200px", background: "#E9DA2E" }}>
-                <ImageSlot id="v9d-portrait" shape="rect" placeholder="Portrait — wide crop" />
+                <ImageSlot id="v9d-portraitWide" shape="rect" placeholder="Aayushi Patel giving a talk" />
               </div>
               {" "}
               <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
@@ -487,36 +487,14 @@ export default function HomeMobile({ v }) {
         {" "}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {" "}
-          <div role="tablist" style={{ position: "sticky", top: "8px", zIndex: "3", display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "4px", padding: "4px", borderRadius: "14px", background: "#E2E2DE" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {" "}
             {(v.folders9d || []).map((f, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" role="tab" aria-selected={f?.on} onClick={f?.onOpen} style={{ all: "unset", cursor: "pointer", minWidth: "0", height: "52px", padding: "0 10px", borderRadius: "10px", background: f?.tabBg, display: "flex", flexDirection: "column", justifyContent: "center", gap: "2px", transition: "background .25s" }}>
+                <article style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "14px", padding: "10px 10px 12px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)" }}>
                   {" "}
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#E5322B" }}>
-                    {show(f?.num)}
-                  </span>
-                  {" "}
-                  <span style={{ fontSize: "13.5px", fontWeight: f?.segW, letterSpacing: "-.01em", color: "#0B0B0B", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                    {show(f?.title)}
-                  </span>
-                  {" "}
-                </button>
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)" }}>
-            {" "}
-            {(v.folders9d || []).map((f, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <article style={{ gridArea: "1 / 1", minWidth: "0", display: "flex", flexDirection: "column", gap: "14px", padding: "10px 10px 12px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)", opacity: f?.cardOp, transform: `translateY(${f?.cardY ?? ""})`, pointerEvents: f?.cardPe, transition: "opacity .4s ease, transform .5s cubic-bezier(.3,.9,.3,1)" }}>
-                  {" "}
-                  <div style={{ position: "relative", height: "210px", borderRadius: "14px", overflow: "hidden", background: "#EDEDEA" }}>
+                  <div style={{ position: "relative", aspectRatio: "1.6", borderRadius: "14px", overflow: "hidden", background: "#EDEDEA" }}>
                     {" "}
                     <ImageSlot id={`v9d-${f?.key ?? ""}`} shape="rect" placeholder={f?.placeholder} />
                     {" "}
@@ -584,22 +562,6 @@ export default function HomeMobile({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            {" "}
-            <button type="button" aria-label="Previous case" onClick={v.onPrev9d} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#FFFFFF", display: "grid", placeItems: "center", fontSize: "16px", color: "#0B0B0B" }}>
-              ←
-            </button>
-            {" "}
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-              {"Case "}{show(v.segCount9d)}{" / 03"}
-            </span>
-            {" "}
-            <button type="button" aria-label="Next case" onClick={v.onNext9d} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#0B0B0B", color: "#FFFFFF", display: "grid", placeItems: "center", fontSize: "16px" }}>
-              →
-            </button>
-            {" "}
-          </div>
-          {" "}
         </div>
         {" "}
       </section>
@@ -609,15 +571,6 @@ export default function HomeMobile({ v }) {
         <div style={{ position: "absolute", left: "-140px", top: "-120px", width: "100%", height: "310px", borderRadius: "50%", background: "radial-gradient(circle at 40% 45%, #E5322B 0%, #F2761F 30%, #FCEB3F 55%, rgba(246,243,236,0) 72%)", filter: "blur(40px)", opacity: ".9", pointerEvents: "none" }}></div>
         {" "}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "18px", padding: "20px 16px 16px 20px" }}>
-          {" "}
-          <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", flexWrap: "wrap" }}>
-            <span>
-              Ask me anything
-            </span>
-            <span>
-              04 answers
-            </span>
-          </div>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "45px", lineHeight: ".95", color: "#0B0B0B" }}>
             <span style={{ fontWeight: "300" }}>
@@ -634,23 +587,12 @@ export default function HomeMobile({ v }) {
           </h2>
           {" "}
           <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.55", maxWidth: "30ch" }}>
-            Type a question or tap a topic below.
+            Pick a topic for a quick answer — who I am, why I’m a good fit, or how to reach me.
           </p>
           {" "}
         </div>
         {" "}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "12px", minHeight: "322px" }}>
-          {" "}
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", height: "54px", padding: "0 20px", borderRadius: "999px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 8px 24px -14px rgba(0,0,0,.2)" }}>
-            {" "}
-            <svg width="16" height="16" viewBox="0 0 24 24" style={{ flex: "none" }}>
-              <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="#6E6E69" strokeWidth="2"></circle>
-              <path d="M15.5 15.5 L21 21" stroke="#6E6E69" strokeWidth="2" strokeLinecap="round"></path>
-            </svg>
-            {" "}
-            <input value={(v.q9d) ?? ""} onChange={v.onQ9d} onKeyDown={v.onKey9d} placeholder="Ask a question…" style={{ all: "unset", flex: "1", minWidth: "0", fontFamily: "'Geist',sans-serif", fontSize: "15px", letterSpacing: "-.01em", color: "#0B0B0B" }} />
-            {" "}
-          </div>
           {" "}
           <div style={{ flex: "1", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {" "}

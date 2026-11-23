@@ -139,10 +139,10 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            TL;DR
+            00
           </span>
           <span>
-            In one minute
+            TL;DR · In one minute
           </span>
         </div>
         {" "}
@@ -205,28 +205,30 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="proto" style={{ margin: "0 40px", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
-        {" "}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", padding: "24px 20px 28px" }}>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-              Solution — try it
+      <section id="proto" style={{ margin: "0 40px", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "minmax(0,1fr) 816px", gap: "40px", alignItems: "stretch" }}>
+        {/* Text stacked on the left; the prototype (a 1440×900 page) is scaled to the 816px column on the right, keeping 16:10. */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px", padding: "20px 0 8px 20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
+              <span style={{ color: "#FCEB3F" }}>01</span>
+              <span>
+              Solution — try it</span>
             </span>
-            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1" }}>
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
               {"The final workspace, "}
               <span style={{ fontStyle: "italic" }}>
                 live.
               </span>
             </h2>
-          </div>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-end", textAlign: "right" }}>
-            {" "}
-            <span style={{ fontSize: "13px", lineHeight: "1.5", color: "#FFFFFFb3", maxWidth: "36ch" }}>
+            <span style={{ fontSize: "14px", lineHeight: "1.55", color: "#FFFFFFb3", maxWidth: "30ch" }}>
               Vibe‑coded with Claude agents by importing my Figma designs through the MCP server.
             </span>
-            {" "}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
+            <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
+              Interactive · desktop 1440 view
+            </span>
             <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
               <span style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center" }}>
@@ -235,14 +237,10 @@ export default function DarkRoastDesktop({ v }) {
                 </svg>
               </span>
             </a>
-            {" "}
           </div>
-          {" "}
         </div>
-        {" "}
-        <div style={{ borderRadius: "14px", overflow: "hidden", background: "#1A1A18" }}>
-          {" "}
-          <div style={{ height: "36px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321" }}>
+        <div style={{ borderRadius: "14px", overflow: "hidden", background: "#1A1A18", alignSelf: "center" }}>
+          <div style={{ height: "32px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321" }}>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
@@ -250,42 +248,43 @@ export default function DarkRoastDesktop({ v }) {
               darkroast.app / projects
             </span>
           </div>
-          {" "}
-          <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype" loading="lazy" style={{ display: "block", width: "100%", height: "640px", border: "0", background: "#FFFFFF" }}></iframe>
-          {" "}
+          <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#FFFFFF" }}>
+            <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
+          </div>
         </div>
-        {" "}
       </section>
       {" "}
       <section id="problem" style={{ padding: "120px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            01
+            02
           </span>
           <span>
             The problem
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1.02" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "46px", lineHeight: "1.02" }}>
             {"Clients manage a high volume of creative work — and need to know "}
             <span style={{ fontStyle: "italic" }}>
               what’s moving, what’s blocked, and where feedback is due.
             </span>
           </h2>
           {" "}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 280px", gap: "32px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }}>
             {" "}
-            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "420px" }}>
+            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "360px" }}>
               {" "}
               <span style={{ position: "absolute", top: "4px", bottom: "4px", left: v.csAuditLeft, width: "calc(50% - 4px)", borderRadius: "999px", background: "#FFFFFF", boxShadow: "0 3px 10px rgba(0,0,0,.09)", transition: "left .45s cubic-bezier(.3,.9,.3,1)" }}></span>
               {" "}
               {(v.csAudits || []).map((a, $index) => (
                 <React.Fragment key={$index}>
-                  <button type="button" onClick={a?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "44px", display: "grid", placeItems: "center", fontSize: "14px", fontWeight: a?.w }}>
+                  <button type="button" onClick={a?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "40px", display: "grid", placeItems: "center", fontSize: "13.5px", fontWeight: a?.w }}>
                     {show(a?.t)}
                   </button>
                 </React.Fragment>
@@ -299,7 +298,7 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", height: "560px" }}>
+          <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", height: "420px" }}>
             {" "}
             {(v.csAudits || []).map((a, $index) => (
               <React.Fragment key={$index}>
@@ -310,10 +309,11 @@ export default function DarkRoastDesktop({ v }) {
             ))}
             {" "}
           </div>
+          </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) minmax(0,7fr)", gap: "40px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "22px", paddingTop: "4px" }}>
             {" "}
-            <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55" }}>
+            <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55" }}>
               {"Users had too much information visible at once, but not enough clarity about what mattered now. It wasn’t a list of isolated UI bugs — it was an "}
               <strong style={{ fontWeight: "600" }}>
                 information‑hierarchy and workflow problem.
@@ -324,7 +324,7 @@ export default function DarkRoastDesktop({ v }) {
               {" "}
               {(v.csSymptoms || []).map((s, $index) => (
                 <React.Fragment key={$index}>
-                  <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", borderRadius: "999px", background: "#FFFFFF", fontSize: "14px" }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "13.5px" }}>
                     <span style={{ fontSize: "10.5px", color: "#E5322B" }}>
                       {show(s?.n)}
                     </span>
@@ -336,6 +336,7 @@ export default function DarkRoastDesktop({ v }) {
             </div>
             {" "}
           </div>
+          </div>
           {" "}
         </div>
         {" "}
@@ -345,7 +346,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            02
+            03
           </span>
           <span>
             Research
@@ -428,15 +429,15 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <p style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.15", letterSpacing: "-.04em", maxWidth: "30ch" }}>
+          <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", maxWidth: "46ch" }}>
             {"DarkRoast needed to support both "}
-            <span style={{ fontStyle: "italic" }}>
+            <strong style={{ fontWeight: "600" }}>
               structured project management
-            </span>
+            </strong>
             {" and "}
-            <span style={{ fontStyle: "italic" }}>
+            <strong style={{ fontWeight: "600" }}>
               casual collaboration.
-            </span>
+            </strong>
           </p>
           {" "}
         </div>
@@ -447,7 +448,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            03
+            04
           </span>
           <span>
             Mapping the workflow
@@ -544,7 +545,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            04
+            05
           </span>
           <span>
             The mental model
@@ -566,7 +567,7 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csModes || []).map((m, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onClick={m?.onPick} onMouseEnter={m?.onPick} style={{ all: "unset", cursor: "pointer", minHeight: "300px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px", transform: `scale(${m?.s ?? ""})`, opacity: m?.op, transition: "all .5s cubic-bezier(.3,.9,.3,1)" }}>
+                <div style={{ minHeight: "300px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px" }}>
                   {" "}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
@@ -597,7 +598,7 @@ export default function DarkRoastDesktop({ v }) {
                     {" "}
                   </div>
                   {" "}
-                </button>
+                </div>
                 {" "}
               </React.Fragment>
             ))}
@@ -651,7 +652,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            05
+            06
           </span>
           <span>
             Iterations
@@ -756,16 +757,16 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            06
+            07
           </span>
           <span>
             Final design
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "46px", lineHeight: "1" }}>
             {"Four high‑impact changes, "}
             <span style={{ fontStyle: "italic" }}>
               each traced back to the research.
@@ -777,7 +778,7 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csPairs || []).map((p, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "16px 18px", borderRadius: "16px", background: p?.bg, color: p?.fg, display: "flex", flexDirection: "column", gap: "6px", transition: "background .25s, color .25s" }}>
+                <button type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "12px 16px", borderRadius: "14px", background: p?.bg, color: p?.fg, display: "flex", flexDirection: "column", gap: "6px", transition: "background .25s, color .25s" }}>
                   <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", color: p?.nc }}>
                     {show(p?.n)}
                   </span>
@@ -791,7 +792,8 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerLeave={v.onCmpUp} style={{ position: "relative", height: "560px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", userSelect: "none", touchAction: "none" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 272px", gap: "12px", alignItems: "stretch" }}>
+          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerLeave={v.onCmpUp} style={{ position: "relative", aspectRatio: "904 / 662", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", userSelect: "none", touchAction: "none" }}>
             {" "}
             <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${v.csPair?.after ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#FFFFFF", pointerEvents: "none" }}></div>
             {" "}
@@ -821,26 +823,27 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
             {" "}
-            <div style={{ padding: "22px 24px", borderRadius: "18px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "10px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                 Before
               </span>
-              <span style={{ fontSize: "15px", lineHeight: "1.55" }}>
+              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
                 {show(v.csPair?.b)}
               </span>
             </div>
             {" "}
-            <div style={{ padding: "22px 24px", borderRadius: "18px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "10px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
                 After
               </span>
-              <span style={{ fontSize: "15px", lineHeight: "1.55" }}>
+              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
                 {show(v.csPair?.a)}
               </span>
             </div>
             {" "}
+          </div>
           </div>
           {" "}
         </div>
@@ -857,7 +860,7 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
             <span style={{ color: "#E5322B" }}>
-              07
+              08
             </span>
             <span>
               Outcome
@@ -921,7 +924,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            08
+            09
           </span>
           <span>
             Reflection
