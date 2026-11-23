@@ -423,15 +423,15 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <p style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.15", letterSpacing: "-.04em", maxWidth: "30ch" }}>
+          <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", maxWidth: "46ch" }}>
             {"DarkRoast needed to support both "}
-            <span style={{ fontStyle: "italic" }}>
+            <strong style={{ fontWeight: "600" }}>
               structured project management
-            </span>
+            </strong>
             {" and "}
-            <span style={{ fontStyle: "italic" }}>
+            <strong style={{ fontWeight: "600" }}>
               casual collaboration.
-            </span>
+            </strong>
           </p>
           {" "}
         </div>
