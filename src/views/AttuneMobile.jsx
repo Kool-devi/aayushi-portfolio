@@ -248,18 +248,6 @@ export default function AttuneMobile({ v }) {
             {" clear."}
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
-              One chatbot everywhere
-            </span>
-            <span style={{ color: "#E5322B" }}>
-              →
-            </span>
-            <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontWeight: "500" }}>
-              A role per mode
-            </span>
-          </div>
-          {" "}
           <div style={{ margin: "0 -20px", padding: "0 20px 8px", overflowX: "auto", scrollbarWidth: "none" }}>
             <span style={{ display: "block", marginBottom: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#6E6E69" }}>
               Swipe the table →
@@ -270,14 +258,14 @@ export default function AttuneMobile({ v }) {
               {" "}
               {(v.atRoleCols || []).map((c, $index) => (
                 <React.Fragment key={$index}>
-                  <button type="button" onMouseEnter={c?.onPick} style={{ all: "unset", cursor: "default", padding: "18px 18px 14px", background: c?.bg, color: c?.fg, transition: "background .3s, color .3s", display: "flex", flexDirection: "column", gap: "4px" }}>
+                  <div style={{ padding: "18px 18px 14px", background: c?.bg, color: c?.fg, display: "flex", flexDirection: "column", gap: "4px" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: c?.nc }}>
                       {show(c?.n)}
                     </span>
                     <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1", letterSpacing: "-.04em" }}>
                       {show(c?.t)}
                     </span>
-                  </button>
+                  </div>
                 </React.Fragment>
               ))}
               {" "}
@@ -290,10 +278,8 @@ export default function AttuneMobile({ v }) {
                   {" "}
                   {(r?.cells || []).map((x, $index) => (
                     <React.Fragment key={$index}>
-                      <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em", transition: "background .3s, color .3s" }}>
-                        <span style={{ display: "flex", gap: "3px" }}>
-                          {show(x?.dots)}
-                        </span>
+                      <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em" }}>
+                        {x?.dots ? <span style={{ display: "flex", gap: "3px" }}>{show(x?.dots)}</span> : null}
                         {show(x?.t)}
                       </span>
                     </React.Fragment>
