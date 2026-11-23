@@ -139,10 +139,10 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            TL;DR
+            00
           </span>
           <span>
-            In one minute
+            TL;DR · In one minute
           </span>
         </div>
         {" "}
@@ -209,8 +209,10 @@ export default function DarkRoastDesktop({ v }) {
         {/* Text stacked on the left; the prototype (a 1440×900 page) is scaled to the 816px column on the right, keeping 16:10. */}
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px", padding: "20px 0 8px 20px" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-              Solution — try it
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
+              <span style={{ color: "#FCEB3F" }}>01</span>
+              <span>
+              Solution — try it</span>
             </span>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
               {"The final workspace, "}
@@ -256,7 +258,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            01
+            02
           </span>
           <span>
             The problem
@@ -340,7 +342,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            02
+            03
           </span>
           <span>
             Research
@@ -442,7 +444,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            03
+            04
           </span>
           <span>
             Mapping the workflow
@@ -539,7 +541,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            04
+            05
           </span>
           <span>
             The mental model
@@ -646,7 +648,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            05
+            06
           </span>
           <span>
             Iterations
@@ -751,7 +753,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            06
+            07
           </span>
           <span>
             Final design
@@ -854,7 +856,7 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
             <span style={{ color: "#E5322B" }}>
-              07
+              08
             </span>
             <span>
               Outcome
@@ -918,7 +920,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            08
+            09
           </span>
           <span>
             Reflection
