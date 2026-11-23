@@ -234,9 +234,10 @@ export default function DarkRoastMobile({ v }) {
             </span>
           </div>
           {" "}
-          <div ref={v.protoBoxRef} style={{ position: "relative", width: "100%", aspectRatio: "16 / 10", overflow: "hidden", background: "#FFFFFF" }}>
-            {" "}
-            <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype — desktop" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.231)" }}></iframe>
+          <div ref={v.protoBoxRef} style={{ position: "relative", width: "100%", height: "0", paddingTop: "62.5%", overflow: "hidden", background: "#FFFFFF", touchAction: "pan-y", isolation: "isolate" }}>
+            {/* On phones the 1440px prototype is a fixed preview: touches never reach it (so it can't be dragged or scrolled), and a tap opens it full screen. */}
+            <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast prototype preview" loading="lazy" scrolling="no" tabIndex={-1} aria-hidden="true" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.231)", pointerEvents: "none" }}></iframe>
+            <a href="DarkRoast%20Prototype%20new.html" target="_blank" aria-label="Open the DarkRoast prototype full screen" style={{ position: "absolute", inset: "0", zIndex: "1", WebkitTapHighlightColor: "transparent" }}></a>
             {" "}
           </div>
           {" "}
