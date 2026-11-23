@@ -205,28 +205,28 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="proto" style={{ margin: "0 40px", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
-        {" "}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", padding: "24px 20px 28px" }}>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+      <section id="proto" style={{ margin: "0 40px", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF", display: "grid", gridTemplateColumns: "minmax(0,1fr) 816px", gap: "40px", alignItems: "stretch" }}>
+        {/* Text stacked on the left; the prototype (a 1440×900 page) is scaled to the 816px column on the right, keeping 16:10. */}
+        <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px", padding: "20px 0 8px 20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
               Solution — try it
             </span>
-            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1" }}>
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
               {"The final workspace, "}
               <span style={{ fontStyle: "italic" }}>
                 live.
               </span>
             </h2>
-          </div>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px", alignItems: "flex-end", textAlign: "right" }}>
-            {" "}
-            <span style={{ fontSize: "13px", lineHeight: "1.5", color: "#FFFFFFb3", maxWidth: "36ch" }}>
+            <span style={{ fontSize: "14px", lineHeight: "1.55", color: "#FFFFFFb3", maxWidth: "30ch" }}>
               Vibe‑coded with Claude agents by importing my Figma designs through the MCP server.
             </span>
-            {" "}
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
+            <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
+              <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
+              Interactive · desktop 1440 view
+            </span>
             <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
               <span style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center" }}>
@@ -235,14 +235,10 @@ export default function DarkRoastDesktop({ v }) {
                 </svg>
               </span>
             </a>
-            {" "}
           </div>
-          {" "}
         </div>
-        {" "}
-        <div style={{ borderRadius: "14px", overflow: "hidden", background: "#1A1A18" }}>
-          {" "}
-          <div style={{ height: "36px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321" }}>
+        <div style={{ borderRadius: "14px", overflow: "hidden", background: "#1A1A18", alignSelf: "center" }}>
+          <div style={{ height: "32px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321" }}>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
@@ -250,11 +246,10 @@ export default function DarkRoastDesktop({ v }) {
               darkroast.app / projects
             </span>
           </div>
-          {" "}
-          <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype" loading="lazy" style={{ display: "block", width: "100%", height: "640px", border: "0", background: "#FFFFFF" }}></iframe>
-          {" "}
+          <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#FFFFFF" }}>
+            <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
+          </div>
         </div>
-        {" "}
       </section>
       {" "}
       <section id="problem" style={{ padding: "120px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
