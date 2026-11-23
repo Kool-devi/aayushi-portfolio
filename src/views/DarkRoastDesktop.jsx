@@ -561,7 +561,7 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csModes || []).map((m, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" onClick={m?.onPick} onMouseEnter={m?.onPick} style={{ all: "unset", cursor: "pointer", minHeight: "300px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px", transform: `scale(${m?.s ?? ""})`, opacity: m?.op, transition: "all .5s cubic-bezier(.3,.9,.3,1)" }}>
+                <div style={{ minHeight: "300px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px" }}>
                   {" "}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
@@ -592,7 +592,7 @@ export default function DarkRoastDesktop({ v }) {
                     {" "}
                   </div>
                   {" "}
-                </button>
+                </div>
                 {" "}
               </React.Fragment>
             ))}
