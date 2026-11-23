@@ -265,24 +265,26 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1.02" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "46px", lineHeight: "1.02" }}>
             {"Clients manage a high volume of creative work — and need to know "}
             <span style={{ fontStyle: "italic" }}>
               what’s moving, what’s blocked, and where feedback is due.
             </span>
           </h2>
           {" "}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 280px", gap: "32px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px" }}>
             {" "}
-            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "420px" }}>
+            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "360px" }}>
               {" "}
               <span style={{ position: "absolute", top: "4px", bottom: "4px", left: v.csAuditLeft, width: "calc(50% - 4px)", borderRadius: "999px", background: "#FFFFFF", boxShadow: "0 3px 10px rgba(0,0,0,.09)", transition: "left .45s cubic-bezier(.3,.9,.3,1)" }}></span>
               {" "}
               {(v.csAudits || []).map((a, $index) => (
                 <React.Fragment key={$index}>
-                  <button type="button" onClick={a?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "44px", display: "grid", placeItems: "center", fontSize: "14px", fontWeight: a?.w }}>
+                  <button type="button" onClick={a?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "40px", display: "grid", placeItems: "center", fontSize: "13.5px", fontWeight: a?.w }}>
                     {show(a?.t)}
                   </button>
                 </React.Fragment>
@@ -296,7 +298,7 @@ export default function DarkRoastDesktop({ v }) {
             {" "}
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", height: "560px" }}>
+          <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", height: "420px" }}>
             {" "}
             {(v.csAudits || []).map((a, $index) => (
               <React.Fragment key={$index}>
@@ -307,10 +309,11 @@ export default function DarkRoastDesktop({ v }) {
             ))}
             {" "}
           </div>
+          </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) minmax(0,7fr)", gap: "40px", alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "22px", paddingTop: "4px" }}>
             {" "}
-            <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55" }}>
+            <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55" }}>
               {"Users had too much information visible at once, but not enough clarity about what mattered now. It wasn’t a list of isolated UI bugs — it was an "}
               <strong style={{ fontWeight: "600" }}>
                 information‑hierarchy and workflow problem.
@@ -321,7 +324,7 @@ export default function DarkRoastDesktop({ v }) {
               {" "}
               {(v.csSymptoms || []).map((s, $index) => (
                 <React.Fragment key={$index}>
-                  <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", borderRadius: "999px", background: "#FFFFFF", fontSize: "14px" }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "13.5px" }}>
                     <span style={{ fontSize: "10.5px", color: "#E5322B" }}>
                       {show(s?.n)}
                     </span>
@@ -332,6 +335,7 @@ export default function DarkRoastDesktop({ v }) {
               {" "}
             </div>
             {" "}
+          </div>
           </div>
           {" "}
         </div>
