@@ -487,34 +487,12 @@ export default function HomeMobile({ v }) {
         {" "}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {" "}
-          <div role="tablist" style={{ position: "sticky", top: "8px", zIndex: "3", display: "grid", gridTemplateColumns: "repeat(3, minmax(0,1fr))", gap: "4px", padding: "4px", borderRadius: "14px", background: "#E2E2DE" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             {" "}
             {(v.folders9d || []).map((f, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" role="tab" aria-selected={f?.on} onClick={f?.onOpen} style={{ all: "unset", cursor: "pointer", minWidth: "0", height: "52px", padding: "0 10px", borderRadius: "10px", background: f?.tabBg, display: "flex", flexDirection: "column", justifyContent: "center", gap: "2px", transition: "background .25s" }}>
-                  {" "}
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#E5322B" }}>
-                    {show(f?.num)}
-                  </span>
-                  {" "}
-                  <span style={{ fontSize: "13.5px", fontWeight: f?.segW, letterSpacing: "-.01em", color: "#0B0B0B", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                    {show(f?.title)}
-                  </span>
-                  {" "}
-                </button>
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)" }}>
-            {" "}
-            {(v.folders9d || []).map((f, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <article style={{ gridArea: "1 / 1", minWidth: "0", display: "flex", flexDirection: "column", gap: "14px", padding: "10px 10px 12px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)", opacity: f?.cardOp, transform: `translateY(${f?.cardY ?? ""})`, pointerEvents: f?.cardPe, transition: "opacity .4s ease, transform .5s cubic-bezier(.3,.9,.3,1)" }}>
+                <article style={{ minWidth: "0", display: "flex", flexDirection: "column", gap: "14px", padding: "10px 10px 12px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)" }}>
                   {" "}
                   <div style={{ position: "relative", height: "210px", borderRadius: "14px", overflow: "hidden", background: "#EDEDEA" }}>
                     {" "}
@@ -581,22 +559,6 @@ export default function HomeMobile({ v }) {
                 {" "}
               </React.Fragment>
             ))}
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            {" "}
-            <button type="button" aria-label="Previous case" onClick={v.onPrev9d} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#FFFFFF", display: "grid", placeItems: "center", fontSize: "16px", color: "#0B0B0B" }}>
-              ←
-            </button>
-            {" "}
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-              {"Case "}{show(v.segCount9d)}{" / 03"}
-            </span>
-            {" "}
-            <button type="button" aria-label="Next case" onClick={v.onNext9d} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#0B0B0B", color: "#FFFFFF", display: "grid", placeItems: "center", fontSize: "16px" }}>
-              →
-            </button>
             {" "}
           </div>
           {" "}
