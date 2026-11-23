@@ -229,7 +229,7 @@ export default function HomeDesktop({ v }) {
           </h1>
           {" "}
           <div style={{ position: "absolute", right: "40px", top: "calc(96px + var(--hero-shift, 0px))", width: "300px", height: "340px", background: "#E9DA2E" }}>
-            <ImageSlot id="v9d-portrait" shape="rect" placeholder="Portrait — 3:4" />
+            <ImageSlot id="v9d-portrait" shape="rect" placeholder="Aayushi Patel giving a talk" />
           </div>
           {" "}
           <div style={{ position: "absolute", right: "40px", top: "calc(444px + var(--hero-shift, 0px))", width: "300px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>

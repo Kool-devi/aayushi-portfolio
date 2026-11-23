@@ -8,7 +8,7 @@ export default function HomeMobile({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none", touchAction: "pan-x" }}>
+      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none" }}>
         {" "}
         <div aria-hidden="true" style={{ gridArea: "1 / 1", minWidth: "0" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "14px 20px 0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 40px) / 4) 100%", backgroundPosition: "20px 0" }}>
@@ -296,7 +296,7 @@ export default function HomeMobile({ v }) {
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
               <div style={{ position: "relative", height: "200px", background: "#E9DA2E" }}>
-                <ImageSlot id="v9d-portrait" shape="rect" placeholder="Portrait — wide crop" />
+                <ImageSlot id="v9d-portraitWide" shape="rect" placeholder="Aayushi Patel giving a talk" />
               </div>
               {" "}
               <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
