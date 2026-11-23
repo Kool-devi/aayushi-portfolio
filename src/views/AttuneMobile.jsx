@@ -372,7 +372,7 @@ export default function AttuneMobile({ v }) {
                           {show(m?.n)}
                         </span>
                         <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
-                          {show(m?.k)}
+                          {show(m?.dots)}{" "}{show(m?.k)}
                         </span>
                         <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
                           {"AI role · "}{show(m?.role)}
@@ -401,9 +401,10 @@ export default function AttuneMobile({ v }) {
                           </li>
                         ))}
                       </ol>
-                  <div style={{ alignSelf: "center", width: "240px", height: "496px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                  <div ref={m?.phoneRef} data-atphone={$index} style={{ alignSelf: "center", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
                     <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#1A1A18" }}>
-                      {m?.proto ? <iframe src={m.proto} title={`Attune ${m?.t} prototype`} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0", display: "block" }}></iframe> : <img src={m?.img} alt={`Attune ${m?.t} mode`} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
+                      <img src={m?.img} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                      {m?.play ? <iframe key={m?.run} src={m?.proto + "#z=.56"} title={`Attune ${m?.t} prototype`} scrolling="no" style={{ position: "absolute", left: "0", top: "0", width: "224px", height: "490px", border: "0", background: "transparent" }}></iframe> : null}
                     </div>
                   </div>
                 </div>

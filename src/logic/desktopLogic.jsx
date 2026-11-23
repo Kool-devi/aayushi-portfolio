@@ -49,12 +49,16 @@ export default class DesktopLogic extends React.Component {
       const atSteps = document.querySelectorAll('[data-atstep]');
       if (atSteps.length) {
         const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
-        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - 480) / 2));
+        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - 488) / 2));
         if (this.state.atPT !== pt) this.setState({ atPT: pt });
         const mid = window.innerHeight * 0.55;
         let f = 0;
         atSteps.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) f = i; });
         if ((this.state.atF ?? 0) !== f) this.setState({ atF: f });
+        // the shown prototype restarts every time its mode arrives (and stops once the section is off screen)
+        const sec = document.getElementById('flows'), sr = sec && sec.getBoundingClientRect();
+        const act = sr && sr.top < window.innerHeight && sr.bottom > 0 ? f : -1;
+        if ((this.state.atAct ?? -1) !== act) this.setState(s => ({ atAct: act, atRun: (s.atRun ?? 0) + 1 }));
       }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
@@ -87,22 +91,22 @@ export default class DesktopLogic extends React.Component {
     const chap = [['Moves','moves'],['Problem','problem'],['Private / shared','model'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
     const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
     const modes = [
-      { t: 'Reflect', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
+      { t: 'Reflect', proto: 'prototypes/attune-reflect.html', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
         { t: 'Start anywhere', note: 'Familiar chat pattern — nothing new to learn.', k: 'Reflect · private', title: 'What’s on your mind?', chips: ['I felt ignored today', 'Something’s bothering me', 'Help me put it into words'], sel: 0, input: true },
         { t: 'Talk it through', note: 'Text or voice — whatever’s easier in the moment.', k: 'Reflect · private', title: 'Take your time.', bubbles: [['me', 'I felt ignored at dinner tonight.'], ['ai', 'That sounds lonely. What did you need in that moment?'], ['me', 'Just for him to ask about my day.']], input: true },
         { t: 'AI reflects back', note: 'AI mirrors feelings — it doesn’t judge or advise.', k: 'Reflect · private', title: 'Here’s what I’m hearing.', card: ['Reflection', 'You want to feel noticed — not to win an argument.'], chips: ['Lonely', 'Unseen', 'Hopeful'], sel: 1 },
         { t: 'You choose what’s next', note: 'Nothing is shared unless you decide.', k: 'Reflect · private', title: 'What would help now?', btns: [['Keep this private', 1], ['Prepare to talk to my partner', 0], ['Move to Repair', 0]] }] },
-      { t: 'Repair', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
+      { t: 'Repair', proto: 'prototypes/attune-repair.html', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
         { t: 'Body check‑in', note: 'Start with the body, not the argument.', k: 'Repair · step 1 of 4', title: 'Where do you feel it right now?', chips: ['Chest', 'Jaw', 'Stomach', 'Hands'], sel: 0, card: ['Intensity', '●●●●●●●○○○  7 / 10'] },
         { t: 'Ground yourself', note: 'Slow the flow down before any reflection.', k: 'Repair · step 2 of 4', title: 'Let’s slow down together.', circle: 'breath' },
         { t: 'Guided reflection', note: 'One gentle question at a time.', k: 'Repair · step 3 of 4', title: 'What happened?', bubbles: [['ai', 'In a few words, what happened?'], ['me', 'We argued about money again.'], ['ai', 'What were you feeling underneath the anger?']] },
         { t: 'Reconnect — only if ready', note: 'Every shared step is explicit and opt‑in.', k: 'Repair · step 4 of 4', title: 'Ready to reconnect?', card: ['🔒 Private', 'Your partner sees nothing until you choose to share.'], btns: [['Not yet', 0], ['Prepare a message', 1]] }] },
-      { t: 'Resolve', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
+      { t: 'Resolve', proto: 'prototypes/attune-resolve.html', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
         { t: 'Both opt in', note: 'Mutual consent — no one gets ambushed.', k: 'Resolve · together', title: 'Start only when you’re both ready.', bubbles: [['p', 'Aanya joined ✓'], ['me', 'Sam joined ✓']], btns: [['Start together', 1]] },
         { t: 'Agree ground rules', note: 'Agreed before anyone speaks.', k: 'Resolve · together', title: 'Our ground rules', chips: ['One speaker at a time', 'No interrupting', 'Pause anytime', 'Assume good intent'], sel: 9, all: true },
         { t: 'Take turns', note: 'Protected, equal speaking time.', k: 'Resolve · Sam’s turn', title: 'Sam has the floor.', circle: 'timer' },
         { t: 'AI checks understanding', note: 'AI clarifies — it never picks a side.', k: 'Resolve · clarify', title: 'Quick check, Aanya.', card: ['Attune', 'Did you hear Sam say he feels unappreciated?'], btns: [['Yes, that’s right', 1], ['Not quite', 0]] }] },
-      { t: 'Refine', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
+      { t: 'Refine', proto: 'prototypes/attune-refine.html', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
         { t: 'Plan a session', note: 'Growth on your own rhythm — schedule and repeat.', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
         { t: 'Guided prompt', note: 'Small prompts and activities, not therapy homework.', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
         { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺'], ['ai', '✦ Nice — try saying why it mattered.']] },
@@ -139,7 +143,7 @@ export default class DesktopLogic extends React.Component {
       atMode: { t: cur.t, k: cur.k, role: cur.role, kBg: cur.k === 'Private' ? '#FFFFFF' : '#FCEB3F' },
       atScreens: cur.steps.map(mkScreen),
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0); return { t: x.t, k: x.k, role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: x.proto ? U(x.proto) : '', steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
+      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1); return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), play, run: i + '-' + (S.atRun ?? 0), steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',

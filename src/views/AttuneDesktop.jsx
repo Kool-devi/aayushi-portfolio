@@ -384,11 +384,14 @@ export default function AttuneDesktop({ v }) {
             {/* Scroll story (as on the Delicut page): the phone stays pinned while the four modes scroll past beside it; the screen follows the mode in view. */}
             <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
               {" "}
-              <div style={{ position: "sticky", top: v.atPhoneTop, width: "232px", height: "480px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "sticky", top: v.atPhoneTop, width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#1A1A18" }}>
                   {(v.atFlow || []).map((m, $index) => (
                     <React.Fragment key={$index}>
-                      {m?.proto ? <iframe src={m.proto} title={`Attune ${m?.t} prototype`} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0", opacity: m?.op, transition: "opacity .5s", pointerEvents: m?.op ? "auto" : "none" }}></iframe> : <img src={m?.img} alt={`Attune ${m?.t} mode`} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", opacity: m?.op, transition: "opacity .5s", pointerEvents: m?.op ? "auto" : "none" }} />}
+                      <div style={{ position: "absolute", inset: "0", opacity: m?.op, transition: "opacity .5s", pointerEvents: m?.op ? "auto" : "none" }}>
+                        <img src={m?.img} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
+                        {m?.play ? <iframe key={m?.run} src={m?.proto + "#z=.54"} title={`Attune ${m?.t} prototype`} scrolling="no" style={{ position: "absolute", left: "0", top: "0", width: "216px", height: "472px", border: "0", background: "transparent" }}></iframe> : null}
+                      </div>
                     </React.Fragment>
                   ))}
                 </div>
@@ -403,7 +406,7 @@ export default function AttuneDesktop({ v }) {
                           {show(m?.n)}
                         </span>
                         <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
-                          {show(m?.k)}
+                          {show(m?.dots)}{" "}{show(m?.k)}
                         </span>
                         <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
                           {"AI role · "}{show(m?.role)}
