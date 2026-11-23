@@ -94,33 +94,16 @@ export default function AttuneDesktop({ v }) {
           {" "}
         </div>
         {" "}
-        <div style={{ display: "flex", gap: "8px", height: "500px", margin: "0 -40px" }}>
+        <div style={{ position: "relative", height: "560px", margin: "0 -40px", background: "#4A4A48", overflow: "hidden" }}>
           {" "}
-          {(v.atHeroModes || []).map((m, $index) => (
-            <React.Fragment key={$index}>
-              {" "}
-              <button type="button" onMouseEnter={m?.onPick} onClick={m?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", flex: m?.flex, minWidth: "0", overflow: "hidden", background: `#1A1A18 url(${m?.img ?? ""}) center/cover no-repeat`, transition: "flex .7s cubic-bezier(.3,.9,.3,1)" }}>
-                {" "}
-                <span style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.6) 100%)" }}></span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", top: "22px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "rgba(255,255,255,.85)", color: "#0B0B0B" }}>
-                  {show(m?.n)}{" · "}{show(m?.k)}
-                </span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", right: "24px", bottom: "96px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: ".9", color: "#FFFFFF", whiteSpace: "nowrap" }}>
-                  {show(m?.t)}
-                </span>
-                {" "}
-                <span style={{ position: "absolute", left: "24px", right: "24px", top: "calc(100% - 84px)", fontSize: "15px", lineHeight: "1.4", color: "#FFFFFF", opacity: m?.qOp, transition: "opacity .5s", maxWidth: "30ch" }}>
-                  {"“"}{show(m?.q)}{"”"}
-                </span>
-                {" "}
-              </button>
-              {" "}
-            </React.Fragment>
-          ))}
+          <img src="Mockups/Attune/Banner.webp" alt="Attune AI on two phones, showing the Repair and Refine modes" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          {" "}
+          <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
+            Fig. 01 — Attune's Repair and Refine modes
+          </span>
           {" "}
         </div>
+        {" "}
       </header>
       <nav data-sticky style={{ position: "sticky", top: "66px", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 40px" }}>
         {" "}

@@ -89,97 +89,16 @@ export default function AttuneMobile({ v }) {
           {" "}
         </div>
         {" "}
-        <div ref={v.atHeroRef} style={{ display: "flex", flexDirection: "column", gap: "0", margin: "0 -20px", background: "#0B0B0B", color: "#FFFFFF" }}>
+        <div style={{ position: "relative", height: "280px", margin: "0 -20px", background: "#4A4A48", overflow: "hidden" }}>
           {" "}
-          <div style={{ position: "relative", height: "400px", overflow: "hidden" }}>
-            {" "}
-            {(v.atHeroModes || []).map((m, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <div style={{ position: "absolute", inset: "0", background: `#1A1A18 url(${m?.img ?? ""}) center/cover no-repeat`, opacity: m?.qOp, transform: `scale(${m?.zs ?? ""})`, transition: "opacity .9s ease, transform 4s ease-out" }}></div>
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-            <span style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,.8) 100%)" }}></span>
-            {" "}
-            <div style={{ position: "absolute", left: "20px", right: "20px", top: "18px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "rgba(255,255,255,.9)", color: "#0B0B0B" }}>
-                {show(v.atHeroCur?.n)}{" / 04 · "}{show(v.atHeroCur?.k)}
-              </span>
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFFcc" }}>
-                One app · four moods
-              </span>
-              {" "}
-            </div>
-            {" "}
-            <div style={{ position: "absolute", left: "20px", right: "20px", bottom: "22px", display: "flex", flexDirection: "column", gap: "10px" }}>
-              {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".85" }}>
-                {show(v.atHeroCur?.t)}
-              </span>
-              {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontStyle: "italic", fontSize: "21px", lineHeight: "1.15", letterSpacing: "-.03em", color: "#FFFFFFee" }}>
-                {"“"}{show(v.atHeroCur?.q)}{"”"}
-              </span>
-              {" "}
-            </div>
-            {" "}
-          </div>
+          <img src="Mockups/Attune/Banner-mobile.webp" alt="Attune AI on two phones, showing the Repair and Refine modes" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "20px 20px 22px" }}>
-            {" "}
-            <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
-              <span>
-                ← Just me
-              </span>
-              <span style={{ color: "#FCEB3F" }}>
-                Slide the dial
-              </span>
-              <span>
-                Both of us →
-              </span>
-            </div>
-            {" "}
-            <div style={{ position: "relative", height: "44px" }}>
-              {" "}
-              <span style={{ position: "absolute", left: "0", right: "0", top: "21px", height: "2px", borderRadius: "2px", background: "linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 50%, #FCEB3F 50%, #FCEB3F 100%)", opacity: ".35" }}></span>
-              {" "}
-              <span style={{ position: "absolute", left: "50%", top: "14px", width: "1px", height: "16px", background: "#FFFFFF66" }}></span>
-              {" "}
-              <span style={{ position: "absolute", top: "8px", left: v.atHeroThumb, width: "28px", height: "28px", marginLeft: "-14px", borderRadius: "50%", background: "#FCEB3F", boxShadow: "0 0 0 6px #FCEB3F33", transition: "left .6s cubic-bezier(.3,1.2,.4,1)" }}></span>
-              {" "}
-              <div style={{ position: "absolute", inset: "0", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))" }}>
-                {" "}
-                {(v.atHeroModes || []).map((m, $index) => (
-                  <React.Fragment key={$index}>
-                    <button type="button" aria-label={m?.t} onClick={m?.onTap} style={{ all: "unset", cursor: "pointer", display: "grid", placeItems: "center" }}>
-                      <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#FFFFFF", opacity: ".7" }}></span>
-                    </button>
-                  </React.Fragment>
-                ))}
-                {" "}
-              </div>
-              {" "}
-            </div>
-            {" "}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))" }}>
-              {" "}
-              {(v.atHeroModes || []).map((m, $index) => (
-                <React.Fragment key={$index}>
-                  <button type="button" onClick={m?.onTap} style={{ all: "unset", cursor: "pointer", textAlign: "center", fontSize: "13px", fontWeight: m?.fw, color: m?.lc, transition: "color .3s" }}>
-                    {show(m?.t)}
-                  </button>
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-          </div>
+          <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
+            Fig. 01 — Attune's Repair and Refine modes
+          </span>
           {" "}
         </div>
+        {" "}
       </header>
       <nav data-sticky style={{ position: "sticky", top: "70px", zIndex: "5", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B1F", padding: "0 20px" }}>
         {" "}
