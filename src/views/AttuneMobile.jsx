@@ -342,219 +342,74 @@ export default function AttuneMobile({ v }) {
           </div>
         </div>
       </section>
-      <section id="flows" ref={v.atModesRef} style={{ margin: "61px 20px 0", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+      <section id="flows" style={{ margin: "61px 20px 0", padding: "20px", borderRadius: "28px", background: "#0B0B0B", color: "#FFFFFF" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "end" }}>
-            {" "}
-            <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-              <span style={{ color: "#FCEB3F" }}>
-                06
-              </span>
-              <span>
-                Move 04 — Choreograph each room
-              </span>
-            </div>
-            {" "}
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px", flexWrap: "wrap" }}>
-              {" "}
-              <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "37px", lineHeight: "1" }}>
-                {"One product, "}
-                <span style={{ fontStyle: "italic" }}>
-                  four emotional rooms.
-                </span>
-              </h2>
-              {" "}
-              <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#E5322B" }}></span>
-                Playing each flow · tap to jump
-              </span>
-              {" "}
-            </div>
-            {" "}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+            <span style={{ color: "#FCEB3F" }}>
+              06
+            </span>
+            <span>
+              Move 04 — Choreograph each room
+            </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: v.atMode?.kBg, color: "#0B0B0B" }}>
-                  {show(v.atMode?.k)}
-                </span>
-                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
-                  {"AI role · "}{show(v.atMode?.role)}
-                </span>
-              </div>
-              {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "51px", lineHeight: ".86", letterSpacing: "-.06em" }}>
-                {show(v.atMode?.t)}
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "37px", lineHeight: "1" }}>
+              {"One product, "}
+              <span style={{ fontStyle: "italic" }}>
+                four emotional rooms.
               </span>
-            </div>
+            </h2>
             {" "}
-            <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
-                {(v.atModes || []).map((m, $index) => (
-                  <React.Fragment key={$index}>
-                    <div style={{ position: "absolute", inset: "0", background: `#1A1A18 url(${m?.img ?? ""}) center/cover no-repeat`, opacity: m?.op, transform: `scale(${m?.sc ?? ""})`, transition: "opacity .8s, transform 1.6s cubic-bezier(.3,.9,.3,1)" }}></div>
-                  </React.Fragment>
-                ))}
-                {" "}
-                <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.42) 45%, rgba(0,0,0,.7) 100%)" }}></div>
-                {" "}
-                <div style={{ position: "absolute", left: "12px", right: "12px", top: "40px", zIndex: "2", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", padding: "3px", borderRadius: "999px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}>
-                  {" "}
-                  {(v.atModes || []).map((m, $index) => (
-                    <React.Fragment key={$index}>
-                      <span style={{ height: "26px", borderRadius: "999px", background: m?.pillBg, color: m?.pillFg, display: "grid", placeItems: "center", fontSize: "11px", fontWeight: "600", transition: "all .3s" }}>
+            {/* The four modes stack: label, heading, quote and steps, then that mode's screen. */}
+            {(v.atFlow || []).map((m, $index) => (
+              <React.Fragment key={$index}>
+                <div style={{ display: "flex", flexDirection: "column", gap: "16px", paddingTop: $index ? "22px" : "4px", borderTop: $index ? "1px solid #FFFFFF26" : "none" }}>
+                      <div style={{ display: "flex", gap: "8px", alignItems: "center", flexWrap: "wrap" }}>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F", marginRight: "4px" }}>
+                          {show(m?.n)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FFFFFF1A" }}>
+                          {show(m?.k)}
+                        </span>
+                        <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
+                          {"AI role · "}{show(m?.role)}
+                        </span>
+                      </div>
+                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "44px", lineHeight: ".9", letterSpacing: "-.06em" }}>
                         {show(m?.t)}
                       </span>
-                    </React.Fragment>
-                  ))}
-                  {" "}
-                </div>
-                {" "}
-                {(v.atScreens || []).map((s, $index) => (
-                  <React.Fragment key={$index}>
-                    {" "}
-                    <div style={{ position: "absolute", inset: "0", padding: "48px 16px 20px", boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "10px", color: "#FFFFFF", opacity: s?.op, transform: `translateX(${s?.x ?? ""})`, transition: "opacity .55s, transform .65s cubic-bezier(.3,.9,.3,1)", pointerEvents: "none" }}>
-                      {" "}
-                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#FCEB3F" }}>
-                        {show(s?.k)}
-                      </span>
-                      {" "}
-                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", lineHeight: "1.02", letterSpacing: "-.04em" }}>
-                        {show(s?.title)}
-                      </span>
-                      {" "}
-                      {s?.hasCircle ? (
-                        <>
-                        {" "}
-                        <div style={{ alignSelf: "center", margin: "14px 0 6px", position: "relative", width: "150px", height: "150px", borderRadius: "50%", border: "1.5px solid rgba(255,255,255,.6)", display: "grid", placeItems: "center" }}>
-                          {" "}
-                          <span style={{ position: "absolute", inset: "0", borderRadius: "50%", background: "rgba(252,235,63,.28)", transform: `scale(${s?.cs ?? ""})`, transition: "transform 1s ease-in-out" }}></span>
-                          {" "}
-                          <span style={{ position: "relative", fontSize: "14px", fontWeight: "600", textAlign: "center", lineHeight: "1.3" }}>
-                            {show(s?.cl)}
-                          </span>
-                          {" "}
-                        </div>
-                        {" "}
-                        </>
-                      ) : null}
-                      {" "}
-                      {s?.hasCard ? (
-                        <>
-                        {" "}
-                        <div style={{ padding: "14px", borderRadius: "16px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", display: "flex", flexDirection: "column", gap: "6px", opacity: s?.cardOp, transform: `translateY(${s?.cardY ?? ""})`, transition: "all .5s" }}>
-                          {" "}
-                          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#FCEB3F" }}>
-                            {show(s?.ck)}
-                          </span>
-                          {" "}
-                          <span style={{ fontSize: "14px", lineHeight: "1.35", fontWeight: "500" }}>
-                            {show(s?.ct)}
-                          </span>
-                          {" "}
-                        </div>
-                        {" "}
-                        </>
-                      ) : null}
-                      {" "}
-                      <div style={{ display: "flex", flexDirection: "column", gap: "7px" }}>
-                        {" "}
-                        {(s?.bubbles || []).map((b, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ alignSelf: b?.al, maxWidth: "82%", padding: "9px 12px", borderRadius: b?.r, background: b?.bg, color: b?.fg, fontSize: "12px", lineHeight: "1.4", opacity: b?.op, transform: `translateY(${b?.y ?? ""})`, transition: "opacity .5s, transform .5s cubic-bezier(.3,1.2,.4,1)" }}>
-                              {show(b?.t)}
+                      <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#FFFFFFcc", maxWidth: "46ch" }}>
+                        {"“"}{show(m?.q)}{"”"}
+                      </p>
+                      <ol style={{ listStyle: "none", margin: "0", padding: "0", display: "flex", flexDirection: "column", borderTop: "1px solid #FFFFFF26" }}>
+                        {(m?.steps || []).map((s, k) => (
+                          <li key={k} style={{ display: "grid", gridTemplateColumns: "36px minmax(0,1fr)", gap: "10px", padding: "12px 0", borderBottom: "1px solid #FFFFFF26" }}>
+                            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F", paddingTop: "3px" }}>
+                              {show(s?.n)}
                             </span>
-                          </React.Fragment>
+                            <span style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                              <span style={{ fontSize: "16px", fontWeight: "500", letterSpacing: "-.02em" }}>
+                                {show(s?.t)}
+                              </span>
+                              <span style={{ fontSize: "13.5px", lineHeight: "1.45", color: "#FFFFFFb3" }}>
+                                {show(s?.note)}
+                              </span>
+                            </span>
+                          </li>
                         ))}
-                        {" "}
-                      </div>
-                      {" "}
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                        {" "}
-                        {(s?.chips || []).map((c, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ padding: "7px 11px", borderRadius: "999px", background: c?.bg, color: c?.fg, border: "1px solid rgba(255,255,255,.35)", fontSize: "11.5px", fontWeight: "500", transition: "all .4s" }}>
-                              {show(c?.t)}
-                            </span>
-                          </React.Fragment>
-                        ))}
-                        {" "}
-                      </div>
-                      {" "}
-                      <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: "7px" }}>
-                        {" "}
-                        {(s?.btns || []).map((b, $index) => (
-                          <React.Fragment key={$index}>
-                            <span style={{ height: "42px", borderRadius: "999px", background: b?.bg, color: b?.fg, border: "1px solid rgba(255,255,255,.4)", display: "grid", placeItems: "center", fontSize: "12.5px", fontWeight: "600", opacity: b?.op, transform: `translateY(${b?.y ?? ""})`, transition: "all .5s" }}>
-                              {show(b?.t)}
-                            </span>
-                          </React.Fragment>
-                        ))}
-                        {" "}
-                        {s?.hasInput ? (
-                          <>
-                          {" "}
-                          <div style={{ height: "44px", borderRadius: "999px", background: "rgba(255,255,255,.16)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 5px 0 16px", fontSize: "12px", color: "#FFFFFFb3", flexWrap: "wrap" }}>
-                            Type, or hold to talk
-                            <span style={{ width: "34px", height: "34px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "13px" }}>
-                              🎙
-                            </span>
-                          </div>
-                          {" "}
-                          </>
-                        ) : null}
-                        {" "}
-                      </div>
-                      {" "}
+                      </ol>
+                  <div style={{ alignSelf: "center", width: "240px", height: "496px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
+                    <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#1A1A18" }}>
+                      {m?.proto ? <iframe src={m.proto} title={`Attune ${m?.t} prototype`} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", border: "0", display: "block" }}></iframe> : <img src={m?.img} alt={`Attune ${m?.t} mode`} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />}
                     </div>
-                    {" "}
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-              {" "}
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "18px", borderRadius: "18px", background: "#FFFFFF0F", border: "1px solid #FFFFFF1A" }}>
-                {" "}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  {" "}
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-                    {"Step "}{show(v.atStepCur?.n)}{" of 04"}
-                  </span>
-                  {" "}
-                  <div style={{ display: "flex", gap: "6px" }}>
-                    {" "}
-                    {(v.atSteps || []).map((s, $index) => (
-                      <React.Fragment key={$index}>
-                        <button type="button" aria-label={`Step ${s?.n ?? ""}`} onClick={s?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", width: "26px", height: "4px", borderRadius: "2px", background: "#FFFFFF33", overflow: "hidden" }}>
-                          <span style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: s?.fill, background: "#FCEB3F", transition: "width 1s linear" }}></span>
-                        </button>
-                      </React.Fragment>
-                    ))}
-                    {" "}
                   </div>
-                  {" "}
                 </div>
-                {" "}
-                <span style={{ fontSize: "20px", fontWeight: "600", letterSpacing: "-.02em", lineHeight: "1.2" }}>
-                  {show(v.atStepCur?.t)}
-                </span>
-                {" "}
-                <span style={{ fontSize: "14px", lineHeight: "1.45", color: "#FFFFFFcc" }}>
-                  {show(v.atStepCur?.note)}
-                </span>
-                {" "}
-              </div>
-              {" "}
-            </div>
-            {" "}
+              </React.Fragment>
+            ))}
           </div>
-          {" "}
         </div>
       </section>
       <section id="safety" style={{ padding: "61px 20px 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>

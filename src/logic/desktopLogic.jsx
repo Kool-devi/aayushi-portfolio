@@ -45,6 +45,17 @@ export default class DesktopLogic extends React.Component {
       const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
       if (atEnd) active = links.length - 1;
       if (this.state[this.chKey] !== active) this.setState({ [this.chKey]: active });
+      // Attune "Choreograph each room": the mode block crossing the middle of the screen picks the phone screen.
+      const atSteps = document.querySelectorAll('[data-atstep]');
+      if (atSteps.length) {
+        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
+        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - 480) / 2));
+        if (this.state.atPT !== pt) this.setState({ atPT: pt });
+        const mid = window.innerHeight * 0.55;
+        let f = 0;
+        atSteps.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) f = i; });
+        if ((this.state.atF ?? 0) !== f) this.setState({ atF: f });
+      }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
       if (exEl) { const r = exEl.getBoundingClientRect(), on = r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25; if (!!this.state.dlEV !== on) this.setState({ dlEV: on }); }
@@ -128,7 +139,7 @@ export default class DesktopLogic extends React.Component {
       atMode: { t: cur.t, k: cur.k, role: cur.role, kBg: cur.k === 'Private' ? '#FFFFFF' : '#FCEB3F' },
       atScreens: cur.steps.map(mkScreen),
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atModesRef: el => { this._atEl = el; if (el) this.atStart(); },
+      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0); return { t: x.t, k: x.k, role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: x.proto ? U(x.proto) : '', steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',

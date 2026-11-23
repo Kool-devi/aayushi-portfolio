@@ -121,7 +121,7 @@ export default class MobileLogic extends React.Component {
       atScreens: cur.steps.map(mkScreen),
       atStepCur: { n: n2(st), t: cur.steps[st].t, note: cur.steps[st].note },
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { fill: j < st ? '100%' : on ? ((k + 1) / L * 100) + '%' : '0%', t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atModesRef: el => { this._atEl = el; if (el) this.atStart(); },
+      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0); return { t: x.t, k: x.k, role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: x.proto ? U(x.proto) : '', steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
