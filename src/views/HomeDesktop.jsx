@@ -612,15 +612,6 @@ export default function HomeDesktop({ v }) {
         {" "}
         <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "28px", padding: "20px 16px 16px 20px" }}>
           {" "}
-          <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-            <span>
-              Ask me anything
-            </span>
-            <span>
-              04 answers
-            </span>
-          </div>
-          {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "76px", lineHeight: ".95", color: "#0B0B0B" }}>
             <span style={{ fontWeight: "300" }}>
               (
@@ -636,7 +627,7 @@ export default function HomeDesktop({ v }) {
           </h2>
           {" "}
           <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.55", maxWidth: "30ch" }}>
-            Type a question, use ↑ ↓ or hover — every answer is live.
+            Pick a topic for a quick answer — who I am, why I’m a good fit, or how to reach me.
           </p>
           {" "}
         </div>
