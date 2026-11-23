@@ -3,10 +3,11 @@
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import AttuneArchitecture from './AttuneArchitecture.jsx';
-import ProtoFrame from '../components/ProtoFrame.jsx';
+import ProtoFrame, { usePrefetchProtos } from '../components/ProtoFrame.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneMobile({ v }) {
+  usePrefetchProtos((v.atFlow || []).map((m) => m.proto));
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {/* Site navigation: sticks to the top while scrolling; the chapter bar below docks under it. */}
@@ -404,6 +405,7 @@ export default function AttuneMobile({ v }) {
                       </ol>
                   <div ref={m?.phoneRef} data-atphone={$index} style={{ alignSelf: "center", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
                     <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#1A1A18" }}>
+                      <img src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                       {m?.play ? <ProtoFrame key={m?.run} src={m?.proto + "#z=.56"} title={`Attune ${m?.t} prototype`} width="224px" height="490px" /> : null}
                     </div>
                   </div>
