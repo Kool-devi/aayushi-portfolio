@@ -325,7 +325,7 @@ export default function AttuneDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "230px", height: "470px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
                   <img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
                 </div>
@@ -336,9 +336,10 @@ export default function AttuneDesktop({ v }) {
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "230px", height: "470px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
-                  <iframe src="prototypes/attune-choose-a-mode.html" title="Attune — choose a mode prototype" loading="lazy" style={{ position: "absolute", left: "-52.5px", top: "-52.5px", width: "600px", height: "1074px", border: "0", background: "#FFFFFF", transform: "scale(0.525)", transformOrigin: "0 0" }} /* the prototype draws a 400px phone inside 100px of padding: line that phone up with this screen */></iframe>
+                  <img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                  <ProtoFrame src="prototypes/attune-choose-a-mode.html#z=.525" title="Attune — choose a mode prototype" width="210px" height="459px" />
                 </div>
               </div>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500" }}>
