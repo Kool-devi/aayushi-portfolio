@@ -248,47 +248,30 @@ export default function AttuneMobile({ v }) {
             {" clear."}
           </h2>
           {" "}
-          <div style={{ margin: "0 -20px", padding: "0 20px 8px", overflowX: "auto", scrollbarWidth: "none" }}>
-            <span style={{ display: "block", marginBottom: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#6E6E69" }}>
-              Swipe the table →
-            </span>
-            <div style={{ display: "grid", gridTemplateColumns: "100px repeat(4, 130px)", width: "620px", borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden" }}>
-              {" "}
-              <span></span>
-              {" "}
-              {(v.atRoleCols || []).map((c, $index) => (
-                <React.Fragment key={$index}>
-                  <div style={{ padding: "18px 18px 14px", background: c?.bg, color: c?.fg, display: "flex", flexDirection: "column", gap: "4px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: c?.nc }}>
-                      {show(c?.n)}
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            {(v.atRoleCols || []).map((c, i) => (
+              <div key={i} style={{ borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 20px 40px -28px rgba(0,0,0,.22)", padding: "16px 18px 6px" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "10px", paddingBottom: "10px" }}>
+                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", color: "#E5322B" }}>
+                    {show(c?.n)}
+                  </span>
+                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "26px", lineHeight: "1", letterSpacing: "-.04em" }}>
+                    {show(c?.t)}
+                  </span>
+                </div>
+                {(v.atRoleRows || []).map((r, j) => (
+                  <div key={j} style={{ display: "grid", gridTemplateColumns: "96px minmax(0,1fr)", alignItems: "center", gap: "12px", padding: "11px 0", borderTop: "1px solid #0B0B0B14" }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
+                      {show(r?.k)}
                     </span>
-                    <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                      {show(c?.t)}
+                    <span style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "15px", fontWeight: "500", letterSpacing: "-.01em" }}>
+                      {r?.cells?.[i]?.dots ? <span style={{ display: "flex", gap: "3px" }}>{show(r.cells[i].dots)}</span> : null}
+                      {show(r?.cells?.[i]?.t)}
                     </span>
                   </div>
-                </React.Fragment>
-              ))}
-              {" "}
-              {(v.atRoleRows || []).map((r, $index) => (
-                <React.Fragment key={$index}>
-                  {" "}
-                  <span style={{ padding: "18px", borderTop: "1px solid #0B0B0B14", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", display: "flex", alignItems: "center" }}>
-                    {show(r?.k)}
-                  </span>
-                  {" "}
-                  {(r?.cells || []).map((x, $index) => (
-                    <React.Fragment key={$index}>
-                      <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em" }}>
-                        {x?.dots ? <span style={{ display: "flex", gap: "3px" }}>{show(x?.dots)}</span> : null}
-                        {show(x?.t)}
-                      </span>
-                    </React.Fragment>
-                  ))}
-                  {" "}
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
