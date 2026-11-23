@@ -3,6 +3,7 @@
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import AttuneArchitecture from './AttuneArchitecture.jsx';
+import ProtoFrame from '../components/ProtoFrame.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneDesktop({ v }) {
@@ -386,14 +387,12 @@ export default function AttuneDesktop({ v }) {
               {" "}
               <div style={{ position: "sticky", top: v.atPhoneTop, width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
                 <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#1A1A18" }}>
-                  {(v.atFlow || []).map((m, $index) => (
-                    <React.Fragment key={$index}>
-                      <div style={{ position: "absolute", inset: "0", opacity: m?.op, transition: "opacity .5s", pointerEvents: m?.op ? "auto" : "none" }}>
-                        <img src={m?.img} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover" }} />
-                        {m?.play ? <iframe key={m?.run} src={m?.proto + "#z=.54"} title={`Attune ${m?.t} prototype`} scrolling="no" style={{ position: "absolute", left: "0", top: "0", width: "216px", height: "472px", border: "0", background: "transparent" }}></iframe> : null}
-                      </div>
-                    </React.Fragment>
-                  ))}
+                  {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
+                  {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (
+                    <div key={$index} style={{ position: "absolute", inset: "0", zIndex: m?.play ? 2 : 1 }}>
+                      <ProtoFrame key={m?.run} src={m?.proto + "#z=.54"} title={`Attune ${m?.t} prototype`} width="216px" height="472px" onReady={m?.onReady} />
+                    </div>
+                  ) : null))}
                 </div>
               </div>
               {" "}

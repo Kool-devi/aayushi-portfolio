@@ -58,7 +58,8 @@ export default class DesktopLogic extends React.Component {
         // the shown prototype restarts every time its mode arrives (and stops once the section is off screen)
         const sec = document.getElementById('flows'), sr = sec && sec.getBoundingClientRect();
         const act = sr && sr.top < window.innerHeight && sr.bottom > 0 ? f : -1;
-        if ((this.state.atAct ?? -1) !== act) this.setState(s => ({ atAct: act, atRun: (s.atRun ?? 0) + 1 }));
+        // the previous prototype stays on screen until the new one has drawn its first screen (no dark gap)
+        if ((this.state.atAct ?? -1) !== act) this.setState(s => { const run = (s.atRun ?? 0) + 1, keys = { ...(s.atKeys || {}) }; if (act >= 0) keys[act] = run; return { atAct: act, atRun: run, atKeys: keys, atKeep: act >= 0 ? (s.atAct ?? -1) : -1 }; });
       }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
@@ -143,7 +144,7 @@ export default class DesktopLogic extends React.Component {
       atMode: { t: cur.t, k: cur.k, role: cur.role, kBg: cur.k === 'Private' ? '#FFFFFF' : '#FCEB3F' },
       atScreens: cur.steps.map(mkScreen),
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1); return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), play, run: i + '-' + (S.atRun ?? 0), steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
+      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1), keep = i === (S.atKeep ?? -1) && !play; return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), play, keep, run: i + '-' + ((S.atKeys || {})[i] ?? 0), onReady: play ? () => (this.state.atKeep ?? -1) >= 0 && this.setState({ atKeep: -1 }) : undefined, steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
