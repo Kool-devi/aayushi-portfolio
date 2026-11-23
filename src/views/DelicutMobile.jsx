@@ -98,7 +98,7 @@ export default function DelicutMobile({ v }) {
         {" "}
         <div style={{ position: "relative", height: "280px", margin: "0 -20px", background: "#E9DA2E", overflow: "hidden" }}>
           {" "}
-          <img src="Mockups/Delicut/Project%20Landing.jpg" alt="Delicut app home screen on a phone" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="Mockups/Delicut/Banner-mobile.webp" alt="Delicut app home screen on a phone" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "16px", top: "16px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
             {"Fig. 01 — Calorie summary & upcoming meals"}
