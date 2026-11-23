@@ -8,7 +8,7 @@ export default function HomeMobile({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none", touchAction: "pan-x" }}>
+      <section onPointerMove={v.onMSeamMove} onPointerUp={v.onMSeamUp} onPointerLeave={v.onMSeamUp} style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr)", overflow: "hidden", userSelect: "none" }}>
         {" "}
         <div aria-hidden="true" style={{ gridArea: "1 / 1", minWidth: "0" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "14px", padding: "14px 20px 0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 40px) / 4) 100%", backgroundPosition: "20px 0" }}>
