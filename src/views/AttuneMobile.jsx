@@ -471,8 +471,10 @@ export default function AttuneMobile({ v }) {
               {" "}
             </div>
             {" "}
-            <div style={{ marginLeft: "auto", marginRight: "auto", width: "300px", height: "620px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
+            <div style={{ marginLeft: "auto", marginRight: "auto", flex: "none", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#F4F3EE" }}>
+                {/* the screen is laid out at 280x612 and scaled down to the frame */}
+                <div style={{ position: "absolute", left: "0", top: "0", width: "280px", height: "612px", transform: "scale(.8)", transformOrigin: "0 0" }}>
                 <div style={{ position: "absolute", inset: "0", background: "#F4F3EE" }}></div>
                 {" "}
                 <div style={{ position: "absolute", left: "0", right: "0", top: "0", padding: "20px 18px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", fontWeight: "600", color: "#0B0B0B", borderBottom: "1px solid #0B0B0B14", flexWrap: "wrap" }}>
@@ -524,6 +526,7 @@ export default function AttuneMobile({ v }) {
                     {" "}
                   </React.Fragment>
                 ))}
+                </div>
               </div>
             </div>
             {" "}

@@ -451,16 +451,19 @@ export default function AttuneDesktop({ v }) {
             Move 05 — Design when AI stops
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1" }}>
             {"The safest AI action is sometimes "}
             <span style={{ fontStyle: "italic" }}>
               to stop.
             </span>
           </h2>
           {" "}
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "center", padding: "24px 32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            {" "}
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px", marginBottom: "10px" }}>
             <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
               Keep the chat going
             </span>
@@ -472,9 +475,6 @@ export default function AttuneDesktop({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "center", padding: "32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {" "}
               {(v.atSafe || []).map((s, $index) => (
                 <React.Fragment key={$index}>
@@ -498,10 +498,24 @@ export default function AttuneDesktop({ v }) {
                 Hover a step — the screen reacts →
               </span>
               {" "}
+          <div style={{ display: "flex", alignItems: "baseline", gap: "16px", marginTop: "14px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
+              Why
+            </span>
+            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "21px", lineHeight: "1.2", letterSpacing: "-.035em" }}>
+              {"Responsible AI isn’t only better answers — it’s knowing "}
+              <span style={{ fontStyle: "italic" }}>
+                when the product should step aside.
+              </span>
+            </span>
+          </div>
+              {" "}
             </div>
             {" "}
-            <div style={{ width: "290px", height: "600px", flex: "none", borderRadius: "44px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "35px", overflow: "hidden", background: "#1A1A18" }}>
+            <div style={{ flex: "none", width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#F4F3EE" }}>
+                {/* the screen is laid out at 270x590 and scaled down to the frame */}
+                <div style={{ position: "absolute", left: "0", top: "0", width: "270px", height: "590px", transform: "scale(.8)", transformOrigin: "0 0" }}>
                 <div style={{ position: "absolute", inset: "0", background: "#F4F3EE" }}></div>
                 {" "}
                 <div style={{ position: "absolute", left: "0", right: "0", top: "0", padding: "46px 18px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", fontWeight: "600", color: "#0B0B0B", borderBottom: "1px solid #0B0B0B14" }}>
@@ -553,22 +567,12 @@ export default function AttuneDesktop({ v }) {
                     {" "}
                   </React.Fragment>
                 ))}
+                </div>
               </div>
             </div>
             {" "}
           </div>
           {" "}
-          <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
-              Why
-            </span>
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1.15", letterSpacing: "-.035em" }}>
-              {"Responsible AI isn’t only better answers — it’s knowing "}
-              <span style={{ fontStyle: "italic" }}>
-                when the product should step aside.
-              </span>
-            </span>
-          </div>
         </div>
       </section>
       <section id="system" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
