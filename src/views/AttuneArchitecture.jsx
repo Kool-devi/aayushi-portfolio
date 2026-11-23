@@ -1,5 +1,5 @@
 /* eslint-disable */
-// Attune page — Move 02 "Map private → shared" (product architecture). Shared by both layouts;
+// Attune page — Move 01 "Map private → shared" (product architecture). Shared by both layouts;
 // `mobile` switches to the phone sizes. Styled to match the other move sections.
 import React from 'react';
 
@@ -24,7 +24,7 @@ export default function AttuneArchitecture({ num, mobile }) {
       : { padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", ...label }}>
         <span style={{ color: "#E5322B" }}>{num}</span>
-        <span>Move 02 — Map private → shared</span>
+        <span>Move 01 — Map private → shared</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: m ? "18px" : "28px" }}>
         <h2 style={{ margin: "0", ...display, letterSpacing: "-.055em", fontSize: m ? "35px" : "48px", lineHeight: "1.02" }}>

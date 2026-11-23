@@ -63,7 +63,7 @@ export default class MobileLogic extends React.Component {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
     const L = 5, m = S.atM ?? 0, st = S.atSt ?? 0, k = S.atK ?? 0;
-    const chap = [['Moves','moves'],['Problem','problem'],['Roles','roles'],['Private / shared','model'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
+    const chap = [['Moves','moves'],['Problem','problem'],['Private / shared','model'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
     const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
     const modes = [
       { t: 'Reflect', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
@@ -110,7 +110,7 @@ export default class MobileLogic extends React.Component {
       atHeroModes: modes.map((x, i) => ({ t: x.t, k: x.k, q: x.q, n: n2(i), img: U(x.img), flex: i === hm ? 3 : 1, qOp: i === hm ? 1 : 0, zs: i === hm ? 1.06 : 1, fw: i === hm ? 600 : 400, lc: i === hm ? '#FCEB3F' : '#FFFFFF99', onPick: pick('atH', i), onTap: () => { this._heroUser = true; this.setState({ atH: i }); } })),
       atHeroCur: { t: modes[hm].t, q: modes[hm].q, k: modes[hm].k, n: n2(hm) }, atHeroThumb: (12.5 + hm * 25) + '%',
       atHeroRef: (el) => { if (this._heroInt) { clearInterval(this._heroInt); this._heroInt = null; } if (!el) return; this._heroInt = setInterval(() => { if (this._heroUser) return; this.setState(s => ({ atH: ((s.atH ?? 0) + 1) % 4 })); }, 3800); },
-      atMoves: [['Gave every mode a role', 'roles'], ['Mapped private → shared', 'model'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
+      atMoves: [['Mapped private → shared', 'model'], ['Gave every mode a role', 'roles'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
       atSame: ['Alone with a thought', 'Right after a fight', 'Conflict, together', 'A crisis moment'].map((t, i) => ({ t, n: n2(i) })),
       atRoleCols: modes.map((x, i) => ({ t: x.t, n: n2(i), bg: 'transparent', fg: '#0B0B0B', nc: '#E5322B' })),
       atRoleRows: roleRows.map(([kk, f, d]) => ({ k: kk, cells: modes.map((x, i) => ({ t: f(x), dots: d(x), bg: 'transparent', fg: '#0B0B0B', bd: '#0B0B0B14' })) })),

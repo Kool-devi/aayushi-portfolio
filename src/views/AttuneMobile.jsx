@@ -238,13 +238,14 @@ export default function AttuneMobile({ v }) {
           </div>
         </div>
       </section>
+      <AttuneArchitecture num="03" mobile />
       <section id="roles" style={{ padding: "61px 20px 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            03
+            04
           </span>
           <span>
-            Move 01 — Give every mode a role
+            Move 02 — Give every mode a role
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
@@ -284,7 +285,6 @@ export default function AttuneMobile({ v }) {
           </div>
         </div>
       </section>
-      <AttuneArchitecture num="04" mobile />
       <section id="rooms" style={{ padding: "61px 20px 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
