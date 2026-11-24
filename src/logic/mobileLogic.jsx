@@ -162,7 +162,7 @@ export default class MobileLogic extends React.Component {
       { rel: 'Past', t: 'Yesterday', badge: 'Rate meal', vid: 'Videos/Delicut/4New-screen.mp4', d: 'Past days have a different purpose. Delivery controls give way to reviewing and rating meals — and if the delivery was skipped, rating isn’t shown at all.', acts: ['Rate meals', 'Review delivery'] },
       { rel: 'Flexible', t: 'Tomorrow', badge: 'Manage delivery', vid: 'Videos/Delicut/3New-screen.mp4', d: 'Before the cut‑off, future days are the most action‑heavy state. The priority: make options easy to find without overcrowding the meal cards.', acts: ['Change meal', 'Skip delivery', 'Resume delivery', 'Change address'] }];
     const exp = [
-      { t: 'Active', d: 'The full daily experience — meals, deliveries and every time‑based action.', shows: 'meals & delivery controls' },
+      { t: 'Active', imgs: ['Mockups/Delicut/Expiry Active.webp'], d: 'The full daily experience — meals, deliveries and every time‑based action.', shows: 'meals & delivery controls' },
       { t: 'Expiring soon', d: 'With only a short time left, the customer sees the plan approaching its end — creating space to renew before deliveries stop.', shows: '7‑day renewal banner' },
       { t: 'Expired', d: 'Future meal controls disappear. The product shifts toward one clear next step, without feeling broken or empty.', shows: 'last plan + Renew plan' },
       { t: 'Renewed', d: 'Returning customers find a familiar way back into Delicut — plan details they recognise, minimal friction to restart.', shows: 'back to active' }];
@@ -184,7 +184,9 @@ export default class MobileLogic extends React.Component {
         track: on ? '#FFFFFF26' : '#0B0B0B14', fillC: on ? '#FCEB3F' : '#0B0B0B', fill: i < ex ? '100%' : '0%', anim: on ? `prog ${EXP_MS}ms linear forwards` : 'none', runKey: on ? 'run' + (S.dlEK ?? 0) : 'idle',
         onEnd: on ? () => this.setState(s => ({ dlE: ((s.dlE ?? 0) + 1) % 4, dlEK: (s.dlEK ?? 0) + 1 })) : undefined,
         onPick: () => this.setState(s => ({ dlE: i, dlEK: (s.dlEK ?? 0) + 1 })) }; }),
-      dlExpPlay: S.dlEV ? 'running' : 'paused', dlExpCur: { ...exp[ex], n: n2(ex) }
+      dlExpPlay: S.dlEV ? 'running' : 'paused', dlExpCur: { ...exp[ex], n: n2(ex) },
+      // Per-stage phone screens (1 or 2 phones); stages without new screens fall back to the old composite.
+      dlExpStages: exp.map((e, i) => ({ imgs: (e.imgs || []).map(U), op: i === ex ? 1 : 0, fallback: !(e.imgs || []).length }))
     };
   }
   csVals() {

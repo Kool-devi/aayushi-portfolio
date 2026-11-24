@@ -893,7 +893,18 @@ export default function DelicutMobile({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {" "}
-            <div style={{ height: "240px", borderRadius: "20px", background: "#FFFFFF url('Mockups/Delicut/Delicut%20Expiry%20Screen.png') center/contain no-repeat", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}></div>
+            <div style={{ position: "relative", height: "400px", borderRadius: "20px", background: "#E2E2DE", overflow: "hidden" }}>
+              {/* One layer per stage, cross-fading. Single-phone stages sit centred in the same frame that holds two side by side. */}
+              {(v.dlExpStages || []).map((st, $index) => (
+                <div key={$index} aria-hidden={st?.op ? undefined : "true"} style={{ position: "absolute", inset: "0", padding: "18px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", opacity: st?.op, transition: "opacity .5s" }}>
+                  {st?.fallback ? (
+                    <img src="Mockups/Delicut/Delicut%20Expiry%20Screen.png" alt="Expiry flow screens" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
+                  ) : (st?.imgs || []).map((src, k) => (
+                    <img key={k} src={src} alt={`${v.dlExpCur?.t ?? ""} screen`} style={{ display: "block", height: "100%", width: "auto", maxWidth: "calc(50% - 6px)", objectFit: "contain", filter: "drop-shadow(0 16px 20px rgba(0,0,0,.2))" }} />
+                  ))}
+                </div>
+              ))}
+            </div>
             {" "}
             <div style={{ padding: "28px", borderRadius: "20px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "16px" }}>
               {" "}
