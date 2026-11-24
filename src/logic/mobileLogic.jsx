@@ -233,7 +233,7 @@ export default class MobileLogic extends React.Component {
       csStep: { n: '0' + (st + 1), t: steps[st][0], d: steps[st][1] },
       csStepPrev: () => this.setState({ csStep: (st + 5) % 6 }), csStepNext: () => this.setState({ csStep: (st + 1) % 6 }),
       csModes: modes.map((m, i) => { const on = i === md; return { ...m, bg: i === 0 ? '#0B0B0B' : '#FFFFFF', fg: i === 0 ? '#FFFFFF' : '#0B0B0B', chip: i === 0 ? '#FFFFFF1A' : '#EFEFEC', tagBg: i === 0 ? '#FCEB3F' : '#EFEFEC', tagFg: '#0B0B0B', s: on ? 1 : 0.97, op: on ? 1 : 0.62, onPick: () => this.state.csMode !== i && this.setState({ csMode: i }) }; }),
-      csIterLanes: sets.map((s, li) => ({ t: s.t, ratio: li ? '1440 / 460' : '1440 / 1000', items: s.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p) })) })), csIterTags: iterK.split(' · '), csIterIntro: iterD,
+      csIterLanes: sets.map((s, li) => ({ t: s.t, ratio: li ? '1440 / 520' : '1440 / 1000', pad: li ? undefined : '4%', items: s.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p) })) })), csIterTags: iterK.split(' · '), csIterIntro: iterD,
       csIterSets: sets.map((s, i) => ({ t: s.t, w: i === si ? 600 : 500, fg: i === si ? '#FFFFFF' : '#0B0B0B', onPick: () => this.setState({ csSet: i, csIt: 0 }) })),
       csIterLeft: si ? '50%' : '4px', csIterSet: set,
       csIters: set.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p), op: i === ii ? 1 : 0, s: i === ii ? 1 : 1.03, bg: i === ii ? '#FFFFFF' : '#E2E2DE', chipBg: i === ii ? '#0B0B0B' : '#EFEFEC', chipFg: i === ii ? '#FFFFFF' : '#0B0B0B', onPick: () => this.state.csIt !== i && this.setState({ csIt: i }) })),
