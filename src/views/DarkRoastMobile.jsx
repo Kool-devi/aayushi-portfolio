@@ -408,11 +408,6 @@ export default function DarkRoastMobile({ v }) {
             </span>
           </h2>
           {" "}
-          <div style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-            <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#E5322B", animation: "pulse 1.6s ease-in-out infinite" }}></span>
-            Tap a step — or use ← → — to see each job
-          </div>
-          {" "}
           <div style={{ position: "relative", borderRadius: "24px", background: "#FCEB3F", padding: "24px 12px 14px", overflow: "hidden" }}>
             {" "}
             <svg width="100%" height="110" viewBox="0 0 1000 200" preserveAspectRatio="none" style={{ position: "absolute", left: "0", right: "0", top: "30px", pointerEvents: "none" }}>
