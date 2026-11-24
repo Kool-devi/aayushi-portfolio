@@ -227,7 +227,7 @@ export default class DesktopLogic extends React.Component {
     const ii = Math.min(S.csIt ?? 0, set.items.length - 1);
     const pairs = [
       { t: 'Navigation', before: 'Before After/v2/1-before.webp', after: 'Before After/v2/1-after.webp', b: 'Project types and statuses were mixed into one row of tabs.', a: 'Type tabs sit on top, and projects are grouped by status underneath.' },
-      { t: 'Project listing', before: 'Before After/2a.png', after: 'Before After/2b.png', b: 'Status was small grey text, and the coloured bars had no clear meaning.', a: 'Each row shows status and priority clearly, so brands know what needs them first.' },
+      { t: 'Project listing', before: 'Before After/v2/2-before.webp', after: 'Before After/v2/2-after.webp', b: 'Status was small grey text, and the coloured bars had no clear meaning.', a: 'Each row shows status and priority clearly, so brands know what needs them first.' },
       { t: 'Messages', before: 'Before After/3a.png', after: 'Before After/3b.png', b: 'Messages were squeezed between a crowded top bar and a large brief panel.', a: 'The brief opens only when needed, so messages get the full width.' },
       { t: 'File review', before: 'Before After/4a.png', after: 'Before After/4b.png', b: 'Files sat in a plain list with long names and no sign of file type.', a: 'Each file shows a preview, file type, uploader and date in one place.' }];
     const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
