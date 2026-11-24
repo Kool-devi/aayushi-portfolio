@@ -220,22 +220,22 @@ export default function DarkRoastDesktop({ v }) {
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
               <span style={{ color: "#FCEB3F" }}>01</span>
               <span>
-              Solution — try it</span>
+              Try it</span>
             </span>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-              {"The final workspace, "}
+              {"Click through the "}
               <span style={{ fontStyle: "italic" }}>
-                live.
+                new Projects page
               </span>
             </h2>
             <span style={{ fontSize: "14px", lineHeight: "1.55", color: "#FFFFFFb3", maxWidth: "30ch" }}>
-              Vibe‑coded with Claude agents by importing my Figma designs through the MCP server.
+              I rebuilt my final Figma screens as a working prototype for this portfolio, using Claude and the Figma MCP server.
             </span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
             <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
-              Interactive · desktop 1440 view
+              Interactive · best viewed on desktop
             </span>
             <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
@@ -253,7 +253,7 @@ export default function DarkRoastDesktop({ v }) {
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ marginLeft: "14px", fontSize: "11.5px", color: "#FFFFFF80" }}>
-              darkroast.app / projects
+              darkroast.app/projects
             </span>
           </div>
           <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#FFFFFF" }}>

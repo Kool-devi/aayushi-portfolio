@@ -215,18 +215,18 @@ export default function DarkRoastMobile({ v }) {
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
               <span style={{ color: "#FCEB3F" }}>01</span>
               <span>
-            Solution — try it</span>
+            Try it</span>
           </span>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1" }}>
-            {"The final workspace, "}
+            {"Click through the "}
             <span style={{ fontStyle: "italic" }}>
-              live.
+              new Projects page
             </span>
           </h2>
           {" "}
           <span style={{ fontSize: "13px", lineHeight: "1.45", color: "#FFFFFFb3" }}>
-            A working desktop prototype — vibe‑coded with Claude agents from my Figma designs via MCP.
+            I rebuilt my final Figma screens as a working prototype for this portfolio, using Claude and the Figma MCP server.
           </span>
           {" "}
         </div>
@@ -238,7 +238,7 @@ export default function DarkRoastMobile({ v }) {
             <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ flex: "1", marginLeft: "8px", height: "14px", borderRadius: "4px", background: "#FFFFFF12", fontSize: "8.5px", lineHeight: "14px", paddingLeft: "8px", color: "#FFFFFF80" }}>
-              darkroast.app / projects
+              darkroast.app/projects
             </span>
           </div>
           {" "}
@@ -251,11 +251,11 @@ export default function DarkRoastMobile({ v }) {
           {" "}
         </div>
         {" "}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", padding: "0 4px" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "12px", padding: "4px 4px 4px" }}>
           {" "}
           <span style={{ display: "flex", alignItems: "center", gap: "7px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#FFFFFF99" }}>
             <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
-            Desktop · 1440 view
+            Interactive · best viewed on desktop
           </span>
           {" "}
           <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 6px 0 16px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", fontWeight: "500" }}>
