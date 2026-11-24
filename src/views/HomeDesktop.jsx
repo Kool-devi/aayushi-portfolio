@@ -577,7 +577,7 @@ export default function HomeDesktop({ v }) {
                             The one insight
                           </span>
                           {" "}
-                          <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "15.5px", letterSpacing: "-.02em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "14px", letterSpacing: "-.02em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                             {show(f?.rcInsight)}
                           </span>
                           {" "}
