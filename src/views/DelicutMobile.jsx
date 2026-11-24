@@ -838,7 +838,7 @@ export default function DelicutMobile({ v }) {
                 <div style={{ borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                   {" "}
                   <div style={{ padding: "18px", background: "#EFEFEC", display: "flex", justifyContent: "center" }}>
-                    <img className="mh5" src={p?.src} alt={p?.t} style={{ display: "block", height: "440px", width: "auto", maxWidth: "100%", objectFit: "contain", borderRadius: "18px", boxShadow: "0 1px 2px rgba(0,0,0,.06), 0 18px 34px -20px rgba(0,0,0,.35)", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+                    <img className="mh5" src={p?.src} alt={p?.t} style={{ display: "block", height: "440px", width: "auto", maxWidth: "100%", objectFit: "contain", filter: "drop-shadow(0 18px 22px rgba(0,0,0,.22))", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
                   </div>
                   {" "}
                   <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "10px" }}>

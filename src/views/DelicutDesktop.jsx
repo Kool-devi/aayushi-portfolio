@@ -801,7 +801,7 @@ export default function DelicutDesktop({ v }) {
                   {" "}
                   {/* the phone screen fills the card's height; text sits beside it */}
                   <div style={{ padding: "16px", background: "#EFEFEC", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                    <img className="dha" src={p?.src} alt={p?.t} style={{ display: "block", height: "420px", width: "auto", maxWidth: "none", borderRadius: "18px", boxShadow: "0 1px 2px rgba(0,0,0,.06), 0 18px 34px -20px rgba(0,0,0,.35)", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+                    <img className="dha" src={p?.src} alt={p?.t} style={{ display: "block", height: "420px", width: "auto", maxWidth: "none", filter: "drop-shadow(0 18px 22px rgba(0,0,0,.22))", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
                   </div>
                   {" "}
                   <div style={{ padding: "26px 22px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "12px" }}>
