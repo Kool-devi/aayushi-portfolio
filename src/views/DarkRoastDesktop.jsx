@@ -143,7 +143,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
       </nav>
       {" "}
-      <section id="tldr" style={{ padding: "110px 40px 90px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
+      <section id="tldr" style={{ padding: "48px 40px 48px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
@@ -154,56 +154,59 @@ export default function DarkRoastDesktop({ v }) {
           </span>
         </div>
         {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "56px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
           {" "}
-          <p style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.1", letterSpacing: "-.045em" }}>
-            {"The dashboard had grown into a dense project‑management interface where messaging, files, briefs, status and metadata all "}
+          <p style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
+            {"DarkRoast is a platform where design teams and the brands that hire them manage projects together. Brands kept adding more projects, but the dashboard was still built for one project at a time, so they had to "}
             <span style={{ fontStyle: "italic" }}>
-              competed for attention.
+              check each one separately.
             </span>
           </p>
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
             {" "}
-            <div style={{ padding: "24px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div style={{ padding: "22px 24px 24px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "14px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                 What I found
               </span>
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                Not missing features.
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
+                {"Brands didn’t need "}
+                <span style={{ fontStyle: "italic" }}>
+                  more features
+                </span>
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#3C3C38" }}>
-                Survey, workflow analysis, benchmarking and an audit all pointed the same way.
+                The survey and usage tracking both showed brands opening every project just to see its status.
               </span>
             </div>
             {" "}
-            <div style={{ padding: "24px", borderRadius: "20px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div style={{ padding: "22px 24px 24px", borderRadius: "20px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "14px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-                The real problem
+                What I did
               </span>
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                {"Hierarchy, focus & "}
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
+                {"Fixed the list, "}
                 <span style={{ fontStyle: "italic" }}>
-                  context.
+                  not the whole product
                 </span>
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#FFFFFFb3" }}>
-                Too much visible at once, not enough clarity about what mattered now.
+                I kept the layout brands already knew and changed what shows on the Projects page and inside a project.
               </span>
             </div>
             {" "}
-            <div style={{ padding: "24px", borderRadius: "20px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "14px" }}>
+            <div style={{ padding: "22px 24px 24px", borderRadius: "20px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "14px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-                What I did
+                The result
               </span>
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                {"Redefined what matters, "}
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "27px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
+                {"Status visible "}
                 <span style={{ fontStyle: "italic" }}>
-                  when.
+                  from the list
                 </span>
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55" }}>
-                A few high‑impact changes — not a full rebuild.
+                In testing, brands could see where each project stood without opening it and started handling several at once.
               </span>
             </div>
             {" "}
