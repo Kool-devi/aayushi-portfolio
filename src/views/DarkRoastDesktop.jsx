@@ -58,8 +58,10 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "20px" }}>
             {" "}
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-              DarkRoast · Creative operations · Dashboard redesign
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", display: "flex", flexWrap: "wrap", gap: "4px 32px" }}>
+              <span>DarkRoast</span>
+              <span>Client dashboard redesign</span>
+              <span>2026</span>
             </span>
             {" "}
             <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".98" }}>
@@ -565,13 +567,9 @@ export default function DarkRoastDesktop({ v }) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05" }}>
-              {"Testing the balance between "}
+              {"I tried four versions of each screen "}
               <span style={{ fontStyle: "italic" }}>
-                density
-              </span>
-              {" and "}
-              <span style={{ fontStyle: "italic" }}>
-                visibility.
+                before choosing one
               </span>
             </h2>
           <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "62ch" }}>
