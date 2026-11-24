@@ -667,48 +667,49 @@ export default function DarkRoastMobile({ v }) {
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             {" "}
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.05em", fontSize: "32px", lineHeight: "1.02", overflowWrap: "break-word" }}>
-              {"From a dense project-management interface to a "}
+              {"Brands went from managing "}
               <span style={{ fontStyle: "italic" }}>
-                clearer creative workspace.
+                one project at a time to five
               </span>
             </h2>
             {" "}
             <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
               {" "}
               <div style={{ padding: "22px", borderRadius: "18px", background: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
-                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", letterSpacing: "-.04em" }}>
-                  Status, at a glance
+                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", lineHeight: "1.1", letterSpacing: "-.04em" }}>
+                  Status from the list
                 </span>
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  Progress is easier to scan across projects.
+                  Brands could see where each project stood without opening it.
                 </span>
               </div>
               {" "}
               <div style={{ padding: "22px", borderRadius: "18px", background: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
-                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", letterSpacing: "-.04em" }}>
-                  Room to collaborate
+                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", lineHeight: "1.1", letterSpacing: "-.04em" }}>
+                  Room for messages
                 </span>
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  Messages and feedback get the main stage.
+                  Chats and feedback took up the main space on the project page.
                 </span>
               </div>
               {" "}
               <div style={{ padding: "22px", borderRadius: "18px", background: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
-                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", letterSpacing: "-.04em" }}>
-                  Context in context
+                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "25px", lineHeight: "1.1", letterSpacing: "-.04em" }}>
+                  Files in one place
                 </span>
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  Files and reference sit beside the work they support.
+                  Images, videos and PDFs showed up together, with previews.
                 </span>
               </div>
               {" "}
             </div>
             {" "}
             <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", maxWidth: "56ch" }}>
-              {"Rather than adding features, the focus stayed on "}
+              {"DarkRoast’s developer "}
               <strong style={{ fontWeight: "600" }}>
-                reducing friction, improving hierarchy and making progress easier to understand.
+                shipped the redesign
               </strong>
+              {" after we tested it with real brands."}
             </p>
             {" "}
           </div>
