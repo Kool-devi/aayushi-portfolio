@@ -198,7 +198,7 @@ export default class MobileLogic extends React.Component {
       ['File management', 'Mockups/DarkRoast/Problem 3 - File Management.webp', 'Files sat in a plain list with long names, so finding the right version meant opening each one.']];
     const fl = S.csFlip || {};
     const survey = [['Needs better mobile experience', 'Layouts didn’t adjust well to smaller screens'], ['Needs better file management', 'The right file was hard to find inside long chats'], ['Issues with text, links and spacing', 'Small visual bugs made the platform feel less reliable'], ['Providing small updates felt too formal', 'The platform was built for formal updates, not quick replies']];
-    const steps = [['Share intent', 'Turn rough goals into clear creative direction.'], ['Start work', 'Create new work quickly using existing context.'], ['Track progress', 'See what needs attention without opening every project.'], ['Review work', 'Check quality and direction at a glance.'], ['Give feedback', 'Iterate without re‑briefing or heavy process.'], ['Reuse & scale', 'Carry past work and brand context into future projects.']];
+    const steps = [['Send a brief', 'The brand explains what they need, with sizes and formats.'], ['Start the work', 'A designer is assigned, and the brand knows who is on it.'], ['Track progress', 'See which projects need attention without opening each one.'], ['Review designs', 'View drafts in any format, from images to videos, in one place.'], ['Give feedback', 'Reply quickly in chat, or leave detailed notes when needed.'], ['Reuse past work', 'Use old briefs and files to start the next project faster.']];
     const st = S.csStep ?? 2;
     const md = S.csMode ?? 0;
     const modes = [

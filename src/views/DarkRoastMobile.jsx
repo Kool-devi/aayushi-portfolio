@@ -402,15 +402,10 @@ export default function DarkRoastMobile({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "35px", lineHeight: "1.05" }}>
-            {"The survey said "}
+            {"I mapped every step a brand takes, "}
             <span style={{ fontStyle: "italic" }}>
-              what
+              from brief to final file
             </span>
-            {" hurt. The audit showed "}
-            <span style={{ fontStyle: "italic" }}>
-              where.
-            </span>
-            {" Neither explained how it connected — so I mapped the jobs clients do across a whole project."}
           </h2>
           {" "}
           <div style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
@@ -468,13 +463,13 @@ export default function DarkRoastMobile({ v }) {
                 {" "}
                 {v.csStepIsNow ? (
                   <>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "5px 9px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", whiteSpace: "nowrap" }}>
-                    Old dashboard lived here
+                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "5px 9px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", minWidth: "0" }}>
+                    The old dashboard only covered this
                   </span>
                   </>
                 ) : null}
                 {" "}
-                <div style={{ display: "flex", gap: "8px", marginLeft: "auto" }}>
+                <div style={{ flex: "none", display: "flex", gap: "8px", marginLeft: "auto" }}>
                   <button type="button" onClick={v.csStepPrev} aria-label="Previous job" style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#EFEFEC", display: "grid", placeItems: "center" }}>
                     ←
                   </button>
@@ -490,7 +485,7 @@ export default function DarkRoastMobile({ v }) {
           </div>
           {" "}
           <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "60ch" }}>
-            The current dashboard sat in the middle of this loop — tracking work — without supporting the jobs around it.
+            The old dashboard only helped with tracking, and even that broke down once brands had many projects.
           </p>
           {" "}
         </div>

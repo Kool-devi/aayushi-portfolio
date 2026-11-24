@@ -405,15 +405,10 @@ export default function DarkRoastDesktop({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.05" }}>
-            {"The survey said "}
+            {"I mapped every step a brand takes, "}
             <span style={{ fontStyle: "italic" }}>
-              what
+              from brief to final file
             </span>
-            {" hurt. The audit showed "}
-            <span style={{ fontStyle: "italic" }}>
-              where.
-            </span>
-            {" Neither explained how it connected — so I mapped the jobs clients do across a whole project."}
           </h2>
           {" "}
           <div style={{ position: "relative", borderRadius: "28px", background: "#FCEB3F", padding: "40px 40px 32px", overflow: "hidden" }}>
@@ -440,7 +435,7 @@ export default function DarkRoastDesktop({ v }) {
                     {s?.isNow ? (
                       <>
                       <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", padding: "4px 8px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF" }}>
-                        Old dashboard lived here
+                        The old dashboard only covered this
                       </span>
                       </>
                     ) : null}
@@ -481,7 +476,7 @@ export default function DarkRoastDesktop({ v }) {
           </div>
           {" "}
           <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "60ch" }}>
-            The current dashboard sat in the middle of this loop — tracking work — without supporting the jobs around it.
+            The old dashboard only helped with tracking, and even that broke down once brands had many projects.
           </p>
           {" "}
         </div>
