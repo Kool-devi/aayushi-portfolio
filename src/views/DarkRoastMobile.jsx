@@ -44,7 +44,7 @@ export default function DarkRoastMobile({ v }) {
       <header style={{ background: "#FCEB3F", padding: "0 20px" }}>
         <div style={{ position: "relative", padding: "13.3px 0 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "end" }}>
           {" "}
-          <svg width="279" height="77" viewBox="0 0 760 230" style={{ position: "absolute", left: "-20px", top: "89.3px", pointerEvents: "none", overflow: "visible" }}>
+          <svg width="360" height="99" viewBox="0 0 760 230" style={{ position: "absolute", left: "-14px", top: "101px", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="380" cy="115" rx="378" ry="100" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-5 380 115)"></ellipse>
           </svg>
           {" "}
@@ -55,10 +55,11 @@ export default function DarkRoastMobile({ v }) {
             </span>
             {" "}
             <h1 style={{ margin: "0", maxWidth: "348px" /* keep the phone line breaks so the ellipse stays on its words */, fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "42px", lineHeight: ".98" }}>
-              {"Redesigning the project workspace for "}
+              {"Helping brands on DarkRoast manage "}
               <span style={{ fontStyle: "italic" }}>
-                faster creative collaboration
+                five projects at once
               </span>
+              {" instead of one"}
             </h1>
             {" "}
           </div>
@@ -69,28 +70,35 @@ export default function DarkRoastMobile({ v }) {
               Role
             </span>
             <span>
-              Product Designer — research to final UI
+              {"Product Designer, working with DarkRoast as a studio client"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Scope
+              Team
             </span>
             <span>
-              {"Research, workflow mapping, IA, client & designer experience"}
+              {"Me and a PM from my studio, with DarkRoast’s owner and developer"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Inputs
+              Timeline
             </span>
             <span>
-              ~150 client survey responses, product audit, benchmarking
+              {"6 months, December 2025 to May 2026"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Built
+              Research
             </span>
             <span>
-              Figma → coded prototype via Claude + MCP
+              {"Survey of 150 brands, and usage tracking of our regular brands"}
+            </span>
+            {" "}
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
+              Status
+            </span>
+            <span>
+              {"Shipped, and tested with real brands before launch"}
             </span>
             {" "}
           </div>
@@ -101,8 +109,8 @@ export default function DarkRoastMobile({ v }) {
           {" "}
           <img src="Mockups/DarkRoast/Banner-mobile.webp" alt="DarkRoast projects workspace on a laptop" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
-          <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
-            Fig. 01 — The redesigned workspace
+          <span style={{ position: "absolute", left: "40px", bottom: "20px", maxWidth: "calc(100% - 60px)", boxSizing: "border-box", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
+            Fig. 01 — The new Projects page, where a brand can see every project’s status in one list
           </span>
           {" "}
         </div>

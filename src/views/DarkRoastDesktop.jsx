@@ -49,7 +49,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ position: "relative", padding: "43.35px 0 40px", display: "grid", gridTemplateColumns: "minmax(0,8fr) minmax(0,4fr)", gap: "40px", alignItems: "end" }}>
           {" "}
-          <svg width="620" height="170" viewBox="0 0 760 230" style={{ position: "absolute", left: "300px", top: "83.35px", pointerEvents: "none", overflow: "visible" }}>
+          <svg width="620" height="170" viewBox="0 0 760 230" style={{ position: "absolute", left: "164px", top: "86px", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="380" cy="115" rx="378" ry="100" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-5 380 115)"></ellipse>
           </svg>
           {" "}
@@ -60,10 +60,11 @@ export default function DarkRoastDesktop({ v }) {
             </span>
             {" "}
             <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".98" }}>
-              {"Redesigning the project workspace for "}
+              {"Helping brands on DarkRoast manage "}
               <span style={{ fontStyle: "italic" }}>
-                faster creative collaboration
+                five projects at once
               </span>
+              {" instead of one"}
             </h1>
             {" "}
           </div>
@@ -74,28 +75,35 @@ export default function DarkRoastDesktop({ v }) {
               Role
             </span>
             <span>
-              Product Designer — research to final UI
+              {"Product Designer, working with DarkRoast as a studio client"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Scope
+              Team
             </span>
             <span>
-              {"Research, workflow mapping, IA, client & designer experience"}
+              {"Me and a PM from my studio, with DarkRoast’s owner and developer"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Inputs
+              Timeline
             </span>
             <span>
-              ~150 client survey responses, product audit, benchmarking
+              {"6 months, December 2025 to May 2026"}
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
-              Built
+              Research
             </span>
             <span>
-              Figma → coded prototype via Claude + MCP
+              {"Survey of 150 brands, and usage tracking of our regular brands"}
+            </span>
+            {" "}
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
+              Status
+            </span>
+            <span>
+              {"Shipped, and tested with real brands before launch"}
             </span>
             {" "}
           </div>
@@ -107,7 +115,7 @@ export default function DarkRoastDesktop({ v }) {
           <img src="Mockups/DarkRoast/Banner.webp" alt="DarkRoast projects workspace on a laptop" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
-            Fig. 01 — The redesigned workspace
+            Fig. 01 — The new Projects page, where a brand can see every project’s status in one list
           </span>
           {" "}
         </div>
