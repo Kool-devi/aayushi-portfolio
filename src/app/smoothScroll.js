@@ -2,6 +2,7 @@
 // native scrolling, and visitors who ask their system for reduced motion get plain scrolling.
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { barsHiddenAt, setBarsHidden, startAutoHideBars } from './autoHideBars.js';
 
 // How quickly the page catches up with the wheel each frame (0–1). Lenis's default is 0.1;
 // a little higher keeps the glide short so the page still feels responsive.
@@ -18,11 +19,16 @@ export function stickyOffset() {
   return h;
 }
 
-// Scroll so `target` sits just below the sticky bars.
+// Scroll so `target` sits just below the sticky bars (or at the top of the window when the
+// page scrolls down to it, since the bars slide away then).
 export function scrollToSection(target, { instant = false } = {}) {
-  const offset = -stickyOffset();
+  const full = stickyOffset();
+  const top = target.getBoundingClientRect().top + window.scrollY;
+  const hide = barsHiddenAt(top - full);
+  const offset = hide ? 0 : -full;
+  setBarsHidden(hide);
   if (lenis) lenis.scrollTo(target, { offset, immediate: instant, force: true });
-  else window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY + offset, behavior: instant ? 'instant' : 'smooth' });
+  else window.scrollTo({ top: top + offset, behavior: instant ? 'instant' : 'smooth' });
 }
 
 // In-page links such as “Projects” (#work) glide instead of jumping. Lenis's own `anchors`
@@ -42,6 +48,7 @@ function onAnchorClick(event) {
 }
 
 export function startSmoothScroll() {
+  startAutoHideBars();
   if (lenis) return lenis;
   lenis = new Lenis({ lerp: LERP, autoRaf: true, stopInertiaOnNavigate: true });
   document.addEventListener('click', onAnchorClick);

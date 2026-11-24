@@ -16,3 +16,18 @@ a:hover { color: var(--color-accent-600); }
 .site-frame { width: 100%; display: flex; justify-content: center; }
 .site-page { flex: none; overflow: clip; }
 
+
+/* Case studies: the sticky site nav and chapter bar slide away while scrolling down and come
+   back on scrolling up (src/app/autoHideBars.js). The chapter bar moves a beat after the nav,
+   sliding under it, so it reads as tucking into the nav. */
+div[data-sticky], nav[data-sticky] {
+  transition: transform .42s cubic-bezier(.22, .8, .24, 1);
+  will-change: transform;
+}
+nav[data-sticky] { transition-duration: .46s; transition-delay: .07s; }
+html[data-bars-hidden] div[data-sticky] { transform: translateY(-100%); }
+html[data-bars-hidden] nav[data-sticky] { transform: translateY(calc(-100% - 66px)); }
+html[data-bars-hidden][data-layout="mobile"] nav[data-sticky] { transform: translateY(calc(-100% - 70px)); }
+@media (prefers-reduced-motion: reduce) {
+  div[data-sticky], nav[data-sticky] { transition: none; }
+}
