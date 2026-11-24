@@ -223,18 +223,18 @@ export default function DarkRoastMobile({ v }) {
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
               <span style={{ color: "#FCEB3F" }}>01</span>
               <span>
-            Try it</span>
+            Watch it</span>
           </span>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1" }}>
-            {"Click through the "}
+            {"See how a brand moves through the "}
             <span style={{ fontStyle: "italic" }}>
               new Projects page
             </span>
           </h2>
           {" "}
           <span style={{ fontSize: "13px", lineHeight: "1.45", color: "#FFFFFFb3" }}>
-            I rebuilt my final Figma screens as a working prototype for this portfolio, using Claude and the Figma MCP server.
+            This walkthrough plays on its own. I built it for this portfolio from my final Figma screens using Claude and the Figma MCP server. The live product was built by DarkRoast’s developer.
           </span>
           {" "}
         </div>
@@ -253,7 +253,7 @@ export default function DarkRoastMobile({ v }) {
           <div ref={v.protoBoxRef} style={{ position: "relative", width: "100%", height: "0", paddingTop: "62.5%", overflow: "hidden", background: "#0F3826", touchAction: "pan-y", isolation: "isolate" }}>
             {/* On phones the prototype shows as a still screenshot of its first screen (a scaled-down live page can spill out of its rounded frame in iPhone Safari); a tap opens the real one full screen. */}
             <img src="Mockups/DarkRoast/Prototype%20preview.webp" alt="" loading="lazy" draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "left top", display: "block", pointerEvents: "none" }} />
-            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" aria-label="Open the DarkRoast prototype full screen" style={{ position: "absolute", inset: "0", zIndex: "1", WebkitTapHighlightColor: "transparent" }}></a>
+            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" aria-label="Open the DarkRoast walkthrough full screen" style={{ position: "absolute", inset: "0", zIndex: "1", WebkitTapHighlightColor: "transparent" }}></a>
             {" "}
           </div>
           {" "}
@@ -263,7 +263,7 @@ export default function DarkRoastMobile({ v }) {
           {" "}
           <span style={{ display: "flex", alignItems: "center", gap: "7px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#FFFFFF99" }}>
             <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
-            Interactive · best viewed on desktop
+            Autoplay · best viewed on desktop
           </span>
           {" "}
           <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" style={{ height: "44px", padding: "0 6px 0 16px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", fontWeight: "500" }}>

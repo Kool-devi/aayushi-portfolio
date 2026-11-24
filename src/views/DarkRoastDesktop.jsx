@@ -228,22 +228,22 @@ export default function DarkRoastDesktop({ v }) {
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF", display: "flex", alignItems: "baseline", gap: "14px" }}>
               <span style={{ color: "#FCEB3F" }}>01</span>
               <span>
-              Try it</span>
+              Watch it</span>
             </span>
-            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-              {"Click through the "}
+            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.02" }}>
+              {"See how a brand moves through the "}
               <span style={{ fontStyle: "italic" }}>
                 new Projects page
               </span>
             </h2>
-            <span style={{ fontSize: "14px", lineHeight: "1.55", color: "#FFFFFFb3", maxWidth: "30ch" }}>
-              I rebuilt my final Figma screens as a working prototype for this portfolio, using Claude and the Figma MCP server.
+            <span style={{ fontSize: "13.5px", lineHeight: "1.55", color: "#FFFFFFb3", maxWidth: "34ch" }}>
+              This walkthrough plays on its own. I built it for this portfolio from my final Figma screens using Claude and the Figma MCP server. The live product was built by DarkRoast’s developer.
             </span>
           </div>
           <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "16px" }}>
             <span style={{ display: "flex", alignItems: "center", gap: "8px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FFFFFF99" }}>
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
-              Interactive · best viewed on desktop
+              Autoplay · best viewed on desktop
             </span>
             <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
@@ -265,7 +265,7 @@ export default function DarkRoastDesktop({ v }) {
             </span>
           </div>
           <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#0F3826" }}>
-            <iframe src="DarkRoast%20Prototype%20Autoplay.html" title="DarkRoast interactive prototype" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
+            <iframe src="DarkRoast%20Prototype%20Autoplay.html" title="DarkRoast autoplay walkthrough" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
             {/* Bottom corners drawn on top: browsers blend a light fringe where they round-clip a scaled iframe. */}
             <span aria-hidden="true" style={{ position: "absolute", left: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 100% 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
             <span aria-hidden="true" style={{ position: "absolute", right: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 0 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
