@@ -41,7 +41,7 @@ GitHub Pages serves this repository's files as they are; it doesn't run a build.
 - `images/`: your portrait and project cover photos (see `images/README.md`)
 - `resume.pdf`: the résumé every “Résumé” link opens (currently a placeholder)
 - `Mockups/`, `Videos/`, `Before After/`, `Dark Roast Project … Iterations/`: case-study media
-- `DarkRoast Prototype new.html`, `prototypes/attune-choose-a-mode.html`: prototypes embedded in the case studies
+- `DarkRoast Prototype Autoplay.html`, `prototypes/attune-choose-a-mode.html`: prototypes embedded in the case studies
 - `docs/`: case-study PDFs
 - `archive/`: the previous site's pages, prototypes and assets, kept working (for example `archive/about.html`)
 

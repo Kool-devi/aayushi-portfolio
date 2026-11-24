@@ -245,7 +245,7 @@ export default function DarkRoastDesktop({ v }) {
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
               Interactive · best viewed on desktop
             </span>
-            <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
+            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
               <span style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center" }}>
                 <svg width="12" height="12" viewBox="0 0 100 100" style={{ display: "block" }}>
@@ -255,8 +255,8 @@ export default function DarkRoastDesktop({ v }) {
             </a>
           </div>
         </div>
-        <div style={{ borderRadius: "14px", overflow: "hidden", background: "#1A1A18", alignSelf: "center" }}>
-          <div style={{ height: "32px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321" }}>
+        <div style={{ alignSelf: "center" }}>
+          <div style={{ height: "32px", display: "flex", alignItems: "center", gap: "7px", padding: "0 14px", background: "#232321", borderRadius: "14px 14px 0 0" }}>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
             <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#4A4A46" }}></span>
@@ -264,8 +264,11 @@ export default function DarkRoastDesktop({ v }) {
               darkroast.app/projects
             </span>
           </div>
-          <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#FFFFFF" }}>
-            <iframe src="DarkRoast%20Prototype%20new.html" title="DarkRoast interactive prototype" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
+          <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#0F3826" }}>
+            <iframe src="DarkRoast%20Prototype%20Autoplay.html" title="DarkRoast interactive prototype" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
+            {/* Bottom corners drawn on top: browsers blend a light fringe where they round-clip a scaled iframe. */}
+            <span aria-hidden="true" style={{ position: "absolute", left: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 100% 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
+            <span aria-hidden="true" style={{ position: "absolute", right: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 0 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
           </div>
         </div>
       </section>

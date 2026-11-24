@@ -250,10 +250,10 @@ export default function DarkRoastMobile({ v }) {
             </span>
           </div>
           {" "}
-          <div ref={v.protoBoxRef} style={{ position: "relative", width: "100%", height: "0", paddingTop: "62.5%", overflow: "hidden", background: "#FFFFFF", touchAction: "pan-y", isolation: "isolate" }}>
+          <div ref={v.protoBoxRef} style={{ position: "relative", width: "100%", height: "0", paddingTop: "62.5%", overflow: "hidden", background: "#0F3826", touchAction: "pan-y", isolation: "isolate" }}>
             {/* On phones the prototype shows as a still screenshot of its first screen (a scaled-down live page can spill out of its rounded frame in iPhone Safari); a tap opens the real one full screen. */}
             <img src="Mockups/DarkRoast/Prototype%20preview.webp" alt="" loading="lazy" draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "left top", display: "block", pointerEvents: "none" }} />
-            <a href="DarkRoast%20Prototype%20new.html" target="_blank" aria-label="Open the DarkRoast prototype full screen" style={{ position: "absolute", inset: "0", zIndex: "1", WebkitTapHighlightColor: "transparent" }}></a>
+            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" aria-label="Open the DarkRoast prototype full screen" style={{ position: "absolute", inset: "0", zIndex: "1", WebkitTapHighlightColor: "transparent" }}></a>
             {" "}
           </div>
           {" "}
@@ -266,7 +266,7 @@ export default function DarkRoastMobile({ v }) {
             Interactive · best viewed on desktop
           </span>
           {" "}
-          <a href="DarkRoast%20Prototype%20new.html" target="_blank" style={{ height: "44px", padding: "0 6px 0 16px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", fontWeight: "500" }}>
+          <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" style={{ height: "44px", padding: "0 6px 0 16px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "12px", fontSize: "13px", fontWeight: "500" }}>
             {"Open full screen "}
             <span style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center" }}>
               <svg width="11" height="11" viewBox="0 0 100 100" style={{ display: "block" }}>
