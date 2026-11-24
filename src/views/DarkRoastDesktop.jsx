@@ -596,12 +596,12 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "12px" }}>
             {" "}
-            <div style={{ position: "relative", minHeight: "350px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            <div style={{ position: "relative", minHeight: "350px", borderRadius: "20px", overflow: "hidden", background: "#EFEFEC", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
               {" "}
               {(v.csIters || []).map((x, $index) => (
                 <React.Fragment key={$index}>
                   {" "}
-                  <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#FFFFFF", opacity: x?.op, transform: `scale(${x?.s ?? ""})`, transition: "opacity .5s, transform .7s cubic-bezier(.3,.9,.3,1)" }}></div>
+                  <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#EFEFEC", opacity: x?.op, transform: `scale(${x?.s ?? ""})`, transition: "opacity .5s, transform .7s cubic-bezier(.3,.9,.3,1)" }}></div>
                   {" "}
                 </React.Fragment>
               ))}

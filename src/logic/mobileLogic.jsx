@@ -213,10 +213,10 @@ export default class MobileLogic extends React.Component {
         ['Added a “slots used” bar to show how many active projects a brand had left', 'Dark Roast Project Listing Page Iterations/Listing V3 - Slots used.webp'],
         ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Listing V4 - Grouped by status.webp']] },
       { t: 'Detail header', k: iterK, d: iterD, items: [
-        ['Opened the brief as a side panel next to messages, so brands could check it while chatting', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'],
+        ['Opened the brief as a side panel next to messages, so brands could check it while chatting', 'Dark Roast Project Detail Page Iterations/Header V1 - Brief side panel.webp'],
         ['Kept it minimal, with status next to the title and everything else behind a “Project details” button', 'Dark Roast Project Detail Page Iterations/Header V2 - Minimal.webp'],
-        ['Brought priority, status and dates into their own row so they’re visible at a glance', 'Dark Roast Project Detail Page Iterations/Screen 1.png'],
-        ['Added a “% complete” tag and search inside the project, but the header started getting busy', 'Dark Roast Project Detail Page Iterations/V4.png']] }];
+        ['Brought priority, status and dates into their own row so they’re visible at a glance', 'Dark Roast Project Detail Page Iterations/Header V3 - Details row.webp'],
+        ['Added a “% complete” tag and search inside the project, but the header started getting busy', 'Dark Roast Project Detail Page Iterations/Header V4 - Percent complete and search.webp']] }];
     const si = S.csSet ?? 0, set = sets[si];
     const ii = Math.min(S.csIt ?? 0, set.items.length - 1);
     const pairs = [

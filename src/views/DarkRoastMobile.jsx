@@ -614,12 +614,12 @@ export default function DarkRoastMobile({ v }) {
         {" "}
         <div style={{ display: "flex", flexDirection: "column", borderRadius: "18px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.3)" }}>
           {" "}
-          <div style={{ position: "relative", aspectRatio: "16 / 10", background: "#FFFFFF", borderBottom: "1px solid #0B0B0B14" }}>
+          <div style={{ position: "relative", aspectRatio: "16 / 10", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B14" }}>
             {" "}
             {(v.csIters || []).map((x, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div role="img" aria-label={x?.t} style={{ position: "absolute", inset: "8px", backgroundColor: "#FFFFFF", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", opacity: x?.op, transition: "opacity .45s" }}></div>
+                <div role="img" aria-label={x?.t} style={{ position: "absolute", inset: "0", backgroundColor: "#EFEFEC", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", opacity: x?.op, transition: "opacity .45s" }}></div>
                 {" "}
               </React.Fragment>
             ))}
