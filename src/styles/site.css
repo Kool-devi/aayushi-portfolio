@@ -29,10 +29,14 @@ html[data-bars-hidden] nav[data-sticky] { transform: translateY(var(--bars-shift
   div[data-sticky], nav[data-sticky] { transition: none; }
 }
 
-/* Pinned sideways-scrolling sections (src/components/HScroll.jsx): the content keeps clear of
-   the sticky bars (--pin-s, set while scrolling) and follows them as they slide away and back. */
+/* Pinned sideways-scrolling sections (src/components/HScroll.jsx): the pinned content sits
+   centred in the visible part of the window and follows the sticky bars as they slide away and
+   back (--pin-s, set while scrolling, ramps up to the bars' height as the section pins). */
 @property --bars-on { syntax: '<number>'; inherits: true; initial-value: 1; }
 html { --bars-on: 1; transition: --bars-on .42s cubic-bezier(.22, .8, .24, 1); }
 html[data-bars-hidden] { --bars-on: 0; }
-[data-pinbody] { transform: translateY(calc(var(--pin-s, 0px) * var(--bars-on))); }
+/* Centred in the visible space: below the bars while they show (shift = bars), in the whole
+   window while they're hidden (shift = half the bars, since the content is sized for the space
+   below them). */
+[data-pinbody] { transform: translateY(calc(var(--pin-s, 0px) * (1 + var(--bars-on)) / 2 + var(--pin-slack, 0px) / 2)); }
 @media (prefers-reduced-motion: reduce) { html { transition: none; } }

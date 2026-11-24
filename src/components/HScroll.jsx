@@ -8,7 +8,7 @@ import React, { useLayoutEffect, useRef, useState } from 'react';
 import { stickyOffset } from '../app/smoothScroll.js';
 
 export default function HScroll({ id, header, children, padLeft, padRight, gap, bodyPad = '28px 0 32px', bodyGap = '28px', style }) {
-  const sec = useRef(null), body = useRef(null), track = useRef(null), over = useRef(0);
+  const sec = useRef(null), body = useRef(null), area = useRef(null), track = useRef(null), over = useRef(0);
   const [m, setM] = useState({ vh: 700, bars: 140, over: 0 });
 
   useLayoutEffect(() => {
@@ -32,6 +32,11 @@ export default function HScroll({ id, header, children, padLeft, padRight, gap, 
       const vh = window.innerHeight / z, bars = stickyOffset() / z;
       const o = Math.max(0, Math.round(track.current.scrollWidth - sec.current.clientWidth));
       over.current = o;
+      // when the cards are narrower than the height allows, the spare height is shared above and
+      // below the whole block (heading + cards), so it sits centred (site.css)
+      const fig = track.current.firstElementChild;
+      const slack = fig ? Math.max(0, (area.current.getBoundingClientRect().height - fig.getBoundingClientRect().height) / z) : 0;
+      body.current.style.setProperty('--pin-slack', `${slack}px`);
       setM((p) => (Math.abs(p.vh - vh) < 1 && Math.abs(p.bars - bars) < 1 && p.over === o ? p : { vh, bars, over: o }));
       update();
     };
@@ -51,7 +56,7 @@ export default function HScroll({ id, header, children, padLeft, padRight, gap, 
         <div data-pinbody ref={body} style={{ height: `${Math.round(m.vh - m.bars)}px`, boxSizing: "border-box", padding: bodyPad, display: "flex", flexDirection: "column", gap: bodyGap }}>
           {header}
           {/* a size container, so cards can size themselves to the height left for them (cqh) */}
-          <div style={{ flex: "1", minHeight: "0", containerType: "size" }}>
+          <div ref={area} style={{ flex: "1", minHeight: "0", containerType: "size" }}>
             <div ref={track} style={{ display: "flex", gap, height: "100%", width: "max-content", padding: `0 ${padRight} 0 ${padLeft}`, boxSizing: "border-box", willChange: "transform" }}>
               {children}
             </div>
