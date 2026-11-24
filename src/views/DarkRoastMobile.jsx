@@ -2,7 +2,6 @@
 // DarkRoast page — mobile layout. Generated from the Claude Design board 12a, then hand-tuned.
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
-import HScroll from '../components/HScroll.jsx';
 import ShotCard from '../components/ShotCard.jsx';
 import { css, show } from '../lib/template.js';
 
@@ -277,10 +276,9 @@ export default function DarkRoastMobile({ v }) {
         {" "}
       </section>
       {" "}
-      {/* The problem: pins while the three annotated screens slide past sideways, then the page scrolls on. */}
-      <HScroll id="problem" style={{ marginTop: "46px" }} padLeft="20px" padRight="20px" gap="14px" bodyPad="20px 0 20px" bodyGap="18px" header={
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "0 20px" }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+      {/* The problem: on phones the three annotated screens stack, each the full width of the column. */}
+      <section id="problem" style={{ padding: "66px 20px 20px", display: "flex", flexDirection: "column", gap: "18px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             02
           </span>
@@ -288,16 +286,16 @@ export default function DarkRoastMobile({ v }) {
             The problem
           </span>
         </div>
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.04" }}>
+        <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.02" }}>
             {"Brands couldn’t tell which project "}
             <span style={{ fontStyle: "italic" }}>
               needed them first
             </span>
           </h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "28px", marginTop: "6px" }}>
+          {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} full capSize="14px" />)}
         </div>
-      }>
-        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} maxW="326px" capSize="14px" capLines={3} />)}
-      </HScroll>
+      </section>
       {" "}
       <section id="research" style={{ padding: "55px 16px 20px", display: "flex", flexDirection: "column", gap: "18px" }}>
         {" "}
