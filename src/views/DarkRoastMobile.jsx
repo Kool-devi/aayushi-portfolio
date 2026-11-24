@@ -313,13 +313,13 @@ export default function DarkRoastMobile({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {" "}
           <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "88px", lineHeight: ".82", letterSpacing: "-.07em" }}>
-            ~150
+            150
           </span>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1.08", letterSpacing: "-.04em" }}>
-            {"clients told us what they "}
+            {"brands answered our survey about "}
             <span style={{ fontStyle: "italic" }}>
-              wanted improved.
+              what to fix
             </span>
           </h2>
           {" "}
@@ -330,7 +330,7 @@ export default function DarkRoastMobile({ v }) {
             What they said
           </span>
           <span style={{ color: "#E5322B" }}>
-            What it really meant
+            What it meant
           </span>
         </div>
         {" "}
@@ -375,15 +375,15 @@ export default function DarkRoastMobile({ v }) {
         <div style={{ padding: "18px", borderRadius: "16px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "8px" }}>
           {" "}
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-            So the product needed
+            The takeaway
           </span>
           {" "}
           <p style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "22px", lineHeight: "1.15", letterSpacing: "-.035em" }}>
-            {"Structured project management "}
+            {"DarkRoast had to handle proper project tracking "}
             <span style={{ fontStyle: "italic" }}>
               and
             </span>
-            {" casual collaboration — in one place."}
+            {" quick everyday chats."}
           </p>
           {" "}
         </div>

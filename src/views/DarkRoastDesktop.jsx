@@ -305,13 +305,13 @@ export default function DarkRoastDesktop({ v }) {
           <div style={{ display: "flex", alignItems: "flex-end", gap: "28px" }}>
             {" "}
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "120px", lineHeight: ".78", letterSpacing: "-.07em" }}>
-              ~150
+              150
             </span>
             {" "}
             <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1.05", maxWidth: "20ch" }}>
-              {"clients told us what they "}
+              {"brands answered our survey about "}
               <span style={{ fontStyle: "italic" }}>
-                wanted improved.
+                what to fix
               </span>
             </h2>
             {" "}
@@ -319,10 +319,10 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingTop: "10px", borderTop: "1px solid #0B0B0B33" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-              What they said → what it really meant
+              What they said and what it meant
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-              Hover a card to flip
+              Hover to flip
             </span>
           </div>
           {" "}
@@ -377,13 +377,13 @@ export default function DarkRoastDesktop({ v }) {
           </div>
           {" "}
           <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55", maxWidth: "46ch" }}>
-            {"DarkRoast needed to support both "}
+            {"DarkRoast had to handle "}
             <strong style={{ fontWeight: "600" }}>
-              structured project management
+              proper project tracking
             </strong>
             {" and "}
             <strong style={{ fontWeight: "600" }}>
-              casual collaboration.
+              quick everyday chats.
             </strong>
           </p>
           {" "}
