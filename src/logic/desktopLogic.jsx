@@ -214,13 +214,13 @@ export default class DesktopLogic extends React.Component {
     const iterD = 'I started with the Projects page, because that’s where brands decide what to look at first. Each version tested how much to show in the list and how much to keep inside the project.';
     const sets = [
       { t: 'Project listing', k: iterK, d: iterD, items: [
-        ['Added priority and a red edge to flag projects waiting on the brand', 'Dark Roast Project Listing Page Iterations/Client _ Project listing.png'],
-        ['Simple list with a coloured status tag on each project', 'Dark Roast Project Listing Page Iterations/Project listing _ Default.png'],
-        ['Added a “slots used” bar to show how many active projects a brand had left', 'Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png'],
-        ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png']] },
+        ['Added priority and a red edge to flag projects waiting on the brand', 'Dark Roast Project Listing Page Iterations/Listing V1 - Priority and red edge.webp'],
+        ['Simple list with a coloured status tag on each project', 'Dark Roast Project Listing Page Iterations/Listing V2 - Status tags.webp'],
+        ['Added a “slots used” bar to show how many active projects a brand had left', 'Dark Roast Project Listing Page Iterations/Listing V3 - Slots used.webp'],
+        ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Listing V4 - Grouped by status.webp']] },
       { t: 'Detail header', k: iterK, d: iterD, items: [
         ['Opened the brief as a side panel next to messages, so brands could check it while chatting', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'],
-        ['Kept it minimal, with status next to the title and everything else behind a “Project details” button', 'Dark Roast Project Detail Page Iterations/First screen - Variation 2.png'],
+        ['Kept it minimal, with status next to the title and everything else behind a “Project details” button', 'Dark Roast Project Detail Page Iterations/Header V2 - Minimal.webp'],
         ['Brought priority, status and dates into their own row so they’re visible at a glance', 'Dark Roast Project Detail Page Iterations/Screen 1.png'],
         ['Added a “% complete” tag and search inside the project, but the header started getting busy', 'Dark Roast Project Detail Page Iterations/V4.png']] }];
     const si = S.csSet ?? 0, set = sets[si];
