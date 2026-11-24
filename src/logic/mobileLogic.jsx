@@ -220,10 +220,10 @@ export default class MobileLogic extends React.Component {
     const si = S.csSet ?? 0, set = sets[si];
     const ii = Math.min(S.csIt ?? 0, set.items.length - 1);
     const pairs = [
-      { t: 'Navigation', before: 'Before After/1a.png', after: 'Before After/1b.png', b: 'Project types and statuses were mixed into the same navigation, so clients worked harder to understand what they were looking at and what needed attention.', a: 'Type, status and priority split into clearer layers with stronger signals — the list scans faster and context is clear without opening each item.' },
-      { t: 'Status rows', before: 'Before After/2a.png', after: 'Before After/2b.png', b: 'Rows relied on ambiguous colour bars and activity text; clients had to decode cues before understanding priority or status.', a: 'Priority and status became explicit, labelled fields — urgent work is easy to spot without opening projects.' },
-      { t: 'Messages', before: 'Before After/3a.png', after: 'Before After/3b.png', b: 'A flat stream with weak separation between people, dates, text and files — long threads were hard to scan.', a: 'Clear grouping, sender hierarchy, date breaks and in‑context files — updates are reviewable without losing the thread.' },
-      { t: 'File review', before: 'Before After/4a.png', after: 'Before After/4b.png', b: 'A flat list with small previews and little review context — versions were hard to compare.', a: 'A dedicated review workspace: large previews, grouped versions and comments beside the asset.' }];
+      { t: 'Navigation', before: 'Before After/v2/1-before.webp', after: 'Before After/v2/1-after.webp', b: 'Project types and statuses were mixed into one row of tabs.', a: 'Type tabs sit on top, and projects are grouped by status underneath.' },
+      { t: 'Project listing', before: 'Before After/2a.png', after: 'Before After/2b.png', b: 'Status was small grey text, and the coloured bars had no clear meaning.', a: 'Each row shows status and priority clearly, so brands know what needs them first.' },
+      { t: 'Messages', before: 'Before After/3a.png', after: 'Before After/3b.png', b: 'Messages were squeezed between a crowded top bar and a large brief panel.', a: 'The brief opens only when needed, so messages get the full width.' },
+      { t: 'File review', before: 'Before After/4a.png', after: 'Before After/4b.png', b: 'Files sat in a plain list with long names and no sign of file type.', a: 'Each file shows a preview, file type, uploader and date in one place.' }];
     const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
     return {
       csChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ csCh: i }) })),
@@ -241,9 +241,9 @@ export default class MobileLogic extends React.Component {
       csIterTotal: set.items.length, csIterPrev: () => this.setState({ csIt: (ii + set.items.length - 1) % set.items.length }), csIterNext: () => this.setState({ csIt: (ii + 1) % set.items.length }),
       csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', onPick: () => this.setState({ csPair: i, csCmp: 50 }) }; }),
       csPair: { ...pairs[pi], before: U(pairs[pi].before), after: U(pairs[pi].after) },
-      csCmpLeft: cmp + '%', csCmpRight: (100 - cmp) + '%',
-      onCmpDown: (e) => { e.preventDefault(); this.cmpDrag = true; },
-      onCmpMove: (e) => { if (!this.cmpDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ csCmp: Math.max(2, Math.min(98, (e.clientX - r.left) / r.width * 100)) }); },
+      csCmpPos: cmp + '%', csCmpRest: (100 - cmp) + '%',
+      onCmpDown: (e) => { e.preventDefault(); this.cmpDrag = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {} },
+      onCmpMove: (e) => { if (!this.cmpDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ csCmp: Math.max(2, Math.min(98, (e.clientY - r.top) / r.height * 100)) }); },
       onCmpUp: () => { this.cmpDrag = false; }
     };
   }
@@ -286,7 +286,7 @@ export default class MobileLogic extends React.Component {
       seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
       seam9Hint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
       onSeam9Down: (e) => { e.preventDefault(); this['seam9Drag' + sfx] = true; },
-      onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); },
+      onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100)) }); },
       onSeam9Up: () => { this['seam9Drag' + sfx] = false; }
     };
     return sfx ? Object.fromEntries(Object.entries(out).map(([k, v]) => [k.replace('9', '9' + sfx), v])) : out;
@@ -404,7 +404,7 @@ export default class MobileLogic extends React.Component {
       seamLeft: seam + '%', seamRight: (100 - seam) + '%',
       seamHint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
       onSeamDown: (e) => { e.preventDefault(); this.seamDrag = true; },
-      onSeamMove: (e) => { if (!this.seamDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ seam: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); },
+      onSeamMove: (e) => { if (!this.seamDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ seam: Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100)) }); },
       onSeamUp: () => { this.seamDrag = false; },
       desk, tracks, cur4,
       playState: playing ? 'running' : 'paused',

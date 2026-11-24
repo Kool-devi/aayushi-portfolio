@@ -583,9 +583,10 @@ export default function DarkRoastDesktop({ v }) {
         </div>
       </section>
       {" "}
-      <section id="final" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
-        {" "}
-        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+      {/* Final design: the four changes on the left (pick one, read its before / after), the comparison on the right; sized to fit one screen */}
+      <section id="final" style={{ padding: "80px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             07
           </span>
@@ -593,91 +594,60 @@ export default function DarkRoastDesktop({ v }) {
             Final design
           </span>
         </div>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-          {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "46px", lineHeight: "1" }}>
-            {"Four high‑impact changes, "}
-            <span style={{ fontStyle: "italic" }}>
-              each traced back to the research.
-            </span>
-          </h2>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "8px" }}>
-            {" "}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             {(v.csPairs || []).map((p, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <button type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "12px 16px", borderRadius: "14px", background: p?.bg, color: p?.fg, display: "flex", flexDirection: "column", gap: "6px", transition: "background .25s, color .25s" }}>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", color: p?.nc }}>
-                    {show(p?.n)}
-                  </span>
-                  <span style={{ fontSize: "15px", fontWeight: "600", letterSpacing: "-.01em" }}>
-                    {show(p?.t)}
-                  </span>
-                </button>
-                {" "}
-              </React.Fragment>
+              <button key={$index} type="button" onClick={p?.onPick} style={{ all: "unset", cursor: "pointer", padding: "12px 16px", borderRadius: "14px", background: p?.bg, color: p?.fg, display: "flex", alignItems: "baseline", gap: "12px", transition: "background .25s, color .25s" }}>
+                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", color: p?.nc }}>{show(p?.n)}</span>
+                <span style={{ fontSize: "15px", fontWeight: "600", letterSpacing: "-.01em" }}>{show(p?.t)}</span>
+              </button>
             ))}
-            {" "}
           </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 272px", gap: "12px", alignItems: "stretch" }}>
-          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerLeave={v.onCmpUp} style={{ position: "relative", aspectRatio: "904 / 662", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", userSelect: "none", touchAction: "none" }}>
-            {" "}
-            <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${v.csPair?.after ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#FFFFFF", pointerEvents: "none" }}></div>
-            {" "}
-            <div style={{ position: "absolute", inset: "0", clipPath: `inset(0 ${v.csCmpRight ?? ""} 0 0)`, background: "#FFFFFF" }}>
-              {" "}
-              <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${v.csPair?.before ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", pointerEvents: "none" }}></div>
-              {" "}
-            </div>
-            {" "}
-            <span style={{ position: "absolute", left: "16px", top: "16px", padding: "8px 13px", borderRadius: "999px", background: "rgba(11,11,11,.72)", color: "#FFFFFF", fontSize: "12.5px", pointerEvents: "none" }}>
-              Before
-            </span>
-            {" "}
-            <span style={{ position: "absolute", right: "16px", top: "16px", padding: "8px 13px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", pointerEvents: "none" }}>
-              After
-            </span>
-            {" "}
-            <div onPointerDown={v.onCmpDown} style={{ position: "absolute", top: "0", bottom: "0", left: v.csCmpLeft, width: "44px", marginLeft: "-22px", cursor: "ew-resize", display: "flex", justifyContent: "center" }}>
-              {" "}
-              <span style={{ width: "2px", height: "100%", background: "#0B0B0B" }}></span>
-              {" "}
-              <span style={{ position: "absolute", top: "50%", transform: "translateY(-50%)", width: "52px", height: "52px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "17px", boxShadow: "0 8px 20px -8px rgba(0,0,0,.5)" }}>
-                ⟷
-              </span>
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            {" "}
-            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "10px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div style={{ padding: "16px 18px", borderRadius: "16px", background: "#E2E2DE", display: "flex", flexDirection: "column", gap: "8px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
                 Before
               </span>
-              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
+              <span style={{ fontSize: "14px", lineHeight: "1.5" }}>
                 {show(v.csPair?.b)}
               </span>
             </div>
-            {" "}
-            <div style={{ flex: "1", padding: "20px 22px", borderRadius: "18px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ padding: "16px 18px", borderRadius: "16px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "8px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
                 After
               </span>
-              <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
+              <span style={{ fontSize: "14px", lineHeight: "1.5" }}>
                 {show(v.csPair?.a)}
               </span>
             </div>
-            {" "}
           </div>
-          </div>
-          {" "}
         </div>
-        {" "}
+        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.02" }}>
+            {"Four changes, each one tied to "}
+            <span style={{ fontStyle: "italic" }}>
+              something brands struggled with
+            </span>
+          </h2>
+          {/* before / after: drag the line up and down (before above it, after below) */}
+          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerCancel={v.onCmpUp} style={{ position: "relative", height: "410px", borderRadius: "20px", overflow: "hidden", background: "#EFEFEC", boxShadow: "0 1px 2px rgba(0,0,0,.05), 0 30px 60px -32px rgba(0,0,0,.28)", userSelect: "none" }}>
+            <img src={v.csPair?.after} alt={`After: ${v.csPair?.a ?? ""}`} draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", inset: "0", clipPath: `inset(0 0 ${v.csCmpRest ?? "50%"} 0)`, background: "#EFEFEC" }}>
+              <img src={v.csPair?.before} alt={`Before: ${v.csPair?.b ?? ""}`} draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
+            </div>
+            <span style={{ position: "absolute", left: "16px", top: "16px", padding: "7px 12px", borderRadius: "999px", background: "rgba(11,11,11,.72)", color: "#FFFFFF", fontSize: "12.5px", pointerEvents: "none" }}>
+              Before
+            </span>
+            <span style={{ position: "absolute", left: "16px", bottom: "16px", padding: "7px 12px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", pointerEvents: "none" }}>
+              After
+            </span>
+            <div onPointerDown={v.onCmpDown} role="slider" aria-label="Drag to compare before and after" aria-valuenow={parseInt(v.csCmpPos)} aria-valuemin={0} aria-valuemax={100} style={{ position: "absolute", left: "0", right: "0", top: v.csCmpPos, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center" }}>
+              <span style={{ width: "100%", height: "2px", background: "#0B0B0B" }}></span>
+              <span style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "48px", height: "48px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "17px", boxShadow: "0 8px 20px -8px rgba(0,0,0,.5)" }}>
+                ↕
+              </span>
+            </div>
+          </div>
+        </div>
       </section>
       {" "}
       <section id="outcome" style={{ margin: "100px 40px 0", padding: "56px 48px", borderRadius: "28px", background: "#FCEB3F", position: "relative", overflow: "hidden" }}>
