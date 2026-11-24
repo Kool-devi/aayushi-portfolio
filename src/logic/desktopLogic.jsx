@@ -198,8 +198,11 @@ export default class DesktopLogic extends React.Component {
     const S = this.state, U = p => encodeURI(p);
     const chap = [['TL;DR','tldr'],['Prototype','proto'],['Problem','problem'],['Research','research'],['Workflow','workflow'],['Mental model','model'],['Iterations','iter'],['Final design','final'],['Outcome','outcome'],['Reflection','reflect']];
     const ch = S.csCh ?? 0;
-    const au = S.csAudit ?? 0;
-    const audits = [['Main dashboard', 'Mockups/DarkRoast/Main Screen Audit.png'], ['Project detail', 'Mockups/DarkRoast/Project Detail Screen Audit.png']];
+    // Problem section: the three annotated screens, side by side (one sentence each)
+    const problems = [
+      ['Main dashboard', 'Mockups/DarkRoast/Main Screen Audit.png', 'Every project looked the same in the list, so brands had to open each one to see where it stood.'],
+      ['Project detail', 'Mockups/DarkRoast/Project Detail Screen Audit.png', 'Messages, files, the brief and status all competed for space, with nothing showing what needed attention now.'],
+      ['File management', 'Mockups/DarkRoast/File Management Audit.png', 'Files sat in one long list with small previews, so finding the latest version meant digging.']];
     const fl = S.csFlip || {};
     const survey = [['Needs better mobile experience', 'Poor use of space across screen sizes'], ['Needs better file management', 'Previewing and finding the right file inside long conversations'], ['Issues with text, links and spacing', 'Less reliability — and decreased trust'], ['Providing small updates felt too formal', 'The product had a heavy management workflow']];
     const steps = [['Share intent', 'Turn rough goals into clear creative direction.'], ['Start work', 'Create new work quickly using existing context.'], ['Track progress', 'See what needs attention without opening every project.'], ['Review work', 'Check quality and direction at a glance.'], ['Give feedback', 'Iterate without re‑briefing or heavy process.'], ['Reuse & scale', 'Carry past work and brand context into future projects.']];
@@ -220,9 +223,7 @@ export default class DesktopLogic extends React.Component {
     const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
     return {
       csChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ csCh: i }) })),
-      csAudits: audits.map(([t, p], i) => ({ t, src: U(p), op: i === au ? 1 : 0, w: i === au ? 600 : 500, onPick: () => this.setState({ csAudit: i }) })),
-      csAuditLeft: au ? '50%' : '4px',
-      csSymptoms: ['Higher cognitive load', 'Slower triage', 'More context switching', 'Unnecessary navigation', 'Weaker confidence in status', 'Client ↔ designer friction'].map((t, i) => ({ t, n: String(i + 1).padStart(2, '0') })),
+      csProblems: problems.map(([t, p, d], i) => ({ t, d, src: U(p), n: String(i + 1).padStart(2, '0') })),
       csSurvey: survey.map(([q, a], i) => ({ q, a, n: String(i + 1).padStart(2, '0'), rot: fl[i] ? '180deg' : '0deg', onIn: () => this.setState(st => ({ csFlip: { ...(st.csFlip || {}), [i]: true } })), onOut: () => this.setState(st => ({ csFlip: { ...(st.csFlip || {}), [i]: false } })) })),
       csSteps: steps.map(([t, d], i) => { const on = i === st; return { t, d, n: String(i + 1), isNow: i === 2, size: on ? '72px' : '56px', pad: [56, 20, 0, 0, 20, 56][i] + 'px', bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FCEB3F' : '#0B0B0B', sh: on ? '0 16px 30px -14px rgba(0,0,0,.5)' : 'none', fw: on ? 600 : 500, onPick: () => this.state.csStep !== i && this.setState({ csStep: i }) }; }),
       csStep: { n: '0' + (st + 1), t: steps[st][0], d: steps[st][1] },

@@ -28,3 +28,11 @@ html[data-bars-hidden] nav[data-sticky] { transform: translateY(var(--bars-shift
 @media (prefers-reduced-motion: reduce) {
   div[data-sticky], nav[data-sticky] { transition: none; }
 }
+
+/* Pinned sideways-scrolling sections (src/components/HScroll.jsx): the content keeps clear of
+   the sticky bars (--pin-s, set while scrolling) and follows them as they slide away and back. */
+@property --bars-on { syntax: '<number>'; inherits: true; initial-value: 1; }
+html { --bars-on: 1; transition: --bars-on .42s cubic-bezier(.22, .8, .24, 1); }
+html[data-bars-hidden] { --bars-on: 0; }
+[data-pinbody] { transform: translateY(calc(var(--pin-s, 0px) * var(--bars-on))); }
+@media (prefers-reduced-motion: reduce) { html { transition: none; } }

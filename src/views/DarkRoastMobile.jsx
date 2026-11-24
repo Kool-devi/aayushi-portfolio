@@ -2,6 +2,8 @@
 // DarkRoast page — mobile layout. Generated from the Claude Design board 12a, then hand-tuned.
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import HScroll from '../components/HScroll.jsx';
+import ShotCard from '../components/ShotCard.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function DarkRoastMobile({ v }) {
@@ -275,9 +277,10 @@ export default function DarkRoastMobile({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="problem" style={{ padding: "66px 20px 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
-        {" "}
-        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+      {/* The problem: pins while the three annotated screens slide past sideways, then the page scrolls on. */}
+      <HScroll id="problem" style={{ marginTop: "46px" }} padLeft="20px" padRight="20px" gap="14px" bodyPad="20px 0 24px" bodyGap="18px" header={
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "0 20px" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             02
           </span>
@@ -285,79 +288,16 @@ export default function DarkRoastMobile({ v }) {
             The problem
           </span>
         </div>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-          {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.02" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.04" }}>
             {"Clients manage a high volume of creative work — and need to know "}
             <span style={{ fontStyle: "italic" }}>
               what’s moving, what’s blocked, and where feedback is due.
             </span>
           </h2>
-          {" "}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "20px", flexWrap: "wrap" }}>
-            {" "}
-            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "100%" }}>
-              {" "}
-              <span style={{ position: "absolute", top: "4px", bottom: "4px", left: v.csAuditLeft, width: "calc(50% - 4px)", borderRadius: "999px", background: "#FFFFFF", boxShadow: "0 3px 10px rgba(0,0,0,.09)", transition: "left .45s cubic-bezier(.3,.9,.3,1)" }}></span>
-              {" "}
-              {(v.csAudits || []).map((a, $index) => (
-                <React.Fragment key={$index}>
-                  <button type="button" onClick={a?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "44px", display: "grid", placeItems: "center", fontSize: "14px", fontWeight: a?.w }}>
-                    {show(a?.t)}
-                  </button>
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-              Annotated audit — tap to switch
-            </span>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ position: "relative", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", height: "280px" }}>
-            {" "}
-            {(v.csAudits || []).map((a, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${a?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#FFFFFF", opacity: a?.op, transition: "opacity .5s" }}></div>
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "start" }}>
-            {" "}
-            <p style={{ margin: "0", fontSize: "17px", lineHeight: "1.55" }}>
-              {"Users had too much information visible at once, but not enough clarity about what mattered now. It wasn’t a list of isolated UI bugs — it was an "}
-              <strong style={{ fontWeight: "600" }}>
-                information‑hierarchy and workflow problem.
-              </strong>
-            </p>
-            {" "}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-              {" "}
-              {(v.csSymptoms || []).map((s, $index) => (
-                <React.Fragment key={$index}>
-                  <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", borderRadius: "999px", background: "#FFFFFF", fontSize: "14px" }}>
-                    <span style={{ fontSize: "10.5px", color: "#E5322B" }}>
-                      {show(s?.n)}
-                    </span>
-                    {show(s?.t)}
-                  </span>
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
         </div>
-        {" "}
-      </section>
+      }>
+        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} width="300px" capSize="14px" capLines={4} />)}
+      </HScroll>
       {" "}
       <section id="research" style={{ padding: "55px 16px 20px", display: "flex", flexDirection: "column", gap: "18px" }}>
         {" "}
