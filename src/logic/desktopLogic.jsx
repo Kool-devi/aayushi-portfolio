@@ -261,7 +261,7 @@ export default class DesktopLogic extends React.Component {
     const folders9 = works.map((w, i) => {
       const depth = i === fo ? 0 : order.indexOf(i) + 1;
       return { ...w, href: sfx === 'd' && ({ darkroast: 'project-darkroast.html', delicut: 'project-delicut.html', case3: 'project-attune.html' })[w.key] || w.href, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 286) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
-        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Lead Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web + mobile', case3: 'Web' }[w.key], year: { darkroast: '2025', delicut: '2024', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
+        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web + mobile', case3: 'Web' }[w.key], year: { darkroast: '2026', delicut: '2024', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
         onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
         ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
           rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
@@ -300,7 +300,7 @@ export default class DesktopLogic extends React.Component {
     // The order here is the order of the case studies in the Projects section.
     const works = [
       { key: 'delicut', title: 'Delicut', desc: 'Making meal‑plan subscriptions easier to understand and manage.', tags: 'Subscriptions · Product Design', href: 'project-delicut.html' },
-      { key: 'darkroast', title: 'DarkRoast', desc: 'Redesigning the project workspace for faster creative collaboration.', tags: 'Creative Operations · Product Design', href: 'index.html' },
+      { key: 'darkroast', title: 'DarkRoast', desc: 'Helping brands manage five design projects at once instead of one.', tags: 'Client dashboard redesign', href: 'index.html' },
       { key: 'case3', title: 'Attune AI', desc: 'Designing emotionally intelligent AI support for couples.', tags: 'AI Product · Relationship Support', href: 'project-attune.html' }
     ].map(w => ({ ...w, placeholder: w.title + ' cover' }));
     const about = [
@@ -311,7 +311,7 @@ export default class DesktopLogic extends React.Component {
       { n: '05', title: 'Inspiration', body: 'Architecture, long walks, and late‑night reading fuel most of my best ideas.' }
     ];
     const extra = {
-      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: '−28% task time', tag1: 'Creative Ops' },
+      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: '5 projects at once, up from 1', tag1: 'Agency platform' },
       delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: '−35% handoff', tag1: 'Subscriptions' },
       case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Research‑led', tag1: 'Product' }
     };
