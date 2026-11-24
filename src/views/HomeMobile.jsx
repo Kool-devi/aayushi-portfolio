@@ -34,7 +34,7 @@ export default function HomeMobile({ v }) {
                   About
                 </a>
                 <a href="resume.pdf" target="_blank" style={{ color: "transparent", textDecoration: "none" }}>
-                  CV ↗
+                  CV {"↗\uFE0E"}
                 </a>
               </div>
               {" "}
@@ -253,7 +253,7 @@ export default function HomeMobile({ v }) {
                   About
                 </a>
                 <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-                  CV ↗
+                  CV {"↗\uFE0E"}
                 </a>
               </div>
               {" "}
@@ -712,10 +712,10 @@ export default function HomeMobile({ v }) {
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "6px", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingBottom: "10px" }}>
             <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ color: "#0B0B0B" }}>
-              LinkedIn ↗
+              LinkedIn {"↗\uFE0E"}
             </a>
             <a href="index.html" style={{ color: "#0B0B0B" }}>
-              Behance ↗
+              Behance {"↗\uFE0E"}
             </a>
             <span>
               03 Case Studies — 06 Years

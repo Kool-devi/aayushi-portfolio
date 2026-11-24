@@ -74,7 +74,7 @@ export default function HomeDesktop({ v }) {
             {" "}
             <span>
               <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none", border: "1px dashed #0B0B0B59", padding: "6px 8px", margin: "-7px -9px" }}>
-                Résumé ↗
+                Résumé {"↗\uFE0E"}
               </a>
             </span>
             {" "}
@@ -194,7 +194,7 @@ export default function HomeDesktop({ v }) {
             </a>
             {" "}
             <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-              Résumé ↗
+              Résumé {"↗\uFE0E"}
             </a>
             {" "}
             <button type="button" onClick={v.copyEmail} style={{ all: "unset", display: "block", alignSelf: "start", margin: "0", padding: "0", cursor: "pointer", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
@@ -750,10 +750,10 @@ export default function HomeDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "6px", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingBottom: "10px" }}>
             <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ color: "#0B0B0B" }}>
-              LinkedIn ↗
+              LinkedIn {"↗\uFE0E"}
             </a>
             <a href="index.html" style={{ color: "#0B0B0B" }}>
-              Behance ↗
+              Behance {"↗\uFE0E"}
             </a>
             <span>
               03 Case Studies — 06 Years

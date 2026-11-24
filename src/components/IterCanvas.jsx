@@ -25,7 +25,7 @@ function Frame({ it, lane, ratio = RATIO, pad, i, tiltOff = 0, last, mobile, onO
         {/* frame name, like a canvas frame label */}
         <span style={{ ...MONO, display: "flex", alignItems: "center", gap: "8px", color: "#6E6E69" }}>
           <span style={{ color: "#E5322B" }}>{it.n}</span>
-          <span style={{ opacity: lift ? 1 : 0, transition: "opacity .3s" }}>Open ↗</span>
+          <span style={{ opacity: lift ? 1 : 0, transition: "opacity .3s" }}>Open {"↗\uFE0E"}</span>
         </span>
         <span style={{ display: "block", aspectRatio: ratio, boxSizing: "border-box", padding: pad || "0", borderRadius: mobile ? "12px" : "16px", overflow: "hidden", background: "#EFEFEC",
           boxShadow: lift ? "0 2px 4px rgba(0,0,0,.06), 0 30px 50px -24px rgba(0,0,0,.35)" : "0 1px 2px rgba(0,0,0,.06), 0 16px 30px -22px rgba(0,0,0,.3)",

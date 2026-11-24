@@ -32,7 +32,7 @@ export default function DelicutMobile({ v }) {
                 Work
               </a>
               <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-                CV ↗
+                CV {"↗\uFE0E"}
               </a>
             </span>
           </div>
@@ -329,7 +329,7 @@ export default function DelicutMobile({ v }) {
               </span>
               {" "}
               <span style={{ position: "absolute", left: "calc(52% + 10px)", right: "0", top: "4px", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-                …then real life happened ↘
+                …then real life happened {"↘\uFE0E"}
               </span>
               {" "}
             </div>

@@ -22,7 +22,7 @@ export default class NotfoundLogic extends React.Component {
     const tilt = (sx, sy, k) => ({ x: (S.mx * sx * k) + 'px', y: (S.my * sy * k) + 'px', ry: (S.mx * 14 * k) + 'deg', rx: (-S.my * 10 * k) + 'deg' });
     const a = tilt(-26, -18, 1), b = tilt(26, 18, 1);
     const moods = ['0 pokes · it’s shy', '1 poke · it noticed', 'pokes: 2 · it’s dizzy', 'pokes: 3 · ok it’s having fun', 'pokes: 4+ · it’s your page now'];
-    const labels = ['you are here', 'still lost?', 'try the search ↗', 'nice moves'];
+    const labels = ['you are here', 'still lost?', 'try the search ↗\uFE0E', 'nice moves'];
     return {
       q: S.q, pokes: String(S.pokes).padStart(2, '0'), mood: moods[Math.min(S.pokes, 4)],
       onQ: (e) => this.setState({ q: e.target.value, sel: 0 }),

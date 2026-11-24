@@ -35,7 +35,7 @@ export default function DarkRoastMobile({ v }) {
                 Work
               </a>
               <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-                CV ↗
+                CV {"↗\uFE0E"}
               </a>
             </span>
           </div>
@@ -622,7 +622,7 @@ export default function DarkRoastMobile({ v }) {
             <div onPointerDown={v.onCmpDown} role="slider" aria-label="Drag to compare before and after" aria-valuenow={parseInt(v.csCmpPos)} aria-valuemin={0} aria-valuemax={100} style={{ position: "absolute", left: "0", right: "0", top: v.csCmpPos, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center" }}>
               <span style={{ width: "100%", height: "2px", background: "#0B0B0B" }}></span>
               <span style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "48px", height: "48px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "17px", boxShadow: "0 8px 20px -8px rgba(0,0,0,.5)" }}>
-                ↕
+                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style={{ display: "block" }}><path d="M8 1.5v13M3.5 5.5 8 1.5l4.5 4M3.5 10.5 8 14.5l4.5-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </div>
           </div>

@@ -38,7 +38,7 @@ export default function AttuneDesktop({ v }) {
           </a>
           {" "}
           <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-            Résumé ↗
+            Résumé {"↗\uFE0E"}
           </a>
           {" "}
           <button type="button" onClick={v.copyEmail} style={{ all: "unset", display: "block", alignSelf: "start", margin: "0", padding: "0", cursor: "pointer", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>

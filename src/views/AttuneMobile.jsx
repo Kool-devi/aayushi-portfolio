@@ -35,7 +35,7 @@ export default function AttuneMobile({ v }) {
                 Work
               </a>
               <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-                CV ↗
+                CV {"↗\uFE0E"}
               </a>
             </span>
           </div>

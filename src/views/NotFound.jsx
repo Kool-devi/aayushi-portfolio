@@ -37,7 +37,7 @@ export default function NotFound({ v }) {
           </a>
           {" "}
           <a href="/resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
-            Résumé ↗
+            Résumé {"↗\uFE0E"}
           </a>
           {" "}
           <span className="nf-pokes" style={{ textAlign: "right" }}>
@@ -113,7 +113,7 @@ export default function NotFound({ v }) {
                       </span>
                     </span>
                     <span>
-                      ↗
+                      {"↗\uFE0E"}
                     </span>
                   </a>
                   {" "}

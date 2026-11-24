@@ -110,7 +110,7 @@ export default class DesktopLogic extends React.Component {
       { t: 'Refine', proto: 'prototypes/attune-refine.html', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
         { t: 'Plan a session', note: 'Growth on your own rhythm — schedule and repeat.', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
         { t: 'Guided prompt', note: 'Small prompts and activities, not therapy homework.', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
-        { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺'], ['ai', '✦ Nice — try saying why it mattered.']] },
+        { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺\uFE0E'], ['ai', '✦ Nice — try saying why it mattered.']] },
         { t: 'Knows when to switch', note: 'If it gets too intense, it suggests Repair.', k: 'Refine · focus check', title: 'This feels heavy.', card: ['Attune', 'Want to pause and move into Repair instead?'], btns: [['Switch to Repair', 1], ['Keep going', 0]] }] }];
     const cur = modes[m];
     const mkScreen = (s, j) => {
@@ -276,7 +276,7 @@ export default class DesktopLogic extends React.Component {
     const sel = f.some(c => c.id === st('sel9')) ? st('sel9') : (f[0] && f[0].id);
     const raw = list.find(c => c.id === sel) || list[0];
     const cur9 = { ...raw, href: raw.href === '#3c' ? (sfx === 'd' ? '#about' : sfx === 'c' ? '#10a-ask' : sfx ? '#9b-ask' : '#9a-ask') : raw.href, onAct: raw.act ? (e) => { e.preventDefault(); this.copyEmail(); } : undefined };
-    if (sfx === 'd' && cur9.cta) cur9.cta = cur9.cta.replace(/\s*[↗→↑]\s*$/, '');
+    if (sfx === 'd' && cur9.cta) cur9.cta = cur9.cta.replace(/\s*[↗→↑]\uFE0E?\s*$/, '');
     const out = {
       segLeft9: 'calc((100% - 8px) / 3 * ' + fo + ')', segCount9: String(fo + 1).padStart(2, '0'), cardR9: fo === 0 ? '0 24px 24px 24px' : '24px',
       onPrev9: () => this.setState({ ['folder9' + sfx]: (fo + 2) % 3 }), onNext9: () => this.setState({ ['folder9' + sfx]: (fo + 1) % 3 }),
@@ -339,11 +339,11 @@ export default class DesktopLogic extends React.Component {
     const worksB = works.map((w, i) => ({ ...w, num: String(i + 1).padStart(2, '0'), flex: i === ex ? 3 : 1, op: i === ex ? 1 : 0, onEnter: () => this.state.ex !== i && this.setState({ ex: i }) }));
     const quick = (this.state.read ?? 'quick') === 'quick';
     const allCmds = [
-      { id: 'why', label: 'Why hire Aayushi?', kind: 'ASK', title: 'Why hire Aayushi?', body: '3+ years across enterprise, e‑commerce and ed‑tech. Cut task completion time 28% and design‑to‑dev handoff 35%. Authorized to work full‑time in Canada — open to work in 2026.', cta: 'Download résumé ↗', href: 'resume.pdf', target: '_blank' },
+      { id: 'why', label: 'Why hire Aayushi?', kind: 'ASK', title: 'Why hire Aayushi?', body: '3+ years across enterprise, e‑commerce and ed‑tech. Cut task completion time 28% and design‑to‑dev handoff 35%. Authorized to work full‑time in Canada — open to work in 2026.', cta: 'Download résumé ↗\uFE0E', href: 'resume.pdf', target: '_blank' },
       ...works.map(w => ({ id: w.key, label: 'View ' + w.title, kind: 'PROJECT', title: w.title, body: w.desc + ' — ' + w.metric, cta: 'Open case study →', href: w.href, target: '_self', hasImg: true, key: w.key, ph: w.title + ' preview' })),
       { id: 'about', label: 'About me', kind: 'PAGE', title: 'About me', body: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second. I’ve led product design at two early‑stage startups, shipping zero‑to‑one apps from concept to launch.', cta: 'Read more →', href: '#3c', target: '_self' },
       { id: 'email', label: 'Copy email', kind: 'ACTION', title: 'aayushipatel2002@gmail.com', body: 'Available for Freelance, Full‑time & Collaborations. Let’s connect today.', cta: this.state.copied ? 'Copied ✓' : 'Copy email', href: '#3c', target: '_self', act: true },
-      { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé — 2026', body: 'One page. Experience, outcomes and toolkit.', cta: 'Download ↗', href: 'resume.pdf', target: '_blank' }
+      { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé — 2026', body: 'One page. Experience, outcomes and toolkit.', cta: 'Download ↗\uFE0E', href: 'resume.pdf', target: '_blank' }
     ];
     const q = (this.state.cmdQ || '').toLowerCase().trim();
     const filtered = allCmds.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
@@ -390,7 +390,7 @@ export default class DesktopLogic extends React.Component {
     const durs = ['2:28', '3:35', '4:03', '6:00'];
     const tlist = [...works.map((w, i) => ({ ...w, num: String(i + 1).padStart(2, '0'), sub: w.tags, dur: durs[i], color: colors[i] })),
       { key: 'about', num: '04', title: 'About me (bonus)', sub: 'Background · approach · inspiration', dur: durs[3], color: colors[3], desc: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second.', metric: '06 years', href: '#4b-notes' }];
-    const tracks = tlist.map((t, i) => ({ ...t, bg: i === pl ? '#E9DCC6' : 'transparent', btnBg: i === pl && playing ? '#FF6A2B' : 'transparent', icon: i === pl && playing ? '❚❚' : '▶',
+    const tracks = tlist.map((t, i) => ({ ...t, bg: i === pl ? '#E9DCC6' : 'transparent', btnBg: i === pl && playing ? '#FF6A2B' : 'transparent', icon: i === pl && playing ? '❚❚' : '▶\uFE0E',
       onPlay: () => this.setState(s => (s.track ?? 0) === i ? { playing: !s.playing } : { track: i, playing: true }) }));
     const cur4 = { ...tlist[pl], title: tlist[pl].title.replace(' (bonus)', '') };
     const seam = this.state.seam ?? 71;
@@ -416,7 +416,7 @@ export default class DesktopLogic extends React.Component {
       vinylLeft: playing ? '330px' : '20px',
       armLeft: '790px',
       armRot: playing ? '22deg' : '-4deg',
-      nowLabel: playing ? 'NOW PLAYING — ' + cur4.title.toUpperCase() : 'PAUSED — PRESS ▶ ON A TRACK',
+      nowLabel: playing ? 'NOW PLAYING — ' + cur4.title.toUpperCase() : 'PAUSED — PRESS ▶\uFE0E ON A TRACK',
       tidyLabel: tidy ? '↺ Make a mess' : '✦ Tidy up',
       deskHint: tidy ? 'tidy.fig — everything on the grid' : 'drag anything · then press “Tidy up”',
       toggleTidy: () => this.setState({ tidy: !tidy, pos: {} }),
