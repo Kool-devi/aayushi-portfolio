@@ -642,25 +642,6 @@ export default function DelicutMobile({ v }) {
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                What it collects
-              </span>
-              {" "}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-                {" "}
-                {(v.dlOnb || []).map((o, $index) => (
-                  <React.Fragment key={$index}>
-                    <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "10px 14px", borderRadius: "999px", background: "#FFFFFF", fontSize: "14px" }}>
-                      <span style={{ fontSize: "10.5px", color: "#E5322B" }}>
-                        {show(o?.n)}
-                      </span>
-                      {show(o?.t)}
-                    </span>
-                  </React.Fragment>
-                ))}
-                {" "}
-              </div>
-              {" "}
               <img src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto", borderRadius: "20px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }} />
               {" "}
               <p style={{ margin: "0", fontSize: "15.5px", lineHeight: "1.55", color: "#3C3C38" }}>

@@ -572,60 +572,37 @@ export default function DelicutDesktop({ v }) {
             Onboarding
           </span>
         </div>
-        {/* Heading + what it collects on top; below, the phone sits beside the onboarding screens, with the design decision under them. Sized to fit one fold. */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px", minWidth: "0" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.15fr) minmax(0,1fr)", gap: "40px", alignItems: "end" }}>
+        {/* Phone on the left; heading, screens, copy and the design decision stack on the right. The phone stretches to the text column's height. */}
+        <div style={{ display: "grid", gridTemplateColumns: "264px minmax(0,1fr)", gap: "40px", alignItems: "stretch" }}>
+          <div style={{ position: "relative", width: "264px", minHeight: "480px", borderRadius: "44px", background: "#0B0B0B", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
+            <div style={{ position: "absolute", inset: "10px", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
+              <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}></video>
+            </div>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "18px", minWidth: "0" }}>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1.05" }}>
               {"Set the app up around the user — "}
               <span style={{ fontStyle: "italic" }}>
                 without it feeling like a long form.
               </span>
             </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                What it collects
+            <div style={{ borderRadius: "22px", overflow: "hidden", background: "#F9F4ED", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -36px rgba(0,0,0,.22)" }}>
+              <img src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto" }} />
+            </div>
+            <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
+              If the plan hasn’t started yet, users don’t land on an empty dashboard — they see when it starts, when meals are assigned and when the first delivery arrives.
+            </p>
+            <div style={{ padding: "16px 20px", borderRadius: "18px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
+                Design decision
               </span>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                {(v.dlOnb || []).map((o, $index) => (
-                  <React.Fragment key={$index}>
-                    <span style={{ display: "flex", alignItems: "center", gap: "7px", padding: "7px 12px", borderRadius: "999px", background: "#FFFFFF", fontSize: "13px" }}>
-                      <span style={{ fontSize: "10px", color: "#E5322B" }}>
-                        {show(o?.n)}
-                      </span>
-                      {show(o?.t)}
-                    </span>
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "212px minmax(0,1fr)", gap: "36px", alignItems: "center" }}>
-            <div style={{ width: "212px", height: "458px", flex: "none", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "29px", overflow: "hidden", background: "#FFFFFF" }}>
-                <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}></video>
-              </div>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px", minWidth: "0" }}>
-              <div style={{ borderRadius: "22px", overflow: "hidden", background: "#F9F4ED", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -36px rgba(0,0,0,.22)" }}>
-                <img src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto" }} />
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1.25fr)", gap: "16px", alignItems: "stretch" }}>
-                <p style={{ margin: "0", alignSelf: "center", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  If the plan hasn’t started yet, users don’t land on an empty dashboard — they see when it starts, when meals are assigned and when the first delivery arrives.
-                </p>
-                <div style={{ padding: "16px 20px", borderRadius: "18px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-                    Design decision
-                  </span>
-                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "19px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
-                    {"The end of onboarding needed to explain "}
-                    <span style={{ fontStyle: "italic" }}>
-                      what happens next
-                    </span>
-                    {" — not just confirm setup was complete."}
-                  </span>
-                </div>
-              </div>
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "20px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
+                {"The end of onboarding needed to explain "}
+                <span style={{ fontStyle: "italic" }}>
+                  what happens next
+                </span>
+                {" — not just confirm setup was complete."}
+              </span>
             </div>
           </div>
         </div>
