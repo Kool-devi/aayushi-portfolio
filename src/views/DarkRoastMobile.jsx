@@ -577,7 +577,7 @@ export default function DarkRoastMobile({ v }) {
         </h2>
         {" "}
         <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
-          I explored several versions of two key screens. Pick a screen, then flip through its versions.
+          {show(v.csIterSet?.d)}
         </p>
         {" "}
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -679,11 +679,11 @@ export default function DarkRoastMobile({ v }) {
         <div style={{ padding: "16px", borderRadius: "16px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "8px" }}>
           {" "}
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-            {"What I was testing · "}{show(v.csIterSet?.k)}
+            What I was testing
           </span>
           {" "}
           <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
-            {show(v.csIterSet?.d)}
+            {show(v.csIterSet?.k)}
           </span>
           {" "}
         </div>

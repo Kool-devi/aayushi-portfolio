@@ -204,9 +204,19 @@ export default class MobileLogic extends React.Component {
     const modes = [
       { k: 'Working', t: 'Messages and feedback', d: 'This is where brands spend most of their time, so it gets the most space.' },
       { k: 'Checking', t: 'Brief and project details', d: 'Brands need this sometimes, so it stays one click away.' }];
+    const iterK = 'Status · Priority · Slots · Grouping';
+    const iterD = 'I started with the Projects page, because that’s where brands decide what to look at first. Each version tested how much to show in the list and how much to keep inside the project.';
     const sets = [
-      { t: 'Project listing', k: 'Grouping · status · priority · capacity', d: 'I reworked the Projects page first — the place clients scan active work and decide what needs attention. Each direction tested which signals must stay prominent and which could be reduced.', items: [['Default — grouped list with status pills', 'Dark Roast Project Listing Page Iterations/Project listing _ Default.png'], ['Progress bars for capacity & completion', 'Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png'], ['Denser layout with status tooltips', 'Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png'], ['Client view — priority & attention', 'Dark Roast Project Listing Page Iterations/Client _ Project listing.png']] },
-      { t: 'Detail header', k: 'Less metadata · smarter actions', d: 'Keep title and status visible, cut secondary metadata, group utility actions, keep Messages ↔ Files one tap apart, and move AI Summary and Project Details out of the working area.', items: [['First screen — variation 1', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'], ['First screen — variation 2', 'Dark Roast Project Detail Page Iterations/First screen - Variation 2.png'], ['Refined header — screen 1', 'Dark Roast Project Detail Page Iterations/Screen 1.png']] }];
+      { t: 'Project listing', k: iterK, d: iterD, items: [
+        ['Added priority and a red edge to flag projects waiting on the brand', 'Dark Roast Project Listing Page Iterations/Client _ Project listing.png'],
+        ['Simple list with a coloured status tag on each project', 'Dark Roast Project Listing Page Iterations/Project listing _ Default.png'],
+        ['Added a “slots used” bar to show how many active projects a brand had left', 'Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png'],
+        ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png']] },
+      { t: 'Detail header', k: iterK, d: iterD, items: [
+        ['Opened the brief as a side panel next to messages, so brands could check it while chatting', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'],
+        ['Kept it minimal, with status next to the title and everything else behind a “Project details” button', 'Dark Roast Project Detail Page Iterations/First screen - Variation 2.png'],
+        ['Brought priority, status and dates into their own row so they’re visible at a glance', 'Dark Roast Project Detail Page Iterations/Screen 1.png'],
+        ['Added a “% complete” tag and search inside the project, but the header started getting busy', 'Dark Roast Project Detail Page Iterations/V4.png']] }];
     const si = S.csSet ?? 0, set = sets[si];
     const ii = Math.min(S.csIt ?? 0, set.items.length - 1);
     const pairs = [

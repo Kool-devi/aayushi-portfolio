@@ -596,7 +596,7 @@ export default function DarkRoastDesktop({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "12px" }}>
             {" "}
-            <div style={{ position: "relative", height: "350px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            <div style={{ position: "relative", minHeight: "350px", borderRadius: "20px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
               {" "}
               {(v.csIters || []).map((x, $index) => (
                 <React.Fragment key={$index}>
@@ -607,7 +607,7 @@ export default function DarkRoastDesktop({ v }) {
               ))}
               {" "}
               <span style={{ position: "absolute", left: "16px", bottom: "16px", padding: "8px 13px", borderRadius: "999px", background: "rgba(11,11,11,.7)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", color: "#FFFFFF", fontSize: "12.5px" }}>
-                {show(v.csIterCur?.n)}{" — "}{show(v.csIterCur?.t)}
+                {show(v.csIterCur?.n)}
               </span>
               {" "}
             </div>
