@@ -501,43 +501,22 @@ export default function DarkRoastMobile({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1" }}>
-            {"A project has "}
+            {"A brand is either working on a project or "}
             <span style={{ fontStyle: "italic" }}>
-              two modes.
+              checking on it
             </span>
-            {" The old UI treated both as equally important — all the time."}
           </h2>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", padding: "14px 16px", borderRadius: "14px", background: "#FFFFFF" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-              How to read this
-            </span>
-            <span style={{ fontSize: "14px", lineHeight: "1.45", color: "#3C3C38" }}>
-              {"Every project screen holds two kinds of content. "}
-              <strong style={{ fontWeight: "600", color: "#0B0B0B" }}>
-                Active
-              </strong>
-              {" is what you work in — it gets the main space. "}
-              <strong style={{ fontWeight: "600", color: "#0B0B0B" }}>
-                Reference
-              </strong>
-              {" is what you check — kept one tap away."}
-            </span>
-          </div>
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
             {" "}
             {(v.csModes || []).map((m, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <button type="button" style={{ all: "unset", cursor: "default", minHeight: "210px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px", transition: "all .5s cubic-bezier(.3,.9,.3,1)" }}>
+                <button type="button" style={{ all: "unset", cursor: "default", minHeight: "180px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px", transition: "all .5s cubic-bezier(.3,.9,.3,1)" }}>
                   {" "}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
                       {show(m?.k)}
-                    </span>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "5px 9px", borderRadius: "999px", background: m?.tagBg, color: m?.tagFg }}>
-                      {show(m?.tag)}
                     </span>
                   </div>
                   {" "}
@@ -545,21 +524,9 @@ export default function DarkRoastMobile({ v }) {
                     {show(m?.t)}
                   </span>
                   {" "}
-                  <span style={{ fontSize: "15px", opacity: ".75" }}>
+                  <span style={{ marginTop: "auto", fontSize: "15px", lineHeight: "1.5", opacity: ".75" }}>
                     {show(m?.d)}
                   </span>
-                  {" "}
-                  <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {" "}
-                    {(m?.items || []).map((x, $index) => (
-                      <React.Fragment key={$index}>
-                        <span style={{ padding: "8px 12px", borderRadius: "999px", background: m?.chip, fontSize: "13.5px" }}>
-                          {show(x)}
-                        </span>
-                      </React.Fragment>
-                    ))}
-                    {" "}
-                  </div>
                   {" "}
                 </button>
                 {" "}
@@ -575,33 +542,11 @@ export default function DarkRoastMobile({ v }) {
             </span>
             {" "}
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "29px", lineHeight: "1.1", letterSpacing: "-.04em" }}>
-              {"Give active work priority. Keep reference information close — "}
+              {"Give the work the space, and "}
               <span style={{ fontStyle: "italic" }}>
-                but not permanently in the way.
+                keep the details nearby.
               </span>
             </span>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "12px" }}>
-            {" "}
-            {(v.csPriorities || []).map((p, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <div style={{ padding: "24px", borderTop: "1px solid #0B0B0B", display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "33px", lineHeight: ".9", letterSpacing: "-.05em" }}>
-                    {show(p?.n)}
-                  </span>
-                  <span style={{ fontSize: "18px", fontWeight: "600", letterSpacing: "-.02em" }}>
-                    {show(p?.t)}
-                  </span>
-                  <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#3C3C38" }}>
-                    {show(p?.d)}
-                  </span>
-                </div>
-                {" "}
-              </React.Fragment>
-            ))}
             {" "}
           </div>
           {" "}

@@ -202,8 +202,8 @@ export default class MobileLogic extends React.Component {
     const st = S.csStep ?? 2;
     const md = S.csMode ?? 0;
     const modes = [
-      { k: 'Mode A', t: 'Active', d: 'Where the work happens.', tag: 'Priority', items: ['Messaging', 'Feedback', 'Coordination', 'File sharing', 'Decisions'] },
-      { k: 'Mode B', t: 'Reference', d: 'Where users check context.', tag: 'One step away', items: ['Project brief', 'Metadata', 'Summaries', 'History'] }];
+      { k: 'Working', t: 'Messages and feedback', d: 'This is where brands spend most of their time, so it gets the most space.' },
+      { k: 'Checking', t: 'Brief and project details', d: 'Brands need this sometimes, so it stays one click away.' }];
     const sets = [
       { t: 'Project listing', k: 'Grouping · status · priority · capacity', d: 'I reworked the Projects page first — the place clients scan active work and decide what needs attention. Each direction tested which signals must stay prominent and which could be reduced.', items: [['Default — grouped list with status pills', 'Dark Roast Project Listing Page Iterations/Project listing _ Default.png'], ['Progress bars for capacity & completion', 'Dark Roast Project Listing Page Iterations/Project listing _ Progress bar.png'], ['Denser layout with status tooltips', 'Dark Roast Project Listing Page Iterations/Design Direction 2 - Tooltips.png'], ['Client view — priority & attention', 'Dark Roast Project Listing Page Iterations/Client _ Project listing.png']] },
       { t: 'Detail header', k: 'Less metadata · smarter actions', d: 'Keep title and status visible, cut secondary metadata, group utility actions, keep Messages ↔ Files one tap apart, and move AI Summary and Project Details out of the working area.', items: [['First screen — variation 1', 'Dark Roast Project Detail Page Iterations/First screen - Variation 1.png'], ['First screen — variation 2', 'Dark Roast Project Detail Page Iterations/First screen - Variation 2.png'], ['Refined header — screen 1', 'Dark Roast Project Detail Page Iterations/Screen 1.png']] }];
@@ -223,7 +223,6 @@ export default class MobileLogic extends React.Component {
       csStep: { n: '0' + (st + 1), t: steps[st][0], d: steps[st][1] },
       csStepPrev: () => this.setState({ csStep: (st + 5) % 6 }), csStepNext: () => this.setState({ csStep: (st + 1) % 6 }),
       csModes: modes.map((m, i) => { const on = i === md; return { ...m, bg: i === 0 ? '#0B0B0B' : '#FFFFFF', fg: i === 0 ? '#FFFFFF' : '#0B0B0B', chip: i === 0 ? '#FFFFFF1A' : '#EFEFEC', tagBg: i === 0 ? '#FCEB3F' : '#EFEFEC', tagFg: '#0B0B0B', s: on ? 1 : 0.97, op: on ? 1 : 0.62, onPick: () => this.state.csMode !== i && this.setState({ csMode: i }) }; }),
-      csPriorities: [['Make progress obvious', 'Understand what’s happening across projects without opening each one.'], ['Give active work more space', 'Messaging, feedback and collaboration take priority inside a project.'], ['Reduce persistent information', 'Reference content stays accessible without competing with the task.']].map(([t, d], i) => ({ t, d, n: '0' + (i + 1) })),
       csIterSets: sets.map((s, i) => ({ t: s.t, w: i === si ? 600 : 500, fg: i === si ? '#FFFFFF' : '#0B0B0B', onPick: () => this.setState({ csSet: i, csIt: 0 }) })),
       csIterLeft: si ? '50%' : '4px', csIterSet: set,
       csIters: set.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p), op: i === ii ? 1 : 0, s: i === ii ? 1 : 1.03, bg: i === ii ? '#FFFFFF' : '#E2E2DE', chipBg: i === ii ? '#0B0B0B' : '#EFEFEC', chipFg: i === ii ? '#FFFFFF' : '#0B0B0B', onPick: () => this.state.csIt !== i && this.setState({ csIt: i }) })),

@@ -497,11 +497,10 @@ export default function DarkRoastDesktop({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "56px", lineHeight: "1" }}>
-            {"A project has "}
+            {"A brand is either working on a project or "}
             <span style={{ fontStyle: "italic" }}>
-              two modes.
+              checking on it
             </span>
-            {" The old UI treated both as equally important — all the time."}
           </h2>
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
@@ -509,14 +508,11 @@ export default function DarkRoastDesktop({ v }) {
             {(v.csModes || []).map((m, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div style={{ minHeight: "300px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px" }}>
+                <div style={{ minHeight: "260px", padding: "28px", borderRadius: "24px", background: m?.bg, color: m?.fg, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: "18px" }}>
                   {" "}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
                       {show(m?.k)}
-                    </span>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "5px 9px", borderRadius: "999px", background: m?.tagBg, color: m?.tagFg }}>
-                      {show(m?.tag)}
                     </span>
                   </div>
                   {" "}
@@ -524,21 +520,9 @@ export default function DarkRoastDesktop({ v }) {
                     {show(m?.t)}
                   </span>
                   {" "}
-                  <span style={{ fontSize: "15px", opacity: ".75" }}>
+                  <span style={{ marginTop: "auto", fontSize: "15px", lineHeight: "1.5", opacity: ".75" }}>
                     {show(m?.d)}
                   </span>
-                  {" "}
-                  <div style={{ marginTop: "auto", display: "flex", flexWrap: "wrap", gap: "6px" }}>
-                    {" "}
-                    {(m?.items || []).map((x, $index) => (
-                      <React.Fragment key={$index}>
-                        <span style={{ padding: "8px 12px", borderRadius: "999px", background: m?.chip, fontSize: "13.5px" }}>
-                          {show(x)}
-                        </span>
-                      </React.Fragment>
-                    ))}
-                    {" "}
-                  </div>
                   {" "}
                 </div>
                 {" "}
@@ -556,33 +540,11 @@ export default function DarkRoastDesktop({ v }) {
             </span>
             {" "}
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: "1.1", letterSpacing: "-.04em" }}>
-              {"Give active work priority. Keep reference information close — "}
+              {"Give the work the space, and "}
               <span style={{ fontStyle: "italic" }}>
-                but not permanently in the way.
+                keep the details nearby.
               </span>
             </span>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "12px" }}>
-            {" "}
-            {(v.csPriorities || []).map((p, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <div style={{ padding: "24px", borderTop: "1px solid #0B0B0B", display: "flex", flexDirection: "column", gap: "10px" }}>
-                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: ".9", letterSpacing: "-.05em" }}>
-                    {show(p?.n)}
-                  </span>
-                  <span style={{ fontSize: "18px", fontWeight: "600", letterSpacing: "-.02em" }}>
-                    {show(p?.t)}
-                  </span>
-                  <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#3C3C38" }}>
-                    {show(p?.d)}
-                  </span>
-                </div>
-                {" "}
-              </React.Fragment>
-            ))}
             {" "}
           </div>
           {" "}
