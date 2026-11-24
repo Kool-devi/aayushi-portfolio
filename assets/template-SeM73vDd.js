@@ -1,0 +1,1 @@
+import{a as e,i as t}from"./jsx-runtime-BrntCUzc.js";var n=e(t(),1);function r(e){return e==null||typeof e==`boolean`?null:(0,n.isValidElement)(e)||Array.isArray(e)?e:String(e)}export{r as t};

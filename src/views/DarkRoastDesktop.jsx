@@ -4,6 +4,7 @@ import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import HScroll from '../components/HScroll.jsx';
 import ShotCard from '../components/ShotCard.jsx';
+import IterCanvas from '../components/IterCanvas.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function DarkRoastDesktop({ v }) {
@@ -552,8 +553,8 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="iter" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
-        {" "}
+      <section id="iter" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px 40px" }}>
+        {/* Iterations: every version on one canvas, one lane per screen (components/IterCanvas.jsx) */}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             06
@@ -562,12 +563,8 @@ export default function DarkRoastDesktop({ v }) {
             Iterations
           </span>
         </div>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          {" "}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
-            {" "}
-            <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05", maxWidth: "20ch" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05" }}>
               {"Testing the balance between "}
               <span style={{ fontStyle: "italic" }}>
                 density
@@ -577,84 +574,13 @@ export default function DarkRoastDesktop({ v }) {
                 visibility.
               </span>
             </h2>
-            {" "}
-            <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE", width: "380px", flex: "none" }}>
-              {" "}
-              <span style={{ position: "absolute", top: "4px", bottom: "4px", left: v.csIterLeft, width: "calc(50% - 4px)", borderRadius: "999px", background: "#FFFFFF", boxShadow: "0 3px 10px rgba(0,0,0,.09)", transition: "left .45s cubic-bezier(.3,.9,.3,1)" }}></span>
-              {" "}
-              {(v.csIterSets || []).map((s, $index) => (
-                <React.Fragment key={$index}>
-                  <button type="button" onClick={s?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "44px", display: "grid", placeItems: "center", fontSize: "14px", fontWeight: s?.w }}>
-                    {show(s?.t)}
-                  </button>
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 260px", gap: "12px" }}>
-            {" "}
-            <div style={{ position: "relative", minHeight: "350px", borderRadius: "20px", overflow: "hidden", background: "#EFEFEC", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
-              {" "}
-              {(v.csIters || []).map((x, $index) => (
-                <React.Fragment key={$index}>
-                  {" "}
-                  <div role="img" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundColor: "#EFEFEC", opacity: x?.op, transform: `scale(${x?.s ?? ""})`, transition: "opacity .5s, transform .7s cubic-bezier(.3,.9,.3,1)" }}></div>
-                  {" "}
-                </React.Fragment>
-              ))}
-              {" "}
-              <span style={{ position: "absolute", left: "16px", bottom: "16px", padding: "8px 13px", borderRadius: "999px", background: "rgba(11,11,11,.7)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", color: "#FFFFFF", fontSize: "12.5px" }}>
-                {show(v.csIterCur?.n)}
-              </span>
-              {" "}
-            </div>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {" "}
-              {(v.csIters || []).map((x, $index) => (
-                <React.Fragment key={$index}>
-                  {" "}
-                  <button type="button" onClick={x?.onPick} onMouseEnter={x?.onPick} style={{ all: "unset", cursor: "pointer", flex: "1", minHeight: "0", padding: "14px 16px", borderRadius: "16px", background: x?.bg, display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "8px", transition: "background .25s" }}>
-                    {" "}
-                    <span style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-                      <span style={{ color: "#E5322B" }}>
-                        {show(x?.n)}
-                      </span>
-                      <span style={{ opacity: x?.op }}>
-                        ●
-                      </span>
-                    </span>
-                    {" "}
-                    <span style={{ fontSize: "14px", fontWeight: "500", lineHeight: "1.3", letterSpacing: "-.01em" }}>
-                      {show(x?.t)}
-                    </span>
-                    {" "}
-                  </button>
-                  {" "}
-                </React.Fragment>
-              ))}
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) minmax(0,7fr)", gap: "40px" }}>
-            {" "}
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-              {show(v.csIterSet?.k)}
-            </span>
-            {" "}
-            <span style={{ fontSize: "16px", lineHeight: "1.55", color: "#3C3C38" }}>
-              {show(v.csIterSet?.d)}
-            </span>
-            {" "}
-          </div>
-          {" "}
+          <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "62ch" }}>
+            {show(v.csIterIntro)}
+          </p>
         </div>
-        {" "}
+        <div style={{ gridColumn: "1 / -1" }}>
+          <IterCanvas lanes={v.csIterLanes} tags={v.csIterTags} />
+        </div>
       </section>
       {" "}
       <section id="final" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>

@@ -3,6 +3,7 @@
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import ShotCard from '../components/ShotCard.jsx';
+import IterCanvas from '../components/IterCanvas.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function DarkRoastMobile({ v }) {
@@ -554,9 +555,10 @@ export default function DarkRoastMobile({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="iter" style={{ padding: "55px 16px 20px", display: "flex", flexDirection: "column", gap: "18px" }}>
-        {" "}
-        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+      <section id="iter" style={{ padding: "55px 0 20px", display: "flex", flexDirection: "column", gap: "18px" }}>
+        {/* Iterations: every version on one canvas, one lane per screen (components/IterCanvas.jsx) */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px", padding: "0 20px" }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             06
           </span>
@@ -564,8 +566,7 @@ export default function DarkRoastMobile({ v }) {
             Iterations
           </span>
         </div>
-        {" "}
-        <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1.05" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1.05" }}>
           {"Testing the balance between "}
           <span style={{ fontStyle: "italic" }}>
             density
@@ -575,119 +576,13 @@ export default function DarkRoastMobile({ v }) {
             visibility.
           </span>
         </h2>
-        {" "}
-        <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
-          {show(v.csIterSet?.d)}
-        </p>
-        {" "}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "11px", fontWeight: "600" }}>
-            1
-          </span>
-          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-            Pick a screen
-          </span>
+          <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
+            {show(v.csIterIntro)}
+          </p>
         </div>
-        {" "}
-        <div style={{ position: "relative", display: "grid", gridTemplateColumns: "1fr 1fr", padding: "4px", borderRadius: "999px", background: "#E2E2DE" }}>
-          {" "}
-          <span style={{ position: "absolute", top: "4px", bottom: "4px", left: v.csIterLeft, width: "calc(50% - 4px)", borderRadius: "999px", background: "#0B0B0B", transition: "left .45s cubic-bezier(.3,.9,.3,1)" }}></span>
-          {" "}
-          {(v.csIterSets || []).map((s, $index) => (
-            <React.Fragment key={$index}>
-              <button type="button" onClick={s?.onPick} style={{ all: "unset", cursor: "pointer", position: "relative", height: "44px", display: "grid", placeItems: "center", fontSize: "14px", fontWeight: "600", color: s?.fg, transition: "color .3s" }}>
-                {show(s?.t)}
-              </button>
-            </React.Fragment>
-          ))}
-          {" "}
+        <div style={{ padding: "0 16px" }}>
+          <IterCanvas lanes={v.csIterLanes} tags={v.csIterTags} mobile />
         </div>
-        {" "}
-        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "11px", fontWeight: "600" }}>
-            2
-          </span>
-          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-            Flip through the versions
-          </span>
-        </div>
-        {" "}
-        <div style={{ display: "flex", flexDirection: "column", borderRadius: "18px", overflow: "hidden", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 24px 40px -28px rgba(0,0,0,.3)" }}>
-          {" "}
-          <div style={{ position: "relative", aspectRatio: "16 / 10", background: "#EFEFEC", borderBottom: "1px solid #0B0B0B14" }}>
-            {" "}
-            {(v.csIters || []).map((x, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <div role="img" aria-label={x?.t} style={{ position: "absolute", inset: "0", backgroundColor: "#EFEFEC", backgroundImage: `url(${x?.src ?? ""})`, backgroundSize: "contain", backgroundPosition: "center", backgroundRepeat: "no-repeat", opacity: x?.op, transition: "opacity .45s" }}></div>
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-            <span style={{ position: "absolute", right: "10px", top: "10px", padding: "5px 9px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-              {show(v.csIterCur?.n)}{" of "}{show(v.csIterTotal)}
-            </span>
-            {" "}
-          </div>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px", padding: "20px 18px 18px" }}>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px", minHeight: "62px" }}>
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-                {"Version "}{show(v.csIterCur?.n)}
-              </span>
-              {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "21px", lineHeight: "1.2", letterSpacing: "-.03em", color: "#0B0B0B" }}>
-                {show(v.csIterCur?.t)}
-              </span>
-              {" "}
-            </div>
-            {" "}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "12px", paddingTop: "16px", borderTop: "1px solid #0B0B0B14" }}>
-              {" "}
-              <div style={{ display: "flex", gap: "6px" }}>
-                {" "}
-                {(v.csIters || []).map((x, $index) => (
-                  <React.Fragment key={$index}>
-                    <button type="button" aria-label={x?.n} onClick={x?.onPick} style={{ all: "unset", cursor: "pointer", width: "36px", height: "36px", boxSizing: "border-box", borderRadius: "50%", background: x?.chipBg, color: x?.chipFg, display: "grid", placeItems: "center", fontSize: "11.5px", fontWeight: "600", transition: "all .25s" }}>
-                      {show(x?.n)}
-                    </button>
-                  </React.Fragment>
-                ))}
-                {" "}
-              </div>
-              {" "}
-              <div style={{ display: "flex", gap: "8px" }}>
-                {" "}
-                <button type="button" aria-label="Previous version" onClick={v.csIterPrev} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#EFEFEC", display: "grid", placeItems: "center", fontSize: "16px" }}>
-                  ←
-                </button>
-                {" "}
-                <button type="button" aria-label="Next version" onClick={v.csIterNext} style={{ all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", background: "#0B0B0B", color: "#FFFFFF", display: "grid", placeItems: "center", fontSize: "16px" }}>
-                  →
-                </button>
-                {" "}
-              </div>
-              {" "}
-            </div>
-            {" "}
-          </div>
-          {" "}
-        </div>
-        {" "}
-        <div style={{ padding: "16px", borderRadius: "16px", background: "#FCEB3F", display: "flex", flexDirection: "column", gap: "8px" }}>
-          {" "}
-          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-            What I was testing
-          </span>
-          {" "}
-          <span style={{ fontSize: "14.5px", lineHeight: "1.5" }}>
-            {show(v.csIterSet?.k)}
-          </span>
-          {" "}
-        </div>
-        {" "}
       </section>
       {" "}
       <section id="final" style={{ padding: "55px 20px 20px", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px" }}>
