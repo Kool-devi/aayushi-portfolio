@@ -163,7 +163,7 @@ export default class MobileLogic extends React.Component {
       { rel: 'Flexible', t: 'Tomorrow', badge: 'Manage delivery', vid: 'Videos/Delicut/3New-screen.mp4', d: 'Before the cut‑off, future days are the most action‑heavy state. The priority: make options easy to find without overcrowding the meal cards.', acts: ['Change meal', 'Skip delivery', 'Resume delivery', 'Change address'] }];
     const exp = [
       { t: 'Active', imgs: ['Mockups/Delicut/Expiry Active.webp'], d: 'The full daily experience — meals, deliveries and every time‑based action.', shows: 'meals & delivery controls' },
-      { t: 'Expiring soon', d: 'With only a short time left, the customer sees the plan approaching its end — creating space to renew before deliveries stop.', shows: '7‑day renewal banner' },
+      { t: 'Expiring soon', imgs: ['Mockups/Delicut/Expiry Expiring Soon.webp'], d: 'With only a short time left, the customer sees the plan approaching its end — creating space to renew before deliveries stop.', shows: '7‑day renewal banner' },
       { t: 'Expired', d: 'Future meal controls disappear. The product shifts toward one clear next step, without feeling broken or empty.', shows: 'last plan + Renew plan' },
       { t: 'Renewed', d: 'Returning customers find a familiar way back into Delicut — plan details they recognise, minimal friction to restart.', shows: 'back to active' }];
     const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
