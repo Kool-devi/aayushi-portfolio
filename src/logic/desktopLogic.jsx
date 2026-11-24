@@ -124,9 +124,9 @@ export default class DesktopLogic extends React.Component {
         op: on ? 1 : 0, x: j < st ? '-24px' : j > st ? '24px' : '0px' };
     };
     const safe = [
-      { t: 'Pause the live session', sheetK: 'Session paused', sheetT: 'Let’s pause here for a moment.', btns: [{ t: 'Take a breath', r: '→', bg: '#0B0B0B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
-      { t: 'Check on the user first', sheetK: 'Checking in', sheetT: 'Before we continue — are you safe right now?', btns: [{ t: 'I’m safe', r: '→', bg: '#EFEFEC', fg: '#0B0B0B' }, { t: 'I need support', r: '→', bg: '#E5322B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
-      { t: 'Bring real support forward', sheetK: 'Support near you', sheetT: 'You don’t have to handle this alone.', btns: [{ t: 'Local crisis line', r: 'Call', bg: '#0B0B0B', fg: '#FFFFFF' }, { t: 'Emergency services', r: 'Call', bg: '#EFEFEC', fg: '#0B0B0B' }], live: ['Ended', '#E5322B'] }];
+      { t: 'Pause the live session', img: 'Mockups/Attune/safety-pause.webp', alt: 'Attune suggests pausing a tense joint session', sheetK: 'Session paused', sheetT: 'Let’s pause here for a moment.', btns: [{ t: 'Take a breath', r: '→', bg: '#0B0B0B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Check on the user first', img: 'Mockups/Attune/safety-check-in.webp', alt: 'Attune gently offers professional support options in a Reflect chat', sheetK: 'Checking in', sheetT: 'Before we continue — are you safe right now?', btns: [{ t: 'I’m safe', r: '→', bg: '#EFEFEC', fg: '#0B0B0B' }, { t: 'I need support', r: '→', bg: '#E5322B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Bring real support forward', img: 'Mockups/Attune/safety-support.webp', alt: 'Attune pauses the session and brings crisis lines forward', sheetK: 'Support near you', sheetT: 'You don’t have to handle this alone.', btns: [{ t: 'Local crisis line', r: 'Call', bg: '#0B0B0B', fg: '#FFFFFF' }, { t: 'Emergency services', r: 'Call', bg: '#EFEFEC', fg: '#0B0B0B' }], live: ['Ended', '#E5322B'] }];
     const groups = ['Button', 'Card', 'Input', 'Chip'];
     const tiles = Array.from({ length: 16 }, (_, i) => ({ g: i % 4, v: Math.floor(i / 4) }));
     const mix = [5, 12, 2, 9, 14, 0, 7, 11, 3, 15, 6, 1, 10, 13, 4, 8];

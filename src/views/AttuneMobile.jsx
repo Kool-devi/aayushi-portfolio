@@ -476,60 +476,10 @@ export default function AttuneMobile({ v }) {
             {" "}
             <div style={{ marginLeft: "auto", marginRight: "auto", flex: "none", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
               <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#F4F3EE" }}>
-                {/* the screen is laid out at 280x612 and scaled down to the frame */}
-                <div style={{ position: "absolute", left: "0", top: "0", width: "280px", height: "612px", transform: "scale(.8)", transformOrigin: "0 0" }}>
-                <div style={{ position: "absolute", inset: "0", background: "#F4F3EE" }}></div>
-                {" "}
-                <div style={{ position: "absolute", left: "0", right: "0", top: "0", padding: "20px 18px 14px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", fontWeight: "600", color: "#0B0B0B", borderBottom: "1px solid #0B0B0B14", flexWrap: "wrap" }}>
-                  <span>
-                    Resolve · live session
-                  </span>
-                  <span style={{ padding: "4px 8px", borderRadius: "999px", background: v.atSafeLive?.bg, color: "#FFFFFF", fontSize: "10px" }}>
-                    {show(v.atSafeLive?.t)}
-                  </span>
-                </div>
-                {" "}
-                <div style={{ position: "absolute", left: "16px", right: "16px", top: "100px", display: "flex", flexDirection: "column", gap: "8px", opacity: v.atSafeChatOp, filter: `blur(${v.atSafeBlur ?? ""})`, transition: "all .6s" }}>
-                  {" "}
-                  <span style={{ alignSelf: "flex-start", maxWidth: "78%", padding: "10px 12px", borderRadius: "14px 14px 14px 4px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12px", lineHeight: "1.4" }}>
-                    Let’s take turns. Sam, you have the floor.
-                  </span>
-                  {" "}
-                  <span style={{ alignSelf: "flex-end", maxWidth: "78%", padding: "10px 12px", borderRadius: "14px 14px 4px 14px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12px", lineHeight: "1.4" }}>
-                    Honestly I don’t know if I can keep doing this…
-                  </span>
-                  {" "}
-                </div>
-                {" "}
+                {/* the real Attune screens, cross-fading as each step is picked */}
                 {(v.atSafe || []).map((s, $index) => (
-                  <React.Fragment key={$index}>
-                    {" "}
-                    <div style={{ position: "absolute", left: "12px", right: "12px", bottom: "12px", padding: "20px 18px", borderRadius: "26px", background: "#FFFFFF", color: "#0B0B0B", display: "flex", flexDirection: "column", gap: "12px", opacity: s?.op, transform: `translateY(${s?.y ?? ""})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)", boxShadow: "0 -10px 30px -10px rgba(0,0,0,.25)" }}>
-                      {" "}
-                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#E5322B" }}>
-                        {show(s?.sheetK)}
-                      </span>
-                      {" "}
-                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "24px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                        {show(s?.sheetT)}
-                      </span>
-                      {" "}
-                      {(s?.btns || []).map((b, $index) => (
-                        <React.Fragment key={$index}>
-                          <span style={{ height: "40px", borderRadius: "999px", background: b?.bg, color: b?.fg, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 16px", fontSize: "12.5px", fontWeight: "600", flexWrap: "wrap" }}>
-                            {show(b?.t)}
-                            <span>
-                              {show(b?.r)}
-                            </span>
-                          </span>
-                        </React.Fragment>
-                      ))}
-                      {" "}
-                    </div>
-                    {" "}
-                  </React.Fragment>
+                  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
                 ))}
-                </div>
               </div>
             </div>
             {" "}
