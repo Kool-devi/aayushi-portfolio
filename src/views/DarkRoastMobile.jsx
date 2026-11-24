@@ -738,9 +738,9 @@ export default function DarkRoastMobile({ v }) {
                 What it pushed me toward
               </span>
               <span style={{ fontSize: "20px", lineHeight: "1.4", letterSpacing: "-.02em" }}>
-                {"Thinking beyond screens — about "}
+                {"Thinking beyond screens, about "}
                 <strong style={{ fontWeight: "600" }}>
-                  workflow, information architecture and product behaviour.
+                  workflow, information architecture and product behavior.
                 </strong>
               </span>
             </div>
@@ -750,30 +750,32 @@ export default function DarkRoastMobile({ v }) {
                 The biggest lesson
               </span>
               <span style={{ fontSize: "20px", lineHeight: "1.4", letterSpacing: "-.02em" }}>
-                {"The right answer wasn’t a complete redesign. It was knowing what users need to "}
-                <em>
-                  notice
-                </em>
-                {", what they need to "}
-                <em>
-                  act on
-                </em>
-                {", and what can stay "}
-                <em>
-                  one step away.
-                </em>
+                {"DarkRoast’s brands were mostly middle-aged and used to the old dashboard. The right answer was "}
+                <strong style={{ fontWeight: "600" }}>
+                  a clear step up from what they knew,
+                </strong>
+                {" not a new tool they’d have to learn again."}
               </span>
             </div>
             {" "}
           </div>
           {" "}
           <blockquote style={{ margin: "0", padding: "20px 0 0", borderTop: "1px solid #0B0B0B", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.02" }}>
-            {"“Make creative work easier to follow — "}
+            {"“A brand should know what needs them "}
             <span style={{ fontStyle: "italic" }}>
-              without making clients manage the process.
+              the moment they log in.
             </span>
             ”
           </blockquote>
+          {/* what's next */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "8px", padding: "14px 16px", borderRadius: "16px", background: "#FFFFFF" }}>
+            <span style={{ flex: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+              What’s next
+            </span>
+            <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#3C3C38" }}>
+              DarkRoast is taking these changes to the designer side and to mobile in phase 2.
+            </span>
+          </div>
           {" "}
         </div>
         {" "}
