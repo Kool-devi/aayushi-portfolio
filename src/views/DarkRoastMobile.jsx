@@ -289,9 +289,9 @@ export default function DarkRoastMobile({ v }) {
           </span>
         </div>
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.04" }}>
-            {"Clients manage a high volume of creative work — and need to know "}
+            {"Brands couldn’t tell which project "}
             <span style={{ fontStyle: "italic" }}>
-              what’s moving, what’s blocked, and where feedback is due.
+              needed them first
             </span>
           </h2>
         </div>
