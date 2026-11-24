@@ -296,7 +296,7 @@ export default function DarkRoastMobile({ v }) {
           </h2>
         </div>
       }>
-        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} width="300px" capSize="14px" capLines={4} />)}
+        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} maxW="300px" capSize="14px" capLines={4} />)}
       </HScroll>
       {" "}
       <section id="research" style={{ padding: "55px 16px 20px", display: "flex", flexDirection: "column", gap: "18px" }}>

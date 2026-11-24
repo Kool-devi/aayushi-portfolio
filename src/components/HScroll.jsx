@@ -50,7 +50,8 @@ export default function HScroll({ id, header, children, padLeft, padRight, gap, 
         {/* kept just under the sticky bars; follows them up when they hide (site.css) */}
         <div data-pinbody ref={body} style={{ height: `${Math.round(m.vh - m.bars)}px`, boxSizing: "border-box", padding: bodyPad, display: "flex", flexDirection: "column", gap: bodyGap }}>
           {header}
-          <div style={{ flex: "1", minHeight: "0" }}>
+          {/* a size container, so cards can size themselves to the height left for them (cqh) */}
+          <div style={{ flex: "1", minHeight: "0", containerType: "size" }}>
             <div ref={track} style={{ display: "flex", gap, height: "100%", width: "max-content", padding: `0 ${padRight} 0 ${padLeft}`, boxSizing: "border-box", willChange: "transform" }}>
               {children}
             </div>

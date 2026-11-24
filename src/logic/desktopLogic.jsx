@@ -200,9 +200,9 @@ export default class DesktopLogic extends React.Component {
     const ch = S.csCh ?? 0;
     // Problem section: the three annotated screens, side by side (one sentence each)
     const problems = [
-      ['Main dashboard', 'Mockups/DarkRoast/Main Screen Audit.png', 'Every project looked the same in the list, so brands had to open each one to see where it stood.'],
-      ['Project detail', 'Mockups/DarkRoast/Project Detail Screen Audit.png', 'Messages, files, the brief and status all competed for space, with nothing showing what needed attention now.'],
-      ['File management', 'Mockups/DarkRoast/File Management Audit.png', 'Files sat in one long list with small previews, so finding the latest version meant digging.']];
+      ['Main dashboard', 'Mockups/DarkRoast/Problem 1 - Main Dashboard.webp', 'Every project looked the same in the list, so brands had to open each one to see where it stood.'],
+      ['Project detail', 'Mockups/DarkRoast/Problem 2 - Project Detail.webp', 'Messages, files, the brief and status all competed for space, with nothing showing what needed attention now.'],
+      ['File management', 'Mockups/DarkRoast/Problem 3 - File Management.webp', 'Files sat in one long list with small previews, so finding the latest version meant digging.']];
     const fl = S.csFlip || {};
     const survey = [['Needs better mobile experience', 'Poor use of space across screen sizes'], ['Needs better file management', 'Previewing and finding the right file inside long conversations'], ['Issues with text, links and spacing', 'Less reliability — and decreased trust'], ['Providing small updates felt too formal', 'The product had a heavy management workflow']];
     const steps = [['Share intent', 'Turn rough goals into clear creative direction.'], ['Start work', 'Create new work quickly using existing context.'], ['Track progress', 'See what needs attention without opening every project.'], ['Review work', 'Check quality and direction at a glance.'], ['Give feedback', 'Iterate without re‑briefing or heavy process.'], ['Reuse & scale', 'Carry past work and brand context into future projects.']];

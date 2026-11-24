@@ -286,7 +286,7 @@ export default function DarkRoastDesktop({ v }) {
           </h2>
         </div>
       }>
-        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} width="640px" />)}
+        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} maxW="760px" />)}
       </HScroll>
       {" "}
       <section id="research" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
