@@ -4,6 +4,9 @@
 import React from 'react';
 import { stickyOffset } from '../app/smoothScroll.js';
 
+// Page zoom (mobile layout is scaled to the window, see app/mount.jsx): screen px per design px.
+const pageZoom = () => parseFloat(getComputedStyle(document.querySelector('.site-page') || document.body).zoom) || 1;
+
 // Case-study pages: which state key holds the highlighted chapter pill.
 const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
 
@@ -42,6 +45,22 @@ export default class MobileLogic extends React.Component {
       });
       const atEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
       if (atEnd) active = links.length - 1;
+      // DarkRoast "Final design": the names and notes pin just under the part of the sticky bars on
+      // screen; the comparison crossing the middle of the space below them picks the name.
+      const finals = document.querySelectorAll('[data-csfinal]');
+      if (finals.length) {
+        let vis = 0;
+        document.querySelectorAll('[data-sticky]').forEach((el) => { vis = Math.max(vis, el.getBoundingClientRect().bottom); });
+        const z = pageZoom(), bars = Math.min(Math.max(vis, 0), stickyOffset());
+        const pt = Math.round(bars / z + 8);
+        if (this.state.csPT !== pt) this.setState({ csPT: pt });
+        const pin = document.querySelector('[data-csfinal-pin]');
+        const pinBottom = pin ? pin.getBoundingClientRect().bottom : bars;
+        const line = pinBottom + (window.innerHeight - pinBottom) / 2;
+        let fi = 0;
+        finals.forEach((el, i) => { if (el.getBoundingClientRect().top <= line) fi = i; });
+        if ((this.state.csPair ?? 0) !== fi) this.setState({ csPair: fi });
+      }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
       if (exEl) { const r = exEl.getBoundingClientRect(), on = r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25; if (!!this.state.dlEV !== on) this.setState({ dlEV: on }); }
@@ -226,7 +245,7 @@ export default class MobileLogic extends React.Component {
       { t: 'Project listing', before: 'Before After/v2/2-before.webp', after: 'Before After/v2/2-after.webp', b: 'Status was small grey text, and the coloured bars had no clear meaning.', a: 'Each row shows status and priority clearly, so brands know what needs them first.' },
       { t: 'Messages', before: 'Before After/v2/3-before.webp', after: 'Before After/v2/3-after.webp', b: 'Messages were squeezed between a crowded top bar and a large brief panel.', a: 'The brief opens only when needed, so messages get the full width.' },
       { t: 'File review', before: 'Before After/v2/4-before.webp', after: 'Before After/v2/4-after.webp', b: 'Files sat in a plain list with long names and no sign of file type.', a: 'Each file shows a preview, file type, uploader and date in one place.' }];
-    const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
+    const pi = S.csPair ?? 0, cmps = S.csCmps || {};
     return {
       csChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ csCh: i }) })),
       csProblems: problems.map(([t, p, d], i) => ({ t, d, src: U(p), n: String(i + 1).padStart(2, '0') })),
@@ -241,12 +260,20 @@ export default class MobileLogic extends React.Component {
       csIters: set.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p), op: i === ii ? 1 : 0, s: i === ii ? 1 : 1.03, bg: i === ii ? '#FFFFFF' : '#E2E2DE', chipBg: i === ii ? '#0B0B0B' : '#EFEFEC', chipFg: i === ii ? '#FFFFFF' : '#0B0B0B', onPick: () => this.state.csIt !== i && this.setState({ csIt: i }) })),
       csIterCur: { n: 'V' + (ii + 1), t: set.items[ii][0] },
       csIterTotal: set.items.length, csIterPrev: () => this.setState({ csIt: (ii + set.items.length - 1) % set.items.length }), csIterNext: () => this.setState({ csIt: (ii + 1) % set.items.length }),
-      csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', onPick: () => this.setState({ csPair: i, csCmp: 50 }) }; }),
-      csPair: { ...pairs[pi], before: U(pairs[pi].before), after: U(pairs[pi].after) },
-      csCmpPos: cmp + '%', csCmpRest: (100 - cmp) + '%',
-      onCmpDown: (e) => { e.preventDefault(); this.cmpDrag = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {} },
-      onCmpMove: (e) => { if (!this.cmpDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ csCmp: Math.max(2, Math.min(98, (e.clientY - r.top) / r.height * 100)) }); },
-      onCmpUp: () => { this.cmpDrag = false; }
+      // Final design: the names and Before/After notes pin under the bars while the four comparisons
+      // scroll up beneath them (scroll spy above). Tapping a name brings its comparison just below them.
+      csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B',
+        onPick: () => { const el = document.querySelector(`[data-csfinal="${i}"]`), pin = document.querySelector('[data-csfinal-pin]'); if (!el) return;
+          // scrolling up brings the sticky bars back (and the pinned block down under them); scrolling down hides them
+          const z = pageZoom(), here = window.scrollY + el.getBoundingClientRect().top, pinH = pin ? pin.getBoundingClientRect().height : 0;
+          const up = here - pinH - 8 * z - 12 < window.scrollY;
+          const top = here - pinH - 8 * z - 12 - (up ? stickyOffset() : 0);
+          window.scrollTo({ top, behavior: 'smooth' }); } }; }),
+      csPair: pairs[pi], csFinalTop: (S.csPT ?? 148) + 'px',
+      csFinals: pairs.map((p, i) => { const c = cmps[i] ?? 50; return { ...p, i, n: '0' + (i + 1), before: U(p.before), after: U(p.after), pos: c + '%', rest: (100 - c) + '%',
+        onDown: (e) => { e.preventDefault(); this.cmpDrag = i; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {} },
+        onMove: (e) => { if (this.cmpDrag !== i) return; const r = e.currentTarget.getBoundingClientRect(); const v = Math.max(2, Math.min(98, (e.clientY - r.top) / r.height * 100)); this.setState(st => ({ csCmps: { ...(st.csCmps || {}), [i]: v } })); },
+        onUp: () => { this.cmpDrag = null; } }; })
     };
   }
   vals9(works, allCmds, sfx = '', pal = null) {
