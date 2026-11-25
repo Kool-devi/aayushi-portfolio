@@ -7,7 +7,8 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import { stickyOffset } from '../app/smoothScroll.js';
 
-export default function HScroll({ id, header, children, padLeft, padRight, gap, bodyPad = '28px 0 32px', bodyGap = '28px', style }) {
+// `aside` (optional) is a panel fixed on the left, `asideW` wide, that the cards slide in under.
+export default function HScroll({ id, header, aside, asideW, children, padLeft, padRight, gap, bodyPad = '28px 0 32px', bodyGap = '28px', style }) {
   const sec = useRef(null), body = useRef(null), area = useRef(null), track = useRef(null), over = useRef(0);
   const [m, setM] = useState({ vh: 700, bars: 140, over: 0 });
 
@@ -53,8 +54,13 @@ export default function HScroll({ id, header, children, padLeft, padRight, gap, 
     <section id={id} ref={sec} style={{ ...style, position: "relative", height: `${Math.round(m.vh + m.over)}px` }}>
       <div style={{ position: "sticky", top: "0", height: `${Math.round(m.vh)}px`, overflow: "hidden" }}>
         {/* kept just under the sticky bars; follows them up when they hide (site.css) */}
-        <div data-pinbody ref={body} style={{ height: `${Math.round(m.vh - m.bars)}px`, boxSizing: "border-box", padding: bodyPad, display: "flex", flexDirection: "column", gap: bodyGap }}>
+        <div data-pinbody ref={body} style={{ position: "relative", height: `${Math.round(m.vh - m.bars)}px`, boxSizing: "border-box", padding: bodyPad, display: "flex", flexDirection: "column", gap: bodyGap }}>
           {header}
+          {aside && (
+            <div style={{ position: "absolute", left: "0", top: "0", bottom: "0", width: asideW, zIndex: "1", background: "linear-gradient(90deg, #EFEFEC calc(100% - 28px), rgba(239,239,236,0))", pointerEvents: "none" }}>
+              <div style={{ pointerEvents: "auto", height: "100%", boxSizing: "border-box", padding: bodyPad }}>{aside}</div>
+            </div>
+          )}
           {/* a size container, so cards can size themselves to the height left for them (cqh) */}
           <div ref={area} style={{ flex: "1", minHeight: "0", containerType: "size" }}>
             <div ref={track} style={{ display: "flex", gap, height: "100%", width: "max-content", padding: `0 ${padRight} 0 ${padLeft}`, boxSizing: "border-box", willChange: "transform" }}>

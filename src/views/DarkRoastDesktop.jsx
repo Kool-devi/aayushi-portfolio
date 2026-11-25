@@ -274,17 +274,17 @@ export default function DarkRoastDesktop({ v }) {
       </section>
       {" "}
       {/* The problem: pins while the three annotated screens slide past sideways, then the page scrolls on. */}
-      <HScroll id="problem" style={{ marginTop: "96px" }} padLeft="369.5px" padRight="40px" gap="28px" bodyPad="22px 0 22px" bodyGap="24px" header={
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px", padding: "0 40px" }}>
+      <HScroll id="problem" style={{ marginTop: "96px" }} padLeft="369.5px" padRight="40px" gap="28px" bodyPad="16px 0 16px" bodyGap="0px" asideW="369.5px" aside={
+        <div style={{ display: "flex", flexDirection: "column", gap: "28px", padding: "0 28px 0 40px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-          <span style={{ color: "#E5322B" }}>
-            02
-          </span>
-          <span>
-            The problem
-          </span>
-        </div>
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.04" }}>
+            <span style={{ color: "#E5322B" }}>
+              02
+            </span>
+            <span>
+              The problem
+            </span>
+          </div>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "38px", lineHeight: "1.04" }}>
             {"Brands couldn’t tell which project "}
             <span style={{ fontStyle: "italic" }}>
               needed them first
@@ -292,7 +292,7 @@ export default function DarkRoastDesktop({ v }) {
           </h2>
         </div>
       }>
-        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} maxW="900px" capLines={2} />)}
+        {(v.csProblems || []).map((p) => <ShotCard key={p.n} {...p} maxW="1100px" capLines={2} />)}
       </HScroll>
       {" "}
       <section id="research" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
