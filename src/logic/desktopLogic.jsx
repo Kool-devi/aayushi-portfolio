@@ -9,6 +9,13 @@ const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before th
 
 const DL_PHONE_H = Math.round(232 * 1686 / 830); // Delicut day-pattern phone height (design px): 232px-wide iPhone frame
 
+// Alt text for the Selected Work cover photos
+const COVER_ALT = {
+  delicut: 'Delicut meal detail screen for a mushroom bake, on a phone',
+  darkroast: 'DarkRoast design review screen with comments, on a laptop',
+  case3: 'Attune AI Repair and Refine screens on two phones',
+};
+
 const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
 
 export default class DesktopLogic extends React.Component {
@@ -349,7 +356,7 @@ export default class DesktopLogic extends React.Component {
       { key: 'delicut', title: 'Delicut', desc: 'A meal plan app built for customers who skip days and come back later.', tags: 'Product design · UAE', href: 'project-delicut.html' },
       { key: 'darkroast', title: 'DarkRoast', desc: 'A dashboard that shows brands which design project needs them today.', tags: 'Product design', href: 'index.html' },
       { key: 'case3', title: 'Attune AI', desc: 'Deciding when an AI should help a couple and when it should step back.', tags: 'AI product design', href: 'project-attune.html' }
-    ].map(w => ({ ...w, placeholder: w.title + ' cover' }));
+    ].map(w => ({ ...w, placeholder: COVER_ALT[w.key] }));
     const about = [
       { n: '01', title: 'Background', body: 'Trained in industrial design before moving into digital products — I still design for how things get built.' },
       { n: '02', title: 'Past Experience', body: 'I’ve led product design at two early‑stage startups, shipping zero‑to‑one apps from concept to launch.' },

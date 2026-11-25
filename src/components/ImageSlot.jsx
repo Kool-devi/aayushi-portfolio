@@ -3,7 +3,8 @@
 //   images/portrait.jpg (desktop)  ·  images/portrait-wide.jpg (phone)  ·  images/cover-darkroast.jpg  ·  images/cover-delicut.jpg  ·  images/cover-attune.jpg
 import React from 'react';
 
-const found = import.meta.glob('../../images/*.{jpg,jpeg,png,webp}', { eager: true, query: '?url', import: 'default' });
+// og-*.png are the link-preview images, served from images/ as they are, not page photos
+const found = import.meta.glob(['../../images/*.{jpg,jpeg,png,webp}', '!../../images/og-*'], { eager: true, query: '?url', import: 'default' });
 const byName = Object.fromEntries(
   Object.entries(found).map(([path, url]) => [path.split('/').pop().replace(/\.[^.]+$/, ''), url]),
 );

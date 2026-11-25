@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/clean-assets.js && vite build",
+    "build": "node scripts/clean-assets.js && vite build && node scripts/prerender.js",
     "preview": "vite preview"
   },
   "dependencies": {

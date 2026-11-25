@@ -117,7 +117,7 @@ export default function DarkRoastDesktop({ v }) {
         {" "}
         <div style={{ position: "relative", height: "560px", margin: "0 -40px", background: "#E9DA2E", overflow: "hidden" }}>
           {" "}
-          <img src="Mockups/DarkRoast/Banner.webp" alt="DarkRoast projects workspace on a laptop" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          <img src="Mockups/DarkRoast/Banner.webp" alt="DarkRoast Projects page showing every project's status and priority in one list" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
             Fig. 01 — The new Projects page, where a brand can see every project’s status in one list

@@ -64,14 +64,14 @@ export default function HomeMobile({ v }) {
                 <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
               </svg>
               {" "}
-              <h1 data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
+              <div aria-hidden="true" data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
                 Innovate
                 <br />
                 {"with "}
                 <span style={{ fontStyle: "italic" }}>
                   purpose
                 </span>
-              </h1>
+              </div>
               {" "}
             </div>
             {" "}
