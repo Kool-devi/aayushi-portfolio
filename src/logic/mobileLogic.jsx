@@ -210,10 +210,10 @@ export default class MobileLogic extends React.Component {
     const iterD = 'I started with the Projects page, because that’s where brands decide what to look at first. Each version tested how much to show in the list and how much to keep inside the project.';
     const sets = [
       { t: 'Project listing', k: iterK, d: iterD, items: [
-        ['Added priority and a red edge to flag projects waiting on the brand', 'Dark Roast Project Listing Page Iterations/Listing V1 - Priority and red edge.webp'],
-        ['Simple list with a coloured status tag on each project', 'Dark Roast Project Listing Page Iterations/Listing V2 - Status tags.webp'],
+        ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Listing V4 - Grouped by status.webp'],
         ['Added a “slots used” bar to show how many active projects a brand had left', 'Dark Roast Project Listing Page Iterations/Listing V3 - Slots used.webp'],
-        ['Grouped projects by status, with priority tags and quick view and pause buttons', 'Dark Roast Project Listing Page Iterations/Listing V4 - Grouped by status.webp']] },
+        ['Simple list with a coloured status tag on each project', 'Dark Roast Project Listing Page Iterations/Listing V2 - Status tags.webp'],
+        ['Added priority and a red edge to flag projects waiting on the brand', 'Dark Roast Project Listing Page Iterations/Listing V1 - Priority and red edge.webp']] },
       { t: 'Detail header', k: iterK, d: iterD, items: [
         ['Opened the brief as a side panel next to messages, so brands could check it while chatting', 'Dark Roast Project Detail Page Iterations/Header V1 - Brief side panel.webp'],
         ['Kept it minimal, with status next to the title and everything else behind a “Project details” button', 'Dark Roast Project Detail Page Iterations/Header V2 - Minimal.webp'],
