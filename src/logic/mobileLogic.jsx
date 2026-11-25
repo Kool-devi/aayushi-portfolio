@@ -266,7 +266,7 @@ export default class MobileLogic extends React.Component {
           rcInsight: { darkroast: 'Sometimes the best redesign is the one users barely have to relearn.', delicut: 'Map every messy situation first, and the screens get much simpler.', case3: 'With AI, knowing when it should stop matters as much as what it says.' }[w.key],
           rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
     });
-    const list = allCmds.filter(c => ['why', 'about', 'email', 'resume'].includes(c.id));
+    const list = ['why', 'about', 'email', 'resume', 'canada', 'looking', 'ai'].map(id => allCmds.find(c => c.id === id)); // the “Just ask” topics, in order
     const q = (st('q9') || '').toLowerCase().trim();
     const f = list.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
     const sel = f.some(c => c.id === st('sel9')) ? st('sel9') : (f[0] && f[0].id);
@@ -335,11 +335,14 @@ export default class MobileLogic extends React.Component {
     const worksB = works.map((w, i) => ({ ...w, num: String(i + 1).padStart(2, '0'), flex: i === ex ? 3 : 1, op: i === ex ? 1 : 0, onEnter: () => this.state.ex !== i && this.setState({ ex: i }) }));
     const quick = (this.state.read ?? 'quick') === 'quick';
     const allCmds = [
-      { id: 'why', label: 'Why hire Aayushi?', kind: 'ASK', title: 'Why hire Aayushi?', body: '3+ years across enterprise, e‑commerce and ed‑tech. Cut task completion time 28% and design‑to‑dev handoff 35%. Authorized to work full‑time in Canada — open to work in 2026.', cta: 'Download résumé ↗\uFE0E', href: 'resume.pdf', target: '_blank' },
+      { id: 'why', label: 'Why hire Aayushi?', kind: 'THE SHORT ANSWER', title: 'I sort out the messy rules before I design the screens', body: 'On Delicut, I mapped 27 meal plan states before drawing anything. On DarkRoast, I kept a redesign familiar so long‑time users didn’t have to learn it again.', cta: 'See my work →', href: '#work', target: '_self' },
       ...works.map(w => ({ id: w.key, label: 'View ' + w.title, kind: 'PROJECT', title: w.title, body: w.desc + ' — ' + w.metric, cta: 'Open case study →', href: w.href, target: '_self', hasImg: true, key: w.key, ph: w.title + ' preview' })),
-      { id: 'about', label: 'About me', kind: 'PAGE', title: 'About me', body: 'I treat every brief as a systems problem — clarity of thinking first, aesthetics second. I’ve led product design at two early‑stage startups, shipping zero‑to‑one apps from concept to launch.', cta: 'Read more →', href: '#3c', target: '_self' },
-      { id: 'email', label: 'Copy email', kind: 'ACTION', title: 'aayushipatel2002@gmail.com', body: 'Available for Freelance, Full‑time & Collaborations. Let’s connect today.', cta: this.state.copied ? 'Copied ✓' : 'Copy email', href: '#3c', target: '_self', act: true },
-      { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé — 2026', body: 'One page. Experience, outcomes and toolkit.', cta: 'Download ↗\uFE0E', href: 'resume.pdf', target: '_blank' }
+      { id: 'about', label: 'About me', kind: 'HELLO', title: 'I grew up in India and now call Halifax home', body: 'Moving across the world taught me what it feels like to use things that weren’t designed with you in mind, and I think about that a lot in my work.' },
+      { id: 'email', label: 'Copy email', kind: 'EMAIL', title: 'aayushipatel2002@gmail.com', body: 'I usually reply within a day.', cta: this.state.copied ? 'Copied. Talk soon.' : 'Copy email', href: '#3c', target: '_self', act: true },
+      { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé 2026', body: 'One page with my experience and the tools I use.', cta: 'Download ↗\uFE0E', href: 'resume.pdf', target: '_blank' },
+      { id: 'canada', label: 'Can I work in Canada?', kind: 'WORK STATUS', title: 'Yes, I can start full time', body: 'I’m in Halifax on a work permit that lets me work full time. I’m happy with remote, hybrid or on‑site.' },
+      { id: 'looking', label: 'What I’m looking for', kind: 'NEXT ROLE', title: 'A product or UX role where design has a say in how the product works', body: 'I’ve spent 3 years on products with lots of moving parts, like subscriptions, dashboards and AI. I want to join a team where designers help shape the rules and the roadmap, then sit with developers to get the details right.' },
+      { id: 'ai', label: 'How I use AI', kind: 'HOW I WORK', title: 'AI is part of almost every step of my process', body: 'I use it to sort research notes, test ideas faster and turn Figma designs into working prototypes. The DarkRoast prototype on this site was built with Claude. AI speeds up the work, and I still make the design calls.' }
     ];
     const q = (this.state.cmdQ || '').toLowerCase().trim();
     const filtered = allCmds.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));

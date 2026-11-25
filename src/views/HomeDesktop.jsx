@@ -617,21 +617,17 @@ export default function HomeDesktop({ v }) {
         <div style={{ position: "relative", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "28px", padding: "20px 16px 16px 20px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "76px", lineHeight: ".95", color: "#0B0B0B" }}>
-            <span style={{ fontWeight: "300" }}>
-              (
-            </span>
-            {" Still deciding "}
-            <span style={{ fontWeight: "300" }}>
-              )
-            </span>
+            <span style={{ fontWeight: "300" }}>(</span>
+            {"Still "}
+            <span style={{ whiteSpace: "nowrap" }}>deciding?<span style={{ fontWeight: "300" }}>)</span></span>
             <br />
             <span style={{ color: "#E5322B" }}>
-              — just ask
+              Just ask
             </span>
           </h2>
           {" "}
           <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.55", maxWidth: "30ch" }}>
-            Pick a topic for a quick answer — who I am, why I’m a good fit, or how to reach me.
+            Pick a question. I’ve kept every answer short, like a good interview.
           </p>
           {" "}
         </div>
@@ -688,6 +684,7 @@ export default function HomeDesktop({ v }) {
                 {show(v.cur9d?.body)}
               </span>
               {" "}
+              {v.cur9d?.cta ? (
               <a className="dh4" href={v.cur9d?.href} target={v.cur9d?.target} onClick={v.cur9d?.onAct} style={{ marginTop: "auto", alignSelf: "flex-start", height: "48px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "16px", fontFamily: "'Geist',sans-serif", fontSize: "14px", fontWeight: "500" }}>
                 {show(v.cur9d?.cta)}{" "}
                 <span style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center" }}>
@@ -696,6 +693,7 @@ export default function HomeDesktop({ v }) {
                   </svg>
                 </span>
               </a>
+              ) : null}
               {" "}
             </div>
             {" "}
