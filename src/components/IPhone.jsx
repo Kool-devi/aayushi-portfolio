@@ -12,9 +12,9 @@ export function screenOf(width) {
   const h = width * AR * (1 - 2 * INSET_Y);
   const z = w / 400; // prototype zoom
   const protoH = 874 * z;
-  // the prototype is a touch taller than the screen: trim mostly from the bottom so its
-  // Dynamic Island keeps its natural gap below the bezel
-  return { w, h, z, protoH, top: (h - protoH) / 4 };
+  // the prototype is a touch taller than the screen: pin it to the top so its Dynamic Island
+  // keeps its natural gap below the bezel, and let the sliver of overflow fall off the bottom
+  return { w, h, z, protoH, top: 0 };
 }
 
 export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-shadow(0 30px 34px rgba(0,0,0,.22))', style, outer, children }) {
