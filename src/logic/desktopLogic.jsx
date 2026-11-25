@@ -49,7 +49,8 @@ export default class DesktopLogic extends React.Component {
       const atSteps = document.querySelectorAll('[data-atstep]');
       if (atSteps.length) {
         const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
-        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - 488) / 2));
+        const phoneH = 232 * 1686 / 830; // real iPhone frame (232 wide) — keep equal space above and below it
+        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - phoneH) / 2));
         if (this.state.atPT !== pt) this.setState({ atPT: pt });
         const mid = window.innerHeight * 0.55;
         let f = 0;
