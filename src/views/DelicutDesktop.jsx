@@ -683,14 +683,16 @@ export default function DelicutDesktop({ v }) {
             {/* Scroll story: the phone stays pinned while the three days scroll past beside it; the video follows the day in view. */}
             <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
               {" "}
-              <div style={{ position: "sticky", top: v.dlPhoneTop, width: "232px", height: "480px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#FFFFFF" }}>
+              {/* Real iPhone frame (same as Onboarding) over the day videos */}
+              <div style={{ position: "sticky", top: v.dlPhoneTop, width: "232px", aspectRatio: "830 / 1686", filter: "drop-shadow(0 30px 40px rgba(0,0,0,.5))" }}>
+                <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
                   {(v.dlDays || []).map((d, $index) => (
                     <React.Fragment key={$index}>
-                      <video src={d?.vid} ref={d?.ref} onEnded={d?.onEnd} muted playsInline preload="auto" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", opacity: d?.op, transition: "opacity .5s" }}></video>
+                      <video src={d?.vid} ref={d?.ref} onEnded={d?.onEnd} muted playsInline preload="auto" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", opacity: d?.op, transition: "opacity .5s" }}></video>
                     </React.Fragment>
                   ))}
                 </div>
+                <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
               </div>
               {" "}
               <div style={{ display: "flex", flexDirection: "column" }}>
