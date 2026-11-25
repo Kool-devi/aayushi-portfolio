@@ -257,13 +257,13 @@ export default class MobileLogic extends React.Component {
     const folders9 = works.map((w, i) => {
       const depth = i === fo ? 0 : order.indexOf(i) + 1;
       return { ...w, href: sfx === 'd' && ({ darkroast: 'project-darkroast.html', delicut: 'project-delicut.html', case3: 'project-attune.html' })[w.key] || w.href, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 286) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
-        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web + mobile', case3: 'Web' }[w.key], year: { darkroast: '2026', delicut: '2024', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
+        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web and mobile app', case3: 'Mobile app' }[w.key], year: { darkroast: '2026', delicut: '2025', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
         onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
         ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
           rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
           rcR: o ? '150%' : '0px' /* 150% of the pill's reference size reaches past its far (left) edge; 120% fell short */, rcTr: o ? 'clip-path 1.5s cubic-bezier(.45,0,.2,1)' : 'clip-path .9s cubic-bezier(.45,0,.2,1)',
           rcTxtOp: o ? 1 : 0, rcTxtY: o ? '0px' : '6px', rcTxtTr: o ? 'opacity .8s ease .55s, transform .9s cubic-bezier(.2,.8,.2,1) .55s' : 'opacity .2s ease, transform .2s ease',
-          rcInsight: { darkroast: 'The best redesign is the one users barely have to relearn.', delicut: 'Clarity sells better than discounts.', case3: 'Listen first; the design follows.' }[w.key],
+          rcInsight: { darkroast: 'Sometimes the best redesign is the one users barely have to relearn.', delicut: 'Map every messy situation first, and the screens get much simpler.', case3: 'With AI, knowing when it should stop matters as much as what it says.' }[w.key],
           rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
     });
     const list = allCmds.filter(c => ['why', 'about', 'email', 'resume'].includes(c.id));
@@ -295,9 +295,9 @@ export default class MobileLogic extends React.Component {
   renderVals() {
     // The order here is the order of the case studies in the Projects section.
     const works = [
-      { key: 'delicut', title: 'Delicut', desc: 'Making meal‑plan subscriptions easier to understand and manage.', tags: 'Subscriptions · Product Design', href: 'project-delicut.html' },
-      { key: 'darkroast', title: 'DarkRoast', desc: 'Helping brands manage five design projects at once instead of one.', tags: 'Client dashboard redesign', href: 'index.html' },
-      { key: 'case3', title: 'Attune AI', desc: 'Designing emotionally intelligent AI support for couples.', tags: 'AI Product · Relationship Support', href: 'project-attune.html' }
+      { key: 'delicut', title: 'Delicut', desc: 'A meal plan app built for customers who skip days and come back later.', tags: 'Product design · UAE', href: 'project-delicut.html' },
+      { key: 'darkroast', title: 'DarkRoast', desc: 'A dashboard that shows brands which design project needs them today.', tags: 'Product design', href: 'index.html' },
+      { key: 'case3', title: 'Attune AI', desc: 'Deciding when an AI should help a couple and when it should step back.', tags: 'AI product design', href: 'project-attune.html' }
     ].map(w => ({ ...w, placeholder: w.title + ' cover' }));
     const about = [
       { n: '01', title: 'Background', body: 'Trained in industrial design before moving into digital products — I still design for how things get built.' },
@@ -307,9 +307,9 @@ export default class MobileLogic extends React.Component {
       { n: '05', title: 'Inspiration', body: 'Architecture, long walks, and late‑night reading fuel most of my best ideas.' }
     ];
     const extra = {
-      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: '5 projects at once, up from 1', tag1: 'Agency platform' },
-      delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: '−35% handoff', tag1: 'Subscriptions' },
-      case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Research‑led', tag1: 'Product' }
+      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: 'Brands could track 5 design projects at once instead of 1', tag1: 'Agency platform' },
+      delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: 'Customers could skip, pause or change meals without calling support', tag1: 'Meal subscription' },
+      case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'An AI that helps couples work through fights without taking sides', tag1: 'AI for couples' }
     };
     const tilts = ['-2deg', '1.5deg', '-1deg'];
     works.forEach((w, i) => Object.assign(w, extra[w.key], { tilt: tilts[i] }));

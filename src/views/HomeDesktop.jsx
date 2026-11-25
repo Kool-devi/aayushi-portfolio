@@ -537,7 +537,7 @@ export default function HomeDesktop({ v }) {
                         <span style={{ fontSize: "12px", color: "#6E6E69" }}>
                           Outcome
                         </span>
-                        <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1.05", letterSpacing: "-.04em", color: "#0B0B0B" }}>
+                        <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "19px", lineHeight: "1.15", letterSpacing: "-.025em", color: "#0B0B0B" }}>
                           {show(f?.metric)}
                         </span>
                       </div>
@@ -571,13 +571,13 @@ export default function HomeDesktop({ v }) {
                       {" "}
                       <span aria-hidden="true" style={{ position: "absolute", inset: "0", background: "#FFFFFF", color: "#0B0B0B", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 10px 0 24px", clipPath: `circle(${f?.rcR ?? ""} at calc(100% - 29px) 50%)`, transition: f?.rcTr, pointerEvents: "none" }}>
                         {" "}
-                        <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0", opacity: f?.rcTxtOp, transform: `translateY(${f?.rcTxtY ?? ""})`, transition: f?.rcTxtTr }}>
+                        <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0", paddingRight: "16px", opacity: f?.rcTxtOp, transform: `translateY(${f?.rcTxtY ?? ""})`, transition: f?.rcTxtTr }}>
                           {" "}
                           <span style={{ fontFamily: "'Geist',sans-serif", fontSize: "10px", fontWeight: "500", letterSpacing: ".06em", textTransform: "uppercase", color: "#6E6E69" }}>
-                            The one insight
+                            What I learned
                           </span>
                           {" "}
-                          <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "14px", letterSpacing: "-.02em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "13.5px", lineHeight: "1.2", letterSpacing: "-.02em", display: "-webkit-box", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                             {show(f?.rcInsight)}
                           </span>
                           {" "}

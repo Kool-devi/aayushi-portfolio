@@ -501,6 +501,9 @@ export default function HomeMobile({ v }) {
                     <span style={{ position: "absolute", left: "10px", top: "10px", padding: "6px 11px", borderRadius: "999px", background: "rgba(255,255,255,.85)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "11.5px", fontWeight: "500", color: "#0B0B0B", pointerEvents: "none" }}>
                       {show(f?.tag1)}
                     </span>
+                    <span style={{ position: "absolute", right: "10px", top: "10px", padding: "6px 11px", borderRadius: "999px", background: "rgba(11,11,11,.55)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12px", fontWeight: "500", color: "#FFFFFF" }}>
+                      {"Case "}{show(f?.num)}
+                    </span>
                     {" "}
                   </div>
                   {" "}
@@ -526,7 +529,7 @@ export default function HomeMobile({ v }) {
                       <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#6E6E69" }}>
                         Outcome
                       </span>
-                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "19px", lineHeight: "1.05", letterSpacing: "-.035em", color: "#0B0B0B" }}>
+                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "15px", lineHeight: "1.2", letterSpacing: "-.02em", color: "#0B0B0B" }}>
                         {show(f?.metric)}
                       </span>
                     </div>
@@ -544,6 +547,11 @@ export default function HomeMobile({ v }) {
                       </span>
                     </div>
                     {" "}
+                  </div>
+                  {" "}
+                  <div style={{ padding: "12px 14px", borderRadius: "12px", background: "#F3F3F1", display: "flex", flexDirection: "column", gap: "4px" }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "9px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>What I learned</span>
+                    <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "15px", lineHeight: "1.3", letterSpacing: "-.02em", color: "#0B0B0B" }}>{show(f?.rcInsight)}</span>
                   </div>
                   {" "}
                   <a href={f?.href} style={{ height: "52px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14.5px", fontWeight: "500" }}>
