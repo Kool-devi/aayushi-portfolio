@@ -1,8 +1,6 @@
 /* eslint-disable */
 // Delicut page — desktop layout. Generated from the Claude Design board 13a, then hand-tuned.
 import React from 'react';
-import HScroll from '../components/HScroll.jsx';
-import PathCard from '../components/PathCard.jsx';
 import ImageSlot from '../components/ImageSlot.jsx';
 import { css, show } from '../lib/template.js';
 
@@ -273,64 +271,159 @@ export default function DelicutDesktop({ v }) {
           </div>
         </div>
       </section>
-      {/* The problem: pins while the designed path, the real one and the question they raise slide past sideways, then the page scrolls on. */}
-      <HScroll id="problem" style={{ marginTop: "100px" }} padLeft="369.5px" padRight="40px" gap="40px" bodyPad="16px 0 16px" bodyGap="0px" asideW="369.5px" aside={
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px", padding: "0 28px 0 40px" }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-            <span style={{ color: "#E5322B" }}>
-              02
-            </span>
-            <span>
-              The problem
-            </span>
-          </div>
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.04" }}>
+      <section id="problem" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <span style={{ color: "#E5322B" }}>
+            02
+          </span>
+          <span>
+            The problem
+          </span>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+          {" "}
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05", maxWidth: "20ch" }}>
             {"The path was clean. "}
             <span style={{ fontStyle: "italic" }}>
               Real customers weren’t.
             </span>
           </h2>
-        </div>
-      }>
-        <PathCard kicker="A · What we designed for" title="One straight line." body="Choose → start → receive → finish." src="Mockups/Delicut/Delicut_Original.png" alt="The journey we designed for: choose a plan, start, receive meals, finish" label="Original" />
-        {/* the hand-off between the two journeys: the expected path runs straight on, real life veers off */}
-        <div aria-hidden="true" style={{ flex: "none", width: "190px", height: "100%", position: "relative" }}>
-          <svg width="190" height="120" viewBox="0 0 190 120" style={{ position: "absolute", left: "0", top: "calc(50% - 60px)", overflow: "visible" }}>
-            <path d="M 0 40 L 190 40" fill="none" stroke="#0B0B0B" strokeWidth="1" strokeDasharray="3 5"></path>
-            <path d="M 0 40 C 70 40, 60 100, 190 100" fill="none" stroke="#E5322B" strokeWidth="2"></path>
-          </svg>
-          <span style={{ position: "absolute", left: "0", bottom: "calc(50% + 32px)", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-            Expected path →
-          </span>
-          <span style={{ position: "absolute", left: "0", top: "calc(50% + 56px)", width: "190px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-            …then real life happened {"↘︎"}
-          </span>
-        </div>
-        <PathCard real kicker="B · What customers did" title={<>{"Loops, detours & "}<span style={{ fontStyle: "italic" }}>returns.</span></>} body="Each detour is a subscription state the app didn’t yet have an answer for." src="Mockups/Delicut/Delicut_Real.png" alt="What customers actually did: joined late, skipped and paused days, changed address, came back" label="Real" tags={[
-          { n: "01", t: "Joined late", rot: -4, pos: { left: "16%", top: "-20px" } },
-          { n: "02", t: "Skipped meals", rot: 3, pos: { left: "46%", top: "-22px" } },
-          { n: "03", t: "Paused days", rot: 5, pos: { right: "-26px", top: "16%" } },
-          { n: "04", t: "Changed address", rot: 2, pos: { left: "-26px", bottom: "4%" } },
-          { n: "05", t: "Came back", rot: -3, pos: { right: "12%", bottom: "-20px" } },
-        ]} />
-        <div style={{ flex: "none", width: "560px", height: "100%", boxSizing: "border-box", padding: "158px 0 26px" /* lines up with the diagrams: PathCard text band + gap + pad */ }}>
-          <div style={{ height: "100%", boxSizing: "border-box", borderRadius: "24px", background: "#0B0B0B", color: "#FFFFFF", padding: "40px", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px" }}>
-            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-              The question
-            </span>
-            <blockquote style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.05em", fontSize: "44px", lineHeight: "1.05" }}>
-              {"“What should the home screen do in "}
-              <span style={{ fontStyle: "italic", color: "#FCEB3F" }}>
-                every possible state
+          {" "}
+          <div style={{ position: "relative", display: "flex", flexDirection: "column" }}>
+            {" "}
+            <div style={{ display: "grid", gridTemplateColumns: "200px minmax(0,1fr)", gap: "28px", alignItems: "center" }}>
+              {" "}
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {" "}
+                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
+                  A · What we designed for
+                </span>
+                {" "}
+                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1", letterSpacing: "-.04em" }}>
+                  One straight line.
+                </span>
+                {" "}
+                <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
+                  Choose → start → receive → finish.
+                </span>
+                {" "}
+              </div>
+              {" "}
+              <div style={{ position: "relative", width: "88%", height: "240px", borderRadius: "18px", background: "#FFFFFF url('Mockups/Delicut/Delicut_Original.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "18px 24px", boxSizing: "border-box", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+                {" "}
+                <span style={{ position: "absolute", left: "16px", top: "-12px", padding: "6px 11px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12px", fontWeight: "600" }}>
+                  Original
+                </span>
+                {" "}
+              </div>
+              {" "}
+            </div>
+            {" "}
+            <div style={{ position: "relative", height: "120px" }}>
+              {" "}
+              <svg width="100%" height="120" viewBox="0 0 1000 120" preserveAspectRatio="none" style={{ position: "absolute", inset: "0", overflow: "visible" }}>
+                {" "}
+                <path d="M 520 0 L 520 120" fill="none" stroke="#0B0B0B" strokeWidth="1" strokeDasharray="3 5" vectorEffect="non-scaling-stroke"></path>
+                {" "}
+                <path d="M 520 0 C 520 70, 760 40, 780 120" fill="none" stroke="#E5322B" strokeWidth="2" vectorEffect="non-scaling-stroke"></path>
+                {" "}
+              </svg>
+              {" "}
+              <span style={{ position: "absolute", left: "calc(52% - 210px)", top: "46px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
+                Expected path ↓
               </span>
-              {" of a subscription?”"}
-            </blockquote>
-            <p style={{ margin: "0", paddingTop: "20px", borderTop: "1px solid rgba(255,255,255,.25)", fontSize: "16px", lineHeight: "1.55", color: "rgba(255,255,255,.75)" }}>
-              The challenge: make these states clear without making the app feel complicated.
-            </p>
+              {" "}
+              <span style={{ position: "absolute", left: "calc(66% + 8px)", top: "30px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+                …then real life happened {"↘\uFE0E"}
+              </span>
+              {" "}
+            </div>
+            {" "}
+            <div style={{ display: "grid", gridTemplateColumns: "200px minmax(0,1fr)", gap: "28px", alignItems: "center" }}>
+              {" "}
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {" "}
+                <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+                  B · What customers did
+                </span>
+                {" "}
+                <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1", letterSpacing: "-.04em" }}>
+                  {"Loops, detours & "}
+                  <span style={{ fontStyle: "italic" }}>
+                    returns.
+                  </span>
+                </span>
+                {" "}
+                <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
+                  Each detour is a subscription state the app didn’t yet have an answer for.
+                </span>
+                {" "}
+              </div>
+              {" "}
+              <div style={{ position: "relative", width: "88%", padding: "28px 0 28px 0" }}>
+                {" "}
+                <span className="dh9" style={{ position: "absolute", left: "14%", top: "-2px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(-4deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
+                  <span style={{ fontSize: "10px", opacity: ".75" }}>
+                    01
+                  </span>
+                  Joined late
+                </span>
+                {" "}
+                <span className="dh9" style={{ position: "absolute", left: "44%", top: "-6px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(3deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
+                  <span style={{ fontSize: "10px", opacity: ".75" }}>
+                    02
+                  </span>
+                  Skipped meals
+                </span>
+                {" "}
+                <span className="dh9" style={{ position: "absolute", right: "-10px", top: "14px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(5deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
+                  <span style={{ fontSize: "10px", opacity: ".75" }}>
+                    03
+                  </span>
+                  Paused days
+                </span>
+                {" "}
+                <span className="dh9" style={{ position: "absolute", left: "10%", bottom: "4px", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(2deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
+                  <span style={{ fontSize: "10px", opacity: ".75" }}>
+                    04
+                  </span>
+                  Changed address
+                </span>
+                {" "}
+                <span className="dh9" style={{ position: "absolute", right: "12%", bottom: "0", zIndex: "2", display: "flex", alignItems: "center", gap: "8px", padding: "9px 13px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "13px", fontWeight: "500", letterSpacing: "-.01em", transform: "rotate(-3deg)", boxShadow: "0 10px 24px -10px rgba(229,50,43,.6)", transition: "transform .4s cubic-bezier(.3,1.3,.4,1)" }}>
+                  <span style={{ fontSize: "10px", opacity: ".75" }}>
+                    05
+                  </span>
+                  Came back
+                </span>
+                {" "}
+                <div style={{ position: "relative", height: "240px", borderRadius: "18px", background: "#FFFFFF url('Mockups/Delicut/Delicut_Real.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "18px 24px", boxSizing: "border-box", outline: "2px solid #E5322B", outlineOffset: "6px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+                  {" "}
+                  <span style={{ position: "absolute", left: "18px", top: "-12px", padding: "6px 11px", borderRadius: "999px", background: "#E5322B", color: "#FFFFFF", fontSize: "12px", fontWeight: "600" }}>
+                    Real
+                  </span>
+                  {" "}
+                </div>
+                {" "}
+              </div>
+              {" "}
+            </div>
+            {" "}
           </div>
+          {" "}
+          <blockquote style={{ margin: "0", paddingTop: "28px", borderTop: "1px solid #0B0B0B", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1.05" }}>
+            {"“What should the home screen do in "}
+            <span style={{ fontStyle: "italic" }}>
+              every possible state
+            </span>
+            {" of a subscription?”"}
+          </blockquote>
+          {" "}
+          <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "60ch" }}>
+            The challenge: make these states clear without making the app feel complicated.
+          </p>
         </div>
-      </HScroll>
+      </section>
       <section id="goals" style={{ padding: "100px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
