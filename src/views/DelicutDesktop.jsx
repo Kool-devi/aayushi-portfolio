@@ -59,9 +59,9 @@ export default function DelicutDesktop({ v }) {
             </span>
             {" "}
             <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".98" }}>
-              {"Delicut’s meal plan subscription — designed for how customers "}
+              {"Designing Delicut’s meal app for customers who "}
               <span style={{ fontStyle: "italic" }}>
-                really behave.
+                don’t follow the plan
               </span>
             </h1>
             {" "}
@@ -73,28 +73,28 @@ export default function DelicutDesktop({ v }) {
               Role
             </span>
             <span>
-              Product / UX Designer
+              Product Designer
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
               Focus
             </span>
             <span>
-              Subscription UX, onboarding, IA, delivery management, mobile, design QA
+              Subscription flows, onboarding and delivery management on web and mobile
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
               Timeline
             </span>
             <span>
-              4 months · 2025
+              4 months, 2025
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
               Team
             </span>
             <span>
-              {"Design, client stakeholders, product & engineering"}
+              {"Me and my design team, with Delicut’s product and engineering teams"}
             </span>
             {" "}
           </div>
@@ -106,7 +106,7 @@ export default function DelicutDesktop({ v }) {
           <img src="Mockups/Delicut/Banner.webp" alt="Delicut app home screen on a phone" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
-            {"Fig. 01 — Calorie summary & upcoming meals"}
+            {"Fig. 01 · Home screen with the day’s calories and upcoming meals"}
           </span>
           {" "}
           <a href="https://delicut.ae/" target="_blank" style={{ position: "absolute", right: "40px", bottom: "20px", height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
@@ -143,10 +143,10 @@ export default function DelicutDesktop({ v }) {
         {" "}
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
-            TL;DR
+            00
           </span>
           <span>
-            In one minute
+            TL;DR
           </span>
         </div>
         {" "}
@@ -159,9 +159,9 @@ export default function DelicutDesktop({ v }) {
             </span>
             {" "}
             <p style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: "1.08", letterSpacing: "-.04em", maxWidth: "22ch" }}>
-              {"customers across the UAE — and a product that only worked if they did "}
+              {"customers across the UAE, and the app only worked if they "}
               <span style={{ fontStyle: "italic" }}>
-                exactly what we expected.
+                followed their plan exactly.
               </span>
             </p>
             {" "}
@@ -174,10 +174,10 @@ export default function DelicutDesktop({ v }) {
                 When I joined
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                A strong service.
+                The service worked, but the app didn’t keep up
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#3C3C38" }}>
-                Late joins, skipped meals, pauses and address changes had no clear product experience.
+                Late joins, skipped meals, paused days and address changes had no clear screens.
               </span>
             </div>
             {" "}
@@ -186,13 +186,13 @@ export default function DelicutDesktop({ v }) {
                 What I did
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                {"Mapped the states, "}
+                {"Mapped 27 states "}
                 <span style={{ fontStyle: "italic" }}>
-                  simplified the rules.
+                  before designing screens
                 </span>
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55", color: "#FFFFFFb3" }}>
-                {"Then designed web & mobile flows that respond to where the customer is in their subscription."}
+                {"Then I designed web and mobile flows that change based on where the customer is in their plan."}
               </span>
             </div>
             {" "}
@@ -201,13 +201,13 @@ export default function DelicutDesktop({ v }) {
                 The result
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1.05", letterSpacing: "-.04em" }}>
-                {"A flexible product "}
+                {"An app built for "}
                 <span style={{ fontStyle: "italic" }}>
-                  system.
+                  real customer habits
                 </span>
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.55" }}>
-                Built around real customer behaviour, not the happy path.
+                Customers could skip days and change meals on their own, without calling support.
               </span>
             </div>
             {" "}
@@ -227,7 +227,7 @@ export default function DelicutDesktop({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1.02" }}>
-            {"Ready‑made, macro‑tracked meals. The product had "}
+            {"Delicut delivers ready‑made meals with calories and macros counted. The product had "}
             <span style={{ fontStyle: "italic" }}>
               two jobs.
             </span>
@@ -240,10 +240,10 @@ export default function DelicutDesktop({ v }) {
                 Job 01 · Website
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: ".98" }}>
-                {"Choose & buy the right plan"}
+                {"Help people pick a plan"}
               </span>
               <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#3C3C38" }}>
-                Help someone new to structured meal plans pick confidently, based on goals and preferences.
+                Help someone new to meal plans choose one based on their goals and food preferences.
               </span>
             </div>
             {" "}
@@ -255,16 +255,16 @@ export default function DelicutDesktop({ v }) {
             {" "}
             <div style={{ padding: "28px", borderRadius: "24px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "14px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
-                Job 02 · App — where it got complex
+                Job 02 · App, the harder part
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: ".98" }}>
-                {"Live with that plan "}
+                {"Help them live with it "}
                 <span style={{ fontStyle: "italic" }}>
                   every day
                 </span>
               </span>
               <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#FFFFFFb3" }}>
-                Scheduled deliveries, meal changes, skips, cut‑offs — managed through the app.
+                Deliveries, meal swaps, skips and cut‑off times, all handled in the app.
               </span>
             </div>
             {" "}
@@ -277,15 +277,15 @@ export default function DelicutDesktop({ v }) {
             02
           </span>
           <span>
-            The problem
+            Problem
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05", maxWidth: "20ch" }}>
-            {"The path was clean. "}
+            {"The plan was designed as a straight line. "}
             <span style={{ fontStyle: "italic" }}>
-              Real customers weren’t.
+              Customers didn’t follow it.
             </span>
           </h2>
           {" "}
@@ -300,11 +300,11 @@ export default function DelicutDesktop({ v }) {
                 </span>
                 {" "}
                 <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                  One straight line.
+                  One straight path
                 </span>
                 {" "}
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  Choose → start → receive → finish.
+                  Pick a plan, start, get meals, finish.
                 </span>
                 {" "}
               </div>
@@ -334,7 +334,7 @@ export default function DelicutDesktop({ v }) {
               </span>
               {" "}
               <span style={{ position: "absolute", left: "calc(66% + 8px)", top: "30px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
-                …then real life happened {"↘\uFE0E"}
+                What actually happened {"↘\uFE0E"}
               </span>
               {" "}
             </div>
@@ -348,14 +348,14 @@ export default function DelicutDesktop({ v }) {
                 </span>
                 {" "}
                 <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                  {"Loops, detours & "}
+                  {"Detours and "}
                   <span style={{ fontStyle: "italic" }}>
-                    returns.
+                    restarts
                   </span>
                 </span>
                 {" "}
                 <span style={{ fontSize: "14px", lineHeight: "1.5", color: "#3C3C38" }}>
-                  Each detour is a subscription state the app didn’t yet have an answer for.
+                  Every detour was a situation the app had no screen for.
                 </span>
                 {" "}
               </div>
@@ -394,7 +394,7 @@ export default function DelicutDesktop({ v }) {
                   <span style={{ fontSize: "10px", opacity: ".75" }}>
                     05
                   </span>
-                  Came back
+                  Came back after ending
                 </span>
                 {" "}
                 <div style={{ position: "relative", height: "240px", borderRadius: "18px", background: "#FFFFFF url('Mockups/Delicut/Delicut_Real.png') center/contain no-repeat", backgroundOrigin: "content-box", padding: "18px 24px", boxSizing: "border-box", outline: "2px solid #E5322B", outlineOffset: "6px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
@@ -412,15 +412,15 @@ export default function DelicutDesktop({ v }) {
           </div>
           {" "}
           <blockquote style={{ margin: "0", paddingTop: "28px", borderTop: "1px solid #0B0B0B", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1.05" }}>
-            {"“What should the home screen do in "}
+            {"“What should the home screen show in "}
             <span style={{ fontStyle: "italic" }}>
               every possible state
             </span>
-            {" of a subscription?”"}
+            {" of a plan?”"}
           </blockquote>
           {" "}
           <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.55", color: "#3C3C38", maxWidth: "60ch" }}>
-            The challenge: make these states clear without making the app feel complicated.
+            The challenge was to handle all of this without making the app feel complicated.
           </p>
         </div>
       </section>
@@ -437,9 +437,9 @@ export default function DelicutDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", paddingBottom: "4px" }}>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05" }}>
-              {"Every user goal had a "}
+              {"Each customer goal had a "}
               <span style={{ fontStyle: "italic" }}>
-                business twin.
+                matching business goal
               </span>
             </h2>
           </div>
@@ -457,7 +457,7 @@ export default function DelicutDesktop({ v }) {
                   {" "}
                   <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                     <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                      User goal
+                      Customer goal
                     </span>
                     <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
                       {show(g?.u)}
@@ -497,9 +497,9 @@ export default function DelicutDesktop({ v }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.05" }}>
-            {"I started by looking at "}
+            {"I started with "}
             <span style={{ fontStyle: "italic" }}>
-              where users were coming from.
+              where customers came from before they opened the app
             </span>
           </h2>
           {" "}
@@ -555,7 +555,7 @@ export default function DelicutDesktop({ v }) {
               decision
             </span>
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "30px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
-              {"Treat the app as the next step in the same customer journey — "}
+              {"The app should feel like the next step after buying, "}
               <span style={{ fontStyle: "italic" }}>
                 not a separate product.
               </span>
@@ -583,27 +583,27 @@ export default function DelicutDesktop({ v }) {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "18px", minWidth: "0" }}>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1.05" }}>
-              {"Set the app up around the user — "}
+              {"Setting up the app around the customer "}
               <span style={{ fontStyle: "italic" }}>
-                without it feeling like a long form.
+                without it feeling like a long form
               </span>
             </h2>
             <div style={{ borderRadius: "22px", overflow: "hidden", background: "#F9F4ED", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -36px rgba(0,0,0,.22)" }}>
               <img src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto" }} />
             </div>
             <p style={{ margin: "0", fontSize: "14.5px", lineHeight: "1.5", color: "#3C3C38" }}>
-              If the plan hasn’t started yet, users don’t land on an empty dashboard — they see when it starts, when meals are assigned and when the first delivery arrives.
+              If the plan hasn’t started yet, customers don’t see an empty home screen. They see when the plan starts and when the first delivery arrives.
             </p>
             <div style={{ padding: "16px 20px", borderRadius: "18px", background: "#0B0B0B", color: "#FFFFFF", display: "flex", flexDirection: "column", gap: "8px" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
                 Design decision
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "20px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
-                {"The end of onboarding needed to explain "}
+                {"The last onboarding screen tells customers "}
                 <span style={{ fontStyle: "italic" }}>
                   what happens next
                 </span>
-                {" — not just confirm setup was complete."}
+                {", not just that setup is done."}
               </span>
             </div>
           </div>
@@ -615,7 +615,7 @@ export default function DelicutDesktop({ v }) {
             06
           </span>
           <span>
-            Mapping the system
+            27 states
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -627,9 +627,9 @@ export default function DelicutDesktop({ v }) {
             </span>
             {" "}
             <h2 style={{ margin: "0 0 8px", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: "1.05", maxWidth: "20ch" }}>
-              {"home & delivery states, mapped "}
+              {"home and delivery states, mapped "}
               <span style={{ fontStyle: "italic" }}>
-                before any screen.
+                before I designed a single screen
               </span>
             </h2>
             {" "}
@@ -638,7 +638,7 @@ export default function DelicutDesktop({ v }) {
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }}>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginRight: "6px" }}>
-              Across
+              Based on
             </span>
             {" "}
             {(v.dlAxes || []).map((a, $index) => (
@@ -666,18 +666,18 @@ export default function DelicutDesktop({ v }) {
               07
             </span>
             <span>
-              Time‑based pattern
+              Day pattern
             </span>
           </div>
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             {" "}
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-              {"Same meal card. "}
+              {"The same meal card shows "}
               <span style={{ fontStyle: "italic" }}>
-                Different actions,
+                different actions
               </span>
-              {" depending on the day you’re looking at."}
+              {" depending on the day"}
             </h2>
             {" "}
             {/* Scroll story: the phone stays pinned while the three days scroll past beside it; the video follows the day in view. */}
@@ -744,9 +744,9 @@ export default function DelicutDesktop({ v }) {
                 decision
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1.12", letterSpacing: "-.04em" }}>
-                {"Meal information stays familiar — "}
+                {"The meal details stay the same. "}
                 <span style={{ fontStyle: "italic" }}>
-                  the actions change with time.
+                  Only the actions change with the day.
                 </span>
               </span>
             </div>
@@ -761,15 +761,15 @@ export default function DelicutDesktop({ v }) {
             08
           </span>
           <span>
-            Key interaction patterns
+            Key UX patterns
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1.05" }}>
-            {"Two small patterns that remove "}
+            {"Two small patterns that stop customers from "}
             <span style={{ fontStyle: "italic" }}>
-              dead ends.
+              hitting a dead end
             </span>
           </h2>
           {" "}
@@ -813,17 +813,17 @@ export default function DelicutDesktop({ v }) {
             09
           </span>
           <span>
-            Expiry flow
+            Expiry
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1" }}>
-            {"Expiry was a "}
+            {"Ending a plan took "}
             <span style={{ fontStyle: "italic" }}>
-              journey,
+              four stages,
             </span>
-            {" not one screen."}
+            {" not one screen"}
           </h2>
           {" "}
           {/* Stages play on their own: each card's bar fills over a few seconds, then the next stage takes over, looping. Hover pauses; a click jumps. */}
@@ -886,7 +886,7 @@ export default function DelicutDesktop({ v }) {
               </span>
               {" "}
               <span style={{ marginTop: "auto", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "12px", borderTop: "1px solid #0B0B0B" }}>
-                {"Home shows → "}{show(v.dlExpCur?.shows)}
+                {"Home page shows → "}{show(v.dlExpCur?.shows)}
               </span>
               {" "}
             </div>
@@ -900,11 +900,11 @@ export default function DelicutDesktop({ v }) {
               decision
             </span>
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "22px", lineHeight: "1.15", letterSpacing: "-.03em" }}>
-              {"When the plan ends, meal‑level actions go. Familiar plan details stay — with a "}
+              {"When a plan ends, meal actions go away. Plan details stay, with an "}
               <span style={{ fontStyle: "italic" }}>
-                strong renewal path
+                easy way back in
               </span>
-              {" back in."}
+              {"."}
             </span>
           </div>
         </div>
@@ -929,9 +929,9 @@ export default function DelicutDesktop({ v }) {
           <div style={{ display: "flex", flexDirection: "column", gap: "40px" }}>
             {" "}
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "60px", lineHeight: ".98" }}>
-              {"Complexity doesn’t disappear because the interface looks simple. "}
+              {"A simple screen still needs someone to understand "}
               <span style={{ fontStyle: "italic" }}>
-                Someone still has to understand it.
+                the messy rules behind it
               </span>
             </h2>
             {" "}
@@ -939,28 +939,28 @@ export default function DelicutDesktop({ v }) {
               {" "}
               <div style={{ padding: "24px", borderRadius: "18px", background: "#FFFFFF", display: "flex", flexDirection: "column", gap: "10px" }}>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                  Before drawing the final screen
+                  Before the final screens
                 </span>
                 <span style={{ fontSize: "15.5px", lineHeight: "1.55" }}>
-                  Mapping states, finding conflicting rules, asking what should happen next, documenting decisions, connecting one flow to another.
+                  Most of my time went into mapping states and sorting out rules that clashed with each other.
                 </span>
               </div>
               {" "}
               <div style={{ padding: "24px", borderRadius: "18px", background: "#FFFFFF", display: "flex", flexDirection: "column", gap: "10px" }}>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                  When a project changes quickly
+                  When the project changed quickly
                 </span>
                 <span style={{ fontSize: "15.5px", lineHeight: "1.55" }}>
-                  I can’t stop every new idea — but I can help the team see which solve a real problem, which create new ones, and which should wait.
+                  I couldn’t stop every new idea, but I could help the team see which ones solved a real problem and which could wait.
                 </span>
               </div>
               {" "}
             </div>
             {" "}
             <blockquote style={{ margin: "0", paddingTop: "28px", borderTop: "1px solid #0B0B0B", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "40px", lineHeight: "1.05" }}>
-              {"“My job is not only to make the interface clear. It’s to help make "}
+              {"“When the rules behind a product are clear, "}
               <span style={{ fontStyle: "italic" }}>
-                the product itself clearer.
+                the screens are easy to design.
               </span>
               ”
             </blockquote>
