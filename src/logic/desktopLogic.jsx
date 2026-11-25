@@ -2,7 +2,7 @@
 // Page state and behaviour for the desktop layout, ported from the Claude Design prototype.
 // One class serves all four pages; each page renders only its own view.
 import React from 'react';
-import { stickyOffset } from '../app/smoothScroll.js';
+import { stickyOffset, scrollToSection } from '../app/smoothScroll.js';
 
 // Case-study pages: which state key holds the highlighted chapter pill.
 const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
@@ -60,6 +60,20 @@ export default class DesktopLogic extends React.Component {
         const act = sr && sr.top < window.innerHeight && sr.bottom > 0 ? f : -1;
         // the previous prototype stays on screen until the new one has drawn its first screen (no dark gap)
         if ((this.state.atAct ?? -1) !== act) this.setState(s => { const run = (s.atRun ?? 0) + 1, keys = { ...(s.atKeys || {}) }; if (act >= 0) keys[act] = run; return { atAct: act, atRun: run, atKeys: keys, atKeep: act >= 0 ? (s.atAct ?? -1) : -1 }; });
+      }
+      // DarkRoast "Final design": the comparison crossing the middle of the screen picks the name;
+      // the pinned left column sits just under the part of the sticky bars that is on screen.
+      const finals = document.querySelectorAll('[data-csfinal]');
+      if (finals.length) {
+        let vis = 0;
+        document.querySelectorAll('[data-sticky]').forEach((el) => { vis = Math.max(vis, el.getBoundingClientRect().bottom); });
+        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = Math.min(Math.max(vis, 0), stickyOffset()) / zoom;
+        const pt = Math.round(bars + 24);
+        if (this.state.csPT !== pt) this.setState({ csPT: pt });
+        const mid = window.innerHeight * 0.5;
+        let fi = 0;
+        finals.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) fi = i; });
+        if ((this.state.csPair ?? 0) !== fi) this.setState({ csPair: fi });
       }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
@@ -235,7 +249,7 @@ export default class DesktopLogic extends React.Component {
       { t: 'Project listing', before: 'Before After/v2/2-before.webp', after: 'Before After/v2/2-after.webp', b: 'Status was small grey text, and the coloured bars had no clear meaning.', a: 'Each row shows status and priority clearly, so brands know what needs them first.' },
       { t: 'Messages', before: 'Before After/v2/3-before.webp', after: 'Before After/v2/3-after.webp', b: 'Messages were squeezed between a crowded top bar and a large brief panel.', a: 'The brief opens only when needed, so messages get the full width.' },
       { t: 'File review', before: 'Before After/v2/4-before.webp', after: 'Before After/v2/4-after.webp', b: 'Files sat in a plain list with long names and no sign of file type.', a: 'Each file shows a preview, file type, uploader and date in one place.' }];
-    const pi = S.csPair ?? 0, cmp = S.csCmp ?? 50;
+    const pi = S.csPair ?? 0, cmps = S.csCmps || {};
     return {
       csChapters: chap.map(([t, id], i) => ({ t, n: String(i).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ csCh: i }) })),
       csProblems: problems.map(([t, p, d], i) => ({ t, d, src: U(p), n: String(i + 1).padStart(2, '0') })),
@@ -249,12 +263,15 @@ export default class DesktopLogic extends React.Component {
       csIterLeft: si ? '50%' : '4px', csIterSet: set,
       csIters: set.items.map(([t, p], i) => ({ t, n: 'V' + (i + 1), src: U(p), op: i === ii ? 1 : 0, s: i === ii ? 1 : 1.03, bg: i === ii ? '#FFFFFF' : '#E2E2DE', onPick: () => this.state.csIt !== i && this.setState({ csIt: i }) })),
       csIterCur: { n: 'V' + (ii + 1), t: set.items[ii][0] },
-      csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', onPick: () => this.setState({ csPair: i, csCmp: 50 }) }; }),
-      csPair: { ...pairs[pi], before: U(pairs[pi].before), after: U(pairs[pi].after) },
-      csCmpPos: cmp + '%', csCmpRest: (100 - cmp) + '%',
-      onCmpDown: (e) => { e.preventDefault(); this.cmpDrag = true; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {} },
-      onCmpMove: (e) => { if (!this.cmpDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ csCmp: Math.max(2, Math.min(98, (e.clientY - r.top) / r.height * 100)) }); },
-      onCmpUp: () => { this.cmpDrag = false; }
+      // Final design: the names and Before/After notes stay pinned on the left while the four
+      // comparisons scroll past on the right; the one crossing the middle of the screen is active
+      // (scroll spy above). Picking a name scrolls to its comparison.
+      csPairs: pairs.map((p, i) => { const on = i === pi; return { t: p.t, n: '0' + (i + 1), bg: on ? '#0B0B0B' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', onPick: () => { const el = document.querySelector(`[data-csfinal="${i}"]`); if (el) scrollToSection(el); } }; }),
+      csPair: pairs[pi], csFinalTop: (S.csPT ?? 150) + 'px',
+      csFinals: pairs.map((p, i) => { const c = cmps[i] ?? 50; return { ...p, i, n: '0' + (i + 1), before: U(p.before), after: U(p.after), pos: c + '%', rest: (100 - c) + '%',
+        onDown: (e) => { e.preventDefault(); this.cmpDrag = i; try { e.currentTarget.setPointerCapture(e.pointerId); } catch (_) {} },
+        onMove: (e) => { if (this.cmpDrag !== i) return; const r = e.currentTarget.getBoundingClientRect(); const v = Math.max(2, Math.min(98, (e.clientY - r.top) / r.height * 100)); this.setState(st => ({ csCmps: { ...(st.csCmps || {}), [i]: v } })); },
+        onUp: () => { this.cmpDrag = null; } }; })
     };
   }
   vals9(works, allCmds, sfx = '', pal = null) {

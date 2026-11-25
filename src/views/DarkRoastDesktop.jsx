@@ -585,8 +585,9 @@ export default function DarkRoastDesktop({ v }) {
       </section>
       {" "}
       {/* Final design: the four changes on the left (pick one, read its before / after), the comparison on the right; sized to fit one screen */}
-      <section id="final" style={{ padding: "80px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+      <section id="final" style={{ padding: "80px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px", alignItems: "start" }}>
+        {/* left: pinned while the four comparisons on the right scroll past */}
+        <div style={{ position: "sticky", top: v.csFinalTop, transition: "top .42s cubic-bezier(.22,.8,.24,1)", display: "flex", flexDirection: "column", gap: "24px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             07
@@ -629,11 +630,12 @@ export default function DarkRoastDesktop({ v }) {
               something brands struggled with
             </span>
           </h2>
-          {/* before / after: drag the line up and down (before above it, after below) */}
-          <div onPointerMove={v.onCmpMove} onPointerUp={v.onCmpUp} onPointerCancel={v.onCmpUp} style={{ position: "relative", height: "410px", borderRadius: "20px", overflow: "hidden", background: "#EFEFEC", boxShadow: "0 1px 2px rgba(0,0,0,.05), 0 30px 60px -32px rgba(0,0,0,.28)", userSelect: "none" }}>
-            <img src={v.csPair?.after} alt={`After: ${v.csPair?.a ?? ""}`} draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
-            <div style={{ position: "absolute", inset: "0", clipPath: `inset(0 0 ${v.csCmpRest ?? "50%"} 0)`, background: "#EFEFEC" }}>
-              <img src={v.csPair?.before} alt={`Before: ${v.csPair?.b ?? ""}`} draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
+          {/* before / after for each change, stacked: drag each line up and down (before above it, after below) */}
+          {(v.csFinals || []).map((f) => (
+          <div key={f.i} data-csfinal={f.i} onPointerMove={f.onMove} onPointerUp={f.onUp} onPointerCancel={f.onUp} style={{ position: "relative", height: "410px", borderRadius: "20px", overflow: "hidden", background: "#EFEFEC", boxShadow: "0 1px 2px rgba(0,0,0,.05), 0 30px 60px -32px rgba(0,0,0,.28)", userSelect: "none" }}>
+            <img src={f.after} alt={`${f.t}, after: ${f.a}`} loading="lazy" draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
+            <div style={{ position: "absolute", inset: "0", clipPath: `inset(0 0 ${f.rest} 0)`, background: "#EFEFEC" }}>
+              <img src={f.before} alt={`${f.t}, before: ${f.b}`} loading="lazy" draggable={false} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", pointerEvents: "none" }} />
             </div>
             <span style={{ position: "absolute", left: "16px", top: "16px", padding: "7px 12px", borderRadius: "999px", background: "rgba(11,11,11,.72)", color: "#FFFFFF", fontSize: "12.5px", pointerEvents: "none" }}>
               Before
@@ -641,13 +643,17 @@ export default function DarkRoastDesktop({ v }) {
             <span style={{ position: "absolute", left: "16px", bottom: "16px", padding: "7px 12px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", pointerEvents: "none" }}>
               After
             </span>
-            <div onPointerDown={v.onCmpDown} role="slider" aria-label="Drag to compare before and after" aria-valuenow={parseInt(v.csCmpPos)} aria-valuemin={0} aria-valuemax={100} style={{ position: "absolute", left: "0", right: "0", top: v.csCmpPos, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center" }}>
+            <span style={{ position: "absolute", right: "16px", top: "16px", display: "flex", alignItems: "baseline", gap: "8px", padding: "7px 12px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", boxShadow: "0 1px 2px rgba(0,0,0,.06)", pointerEvents: "none" }}>
+              <span style={{ fontFamily: "'Geist',sans-serif", fontSize: "10px", color: "#E5322B" }}>{f.n}</span>{f.t}
+            </span>
+            <div onPointerDown={f.onDown} role="slider" aria-label={`Drag to compare ${f.t} before and after`} aria-valuenow={parseInt(f.pos)} aria-valuemin={0} aria-valuemax={100} style={{ position: "absolute", left: "0", right: "0", top: f.pos, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center" }}>
               <span style={{ width: "100%", height: "2px", background: "#0B0B0B" }}></span>
               <span style={{ position: "absolute", left: "50%", transform: "translateX(-50%)", width: "48px", height: "48px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "17px", boxShadow: "0 8px 20px -8px rgba(0,0,0,.5)" }}>
                 <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style={{ display: "block" }}><path d="M8 1.5v13M3.5 5.5 8 1.5l4.5 4M3.5 10.5 8 14.5l4.5-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </span>
             </div>
           </div>
+          ))}
         </div>
       </section>
       {" "}
