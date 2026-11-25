@@ -449,34 +449,31 @@ export default function DelicutDesktop({ v }) {
             {(v.dlGoals || []).map((g, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div style={{ display: "grid", gridTemplateColumns: "56px minmax(0,1fr) 36px minmax(0,1fr)", columnGap: "30px", alignItems: "center", padding: "20px 24px 20px 22px", borderRadius: "18px", background: "#FFFFFF", color: "#0B0B0B" }}>
-                  {" "}
-                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: ".9", letterSpacing: "-.05em" }}>
-                    {show(g?.n)}
-                  </span>
-                  {" "}
-                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-                      Customer goal
+                <div style={{ position: "relative", display: "grid", gridTemplateColumns: "minmax(0,1fr) minmax(0,1fr)", borderRadius: "18px", background: "#FFFFFF", overflow: "hidden", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 18px 34px -26px rgba(0,0,0,.25)" }}>
+                  <div style={{ display: "grid", gridTemplateColumns: "48px minmax(0,1fr)", columnGap: "22px", alignItems: "center", padding: "24px 44px 24px 24px", color: "#0B0B0B" }}>
+                    <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "36px", lineHeight: ".9", letterSpacing: "-.05em" }}>
+                      {show(g?.n)}
                     </span>
-                    <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
-                      {show(g?.u)}
-                    </span>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+                      <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+                        Customer goal
+                      </span>
+                      <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
+                        {show(g?.u)}
+                      </span>
+                    </div>
                   </div>
-                  {" "}
-                  <span style={{ justifySelf: "center", width: "36px", height: "36px", borderRadius: "50%", background: "#EFEFEC", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
-                    ⇄
-                  </span>
-                  {" "}
-                  <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
+                  <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: "6px", padding: "24px 24px 24px 44px", background: "#0B0B0B", color: "#FFFFFF" }}>
+                    <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#FCEB3F" }}>
                       Business goal
                     </span>
-                    <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em" }}>
+                    <span style={{ fontSize: "16.5px", lineHeight: "1.4", letterSpacing: "-.01em", color: "#FFFFFFdd" }}>
                       {show(g?.b)}
                     </span>
                   </div>
-                  {" "}
+                  <span style={{ position: "absolute", left: "50%", top: "50%", width: "36px", height: "36px", marginLeft: "-18px", marginTop: "-18px", borderRadius: "50%", background: "#FCEB3F", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
+                    ⇄
+                  </span>
                 </div>
                 {" "}
               </React.Fragment>
