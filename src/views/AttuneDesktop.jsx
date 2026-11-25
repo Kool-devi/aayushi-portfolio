@@ -204,7 +204,7 @@ export default function AttuneDesktop({ v }) {
                 {" "}
                 <div style={{ padding: "20px", borderRadius: "20px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: "28px", minHeight: "200px" }}>
                   {" "}
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
+                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "600", fontSize: "12px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#0B0B0B" }}>
                     {show(s?.n)}{" · "}{show(s?.t)}
                   </span>
                   {" "}
