@@ -5,6 +5,7 @@ import ImageSlot from '../components/ImageSlot.jsx';
 import AttuneArchitecture from './AttuneArchitecture.jsx';
 import AttuneRoles from './AttuneRoles.jsx';
 import ProtoFrame, { usePrefetchProtos } from '../components/ProtoFrame.jsx';
+import IPhone, { protoBox } from '../components/IPhone.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneDesktop({ v }) {
@@ -290,23 +291,19 @@ export default function AttuneDesktop({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
-                  <img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-                </div>
-              </div>
+              <IPhone width={230} screenBg="#FFFFFF">
+<img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+</IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500" }}>
                 <span style={{ color: "#E5322B" }}>✕</span>
                 Explored — four cards on one screen
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <div style={{ width: "230px", height: "479px", flex: "none", borderRadius: "34px", background: "#0B0B0B", padding: "10px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "26px", overflow: "hidden", background: "#FFFFFF" }}>
-                  <img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                  <ProtoFrame src="prototypes/attune-choose-a-mode.html#z=.525" title="Attune — choose a mode prototype" width="210px" height="459px" />
-                </div>
-              </div>
+              <IPhone width={230} screenBg="#FFFFFF">
+<img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+{s => <div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div>}
+</IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
                 Final · live — try swiping
@@ -352,20 +349,20 @@ export default function AttuneDesktop({ v }) {
             {/* Scroll story (as on the Delicut page): the phone stays pinned while the four modes scroll past beside it; the screen follows the mode in view. */}
             <div style={{ display: "grid", gridTemplateColumns: "232px minmax(0,1fr)", gap: "56px", alignItems: "start" }}>
               {" "}
-              <div style={{ position: "sticky", top: v.atPhoneTop, width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#1A1A18" }}>
-                  {/* stills of each prototype's first screen, so the phone is never blank while one loads */}
-                  {(v.atFlow || []).map((m, $index) => (
-                    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: m?.op, transition: "opacity .5s" }} />
-                  ))}
-                  {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
-                  {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (
-                    <div key={$index} style={{ position: "absolute", inset: "0", zIndex: m?.play ? 2 : 1 }}>
-                      <ProtoFrame key={m?.run} src={m?.proto + "#z=.54"} title={`Attune ${m?.t} prototype`} width="216px" height="472px" onReady={m?.onReady} />
-                    </div>
-                  ) : null))}
-                </div>
-              </div>
+              <IPhone width={232} style={{ position: "sticky", top: v.atPhoneTop }} shadow="drop-shadow(0 40px 40px rgba(0,0,0,.5))">
+{s => <>
+  {/* stills of each prototype's first screen, so the phone is never blank while one loads */}
+  {(v.atFlow || []).map((m, $index) => (
+    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: m?.op, transition: "opacity .5s" }} />
+  ))}
+  {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
+  {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (
+    <div key={$index} style={{ ...protoBox(s), zIndex: m?.play ? 2 : 1 }}>
+      <ProtoFrame key={m?.run} src={m?.proto + "#z=" + s.z.toFixed(4)} title={`Attune ${m?.t} prototype`} width="100%" height="100%" onReady={m?.onReady} />
+    </div>
+  ) : null))}
+</>}
+</IPhone>
               {" "}
               <div style={{ display: "flex", flexDirection: "column" }}>
                 {(v.atFlow || []).map((m, $index) => (
@@ -483,14 +480,12 @@ export default function AttuneDesktop({ v }) {
               {" "}
             </div>
             {" "}
-            <div style={{ flex: "none", width: "232px", height: "488px", borderRadius: "36px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "28px", overflow: "hidden", background: "#F4F3EE" }}>
-                {/* the real Attune screens, cross-fading as each step is picked */}
-                {(v.atSafe || []).map((s, $index) => (
-                  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
-                ))}
-              </div>
-            </div>
+            <IPhone width={232} screenBg="#F4F3EE">
+{/* the real Attune screens, cross-fading as each step is picked */}
+{(v.atSafe || []).map((s, $index) => (
+  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+))}
+</IPhone>
             {" "}
           </div>
           {" "}

@@ -5,6 +5,7 @@ import ImageSlot from '../components/ImageSlot.jsx';
 import AttuneArchitecture from './AttuneArchitecture.jsx';
 import AttuneRoles from './AttuneRoles.jsx';
 import ProtoFrame, { usePrefetchProtos } from '../components/ProtoFrame.jsx';
+import IPhone, { protoBox } from '../components/IPhone.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function AttuneMobile({ v }) {
@@ -284,23 +285,19 @@ export default function AttuneMobile({ v }) {
           {" "}
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "12px" }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-              <div style={{ width: "170px", height: "355px", flex: "none", borderRadius: "28px", background: "#0B0B0B", padding: "7px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "22px", overflow: "hidden", background: "#FFFFFF" }}>
-                  <img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
-                </div>
-              </div>
+              <IPhone width={170} screenBg="#FFFFFF">
+<img src="Mockups/Attune/Four%20Cards%20Explored.jpg" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+</IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "7px 11px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12px", fontWeight: "500" }}>
                 <span style={{ color: "#E5322B" }}>✕</span>
                 Explored
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
-              <div style={{ width: "170px", height: "355px", flex: "none", borderRadius: "28px", background: "#0B0B0B", padding: "7px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "22px", overflow: "hidden", background: "#FFFFFF" }}>
-                  <img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                  <ProtoFrame src="prototypes/attune-choose-a-mode.html#z=.39" title="Attune — choose a mode prototype" width="156px" height="341px" />
-                </div>
-              </div>
+              <IPhone width={170} screenBg="#FFFFFF">
+<img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+{s => <div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div>}
+</IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "7px 11px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12px", fontWeight: "500" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
                 Live — try it
@@ -381,12 +378,12 @@ export default function AttuneMobile({ v }) {
                           </li>
                         ))}
                       </ol>
-                  <div ref={m?.phoneRef} data-atphone={$index} style={{ alignSelf: "center", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 0 0 1px #FFFFFF1F, 0 40px 80px -40px rgba(0,0,0,.55)" }}>
-                    <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#1A1A18" }}>
-                      <img src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                      {m?.play ? <ProtoFrame key={m?.run} src={m?.proto + "#z=.56"} title={`Attune ${m?.t} prototype`} width="224px" height="490px" /> : null}
-                    </div>
-                  </div>
+                  <IPhone width={240} outer={{ ref: m?.phoneRef, "data-atphone": $index }} style={{ alignSelf: "center" }} shadow="drop-shadow(0 40px 40px rgba(0,0,0,.5))">
+{s => <>
+  <img src={m?.poster} alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+  {m?.play ? <div style={protoBox(s)}><ProtoFrame key={m?.run} src={m?.proto + "#z=" + s.z.toFixed(4)} title={`Attune ${m?.t} prototype`} width="100%" height="100%" /></div> : null}
+</>}
+</IPhone>
                 </div>
               </React.Fragment>
             ))}
@@ -451,14 +448,12 @@ export default function AttuneMobile({ v }) {
               {" "}
             </div>
             {" "}
-            <div style={{ marginLeft: "auto", marginRight: "auto", flex: "none", width: "240px", height: "506px", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#F4F3EE" }}>
-                {/* the real Attune screens, cross-fading as each step is picked */}
-                {(v.atSafe || []).map((s, $index) => (
-                  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
-                ))}
-              </div>
-            </div>
+            <IPhone width={240} screenBg="#F4F3EE" style={{ marginLeft: "auto", marginRight: "auto" }}>
+{/* the real Attune screens, cross-fading as each step is picked */}
+{(v.atSafe || []).map((s, $index) => (
+  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+))}
+</IPhone>
             {" "}
           </div>
           {" "}
