@@ -49,8 +49,12 @@ export default class DesktopLogic extends React.Component {
       const atSteps = document.querySelectorAll('[data-atstep]');
       if (atSteps.length) {
         const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
-        const phoneH = 232 * 1686 / 830; // real iPhone frame (232 wide) — keep equal space above and below it
-        const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - phoneH) / 2));
+        // Centre the real iPhone frame (232 wide) in the visible space, so the gap above and below
+        // it is equal. The bars slide away while scrolling down, so the offset follows --bars-on
+        // (1 = bars showing, 0 = hidden; animated in site.css) and glides along with them.
+        const phoneH = 232 * 1686 / 830;
+        const free = Math.round((window.innerHeight / zoom - phoneH) / 2), half = Math.round(bars / 2);
+        const pt = `max(calc(${Math.round(bars)}px * var(--bars-on) + 16px), calc(${free}px + ${half}px * var(--bars-on)))`;
         if (this.state.atPT !== pt) this.setState({ atPT: pt });
         const mid = window.innerHeight * 0.55;
         let f = 0;
@@ -165,7 +169,7 @@ export default class DesktopLogic extends React.Component {
       atMode: { t: cur.t, k: cur.k, role: cur.role, kBg: cur.k === 'Private' ? '#FFFFFF' : '#FCEB3F' },
       atScreens: cur.steps.map(mkScreen),
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
-      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1), keep = i === (S.atKeep ?? -1) && !play; return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), poster: U(x.proto.replace('prototypes/attune-', 'Mockups/Attune/proto-').replace('.html', '-start.webp')), play, keep, run: i + '-' + ((S.atKeys || {})[i] ?? 0), onReady: play ? () => (this.state.atKeep ?? -1) >= 0 && this.setState({ atKeep: -1 }) : undefined, steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: (S.atPT ?? 170) + 'px',
+      atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1), keep = i === (S.atKeep ?? -1) && !play; return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), poster: U(x.proto.replace('prototypes/attune-', 'Mockups/Attune/proto-').replace('.html', '-start.webp')), play, keep, run: i + '-' + ((S.atKeys || {})[i] ?? 0), onReady: play ? () => (this.state.atKeep ?? -1) >= 0 && this.setState({ atKeep: -1 }) : undefined, steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: S.atPT ?? '170px',
       atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
