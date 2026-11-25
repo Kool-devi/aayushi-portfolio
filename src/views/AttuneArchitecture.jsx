@@ -34,24 +34,25 @@ export default function AttuneArchitecture({ num, mobile }) {
         <p style={{ margin: "0", maxWidth: "58ch", fontSize: m ? "15px" : "17px", lineHeight: "1.5", color: "#3A3A37" }}>
           I organized the product around what a person or couple needs in that moment: private reflection, emotional repair, shared resolution, or longer‑term growth.
         </p>
-        <div style={{ display: "grid", gridTemplateColumns: m ? "minmax(0,1fr)" : "repeat(2, minmax(0,1fr))", gap: m ? "18px" : "10px" }}>
-          {GROUPS.map((g) => (
-            <div key={g.k} style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: "10px", ...label }}>
+        {/* One grid for all four cards so every card shares the same width and height:
+            desktop = 4 columns (header row + card row); mobile = 2 columns, with both
+            card rows set to 1fr so they size to the tallest card. */}
+        <div style={{ display: "grid", gridTemplateColumns: m ? "repeat(2, minmax(0,1fr))" : "repeat(4, minmax(0,1fr))", gridTemplateRows: m ? "auto 1fr auto 1fr" : "auto 1fr", columnGap: m ? "8px" : "10px", rowGap: "10px" }}>
+          {GROUPS.map((g, gi) => (
+            <React.Fragment key={g.k}>
+              <div style={{ gridColumn: m ? "1 / -1" : (gi === 0 ? "1 / 3" : "3 / 5"), gridRow: m ? String(gi * 2 + 1) : "1", marginTop: m && gi > 0 ? "8px" : "0", display: "flex", alignItems: "center", gap: "10px", ...label }}>
                 <span style={{ padding: "6px 10px", borderRadius: "999px", background: g.dark ? "#0B0B0B" : "#FFFFFF", color: g.dark ? "#FFFFFF" : "#0B0B0B" }}>{g.k}</span>
                 <span style={{ color: "#6E6E69" }}>{g.dots}{" "}{g.who}</span>
                 <span style={{ flex: "1", height: "1px", background: "#0B0B0B26" }}></span>
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0,1fr))", gap: m ? "8px" : "10px" }}>
-                {g.modes.map((x) => (
-                  <div key={x.n} style={{ padding: m ? "16px 14px" : "20px", borderRadius: "20px", background: g.dark ? "#0B0B0B" : "#FFFFFF", color: g.dark ? "#FFFFFF" : "#0B0B0B", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: m ? "14px" : "20px", minHeight: m ? "200px" : "230px", boxSizing: "border-box" }}>
-                    <span style={{ ...label, fontSize: m ? "9.5px" : "10.5px", color: g.dark ? "#FCEB3F" : "#E5322B" }}>{x.n}{" · "}{x.t}</span>
-                    <span style={{ ...display, fontSize: m ? "21px" : "26px", lineHeight: "1.05", letterSpacing: "-.04em" }}>{x.q}</span>
-                    <span style={{ marginTop: "auto", fontSize: m ? "13px" : "14px", lineHeight: "1.45", color: g.dark ? "#FFFFFFB3" : "#6E6E69" }}>{x.d}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              {g.modes.map((x, xi) => (
+                <div key={x.n} style={{ gridRow: m ? String(gi * 2 + 2) : "2", gridColumn: m ? String(xi + 1) : String(gi * 2 + xi + 1), padding: m ? "16px 14px" : "20px", borderRadius: "20px", background: g.dark ? "#0B0B0B" : "#FFFFFF", color: g.dark ? "#FFFFFF" : "#0B0B0B", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", display: "flex", flexDirection: "column", gap: m ? "14px" : "20px", minHeight: m ? "200px" : "230px", boxSizing: "border-box" }}>
+                  <span style={{ ...label, fontSize: m ? "9.5px" : "10.5px", color: g.dark ? "#FCEB3F" : "#E5322B" }}>{x.n}{" · "}{x.t}</span>
+                  <span style={{ ...display, fontSize: m ? "21px" : "26px", lineHeight: "1.05", letterSpacing: "-.04em" }}>{x.q}</span>
+                  <span style={{ marginTop: "auto", fontSize: m ? "13px" : "14px", lineHeight: "1.45", color: g.dark ? "#FFFFFFB3" : "#6E6E69" }}>{x.d}</span>
+                </div>
+              ))}
+            </React.Fragment>
           ))}
         </div>
         <p style={{ margin: "0", maxWidth: "62ch", ...display, fontStyle: "italic", fontSize: m ? "18px" : "21px", lineHeight: "1.3", letterSpacing: "-.02em", color: "#3A3A37" }}>
