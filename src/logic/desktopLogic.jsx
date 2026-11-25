@@ -338,7 +338,7 @@ export default class DesktopLogic extends React.Component {
       seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
       seam9Hint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
       onSeam9Down: (e) => { e.preventDefault(); this['seam9Drag' + sfx] = true; },
-      onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientY - r.top) / r.height * 100)) }); },
+      onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); /* the seam is a vertical line dragged sideways */ },
       onSeam9Up: () => { this['seam9Drag' + sfx] = false; }
     };
     return sfx ? Object.fromEntries(Object.entries(out).map(([k, v]) => [k.replace('9', '9' + sfx), v])) : out;
