@@ -3,6 +3,7 @@
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
 import AttuneArchitecture from './AttuneArchitecture.jsx';
+import AttuneRoles from './AttuneRoles.jsx';
 import ProtoFrame, { usePrefetchProtos } from '../components/ProtoFrame.jsx';
 import { css, show } from '../lib/template.js';
 
@@ -266,43 +267,7 @@ export default function AttuneDesktop({ v }) {
             {" clear."}
           </h2>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "140px repeat(4, minmax(0,1fr))", borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden" }}>
-            {" "}
-            <span></span>
-            {" "}
-            {(v.atRoleCols || []).map((c, $index) => (
-              <React.Fragment key={$index}>
-                <div style={{ padding: "18px 18px 14px", background: c?.bg, color: c?.fg, display: "flex", flexDirection: "column", gap: "4px" }}>
-                  <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: c?.nc }}>
-                    {show(c?.n)}
-                  </span>
-                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                    {show(c?.t)}
-                  </span>
-                </div>
-              </React.Fragment>
-            ))}
-            {" "}
-            {(v.atRoleRows || []).map((r, $index) => (
-              <React.Fragment key={$index}>
-                {" "}
-                <span style={{ padding: "18px", borderTop: "1px solid #0B0B0B14", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", display: "flex", alignItems: "center" }}>
-                  {show(r?.k)}
-                </span>
-                {" "}
-                {(r?.cells || []).map((x, $index) => (
-                  <React.Fragment key={$index}>
-                    <span style={{ padding: "18px", borderTop: `1px solid ${x?.bd ?? ""}`, background: x?.bg, color: x?.fg, display: "flex", alignItems: "center", gap: "10px", fontSize: "16px", fontWeight: "500", letterSpacing: "-.01em" }}>
-                      {x?.dots ? <span style={{ display: "flex", gap: "3px" }}>{show(x?.dots)}</span> : null}
-                      {show(x?.t)}
-                    </span>
-                  </React.Fragment>
-                ))}
-                {" "}
-              </React.Fragment>
-            ))}
-            {" "}
-          </div>
+          <AttuneRoles cols={v.atRoleCols} rows={v.atRoleRows} />
         </div>
       </section>
       <section id="rooms" style={{ padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
