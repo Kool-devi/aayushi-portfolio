@@ -12,7 +12,9 @@ export function screenOf(width) {
   const h = width * AR * (1 - 2 * INSET_Y);
   const z = w / 400; // prototype zoom
   const protoH = 874 * z;
-  return { w, h, z, protoH, top: (h - protoH) / 2 };
+  // the prototype is a touch taller than the screen: trim mostly from the bottom so its
+  // Dynamic Island keeps its natural gap below the bezel
+  return { w, h, z, protoH, top: (h - protoH) / 4 };
 }
 
 export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-shadow(0 30px 34px rgba(0,0,0,.22))', style, outer, children }) {
@@ -27,8 +29,7 @@ export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-sha
   );
 }
 
-// A prototype iframe zoomed to the screen width and centred (the frame's screen is a touch
-// shorter than the 400x874 prototype, so a sliver is trimmed top and bottom).
+// Box for a prototype (or its still) zoomed to the screen width; see screenOf for the trim.
 export function protoBox(s) {
-  return { position: 'absolute', left: 0, right: 0, top: s.top + 'px', height: s.protoH + 'px' };
+  return { position: 'absolute', left: 0, top: s.top + 'px', width: '100%', height: s.protoH + 'px' };
 }
