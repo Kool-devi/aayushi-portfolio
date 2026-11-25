@@ -7,7 +7,7 @@ import { stickyOffset } from '../app/smoothScroll.js';
 // Case-study pages: which state key holds the highlighted chapter pill.
 const EXP_MS = 7000; // Delicut expiry flow: how long each stage shows before the next
 
-const DL_PHONE_H = 480; // Delicut day-pattern phone height (design px)
+const DL_PHONE_H = Math.round(232 * 1686 / 830); // Delicut day-pattern phone height (design px): 232px-wide iPhone frame
 
 const CHAPTER_KEY = { 'project-attune': 'atCh', 'project-delicut': 'dlCh', 'project-darkroast': 'csCh' };
 
@@ -68,7 +68,10 @@ export default class DesktopLogic extends React.Component {
       const steps = document.querySelectorAll('[data-dlstep]');
       if (steps.length) {
         // pin the phone midway between the sticky bars and the bottom of the window (equal space above and below)
-        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
+        // only the part of the bars actually on screen counts: they slide away while scrolling down
+        let vis = 0;
+        document.querySelectorAll('[data-sticky]').forEach((el) => { vis = Math.max(vis, el.getBoundingClientRect().bottom); });
+        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = Math.min(Math.max(vis, 0), stickyOffset()) / zoom;
         const pt = Math.round(Math.max(bars + 16, bars + (window.innerHeight / zoom - bars - DL_PHONE_H) / 2));
         if (this.state.dlPT !== pt) this.setState({ dlPT: pt });
         const mid = window.innerHeight * 0.55;
