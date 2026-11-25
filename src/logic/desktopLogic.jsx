@@ -83,6 +83,23 @@ export default class DesktopLogic extends React.Component {
         finals.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) fi = i; });
         if ((this.state.csPair ?? 0) !== fi) this.setState({ csPair: fi });
       }
+      // Attune "Design when AI stops": same pattern as DarkRoast's final design — the steps on the
+      // left stay pinned (centred in the visible space) while a phone per step scrolls past on the
+      // right; the phone crossing the middle of the screen picks the step.
+      const safes = document.querySelectorAll('[data-atsafe]');
+      if (safes.length) {
+        const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = stickyOffset() / zoom;
+        const left = document.querySelector('[data-atsafe-left]');
+        const lh = left ? left.getBoundingClientRect().height / zoom : 0;
+        // follows --bars-on (animated in site.css) so it stays centred as the bars slide away / back
+        const free = Math.round((window.innerHeight / zoom - lh) / 2), half = Math.round(bars / 2);
+        const pt = `max(calc(${Math.round(bars)}px * var(--bars-on) + 16px), calc(${free}px + ${half}px * var(--bars-on)))`;
+        if (this.state.atSPT !== pt) this.setState({ atSPT: pt });
+        const mid = window.innerHeight * 0.5;
+        let si = 0;
+        safes.forEach((el, i) => { if (el.getBoundingClientRect().top <= mid) si = i; });
+        if ((this.state.atS ?? 0) !== si) this.setState({ atS: si });
+      }
       // Delicut expiry flow: only cycle while the section is on screen
       const exEl = document.getElementById('expiry');
       if (exEl) { const r = exEl.getBoundingClientRect(), on = r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25; if (!!this.state.dlEV !== on) this.setState({ dlEV: on }); }
@@ -170,7 +187,7 @@ export default class DesktopLogic extends React.Component {
       atScreens: cur.steps.map(mkScreen),
       atSteps: cur.steps.map((s, j) => { const on = j === st; return { t: s.t, note: s.note, n: n2(j), nc: on ? '#FCEB3F' : '#FFFFFF80', op: on ? 1 : 0.5, mh: on ? '60px' : '0px', prog: on ? ((k + 1) / L * 100) + '%' : '0%', onPick: () => this.setState({ atSt: j, atK: 0 }) }; }),
       atFlow: modes.map((x, i) => { const on = i === (S.atF ?? 0), play = i === (S.atAct ?? -1), keep = i === (S.atKeep ?? -1) && !play; return { t: x.t, k: x.k, dots: x.k === 'Private' ? '●' : '●●', role: x.role, q: x.q, n: n2(i), img: U(x.img), proto: U(x.proto), poster: U(x.proto.replace('prototypes/attune-', 'Mockups/Attune/proto-').replace('.html', '-start.webp')), play, keep, run: i + '-' + ((S.atKeys || {})[i] ?? 0), onReady: play ? () => (this.state.atKeep ?? -1) >= 0 && this.setState({ atKeep: -1 }) : undefined, steps: x.steps.map((s, j) => ({ t: s.t, note: s.note, n: n2(j) })), op: on ? 1 : 0, stepOp: on ? 1 : 0.3 }; }), atPhoneTop: S.atPT ?? '170px',
-      atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, y: on ? '0px' : '30px', onPick: pick('atS', i) }; }),
+      atSafe: safe.map((x, i) => { const on = i === sf; return { ...x, n: n2(i), bg: on ? '#0B0B0B' : '#EFEFEC', fg: on ? '#FFFFFF' : '#0B0B0B', nc: on ? '#FCEB3F' : '#E5322B', op: on ? 1 : 0, phoneOp: on ? 1 : 0.4, y: on ? '0px' : '30px', onPick: () => { const el = document.querySelector(`[data-atsafe="${i}"]`); if (el) scrollToSection(el); } }; }), atSafeTop: S.atSPT ?? '150px',
       atSafeLive: { t: safe[sf].live[0], bg: safe[sf].live[1] }, atSafeChatOp: sf ? 0.35 : 0.8, atSafeBlur: sf ? '2px' : '0px',
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
       atSysCap: sy ? 'After: 4 components with variants, organised module by module.' : 'Before: near‑identical one‑offs scattered across screens.',

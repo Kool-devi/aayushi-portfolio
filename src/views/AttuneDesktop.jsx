@@ -427,9 +427,10 @@ export default function AttuneDesktop({ v }) {
             </span>
           </h2>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "center", padding: "24px 32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+          {/* Steps pinned on the left while a phone per step scrolls past on the right (as in DarkRoast's final design) */}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "start", padding: "32px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
             {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div data-atsafe-left style={{ position: "sticky", top: v.atSafeTop, display: "flex", flexDirection: "column", gap: "8px" }}>
               <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px", fontSize: "14px", marginBottom: "10px" }}>
             <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#E2E2DE", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B" }}>
               Keep the chat going
@@ -446,7 +447,7 @@ export default function AttuneDesktop({ v }) {
               {(v.atSafe || []).map((s, $index) => (
                 <React.Fragment key={$index}>
                   {" "}
-                  <button type="button" onClick={s?.onPick} onMouseEnter={s?.onPick} style={{ all: "unset", cursor: "pointer", display: "grid", gridTemplateColumns: "56px 1fr", gap: "16px", alignItems: "center", padding: "18px 20px", borderRadius: "18px", background: s?.bg, color: s?.fg, transition: "background .3s, color .3s" }}>
+                  <button type="button" onClick={s?.onPick} style={{ all: "unset", cursor: "pointer", display: "grid", gridTemplateColumns: "56px 1fr", gap: "16px", alignItems: "center", padding: "18px 20px", borderRadius: "18px", background: s?.bg, color: s?.fg, transition: "background .3s, color .3s" }}>
                     {" "}
                     <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: ".9", letterSpacing: "-.05em", color: s?.nc }}>
                       {show(s?.n)}
@@ -460,10 +461,6 @@ export default function AttuneDesktop({ v }) {
                   {" "}
                 </React.Fragment>
               ))}
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginTop: "8px" }}>
-                Hover a step — the screen reacts →
-              </span>
               {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "16px", marginTop: "14px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
@@ -479,12 +476,13 @@ export default function AttuneDesktop({ v }) {
               {" "}
             </div>
             {" "}
-            <IPhone width={232} screenBg="#F4F3EE">
-{/* the real Attune screens, cross-fading as each step is picked */}
-{(v.atSafe || []).map((s, $index) => (
-  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
-))}
-</IPhone>
+            <div style={{ display: "flex", flexDirection: "column", gap: "72px" }}>
+              {(v.atSafe || []).map((s, $index) => (
+                <IPhone key={$index} width={232} screenBg="#F4F3EE" outer={{ "data-atsafe": $index }} style={{ opacity: s?.phoneOp, transition: "opacity .45s" }}>
+                  <img src={s?.img} alt={s?.alt} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                </IPhone>
+              ))}
+            </div>
             {" "}
           </div>
           {" "}
