@@ -449,7 +449,7 @@ export default function DelicutDesktop({ v }) {
             {(v.dlGoals || []).map((g, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <div style={{ display: "grid", gridTemplateColumns: "56px 1fr 44px 1fr", gap: "16px", alignItems: "center", padding: "20px 22px", borderRadius: "18px", background: "#FFFFFF", color: "#0B0B0B" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "56px minmax(0,1fr) 36px minmax(0,1fr)", columnGap: "30px", alignItems: "center", padding: "20px 24px 20px 22px", borderRadius: "18px", background: "#FFFFFF", color: "#0B0B0B" }}>
                   {" "}
                   <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: ".9", letterSpacing: "-.05em" }}>
                     {show(g?.n)}
@@ -464,7 +464,7 @@ export default function DelicutDesktop({ v }) {
                     </span>
                   </div>
                   {" "}
-                  <span style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#EFEFEC", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
+                  <span style={{ justifySelf: "center", width: "36px", height: "36px", borderRadius: "50%", background: "#EFEFEC", color: "#0B0B0B", display: "grid", placeItems: "center", fontSize: "14px" }}>
                     ⇄
                   </span>
                   {" "}
