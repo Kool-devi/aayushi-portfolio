@@ -280,37 +280,16 @@ export default function AttuneDesktop({ v }) {
             Move 03 — Rooms, not cards
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-          {" "}
-          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.02" }}>
+        {/* Text beside the phones (not stacked above/below) so the whole move fits in one screen. */}
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "40px", alignItems: "stretch" }}>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "28px" }}>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1.02" }}>
             {"I turned four feature cards into "}
             <span style={{ fontStyle: "italic" }}>
               four full‑screen rooms.
             </span>
           </h2>
-          {" "}
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px" }}>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <IPhone width={230} screenBg="#FFFFFF">
-<img src="Mockups/Attune/four-cards-explored-screen.webp" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-</IPhone>
-              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500" }}>
-                <span style={{ color: "#E5322B" }}>✕</span>
-                Explored — four cards on one screen
-              </span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
-              <IPhone width={230} screenBg="#FFFFFF">
-{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
-</IPhone>
-              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500" }}>
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
-                Final · live — try swiping
-              </span>
-            </div>
-          </div>
-          {" "}
-          <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", flex: "none" }}>
               Why
             </span>
@@ -321,6 +300,27 @@ export default function AttuneDesktop({ v }) {
               </span>
               , not just a change in feature.
             </span>
+          </div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px", padding: "0 0 0 40px" }}>
+            <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
+              <IPhone width={210} screenBg="#FFFFFF">
+<img src="Mockups/Attune/four-cards-explored-screen.webp" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+</IPhone>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
+                <span style={{ color: "#E5322B" }}>✕</span>
+                Explored — four cards on one screen
+              </span>
+            </div>
+            <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
+              <IPhone width={210} screenBg="#FFFFFF">
+{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
+</IPhone>
+              <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
+                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
+                Final · live — try swiping
+              </span>
+            </div>
           </div>
         </div>
       </section>
