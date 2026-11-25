@@ -4,10 +4,10 @@
 import React from 'react';
 
 const MODES = [
-  { n: '01', t: 'Reflect', q: 'What am I feeling?', d: 'Think through emotions before deciding what to do.' },
-  { n: '02', t: 'Repair', q: 'How do I steady myself?', d: 'Process something difficult and prepare to reconnect.' },
-  { n: '03', t: 'Resolve', q: 'How do we work through this?', d: 'AI‑mediated conflict resolution for both partners.' },
-  { n: '04', t: 'Refine', q: 'How do we keep growing?', d: 'Open‑ended guidance for ongoing relationship growth.' },
+  { n: '01', t: 'Reflect', q: 'What am I feeling?', d: 'Sort out your feelings before deciding what to do.' },
+  { n: '02', t: 'Repair', q: 'How do I calm down?', d: 'Work through something hard and get ready to reconnect.' },
+  { n: '03', t: 'Resolve', q: 'How do we sort this out?', d: 'The AI helps both partners talk through a conflict.' },
+  { n: '04', t: 'Refine', q: 'How do we keep growing?', d: 'Regular guidance for the relationship, even when nothing is wrong.' },
 ];
 const GROUPS = [
   { k: 'Private', who: 'Just me', dots: '●', modes: MODES.slice(0, 2), dark: false },
@@ -24,15 +24,15 @@ export default function AttuneArchitecture({ num, mobile }) {
       : { padding: "110px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", ...label }}>
         <span style={{ color: "#E5322B" }}>{num}</span>
-        <span>Move 01 — Map private → shared</span>
+        <span>Private and shared</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: m ? "18px" : "28px" }}>
         <h2 style={{ margin: "0", ...display, letterSpacing: "-.055em", fontSize: m ? "35px" : "48px", lineHeight: "1.02" }}>
-          {"Not every relationship problem should become a conversation "}
-          <span style={{ fontStyle: "italic" }}>right away.</span>
+          {"Not every relationship problem needs to become a conversation "}
+          <span style={{ fontStyle: "italic" }}>straight away.</span>
         </h2>
         <p style={{ margin: "0", maxWidth: "58ch", fontSize: m ? "15px" : "17px", lineHeight: "1.5", color: "#3A3A37" }}>
-          I organized the product around what a person or couple needs in that moment: private reflection, emotional repair, shared resolution, or longer‑term growth.
+          I built the app around what a person or couple needs in that moment, whether that’s thinking alone or working things out together.
         </p>
         {/* One grid for all four cards so every card shares the same width and height:
             desktop = 4 columns (header row + card row); mobile = 2 columns, with both
@@ -56,7 +56,7 @@ export default function AttuneArchitecture({ num, mobile }) {
           ))}
         </div>
         <p style={{ margin: "0", maxWidth: "62ch", ...display, fontStyle: "italic", fontSize: m ? "18px" : "21px", lineHeight: "1.3", letterSpacing: "-.02em", color: "#3A3A37" }}>
-          The modes are connected, but not linear. A reflection can end there; a couple can move into Resolve when they are ready; Refine can continue long after a conflict is over.
+          The modes connect, but you don’t have to go in order. A reflection can stay private, and a couple can move to Resolve only when both are ready.
         </p>
       </div>
     </section>

@@ -60,13 +60,13 @@ export default function AttuneDesktop({ v }) {
           <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "20px" }}>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-              Attune AI · AI relationship app for couples
+              Attune AI relationship app for couples
             </span>
             {" "}
             <h1 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".98" }}>
-              {"I designed when AI should listen, guide, step back — "}
+              {"Designing when Attune’s AI should help a couple "}
               <span style={{ fontStyle: "italic" }}>
-                and stop.
+                and when it should stop.
               </span>
             </h1>
             {" "}
@@ -78,21 +78,21 @@ export default function AttuneDesktop({ v }) {
               Role
             </span>
             <span>
-              Product / UX Designer
+              Product Designer
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
               Focus
             </span>
             <span>
-              AI UX · systems · safety
+              How the AI behaves, and keeping users safe
             </span>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingTop: "2px" }}>
               Delivery
             </span>
             <span>
-              ~169 documented screens
+              169 documented screens
             </span>
             {" "}
           </div>
@@ -104,7 +104,7 @@ export default function AttuneDesktop({ v }) {
           <img src="Mockups/Attune/Hero-resolve.webp" alt="Attune AI in a shared Resolve session, held in two hands" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           {" "}
           <span style={{ position: "absolute", left: "40px", bottom: "20px", padding: "8px 13px", borderRadius: "999px", background: "rgba(255,255,255,.82)", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)", fontSize: "12.5px", fontWeight: "500" }}>
-            Fig. 01 — A shared Resolve session
+            Fig. 01 — A shared Resolve session, where the AI helps both partners take turns
           </span>
           {" "}
         </div>
@@ -135,21 +135,21 @@ export default function AttuneDesktop({ v }) {
             01
           </span>
           <span>
-            Overview — five moves
+            Overview
           </span>
         </div>
         {" "}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: "24px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-            {"My work, in "}
+            {"What I did, in "}
             <span style={{ fontStyle: "italic" }}>
-              five moves.
+              five steps.
             </span>
           </h2>
           {" "}
           <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69" }}>
-            Click a move to jump
+            Click a step to jump
           </span>
           {" "}
         </div>
@@ -163,7 +163,7 @@ export default function AttuneDesktop({ v }) {
                 {" "}
                 <span style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
                   <span style={{ color: v?.nc }}>
-                    {"Move "}{show(v?.n)}
+                    {"Step "}{show(v?.n)}
                   </span>
                   <span>
                     ↓
@@ -187,15 +187,15 @@ export default function AttuneDesktop({ v }) {
             02
           </span>
           <span>
-            The problem
+            Problem
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-            {"Four very different moments. "}
+            {"Four very different moments "}
             <span style={{ fontStyle: "italic" }}>
-              One identical chatbot.
+              got the same chatbot.
             </span>
           </h2>
           {" "}
@@ -230,19 +230,15 @@ export default function AttuneDesktop({ v }) {
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "10px" }}>
             {" "}
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", marginRight: "6px" }}>
-              So I asked, for every moment
+              For each moment, I asked
             </span>
             {" "}
             <span style={{ padding: "10px 15px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "14.5px" }}>
-              What does the user need?
+              Is the person alone or with their partner?
             </span>
             {" "}
             <span style={{ padding: "10px 15px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "14.5px" }}>
-              Private or shared?
-            </span>
-            {" "}
-            <span style={{ padding: "10px 15px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "14.5px" }}>
-              What should AI do here?
+              What should the AI actually do here?
             </span>
             {" "}
           </div>
@@ -255,17 +251,16 @@ export default function AttuneDesktop({ v }) {
             04
           </span>
           <span>
-            Move 02 — Give every mode a role
+            Roles
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.02" }}>
-            {"I gave AI a different job in each mode, and kept "}
+            {"The AI had a different job in each mode, and it was always clear "}
             <span style={{ fontStyle: "italic" }}>
-              pace and privacy
+              who could see what.
             </span>
-            {" clear."}
           </h2>
           {" "}
           <AttuneRoles cols={v.atRoleCols} rows={v.atRoleRows} />
@@ -277,7 +272,7 @@ export default function AttuneDesktop({ v }) {
             05
           </span>
           <span>
-            Move 03 — Rooms, not cards
+            Rooms
           </span>
         </div>
         {/* Text beside the phones (not stacked above/below) so the whole move fits in one screen. */}
@@ -294,11 +289,10 @@ export default function AttuneDesktop({ v }) {
               Why
             </span>
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1.15", letterSpacing: "-.035em" }}>
-              {"The UI had to signal a change in "}
+              {"Moving from a private thought to a shared conversation is a big emotional shift, and "}
               <span style={{ fontStyle: "italic" }}>
-                emotional context
+                the screen needed to make that obvious.
               </span>
-              , not just a change in feature.
             </span>
           </div>
           </div>
@@ -309,7 +303,7 @@ export default function AttuneDesktop({ v }) {
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 <span style={{ color: "#E5322B" }}>✕</span>
-                Explored — four cards on one screen
+                Explored: four cards on one screen
               </span>
             </div>
             <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
@@ -318,7 +312,7 @@ export default function AttuneDesktop({ v }) {
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
-                Final · live — try swiping
+                Final: try swiping
               </span>
             </div>
           </div>
@@ -332,16 +326,16 @@ export default function AttuneDesktop({ v }) {
               06
             </span>
             <span>
-              Move 04 — Choreograph each room
+              Flows
             </span>
           </div>
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
             {" "}
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "52px", lineHeight: "1" }}>
-              {"One product, "}
+              {"Each room works differently because "}
               <span style={{ fontStyle: "italic" }}>
-                four emotional rooms.
+                each moment feels different.
               </span>
             </h2>
             {" "}
@@ -375,7 +369,7 @@ export default function AttuneDesktop({ v }) {
                           {show(m?.dots)}{" "}{show(m?.k)}
                         </span>
                         <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", padding: "6px 10px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B" }}>
-                          {"AI role · "}{show(m?.role)}
+                          {"AI’s job · "}{show(m?.role)}
                         </span>
                       </div>
                       <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "64px", lineHeight: ".9", letterSpacing: "-.06em" }}>
@@ -415,15 +409,15 @@ export default function AttuneDesktop({ v }) {
             07
           </span>
           <span>
-            Move 05 — Design when AI stops
+            Safety
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1" }}>
-            {"The safest AI action is sometimes "}
+            {"Sometimes the safest thing the AI can do "}
             <span style={{ fontStyle: "italic" }}>
-              to stop.
+              is stop.
             </span>
           </h2>
           {" "}
@@ -439,7 +433,7 @@ export default function AttuneDesktop({ v }) {
               →
             </span>
             <span style={{ padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontWeight: "500" }}>
-              Pause · check in · hand off
+              Pause and get help
             </span>
           </div>
           {" "}
@@ -467,9 +461,9 @@ export default function AttuneDesktop({ v }) {
               Why
             </span>
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "21px", lineHeight: "1.2", letterSpacing: "-.035em" }}>
-              {"Responsible AI isn’t only better answers — it’s knowing "}
+              {"Good AI isn’t only about better answers. It also needs to know when to "}
               <span style={{ fontStyle: "italic" }}>
-                when the product should step aside.
+                step aside and point people to real help.
               </span>
             </span>
           </div>
@@ -494,15 +488,15 @@ export default function AttuneDesktop({ v }) {
             08
           </span>
           <span>
-            Bonus — Ready for handoff
+            Handoff
           </span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.02" }}>
-            {"A new dev team joined mid‑project. "}
+            {"A new developer team joined halfway through, "}
             <span style={{ fontStyle: "italic" }}>
-              I made sure the design didn’t break.
+              so I made the design easy to pick up.
             </span>
           </h2>
           {" "}
@@ -516,7 +510,7 @@ export default function AttuneDesktop({ v }) {
                 169 screens
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.45", color: "#3C3C38" }}>
-                Handed to a brand‑new team, on a tighter timeline.
+                Handed to a brand new team on a shorter timeline.
               </span>
             </div>
             {" "}
@@ -528,7 +522,7 @@ export default function AttuneDesktop({ v }) {
                 Found the repeats
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.45", color: "#FFFFFFb3" }}>
-                Went screen by screen and turned repeated UI into reusable components.
+                I went through every screen and turned repeated UI into reusable components.
               </span>
             </div>
             {" "}
@@ -537,10 +531,10 @@ export default function AttuneDesktop({ v }) {
                 03 · The result
               </span>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: ".9", letterSpacing: "-.06em" }}>
-                One source of truth
+                One shared library
               </span>
               <span style={{ fontSize: "14.5px", lineHeight: "1.45" }}>
-                Developers build each element once — and it looks the same everywhere.
+                Developers build each element once, and it looks the same everywhere.
               </span>
             </div>
             {" "}
@@ -551,9 +545,9 @@ export default function AttuneDesktop({ v }) {
               Why
             </span>
             <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "26px", lineHeight: "1.15", letterSpacing: "-.035em" }}>
-              {"A design system is how design decisions "}
+              {"A design system keeps design decisions intact "}
               <span style={{ fontStyle: "italic" }}>
-                survive when the builders change.
+                even when the people building it change.
               </span>
             </span>
           </div>
@@ -572,29 +566,18 @@ export default function AttuneDesktop({ v }) {
               09
             </span>
             <span>
-              What changed — in the product, and in me
+              Outcome
             </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) auto minmax(0,7fr)", gap: "28px", alignItems: "center" }}>
-            {" "}
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "58px", lineHeight: ".95", color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B", textDecorationThickness: "3px" }}>
-              Designing AI responses
-            </span>
-            {" "}
-            <span style={{ width: "56px", height: "56px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center", fontSize: "20px" }}>
-              →
-            </span>
-            {" "}
-            <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "58px", lineHeight: ".95" }}>
-              {"Designing AI "}
-              <span style={{ fontStyle: "italic" }}>
-                boundaries.
-              </span>
-            </span>
-            {" "}
-          </div>
+          <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "48px", lineHeight: "1.02", maxWidth: "24ch" }}>
+            {"I stopped designing "}
+            <span style={{ color: "#6E6E69", textDecoration: "line-through", textDecorationColor: "#E5322B", textDecorationThickness: "2px" }}>what the AI says</span>
+            {" and started designing "}
+            <span style={{ fontStyle: "italic" }}>what it shouldn’t do.</span>
+          </h2>
           {" "}
+          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", marginBottom: "-22px" }}>Questions I now ask on every AI project</span>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "10px" }}>
             {" "}
             {(v.atLearn || []).map((q, $index) => (
@@ -612,6 +595,7 @@ export default function AttuneDesktop({ v }) {
             {" "}
           </div>
           {" "}
+          <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B", marginBottom: "-22px" }}>What the product ended up with</span>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
             {" "}
             {(v.atOut || []).map((o, $index) => (

@@ -131,29 +131,29 @@ export default class DesktopLogic extends React.Component {
     const S = this.state, U = p => encodeURI(p), n2 = i => String(i + 1).padStart(2, '0');
     const pick = (k, i) => () => this.state[k] !== i && this.setState({ [k]: i });
     const L = 5, m = S.atM ?? 0, st = S.atSt ?? 0, k = S.atK ?? 0;
-    const chap = [['Moves','moves'],['Problem','problem'],['Private / shared','model'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['System','system'],['Outcome','outcome']];
+    const chap = [['Overview','moves'],['Problem','problem'],['Private and shared','model'],['Roles','roles'],['Rooms','rooms'],['Flows','flows'],['Safety','safety'],['Handoff','system'],['Outcome','outcome']];
     const ch = S.atCh ?? 0, hm = S.atH ?? 0, md = S.atMd ?? 0, rc = S.atRc ?? 0, sf = S.atS ?? 0, sy = S.atSys ?? 0;
     const modes = [
       { t: 'Reflect', proto: 'prototypes/attune-reflect.html', k: 'Private', role: 'Listener', img: 'Mockups/Attune/Reflect.jpg', q: 'I need to understand what I’m feeling.', who: 1, pace: 'Quick', steps: [
-        { t: 'Start anywhere', note: 'Familiar chat pattern — nothing new to learn.', k: 'Reflect · private', title: 'What’s on your mind?', chips: ['I felt ignored today', 'Something’s bothering me', 'Help me put it into words'], sel: 0, input: true },
-        { t: 'Talk it through', note: 'Text or voice — whatever’s easier in the moment.', k: 'Reflect · private', title: 'Take your time.', bubbles: [['me', 'I felt ignored at dinner tonight.'], ['ai', 'That sounds lonely. What did you need in that moment?'], ['me', 'Just for him to ask about my day.']], input: true },
-        { t: 'AI reflects back', note: 'AI mirrors feelings — it doesn’t judge or advise.', k: 'Reflect · private', title: 'Here’s what I’m hearing.', card: ['Reflection', 'You want to feel noticed — not to win an argument.'], chips: ['Lonely', 'Unseen', 'Hopeful'], sel: 1 },
-        { t: 'You choose what’s next', note: 'Nothing is shared unless you decide.', k: 'Reflect · private', title: 'What would help now?', btns: [['Keep this private', 1], ['Prepare to talk to my partner', 0], ['Move to Repair', 0]] }] },
-      { t: 'Repair', proto: 'prototypes/attune-repair.html', k: 'Private', role: 'Grounding guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slowed down', steps: [
-        { t: 'Body check‑in', note: 'Start with the body, not the argument.', k: 'Repair · step 1 of 4', title: 'Where do you feel it right now?', chips: ['Chest', 'Jaw', 'Stomach', 'Hands'], sel: 0, card: ['Intensity', '●●●●●●●○○○  7 / 10'] },
-        { t: 'Ground yourself', note: 'Slow the flow down before any reflection.', k: 'Repair · step 2 of 4', title: 'Let’s slow down together.', circle: 'breath' },
-        { t: 'Guided reflection', note: 'One gentle question at a time.', k: 'Repair · step 3 of 4', title: 'What happened?', bubbles: [['ai', 'In a few words, what happened?'], ['me', 'We argued about money again.'], ['ai', 'What were you feeling underneath the anger?']] },
-        { t: 'Reconnect — only if ready', note: 'Every shared step is explicit and opt‑in.', k: 'Repair · step 4 of 4', title: 'Ready to reconnect?', card: ['🔒 Private', 'Your partner sees nothing until you choose to share.'], btns: [['Not yet', 0], ['Prepare a message', 1]] }] },
-      { t: 'Resolve', proto: 'prototypes/attune-resolve.html', k: 'Shared', role: 'Neutral facilitator', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Structured', steps: [
-        { t: 'Both opt in', note: 'Mutual consent — no one gets ambushed.', k: 'Resolve · together', title: 'Start only when you’re both ready.', bubbles: [['p', 'Aanya joined ✓'], ['me', 'Sam joined ✓']], btns: [['Start together', 1]] },
-        { t: 'Agree ground rules', note: 'Agreed before anyone speaks.', k: 'Resolve · together', title: 'Our ground rules', chips: ['One speaker at a time', 'No interrupting', 'Pause anytime', 'Assume good intent'], sel: 9, all: true },
-        { t: 'Take turns', note: 'Protected, equal speaking time.', k: 'Resolve · Sam’s turn', title: 'Sam has the floor.', circle: 'timer' },
-        { t: 'AI checks understanding', note: 'AI clarifies — it never picks a side.', k: 'Resolve · clarify', title: 'Quick check, Aanya.', card: ['Attune', 'Did you hear Sam say he feels unappreciated?'], btns: [['Yes, that’s right', 1], ['Not quite', 0]] }] },
-      { t: 'Refine', proto: 'prototypes/attune-refine.html', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep strengthening the relationship.', who: 2, pace: 'Open‑ended', steps: [
-        { t: 'Plan a session', note: 'Growth on your own rhythm — schedule and repeat.', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
-        { t: 'Guided prompt', note: 'Small prompts and activities, not therapy homework.', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
-        { t: 'Light AI nudges', note: 'Appreciation prompts — AI never takes over.', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺\uFE0E'], ['ai', '✦ Nice — try saying why it mattered.']] },
-        { t: 'Knows when to switch', note: 'If it gets too intense, it suggests Repair.', k: 'Refine · focus check', title: 'This feels heavy.', card: ['Attune', 'Want to pause and move into Repair instead?'], btns: [['Switch to Repair', 1], ['Keep going', 0]] }] }];
+        { t: 'Start anywhere', note: 'A normal chat screen, nothing new to learn', k: 'Reflect · private', title: 'What’s on your mind?', chips: ['I felt ignored today', 'Something’s bothering me', 'Help me put it into words'], sel: 0, input: true },
+        { t: 'Talk it through', note: 'Type or speak, whichever is easier', k: 'Reflect · private', title: 'Take your time.', bubbles: [['me', 'I felt ignored at dinner tonight.'], ['ai', 'That sounds lonely. What did you need in that moment?'], ['me', 'Just for him to ask about my day.']], input: true },
+        { t: 'AI reflects back', note: 'It repeats your feelings back without judging or advising', k: 'Reflect · private', title: 'Here’s what I’m hearing.', card: ['Reflection', 'You want to feel noticed — not to win an argument.'], chips: ['Lonely', 'Unseen', 'Hopeful'], sel: 1 },
+        { t: 'You decide what’s next', note: 'Nothing is shared unless you choose to share it', k: 'Reflect · private', title: 'What would help now?', btns: [['Keep this private', 1], ['Prepare to talk to my partner', 0], ['Move to Repair', 0]] }] },
+      { t: 'Repair', proto: 'prototypes/attune-repair.html', k: 'Private', role: 'Calming guide', img: 'Mockups/Attune/Repair.jpg', q: 'I need to calm down and process what happened.', who: 1, pace: 'Slow', steps: [
+        { t: 'Body check‑in', note: 'Start with how your body feels, not the argument', k: 'Repair · step 1 of 4', title: 'Where do you feel it right now?', chips: ['Chest', 'Jaw', 'Stomach', 'Hands'], sel: 0, card: ['Intensity', '●●●●●●●○○○  7 / 10'] },
+        { t: 'Settle down', note: 'The pace slows before any reflection starts', k: 'Repair · step 2 of 4', title: 'Let’s slow down together.', circle: 'breath' },
+        { t: 'Guided reflection', note: 'One gentle question at a time', k: 'Repair · step 3 of 4', title: 'What happened?', bubbles: [['ai', 'In a few words, what happened?'], ['me', 'We argued about money again.'], ['ai', 'What were you feeling underneath the anger?']] },
+        { t: 'Reconnect when ready', note: 'You agree to every shared step yourself', k: 'Repair · step 4 of 4', title: 'Ready to reconnect?', card: ['🔒 Private', 'Your partner sees nothing until you choose to share.'], btns: [['Not yet', 0], ['Prepare a message', 1]] }] },
+      { t: 'Resolve', proto: 'prototypes/attune-resolve.html', k: 'Shared', role: 'Neutral middle person', img: 'Mockups/Attune/Resolve.jpg', q: 'We need to work through something together.', who: 2, pace: 'Step by step', steps: [
+        { t: 'Both agree to start', note: 'Nobody gets pulled into a session by surprise', k: 'Resolve · together', title: 'Start only when you’re both ready.', bubbles: [['p', 'Aanya joined ✓'], ['me', 'Sam joined ✓']], btns: [['Start together', 1]] },
+        { t: 'Set ground rules', note: 'Agreed before anyone speaks', k: 'Resolve · together', title: 'Our ground rules', chips: ['One speaker at a time', 'No interrupting', 'Pause anytime', 'Assume good intent'], sel: 9, all: true },
+        { t: 'Take turns', note: 'Each partner gets equal, protected time', k: 'Resolve · Sam’s turn', title: 'Sam has the floor.', circle: 'timer' },
+        { t: 'AI checks understanding', note: 'It clarifies what was said and never takes sides', k: 'Resolve · clarify', title: 'Quick check, Aanya.', card: ['Attune', 'Did you hear Sam say he feels unappreciated?'], btns: [['Yes, that’s right', 1], ['Not quite', 0]] }] },
+      { t: 'Refine', proto: 'prototypes/attune-refine.html', k: 'Shared', role: 'Light coach', img: 'Mockups/Attune/Refine.jpg', q: 'We want to keep making our relationship stronger.', who: 2, pace: 'Open', steps: [
+        { t: 'Plan a session', note: 'Schedule it and repeat it at your own pace', k: 'Refine · together', title: 'Plan your next session', chips: ['Sun · 7 pm', 'Weekly', '20 min'], sel: 1, btns: [['Schedule', 1]] },
+        { t: 'Guided prompt', note: 'Small activities, not therapy homework', k: 'Refine · tonight', title: 'Tonight’s prompt', card: ['Prompt', 'Share one thing your partner did this week that you loved.'] },
+        { t: 'Light nudges', note: 'Prompts like sharing something you appreciate, with the AI staying in the background', k: 'Refine · live', title: 'Keep it going', bubbles: [['p', 'You made coffee before my early call.'], ['me', 'You noticed that? ☺\uFE0E'], ['ai', '✦ Nice — try saying why it mattered.']] },
+        { t: 'Knows when to switch', note: 'If things get heated, it suggests moving to Repair', k: 'Refine · focus check', title: 'This feels heavy.', card: ['Attune', 'Want to pause and move into Repair instead?'], btns: [['Switch to Repair', 1], ['Keep going', 0]] }] }];
     const cur = modes[m];
     const mkScreen = (s, j) => {
       const on = j === st, kk = on ? k : 0, vis = d => on && kk >= d;
@@ -166,18 +166,18 @@ export default class DesktopLogic extends React.Component {
         op: on ? 1 : 0, x: j < st ? '-24px' : j > st ? '24px' : '0px' };
     };
     const safe = [
-      { t: 'Pause the live session', img: 'Mockups/Attune/safety-pause-screen.webp', alt: 'Attune suggests pausing a tense joint session', sheetK: 'Session paused', sheetT: 'Let’s pause here for a moment.', btns: [{ t: 'Take a breath', r: '→', bg: '#0B0B0B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
-      { t: 'Check on the user first', img: 'Mockups/Attune/safety-check-in-screen.webp', alt: 'Attune gently offers professional support options in a Reflect chat', sheetK: 'Checking in', sheetT: 'Before we continue — are you safe right now?', btns: [{ t: 'I’m safe', r: '→', bg: '#EFEFEC', fg: '#0B0B0B' }, { t: 'I need support', r: '→', bg: '#E5322B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
-      { t: 'Bring real support forward', img: 'Mockups/Attune/safety-support-screen.webp', alt: 'Attune pauses the session and brings crisis lines forward', sheetK: 'Support near you', sheetT: 'You don’t have to handle this alone.', btns: [{ t: 'Local crisis line', r: 'Call', bg: '#0B0B0B', fg: '#FFFFFF' }, { t: 'Emergency services', r: 'Call', bg: '#EFEFEC', fg: '#0B0B0B' }], live: ['Ended', '#E5322B'] }];
+      { t: 'Pause the session', img: 'Mockups/Attune/safety-pause-screen.webp', alt: 'Attune suggests pausing a tense joint session', sheetK: 'Session paused', sheetT: 'Let’s pause here for a moment.', btns: [{ t: 'Take a breath', r: '→', bg: '#0B0B0B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Check on the person first', img: 'Mockups/Attune/safety-check-in-screen.webp', alt: 'Attune gently offers professional support options in a Reflect chat', sheetK: 'Checking in', sheetT: 'Before we continue — are you safe right now?', btns: [{ t: 'I’m safe', r: '→', bg: '#EFEFEC', fg: '#0B0B0B' }, { t: 'I need support', r: '→', bg: '#E5322B', fg: '#FFFFFF' }], live: ['Paused', '#6E6E69'] },
+      { t: 'Show real support options', img: 'Mockups/Attune/safety-support-screen.webp', alt: 'Attune pauses the session and brings crisis lines forward', sheetK: 'Support near you', sheetT: 'You don’t have to handle this alone.', btns: [{ t: 'Local crisis line', r: 'Call', bg: '#0B0B0B', fg: '#FFFFFF' }, { t: 'Emergency services', r: 'Call', bg: '#EFEFEC', fg: '#0B0B0B' }], live: ['Ended', '#E5322B'] }];
     const groups = ['Button', 'Card', 'Input', 'Chip'];
     const tiles = Array.from({ length: 16 }, (_, i) => ({ g: i % 4, v: Math.floor(i / 4) }));
     const mix = [5, 12, 2, 9, 14, 0, 7, 11, 3, 15, 6, 1, 10, 13, 4, 8];
-    const roleRows = [['Who’s in it', x => x.who === 1 ? 'Just me' : 'Both of us', x => x.who === 1 ? '●' : '●●'], ['AI’s role', x => x.role, () => ''], ['Pace', x => x.pace, () => '']];
+    const roleRows = [['Who’s in it', x => x.who === 1 ? 'Just me' : 'Both of us', x => x.who === 1 ? '●' : '●●'], ['AI’s job', x => x.role, () => ''], ['Pace', x => x.pace, () => '']];
     return {
       atChapters: chap.map(([t, id], i) => ({ t, n: String(i + 1).padStart(2, '0'), href: '#' + id, bg: i === ch ? '#FFFFFF' : 'transparent', onGo: () => this.setState({ atCh: i }) })),
       atHeroModes: modes.map((x, i) => ({ t: x.t, k: x.k, q: x.q, n: n2(i), img: U(x.img), flex: i === hm ? 3 : 1, qOp: i === hm ? 1 : 0, onPick: pick('atH', i) })),
-      atMoves: [['Mapped private → shared', 'model'], ['Gave every mode a role', 'roles'], ['Turned cards into rooms', 'rooms'], ['Choreographed each flow', 'flows'], ['Designed when AI stops', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
-      atSame: ['Alone with a thought', 'Right after a fight', 'Conflict, together', 'A crisis moment'].map((t, i) => ({ t, n: n2(i) })),
+      atMoves: [['Split private and shared spaces', 'model'], ['Gave the AI a different job in each mode', 'roles'], ['Turned feature cards into full‑screen rooms', 'rooms'], ['Planned every step inside each room', 'flows'], ['Decided when the AI should stop', 'safety']].map(([t, id], i) => ({ t, n: n2(i), href: '#' + id, bg: i === 3 ? '#0B0B0B' : i === 4 ? '#FCEB3F' : '#FFFFFF', fg: i === 3 ? '#FFFFFF' : '#0B0B0B', nc: i === 3 ? '#FCEB3F' : '#E5322B' })),
+      atSame: ['Alone with a thought', 'Right after a fight', 'Working it out together', 'In a crisis'].map((t, i) => ({ t, n: n2(i) })),
       atRoleCols: modes.map((x, i) => ({ t: x.t, n: n2(i), bg: 'transparent', fg: '#0B0B0B', nc: '#E5322B' })),
       atRoleRows: roleRows.map(([kk, f, d]) => ({ k: kk, cells: modes.map((x, i) => ({ t: f(x), dots: d(x), bg: 'transparent', fg: '#0B0B0B', bd: '#0B0B0B14' })) })),
       atModelDot: ['12.5%', '37.5%', '62.5%', '87.5%'][md],
@@ -192,7 +192,7 @@ export default class DesktopLogic extends React.Component {
       atSysTabs: ['Duplicates', 'Variants'].map((t, i) => ({ t, w: i === sy ? 600 : 500, onPick: pick('atSys', i) })), atSysLeft: sy ? '50%' : '4px',
       atSysCap: sy ? 'After: 4 components with variants, organised module by module.' : 'Before: near‑identical one‑offs scattered across screens.',
       atTiles: tiles.map((x, i) => { const master = x.v === 0; return sy ? { ord: x.g * 4 + x.v, t: groups[x.g], k: master ? 'Component' : 'Variant /' + (x.v + 1), bg: master ? '#0B0B0B' : '#FFFFFF', fg: master ? '#FFFFFF' : '#0B0B0B', bd: master ? '#0B0B0B' : '#0B0B0B33', kc: master ? '#FCEB3F' : '#E5322B' } : { ord: mix[i], t: groups[x.g] + ' copy ' + (x.v + 2), k: 'Screen ' + (mix[i] + 12), bg: '#EFEFEC', fg: '#6E6E69', bd: '#EFEFEC', kc: '#6E6E69' }; }),
-      atOut: ['Clear role per mode', 'Private vs. shared boundaries', 'Context‑aware AI behaviour', 'Explicit consent', 'A real Safety layer', 'Handoff‑ready system'],
+      atOut: ['A clear AI role in each mode', 'Clear lines between private and shared', 'AI that responds to the moment', 'Consent before anything is shared', 'A proper safety flow', 'A design system ready for handoff'],
       atLearn: ['Why is AI here?', 'What should it know?', 'What stays private?', 'When should it stop?'].map((t, i) => ({ t, n: n2(i) }))
     };
   }
