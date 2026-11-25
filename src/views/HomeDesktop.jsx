@@ -2,6 +2,7 @@
 // Home page — desktop layout. Generated from the Claude Design board 11a, then hand-tuned.
 import React, { useEffect, useState } from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import ScrollSteps from '../components/ScrollSteps.jsx';
 import { css, show } from '../lib/template.js';
 
 // The hero fills the window: its height (in design px) is the window height divided by the
@@ -408,7 +409,9 @@ export default function HomeDesktop({ v }) {
         {" "}
       </section>
       {" "}
-      <section id="work" style={{ padding: "56px 40px 48px" }}>
+      {/* Pins while scrolling: the project cards switch 01 → 02 → 03, then the page carries on. Tabs and arrows still switch too. */}
+      <ScrollSteps id="work" steps={3} onStep={v.onStep9d}>
+      <div style={{ padding: "56px 40px 48px" }}>
         {" "}
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,3fr)", gap: "40px", alignItems: "end", paddingBottom: "14px", marginBottom: "14px" }}>
           {" "}
@@ -430,7 +433,7 @@ export default function HomeDesktop({ v }) {
             Case studies
           </span>
           <span>
-            03 — 2024 / 2026
+            03 — 2025 / 2026
           </span>
         </div>
         {" "}
@@ -604,7 +607,8 @@ export default function HomeDesktop({ v }) {
           {" "}
         </div>
         {" "}
-      </section>
+      </div>
+      </ScrollSteps>
       {" "}
       <section id="about" style={{ position: "relative", margin: "0 40px", background: "#F6F3EC", padding: "20px", display: "grid", gridTemplateColumns: "minmax(0,4fr) minmax(0,8fr)", gap: "20px", overflow: "hidden" }}>
         {" "}

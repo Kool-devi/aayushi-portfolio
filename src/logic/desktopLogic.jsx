@@ -326,7 +326,7 @@ export default class DesktopLogic extends React.Component {
     if (sfx === 'd' && cur9.cta) cur9.cta = cur9.cta.replace(/\s*[↗→↑]\uFE0E?\s*$/, '');
     const out = {
       segLeft9: 'calc((100% - 8px) / 3 * ' + fo + ')', segCount9: String(fo + 1).padStart(2, '0'), cardR9: fo === 0 ? '0 24px 24px 24px' : '24px',
-      onPrev9: () => this.setState({ ['folder9' + sfx]: (fo + 2) % 3 }), onNext9: () => this.setState({ ['folder9' + sfx]: (fo + 1) % 3 }),
+      onStep9: (i) => this.setState({ ['folder9' + sfx]: i }) /* scrolling through the pinned Work section */, onPrev9: () => this.setState({ ['folder9' + sfx]: (fo + 2) % 3 }), onNext9: () => this.setState({ ['folder9' + sfx]: (fo + 1) % 3 }),
       folders9, cur9, q9: st('q9') || '', empty9: f.length === 0,
       cmds9: f.map(c => { const on = c.id === sel; return { ...c, idx: String(list.indexOf(c) + 1).padStart(2, '0'), chev: on ? 1 : 0, bg: on ? (P.selBg || P.ink) : 'transparent', fg: on ? (P.selFg || P.paper) : P.ink, bd: 'transparent', onPick: () => st('sel9') !== c.id && this.setState({ ['sel9' + sfx]: c.id }) }; }),
       onQ9: (e) => this.setState({ ['q9' + sfx]: e.target.value }),
