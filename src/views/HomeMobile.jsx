@@ -680,15 +680,22 @@ export default function HomeMobile({ v }) {
             aayushipatel2002@
             <span style={{ fontStyle: "italic" }}>gmail.com</span>
           </a>
-          <a className="mh2" href="mailto:aayushipatel2002@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", background: "#0B0B0B", color: "#FFFFFF" }}>
-            Contact now {"↗\uFE0E"}
-          </a>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-            <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
-              LinkedIn {"↗\uFE0E"}
-            </a>
-            <a href="index.html" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
-              Behance {"↗\uFE0E"}
+          {/* links stacked on the left, the round Contact button on the right */}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "16px", alignItems: "center" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
+                LinkedIn {"↗\uFE0E"}
+              </a>
+              <a href="index.html" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
+                Behance {"↗\uFE0E"}
+              </a>
+            </div>
+            <a className="mh2" href="mailto:aayushipatel2002@gmail.com" style={{ flex: "none", width: "132px", height: "132px", borderRadius: "50%", border: "1px solid #0B0B0B", boxSizing: "border-box", padding: "0", display: "grid", placeItems: "center", textAlign: "center", color: "#0B0B0B", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", textTransform: "uppercase", fontSize: "12px", lineHeight: "1.2", letterSpacing: "0" }}>
+              <span style={{ display: "block" }}>
+                Contact
+                <br />
+                now
+              </span>
             </a>
           </div>
         </div>
