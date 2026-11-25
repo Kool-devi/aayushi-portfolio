@@ -587,7 +587,7 @@ export default function DarkRoastDesktop({ v }) {
       {/* Final design: the four changes on the left (pick one, read its before / after), the comparison on the right; sized to fit one screen */}
       <section id="final" style={{ padding: "80px 40px 40px", display: "grid", gridTemplateColumns: "minmax(0,3fr) minmax(0,9fr)", gap: "40px", alignItems: "start" }}>
         {/* left: pinned while the four comparisons on the right scroll past */}
-        <div style={{ position: "sticky", top: v.csFinalTop, transition: "top .42s cubic-bezier(.22,.8,.24,1)", display: "flex", flexDirection: "column", gap: "24px" }}>
+        <div data-csfinal-left style={{ position: "sticky", top: v.csFinalTop, transition: "top .42s cubic-bezier(.22,.8,.24,1)", display: "flex", flexDirection: "column", gap: "24px" }}>
           <div style={{ display: "flex", alignItems: "baseline", gap: "14px", paddingTop: "10px", borderTop: "1px solid #0B0B0B", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
           <span style={{ color: "#E5322B" }}>
             07

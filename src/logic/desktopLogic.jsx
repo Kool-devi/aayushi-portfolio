@@ -62,13 +62,16 @@ export default class DesktopLogic extends React.Component {
         if ((this.state.atAct ?? -1) !== act) this.setState(s => { const run = (s.atRun ?? 0) + 1, keys = { ...(s.atKeys || {}) }; if (act >= 0) keys[act] = run; return { atAct: act, atRun: run, atKeys: keys, atKeep: act >= 0 ? (s.atAct ?? -1) : -1 }; });
       }
       // DarkRoast "Final design": the comparison crossing the middle of the screen picks the name;
-      // the pinned left column sits just under the part of the sticky bars that is on screen.
+      // the pinned left column is centred in the space below the part of the sticky bars on screen.
       const finals = document.querySelectorAll('[data-csfinal]');
       if (finals.length) {
         let vis = 0;
         document.querySelectorAll('[data-sticky]').forEach((el) => { vis = Math.max(vis, el.getBoundingClientRect().bottom); });
         const zoom = (document.documentElement.clientWidth || window.innerWidth) / 1278, bars = Math.min(Math.max(vis, 0), stickyOffset()) / zoom;
-        const pt = Math.round(bars + 24);
+        // centred in the visible space: equal room above (below the bars) and below
+        const left = document.querySelector('[data-csfinal-left]');
+        const lh = left ? left.getBoundingClientRect().height / zoom : 0;
+        const pt = Math.round(bars + Math.max(16, (window.innerHeight / zoom - bars - lh) / 2));
         if (this.state.csPT !== pt) this.setState({ csPT: pt });
         const mid = window.innerHeight * 0.5;
         let fi = 0;
