@@ -419,41 +419,23 @@ export default function AttuneMobile({ v }) {
             </span>
           </div>
           {" "}
-          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center", padding: "28px 14px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
-            {" "}
-            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              {" "}
-              {(v.atSafe || []).map((s, $index) => (
-                <React.Fragment key={$index}>
-                  {" "}
-                  <button type="button" onClick={s?.onPick} onMouseEnter={s?.onPick} style={{ all: "unset", cursor: "pointer", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "16px", alignItems: "center", padding: "18px 20px", borderRadius: "18px", background: s?.bg, color: s?.fg, transition: "background .3s, color .3s" }}>
-                    {" "}
-                    <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "29px", lineHeight: ".9", letterSpacing: "-.05em", color: s?.nc }}>
-                      {show(s?.n)}
-                    </span>
-                    {" "}
-                    <span style={{ fontSize: "18px", fontWeight: "600", letterSpacing: "-.02em" }}>
-                      {show(s?.t)}
-                    </span>
-                    {" "}
-                  </button>
-                  {" "}
-                </React.Fragment>
-              ))}
-              {" "}
-              <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#6E6E69", marginTop: "8px" }}>
-                Tap a step — the screen reacts ↓
-              </span>
-              {" "}
-            </div>
-            {" "}
-            <IPhone width={240} screenBg="#F4F3EE" style={{ marginLeft: "auto", marginRight: "auto" }}>
-{/* the real Attune screens, cross-fading as each step is picked */}
-{(v.atSafe || []).map((s, $index) => (
-  <img key={$index} src={s?.img} alt={s?.op ? s?.alt : ""} aria-hidden={s?.op ? undefined : "true"} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block", opacity: s?.op, transform: `translateY(${s?.op ? "0px" : "12px"})`, transition: "opacity .5s, transform .6s cubic-bezier(.3,.9,.3,1)" }} />
-))}
-</IPhone>
-            {" "}
+          {/* Each step followed by its screen, stacked one after another */}
+          <div style={{ display: "flex", flexDirection: "column", padding: "8px 20px", borderRadius: "28px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }}>
+            {(v.atSafe || []).map((s, $index) => (
+              <div key={$index} style={{ display: "flex", flexDirection: "column", gap: "20px", padding: "24px 0 28px", borderTop: $index ? "1px solid #0B0B0B14" : "none" }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: "14px" }}>
+                  <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "29px", lineHeight: ".9", letterSpacing: "-.05em", color: "#E5322B", flex: "none" }}>
+                    {show(s?.n)}
+                  </span>
+                  <span style={{ fontSize: "18px", fontWeight: "600", letterSpacing: "-.02em" }}>
+                    {show(s?.t)}
+                  </span>
+                </div>
+                <IPhone width={240} screenBg="#F4F3EE" style={{ marginLeft: "auto", marginRight: "auto" }}>
+                  <img src={s?.img} alt={s?.alt} loading="lazy" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                </IPhone>
+              </div>
+            ))}
           </div>
           {" "}
           <div style={{ display: "flex", alignItems: "baseline", gap: "20px", paddingTop: "16px", borderTop: "1px solid #0B0B0B26" }}>
