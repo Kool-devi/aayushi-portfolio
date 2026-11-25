@@ -572,12 +572,14 @@ export default function DelicutDesktop({ v }) {
             Onboarding
           </span>
         </div>
-        {/* Phone on the left; heading, screens, copy and the design decision stack on the right. The phone stretches to the text column's height. */}
-        <div style={{ display: "grid", gridTemplateColumns: "264px minmax(0,1fr)", gap: "40px", alignItems: "stretch" }}>
-          <div style={{ position: "relative", width: "264px", minHeight: "480px", borderRadius: "44px", background: "#0B0B0B", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-            <div style={{ position: "absolute", inset: "10px", borderRadius: "35px", overflow: "hidden", background: "#FFFFFF" }}>
-              <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}></video>
+        {/* Phone on the left; heading, screens, copy and the design decision stack on the right. The phone is sized to match the text column's height. */}
+        <div style={{ display: "grid", gridTemplateColumns: "284px minmax(0,1fr)", gap: "40px", alignItems: "center" }}>
+          {/* Real iPhone frame (cut from the 08 pattern screens) over the onboarding video; the video sits under its transparent screen. */}
+          <div style={{ position: "relative", width: "284px", aspectRatio: "830 / 1686", flex: "none", filter: "drop-shadow(0 30px 34px rgba(0,0,0,.22))" }}>
+            <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
+              <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}></video>
             </div>
+            <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: "18px", minWidth: "0" }}>
             <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "32px", lineHeight: "1.05" }}>

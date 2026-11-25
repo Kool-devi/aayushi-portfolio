@@ -634,10 +634,12 @@ export default function DelicutMobile({ v }) {
           {" "}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gap: "18px", alignItems: "center" }}>
             {" "}
-            <div style={{ justifySelf: "center", alignSelf: "center", width: "240px", height: "496px", flex: "none", borderRadius: "38px", background: "#0B0B0B", padding: "8px", boxSizing: "border-box", boxShadow: "0 40px 80px -40px rgba(0,0,0,.55)" }}>
-              <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: "30px", overflow: "hidden", background: "#FFFFFF" }}>
-                <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}></video>
+            {/* Real iPhone frame (cut from the 08 pattern screens) over the onboarding video; the video sits under its transparent screen. */}
+            <div style={{ position: "relative", width: "244px", aspectRatio: "830 / 1686", flex: "none", filter: "drop-shadow(0 30px 34px rgba(0,0,0,.22))", justifySelf: "center" }}>
+              <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
+                <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}></video>
               </div>
+              <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
             </div>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
