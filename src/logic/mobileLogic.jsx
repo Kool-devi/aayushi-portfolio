@@ -143,7 +143,7 @@ export default class MobileLogic extends React.Component {
       protoBoxRef: (el) => { if (this._pro) { this._pro.disconnect(); this._pro = null; } if (!el) return; const fit = () => { const f = el.querySelector('iframe'); if (f) f.style.transform = 'scale(' + (el.clientWidth / 1440) + ')'; }; fit(); if (window.ResizeObserver) { this._pro = new ResizeObserver(fit); this._pro.observe(el); } },
       mSeamTop: (this.state.mSeam ?? 52) + '%', mSeamBottom: (100 - (this.state.mSeam ?? 52)) + '%',
       onMSeamDown: (e) => { e.preventDefault(); this._mDrag = true; },
-      onMSeamMove: (e) => { if (!this._mDrag) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ mSeam: Math.max(4, Math.min(100, (e.clientY - r.top) / r.height * 100)) }); },
+      onMSeamMove: (e) => { if (!this._mDrag) return; const r = e.currentTarget.getBoundingClientRect(); const pad = 30 * r.height / e.currentTarget.offsetHeight; /* keep the whole 48px handle inside the section */ this.setState({ mSeam: Math.max(pad, Math.min(r.height - pad, e.clientY - r.top)) / r.height * 100 }); },
       onMSeamUp: () => { this._mDrag = false; },
       atLearn: ['Why is AI here?', 'What should it know?', 'What stays private?', 'When should it stop?'].map((t, i) => ({ t, n: n2(i) }))
     };

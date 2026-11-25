@@ -667,69 +667,39 @@ export default function HomeMobile({ v }) {
         {" "}
       </section>
       {" "}
-      <footer style={{ marginTop: "66px", background: "#FCEB3F", color: "#0B0B0B", padding: "14px 20px 28px", display: "flex", flexDirection: "column", gap: "18px" }}>
-        {" "}
-        <div style={{ borderTop: "1px solid #0B0B0B", paddingTop: "10px", display: "grid", gridTemplateColumns: "repeat(4, minmax(0,1fr))", gap: "16px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-          {" "}
-          <span style={{ gridColumn: "auto" }}>
-            Let’s connect today
-          </span>
-          <span style={{ gridColumn: "auto" }}>
-            Freelance · Full‑time
-            <br />
-            Collaborations
-          </span>
-          <span style={{ gridColumn: "auto" }}>
-            Halifax, Canada
-          </span>
-          <span style={{ gridColumn: "auto", textAlign: "right" }}>
-            © 2026
-          </span>
-          {" "}
+      <footer style={{ marginTop: "66px", background: "#FCEB3F", color: "#0B0B0B", padding: "14px 20px 24px", display: "flex", flexDirection: "column", gap: "28px" }}>
+        {/* Mobile footer: info in a 2×2 grid, email, roomy tap targets, the name on one line */}
+        <div style={{ borderTop: "1px solid #0B0B0B", paddingTop: "12px", display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", columnGap: "16px", rowGap: "12px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <span>Let’s connect today</span>
+          <span style={{ textAlign: "right" }}>© 2026</span>
+          <span>Freelance · Full‑time · Collaborations</span>
+          <span style={{ textAlign: "right" }}>Halifax, Canada</span>
         </div>
-        {" "}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "18px", flexWrap: "wrap" }}>
-          {" "}
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <a className="mh1" href="mailto:aayushipatel2002@gmail.com" style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "28px", lineHeight: "1", maxWidth: "100%", overflowWrap: "anywhere", color: "#0B0B0B", textDecoration: "none" }}>
             aayushipatel2002@
-            <span style={{ fontStyle: "italic" }}>
-              gmail.com
-            </span>
+            <span style={{ fontStyle: "italic" }}>gmail.com</span>
           </a>
-          {" "}
-          <a className="mh2" href="mailto:aayushipatel2002@gmail.com" style={{ flex: "none", width: "132px", height: "132px", borderRadius: "50%", border: "1px solid #0B0B0B", boxSizing: "border-box", padding: "0", display: "grid", placeItems: "center", textAlign: "center", color: "#0B0B0B", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", textTransform: "uppercase", fontSize: "12px", lineHeight: "1.2", letterSpacing: "0" }}>
-            <span style={{ display: "block" }}>
-              Contact
-              <br />
-              now
-            </span>
+          <a className="mh2" href="mailto:aayushipatel2002@gmail.com" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", background: "#0B0B0B", color: "#FFFFFF" }}>
+            Contact now {"↗\uFE0E"}
           </a>
-          {" "}
-        </div>
-        {" "}
-        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: "24px", flexWrap: "wrap" }}>
-          {" "}
-          <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "80px", lineHeight: ".86", letterSpacing: "-.06em" }}>
-            {"Aayushi "}
-            <span style={{ fontStyle: "italic" }}>
-              Patel
-            </span>
-          </span>
-          {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingBottom: "10px" }}>
-            <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ color: "#0B0B0B" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+            <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
               LinkedIn {"↗\uFE0E"}
             </a>
-            <a href="index.html" style={{ color: "#0B0B0B" }}>
+            <a href="index.html" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
               Behance {"↗\uFE0E"}
             </a>
-            <span>
-              03 Case Studies — 06 Years
-            </span>
           </div>
-          {" "}
         </div>
-        {" "}
+        <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "64px", lineHeight: ".9", letterSpacing: "-.06em", whiteSpace: "nowrap" }}>
+          {"Aayushi "}
+          <span style={{ fontStyle: "italic" }}>Patel</span>
+        </span>
+        <div style={{ borderTop: "1px solid #0B0B0B", paddingTop: "10px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
+          <span>03 Case Studies</span>
+          <span>06 Years</span>
+        </div>
       </footer>
     </div>
   );
