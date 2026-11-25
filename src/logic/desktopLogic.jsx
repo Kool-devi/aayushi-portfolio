@@ -354,7 +354,7 @@ export default class DesktopLogic extends React.Component {
     // The order here is the order of the case studies in the Projects section.
     const works = [
       { key: 'delicut', title: 'Delicut', desc: 'A meal plan app built for customers who skip days and come back later.', tags: 'Product design · UAE', href: 'project-delicut.html' },
-      { key: 'darkroast', title: 'DarkRoast', desc: 'A dashboard that shows brands which design project needs them today.', tags: 'Product design', href: 'index.html' },
+      { key: 'darkroast', title: 'DarkRoast', desc: 'A dashboard that shows brands which design project needs them today.', tags: 'Product design', href: 'project-darkroast.html' },
       { key: 'case3', title: 'Attune AI', desc: 'Deciding when an AI should help a couple and when it should step back.', tags: 'AI product design', href: 'project-attune.html' }
     ].map(w => ({ ...w, placeholder: COVER_ALT[w.key] }));
     const about = [
