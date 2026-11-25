@@ -267,8 +267,8 @@ export default function DarkRoastDesktop({ v }) {
           <div style={{ position: "relative", width: "816px", height: "510px", overflow: "hidden", background: "#0F3826" }}>
             <iframe src="DarkRoast%20Prototype%20Autoplay.html" title="DarkRoast autoplay walkthrough" loading="lazy" style={{ position: "absolute", left: "0", top: "0", width: "1440px", height: "900px", border: "0", transformOrigin: "0 0", transform: "scale(.566667)" }}></iframe>
             {/* Bottom corners drawn on top: browsers blend a light fringe where they round-clip a scaled iframe. */}
-            <span aria-hidden="true" style={{ position: "absolute", left: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 100% 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
-            <span aria-hidden="true" style={{ position: "absolute", right: "0", bottom: "0", width: "16px", height: "16px", background: "radial-gradient(circle at 0 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
+            <span aria-hidden="true" style={{ position: "absolute", left: "0", bottom: "0", width: "14px", height: "14px", background: "radial-gradient(circle at 100% 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
+            <span aria-hidden="true" style={{ position: "absolute", right: "0", bottom: "0", width: "14px", height: "14px", background: "radial-gradient(circle at 0 0, transparent 13.5px, #0B0B0B 14px)", pointerEvents: "none" }}></span>
           </div>
         </div>
       </section>
