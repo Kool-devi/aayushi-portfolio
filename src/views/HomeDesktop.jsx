@@ -410,8 +410,8 @@ export default function HomeDesktop({ v }) {
       </section>
       {" "}
       {/* Pins while scrolling: the project cards switch 01 → 02 → 03, then the page carries on. Tabs and arrows still switch too. */}
-      <ScrollSteps id="work" steps={3} onStep={v.onStep9d}>
-      <div style={{ padding: "56px 40px 48px" }}>
+      <ScrollSteps id="work" steps={3} onStep={v.onStep9d} style={{ margin: "56px 0 48px" }}>
+      <div style={{ padding: "0 40px" }}>
         {" "}
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,3fr)", gap: "40px", alignItems: "end", paddingBottom: "14px", marginBottom: "14px" }}>
           {" "}
