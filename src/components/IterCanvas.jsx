@@ -27,10 +27,12 @@ function Frame({ it, lane, ratio = RATIO, pad, i, tiltOff = 0, last, mobile, onO
           <span style={{ color: "#E5322B" }}>{it.n}</span>
           <span style={{ opacity: lift ? 1 : 0, transition: "opacity .3s" }}>Open {"↗\uFE0E"}</span>
         </span>
-        <span style={{ display: "block", aspectRatio: ratio, boxSizing: "border-box", padding: pad || "0", borderRadius: mobile ? "12px" : "16px", overflow: "hidden", background: "#EFEFEC",
+        {/* padded frames take their height from the image (no aspect-ratio + height:100%, which iPhone
+            Safari can fail to resolve inside a flex button, cropping the bottom of the shot) */}
+        <span style={{ display: "block", aspectRatio: pad ? undefined : ratio, boxSizing: "border-box", padding: pad || "0", borderRadius: mobile ? "12px" : "16px", overflow: "hidden", background: "#EFEFEC",
           boxShadow: lift ? "0 2px 4px rgba(0,0,0,.06), 0 30px 50px -24px rgba(0,0,0,.35)" : "0 1px 2px rgba(0,0,0,.06), 0 16px 30px -22px rgba(0,0,0,.3)",
           outline: lift ? "2px solid #0B0B0B" : "2px solid transparent", outlineOffset: "3px", transition: "box-shadow .45s, outline-color .3s" }}>
-          <img src={it.src} alt="" loading="lazy" style={{ display: "block", width: "100%", height: "100%", objectFit: pad ? "contain" : "cover" }} />
+          <img src={it.src} alt="" loading="lazy" width="1440" height="1000" style={pad ? { display: "block", width: "100%", height: "auto" } : { display: "block", width: "100%", height: "100%", objectFit: "cover" }} />
         </span>
         <span style={{ fontSize: mobile ? "12.5px" : "12.5px", lineHeight: "1.45", color: "#6E6E69", whiteSpace: "normal", maxWidth: "52ch" }}>{it.t}</span>
       </button>
@@ -63,7 +65,7 @@ function Lightbox({ lanes, at, setAt, mobile }) {
           <span style={{ ...MONO, color: "#FFFFFFb3" }}><span style={{ color: "#FCEB3F" }}>{cur.n}</span>{"  ·  "}{cur.lane}{"  ·  "}{k + 1} / {all.length}</span>
           <button type="button" onClick={() => setAt(null)} aria-label="Close" style={{ ...btn, background: "#FFFFFF1A", color: "#FFFFFF" }}>✕</button>
         </div>
-        <img src={cur.src} alt={`${cur.lane} ${cur.n}: ${cur.t}`} style={{ display: "block", width: "100%", maxHeight: "72vh", aspectRatio: cur.ratio, boxSizing: "border-box", padding: cur.pad ? "2.5%" : "0", objectFit: cur.pad ? "contain" : "cover", borderRadius: "14px", background: "#EFEFEC" }} />
+        <img src={cur.src} alt={`${cur.lane} ${cur.n}: ${cur.t}`} style={{ display: "block", width: "100%", height: cur.pad ? "auto" : undefined, maxHeight: "72vh", aspectRatio: cur.pad ? undefined : cur.ratio, boxSizing: "border-box", padding: cur.pad ? "2.5%" : "0", objectFit: cur.pad ? "contain" : "cover", borderRadius: "14px", background: "#EFEFEC" }} />
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
           <figcaption style={{ margin: "0", fontSize: mobile ? "15px" : "17px", lineHeight: "1.45", color: "#FFFFFF", maxWidth: "60ch" }}>{cur.t}</figcaption>
           <div style={{ display: "flex", gap: "8px" }}>
