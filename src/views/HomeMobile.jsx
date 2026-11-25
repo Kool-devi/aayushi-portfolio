@@ -2,6 +2,7 @@
 // Home page — mobile layout. Generated from the Claude Design board 11a, then hand-tuned.
 import React from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import PointArrow from '../components/PointArrow.jsx';
 import { css, show } from '../lib/template.js';
 
 export default function HomeMobile({ v }) {
@@ -50,9 +51,7 @@ export default function HomeMobile({ v }) {
                 Halifax, Canada
               </span>
               <span style={{ display: "block", opacity: "0" }}>
-                <svg width="54" height="54" viewBox="0 0 100 100" style={{ display: "block" }}>
-                  <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" strokeWidth="7" strokeLinecap="square"></path>
-                </svg>
+                <PointArrow size={54} />
               </span>
             </div>
             {" "}
@@ -65,7 +64,7 @@ export default function HomeMobile({ v }) {
                 <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
               </svg>
               {" "}
-              <h1 style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
+              <h1 data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
                 Innovate
                 <br />
                 {"with "}
@@ -266,9 +265,7 @@ export default function HomeMobile({ v }) {
                 Halifax, Canada
               </span>
               <span style={{ display: "block", opacity: "1" }}>
-                <svg width="54" height="54" viewBox="0 0 100 100" style={{ display: "block" }}>
-                  <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" strokeWidth="7" strokeLinecap="square"></path>
-                </svg>
+                <PointArrow size={54} />
               </span>
             </div>
             {" "}
@@ -278,7 +275,7 @@ export default function HomeMobile({ v }) {
                 <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
               </svg>
               {" "}
-              <h1 style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
+              <h1 data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
                 Innovate
                 <br />
                 {"with "}

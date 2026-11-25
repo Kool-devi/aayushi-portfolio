@@ -2,6 +2,7 @@
 // Home page — desktop layout. Generated from the Claude Design board 11a, then hand-tuned.
 import React, { useEffect, useState } from 'react';
 import ImageSlot from '../components/ImageSlot.jsx';
+import PointArrow from '../components/PointArrow.jsx';
 import ScrollSteps from '../components/ScrollSteps.jsx';
 import { css, show } from '../lib/template.js';
 
@@ -211,16 +212,14 @@ export default function HomeDesktop({ v }) {
           </div>
           {" "}
           <div style={{ position: "absolute", left: "40px", top: "calc(128px + var(--hero-shift, 0px))" }}>
-            <svg width="92" height="92" viewBox="0 0 100 100" style={{ display: "block" }}>
-              <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" strokeWidth="7" strokeLinecap="square"></path>
-            </svg>
+            <PointArrow size={92} />
           </div>
           {" "}
           <svg width="560" height="210" viewBox="0 0 560 210" style={{ position: "absolute", left: "300px", top: "calc(340px + var(--hero-shift, 0px))", pointerEvents: "none", overflow: "visible" }}>
             <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
           </svg>
           {" "}
-          <h1 style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "128px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
+          <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "128px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
             Innovate
             <br />
             {"with "}
