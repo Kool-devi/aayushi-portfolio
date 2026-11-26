@@ -765,7 +765,7 @@ export default function HomeDesktop({ v }) {
             <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ color: "#0B0B0B" }}>
               LinkedIn {"↗\uFE0E"}
             </a>
-            <a href="index.html" style={{ color: "#0B0B0B" }}>
+            <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" style={{ color: "#0B0B0B" }}>
               Behance {"↗\uFE0E"}
             </a>
           </div>

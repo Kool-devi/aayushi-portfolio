@@ -689,7 +689,7 @@ export default function HomeMobile({ v }) {
               <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
                 LinkedIn {"↗\uFE0E"}
               </a>
-              <a href="index.html" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
+              <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
                 Behance {"↗\uFE0E"}
               </a>
             </div>
