@@ -400,7 +400,7 @@ export default class DesktopLogic extends React.Component {
       { id: 'email', label: 'Copy email', kind: 'EMAIL', title: 'aayushipatel2002@gmail.com', body: 'I usually reply within a day.', cta: this.state.copied ? 'Copied. Talk soon.' : 'Copy email', href: '#3c', target: '_self', act: true },
       { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé 2026', body: 'One page with my experience and the tools I use.', cta: 'Download ↗\uFE0E', href: 'resume.pdf', target: '_blank' },
       { id: 'canada', label: 'Can I work in Canada?', kind: 'WORK STATUS', title: 'Yes, I can start full time', body: 'I’m in Halifax on a work permit that lets me work full time. I’m happy with remote, hybrid or on‑site.' },
-      { id: 'ai', label: 'How I use AI', kind: 'HOW I WORK', title: 'I treat AI like a smart teammate', body: 'I bring it in when I need a second brain, maybe to think through strategy or get my words right. It helps me show up with stronger work, but I’m always the one deciding what’s good enough to ship.' }
+      { id: 'ai', label: 'How I use AI', kind: 'HOW I WORK', title: 'I treat AI like a smart teammate', body: 'I bring it in when I need a second brain, maybe to think through strategy or prototype a quick idea. It helps me show up with stronger work, but I’m always the one deciding what’s good enough to ship.' }
     ];
     const q = (this.state.cmdQ || '').toLowerCase().trim();
     const filtered = allCmds.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
