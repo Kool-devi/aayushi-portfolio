@@ -434,14 +434,11 @@ export default function HomeDesktop({ v }) {
         <div style={{ display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,3fr)", gap: "40px", alignItems: "end", paddingBottom: "14px", marginBottom: "14px" }}>
           {" "}
           <h2 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "60px", lineHeight: ".95", color: "#0B0B0B" }}>
-            {"Selected work, "}
-            <span style={{ fontStyle: "italic" }}>
-              crafted with care
-            </span>
+            Selected work
           </h2>
           {" "}
           <p style={{ margin: "0", fontSize: "13px", lineHeight: "1.5" }}>
-            Three case studies across creative operations, subscriptions and product design — each one starts with research and ends with a measured outcome.
+            A few projects I’ve worked on. Open any one to see the full story.
           </p>
           {" "}
         </div>
