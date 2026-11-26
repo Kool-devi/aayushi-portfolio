@@ -324,7 +324,7 @@ export default class DesktopLogic extends React.Component {
           rcInsight: { darkroast: 'Sometimes the best redesign is the one users barely have to relearn.', delicut: 'Map every messy situation first, and the screens get much simpler.', case3: 'With AI, knowing when it should stop matters as much as what it says.' }[w.key],
           rcBg: o ? '#FFFFFF' : '#0B0B0B', rcBgTr: o ? 'background-color 0s 1.5s' : 'background-color 0s' /* go white once the fill has covered the pill, so no dark edge shows around it */, rcRot: o ? '-45deg' : '0deg', rcRing: o ? '10px' : '0px' }; })(), segFg: depth === 0 ? '#0B0B0B' : '#6E6E69', segW: depth === 0 ? 600 : 500, cardOp: depth === 0 ? 1 : 0, cardY: depth === 0 ? '0px' : '8px', tabBg: depth === 0 ? '#FFFFFF' : 'transparent', earL: depth === 0 && i > 0 ? 'block' : 'none', earR: depth === 0 ? 'block' : 'none', sep: depth !== 0 && i < 2 && i + 1 !== fo ? 'block' : 'none', cardS: depth === 0 ? 1 : 0.985, cardPe: depth === 0 ? 'auto' : 'none', tabTop: depth === 0 ? '0px' : '16px', tabH: depth === 0 ? '64px' : '48px', tabBar: depth === 0 ? P.ink : 'transparent', tabOp: depth === 0 ? 1 : 0.78, tabNum: depth === 0 ? '30px' : '24px' };
     });
-    const list = ['why', 'about', 'email', 'resume', 'canada', 'looking', 'ai'].map(id => allCmds.find(c => c.id === id)); // the “Just ask” topics, in order
+    const list = ['why', 'about', 'email', 'resume', 'canada', 'ai'].map(id => allCmds.find(c => c.id === id)); // the “Just ask” topics, in order
     const q = (st('q9') || '').toLowerCase().trim();
     const f = list.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
     const sel = f.some(c => c.id === st('sel9')) ? st('sel9') : (f[0] && f[0].id);
@@ -400,8 +400,7 @@ export default class DesktopLogic extends React.Component {
       { id: 'email', label: 'Copy email', kind: 'EMAIL', title: 'aayushipatel2002@gmail.com', body: 'I usually reply within a day.', cta: this.state.copied ? 'Copied. Talk soon.' : 'Copy email', href: '#3c', target: '_self', act: true },
       { id: 'resume', label: 'Download résumé', kind: 'FILE', title: 'Résumé 2026', body: 'One page with my experience and the tools I use.', cta: 'Download ↗\uFE0E', href: 'resume.pdf', target: '_blank' },
       { id: 'canada', label: 'Can I work in Canada?', kind: 'WORK STATUS', title: 'Yes, I can start full time', body: 'I’m in Halifax on a work permit that lets me work full time. I’m happy with remote, hybrid or on‑site.' },
-      { id: 'looking', label: 'What I’m looking for', kind: 'NEXT ROLE', title: 'A product or UX role where design has a say in how the product works', body: 'I’ve spent 3 years on products with lots of moving parts, like subscriptions, dashboards and AI. I want to join a team where designers help shape the rules and the roadmap, then sit with developers to get the details right.' },
-      { id: 'ai', label: 'How I use AI', kind: 'HOW I WORK', title: 'AI is part of almost every step of my process', body: 'I use it to sort research notes, test ideas faster and turn Figma designs into working prototypes. The DarkRoast prototype on this site was built with Claude. AI speeds up the work, and I still make the design calls.' }
+      { id: 'ai', label: 'How I use AI', kind: 'HOW I WORK', title: 'I treat AI like a smart teammate', body: 'I bring it in when I need a second brain, maybe to think through strategy or get my words right. It helps me show up with stronger work, but I’m always the one deciding what’s good enough to ship.' }
     ];
     const q = (this.state.cmdQ || '').toLowerCase().trim();
     const filtered = allCmds.filter(c => !q || (c.label + ' ' + c.body).toLowerCase().includes(q));
