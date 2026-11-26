@@ -706,10 +706,6 @@ export default function HomeMobile({ v }) {
           {"Aayushi "}
           <span style={{ fontStyle: "italic" }}>Patel</span>
         </span>
-        <div style={{ borderTop: "1px solid #0B0B0B", paddingTop: "10px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-          <span>03 Case Studies</span>
-          <span>06 Years</span>
-        </div>
       </footer>
     </div>
   );

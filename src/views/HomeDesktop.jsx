@@ -768,9 +768,6 @@ export default function HomeDesktop({ v }) {
             <a href="index.html" style={{ color: "#0B0B0B" }}>
               Behance {"↗\uFE0E"}
             </a>
-            <span>
-              03 Case Studies — 06 Years
-            </span>
           </div>
           {" "}
         </div>
