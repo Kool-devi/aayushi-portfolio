@@ -535,7 +535,7 @@ export default function HomeMobile({ v }) {
                       <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", color: "#6E6E69" }}>
                         Outcome
                       </span>
-                      <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "15px", lineHeight: "1.2", letterSpacing: "-.02em", color: "#0B0B0B" }}>
+                      <span style={{ fontSize: "13px", fontWeight: "500", lineHeight: "1.3", color: "#0B0B0B" }}>
                         {show(f?.metric)}
                       </span>
                     </div>

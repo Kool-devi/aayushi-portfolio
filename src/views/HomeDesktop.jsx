@@ -554,7 +554,7 @@ export default function HomeDesktop({ v }) {
                         <span style={{ fontSize: "12px", color: "#6E6E69" }}>
                           Outcome
                         </span>
-                        <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "19px", lineHeight: "1.15", letterSpacing: "-.025em", color: "#0B0B0B" }}>
+                        <span style={{ fontSize: "15px", fontWeight: "500", lineHeight: "1.3", letterSpacing: "-.01em", color: "#0B0B0B" }}>
                           {show(f?.metric)}
                         </span>
                       </div>
