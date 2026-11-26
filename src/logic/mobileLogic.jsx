@@ -204,7 +204,7 @@ export default class MobileLogic extends React.Component {
     const problems = [
       ['Main dashboard', 'Mockups/DarkRoast/Problem 1 - Main Dashboard.webp', 'The list showed status and dates, but nothing told a brand which project needed their attention.'],
       ['Project detail', 'Mockups/DarkRoast/Problem 2 - Project Detail.webp', 'The top bar and brief panel took so much space that messages got squeezed into a narrow column.'],
-      ['File management', 'Mockups/DarkRoast/Problem 3 - File Management.webp', 'Files sat in a plain list with long names, so finding the right version meant opening each one.']];
+      ['File management', 'Mockups/DarkRoast/Problem 3 - File Management v2.webp', 'Files sat in a plain list with long names, so finding the right version meant opening each one.']];
     const fl = S.csFlip || {};
     const survey = [['Needs better mobile experience', 'Layouts didn’t adjust well to smaller screens'], ['Needs better file management', 'The right file was hard to find inside long chats'], ['Issues with text, links and spacing', 'Small visual bugs made the platform feel less reliable'], ['Providing small updates felt too formal', 'The platform was built for formal updates, not quick replies']];
     const steps = [['Send a brief', 'The brand explains what they need, with sizes and formats.'], ['Start the work', 'A designer is assigned, and the brand knows who is on it.'], ['Track progress', 'See which projects need attention without opening each one.'], ['Review designs', 'View drafts in any format, from images to videos, in one place.'], ['Give feedback', 'Reply quickly in chat, or leave detailed notes when needed.'], ['Reuse past work', 'Use old briefs and files to start the next project faster.']];
