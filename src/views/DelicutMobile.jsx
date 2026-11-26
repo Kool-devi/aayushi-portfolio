@@ -637,7 +637,7 @@ export default function DelicutMobile({ v }) {
             {/* Real iPhone frame (cut from the 08 pattern screens) over the onboarding video; the video sits under its transparent screen. */}
             <div style={{ position: "relative", width: "244px", aspectRatio: "830 / 1686", flex: "none", filter: "drop-shadow(0 30px 34px rgba(0,0,0,.22))", justifySelf: "center" }}>
               <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
-                <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}></video>
+                <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "fill" /* whole screen recording, bottom included (it is ~3% taller than the frame's screen) */, display: "block" }}></video>
               </div>
               <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
             </div>
@@ -772,7 +772,7 @@ export default function DelicutMobile({ v }) {
                   {/* Real iPhone frame (same as Onboarding) over the day video */}
                   <div style={{ alignSelf: "center", position: "relative", width: "244px", aspectRatio: "830 / 1686", filter: "drop-shadow(0 30px 40px rgba(0,0,0,.5))" }}>
                     <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
-                      <video src={d?.vid} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}></video>
+                      <video src={d?.vid} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "fill" /* whole screen recording, bottom included (it is ~3% taller than the frame's screen) */, display: "block" }}></video>
                     </div>
                     <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
                   </div>

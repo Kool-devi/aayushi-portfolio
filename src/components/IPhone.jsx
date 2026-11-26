@@ -12,9 +12,9 @@ export function screenOf(width) {
   const h = width * AR * (1 - 2 * INSET_Y);
   const z = w / 400; // prototype zoom
   const protoH = 874 * z;
-  // the prototype is a touch taller than the screen: pin it to the top so its Dynamic Island
-  // keeps its natural gap below the bezel, and let the sliver of overflow fall off the bottom
-  return { w, h, z, protoH, top: 0 };
+  // the prototype is ~3% taller than the screen; protoBox squeezes it to the screen height
+  // (too little to see) so its bottom (tab bar, home indicator) is never cut off
+  return { w, h, z, protoH, top: 0, sy: h / protoH };
 }
 
 export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-shadow(0 30px 34px rgba(0,0,0,.22))', style, outer, children }) {
@@ -29,7 +29,7 @@ export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-sha
   );
 }
 
-// Box for a prototype (or its still) zoomed to the screen width; see screenOf for the trim.
+// Box for a prototype (or its still) zoomed to the screen width and fitted to its height; see screenOf.
 export function protoBox(s) {
-  return { position: 'absolute', left: 0, top: s.top + 'px', width: '100%', height: s.protoH + 'px' };
+  return { position: 'absolute', left: 0, top: s.top + 'px', width: '100%', height: s.protoH + 'px', transform: `scaleY(${s.sy})`, transformOrigin: 'top' };
 }
