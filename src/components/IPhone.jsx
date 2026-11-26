@@ -29,7 +29,10 @@ export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-sha
   );
 }
 
-// Box for a prototype (or its still) zoomed to the screen width and fitted to its height; see screenOf.
+// Box for a prototype (or its still): laid out at the prototype's real 400x874 size, then scaled
+// from outside to exactly fill the screen (width and height, ~3% squeeze vertically, too little to
+// see). Nothing is zoomed inside the prototype's iframe, so every browser (Safari included) shows the
+// whole screen, bottom buttons and home indicator included. Pass #z=1 to the prototype.
 export function protoBox(s) {
-  return { position: 'absolute', left: 0, top: s.top + 'px', width: '100%', height: s.protoH + 'px', transform: `scaleY(${s.sy})`, transformOrigin: 'top' };
+  return { position: 'absolute', left: 0, top: 0, width: '400px', height: '874px', transform: `scale(${s.w / 400}, ${s.h / 874})`, transformOrigin: '0 0' };
 }

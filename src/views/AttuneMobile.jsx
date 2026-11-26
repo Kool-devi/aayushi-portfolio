@@ -290,7 +290,7 @@ export default function AttuneMobile({ v }) {
             </div>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "10px" }}>
               <IPhone width={170} screenBg="#FFFFFF">
-{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
+{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=1"} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "7px 11px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12px", fontWeight: "500" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
@@ -373,8 +373,8 @@ export default function AttuneMobile({ v }) {
                       </ol>
                   <IPhone width={240} outer={{ ref: m?.phoneRef, "data-atphone": $index }} style={{ alignSelf: "center" }} shadow="drop-shadow(0 40px 40px rgba(0,0,0,.5))">
 {s => <>
-  <img src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), width: "100%", display: "block" }} />
-  {m?.play ? <div style={protoBox(s)}><ProtoFrame key={m?.run} src={m?.proto + "#z=" + s.z.toFixed(4)} title={`Attune ${m?.t} prototype`} width="100%" height="100%" /></div> : null}
+  <img src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), display: "block" }} />
+  {m?.play ? <div style={protoBox(s)}><ProtoFrame key={m?.run} src={m?.proto + "#z=1"} title={`Attune ${m?.t} prototype`} width="100%" height="100%" /></div> : null}
 </>}
 </IPhone>
                 </div>

@@ -308,7 +308,7 @@ export default function AttuneDesktop({ v }) {
             </div>
             <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
               <IPhone width={210} screenBg="#FFFFFF">
-{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=" + s.z.toFixed(4)} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
+{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=1"} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
@@ -346,12 +346,12 @@ export default function AttuneDesktop({ v }) {
 {s => <>
   {/* stills of each prototype's first screen, so the phone is never blank while one loads */}
   {(v.atFlow || []).map((m, $index) => (
-    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), width: "100%", display: "block", opacity: m?.op, transition: "opacity .5s" }} />
+    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), display: "block", opacity: m?.op, transition: "opacity .5s" }} />
   ))}
   {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
   {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (
     <div key={$index} style={{ ...protoBox(s), zIndex: m?.play ? 2 : 1 }}>
-      <ProtoFrame key={m?.run} src={m?.proto + "#z=" + s.z.toFixed(4)} title={`Attune ${m?.t} prototype`} width="100%" height="100%" onReady={m?.onReady} />
+      <ProtoFrame key={m?.run} src={m?.proto + "#z=1"} title={`Attune ${m?.t} prototype`} width="100%" height="100%" onReady={m?.onReady} />
     </div>
   ) : null))}
 </>}
