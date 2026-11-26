@@ -33,3 +33,11 @@ input::placeholder{color:#6E6E69}
   .nf-bottom p { font-size: 26px !important; }
   .nf-links { justify-content: flex-start !important; }
 }
+/* Keyboard focus: buttons here are styled inline with `all: unset`, which removes the outline */
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid #0B0B0B !important; outline-offset: 3px !important; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+.nf-sticker { transform: rotate(var(--r, 0deg)); } /* resting tilt when the bob animation is off */

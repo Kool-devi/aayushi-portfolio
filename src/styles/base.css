@@ -1,5 +1,6 @@
 /* Classical — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:wght@400;600&display=swap');
+/* (The design system's Cormorant Garamond / Lora import was removed: the site's pages use Geist and Funnel Sans,
+   loaded in each page's <head>, and the extra stylesheet only delayed the first paint.) */
 
 :root {
   --color-bg: #f3f2f2;
@@ -105,6 +106,14 @@ figcaption {
 .text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
 :focus { outline: none; }
 :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+/* Buttons and sliders styled inline with `all: unset` lose the outline above (inline styles win), so
+   restore it for keyboard focus only. */
+button:focus-visible, [role="tab"]:focus-visible, [role="slider"]:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--color-accent) !important; outline-offset: 2px !important; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* Visitors who ask for less motion: stop the endless loops (marquees, spinning badge, pulsing dots). */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
 ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
 
 /* — rules — */

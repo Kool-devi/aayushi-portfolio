@@ -24,7 +24,7 @@ export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-sha
       <div style={{ position: 'absolute', left: INSET_X * 100 + '%', right: INSET_X * 100 + '%', top: INSET_Y * 100 + '%', bottom: INSET_Y * 100 + '%', borderRadius: '13% / 6.1%', overflow: 'hidden', background: screenBg }}>
         {typeof children === 'function' ? children(s) : children}
       </div>
-      <img src={FRAME} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block', pointerEvents: 'none' }} />
+      <img loading="lazy" src={FRAME} alt="" aria-hidden="true" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', display: 'block', pointerEvents: 'none' }} />
     </div>
   );
 }
@@ -34,5 +34,5 @@ export default function IPhone({ width, screenBg = '#1A1A18', shadow = 'drop-sha
 // see). Nothing is zoomed inside the prototype's iframe, so every browser (Safari included) shows the
 // whole screen, bottom buttons and home indicator included. Pass #z=1 to the prototype.
 export function protoBox(s) {
-  return { position: 'absolute', left: 0, top: 0, width: '400px', height: '874px', transform: `scale(${s.w / 400}, ${s.h / 874})`, transformOrigin: '0 0' };
+  return { position: 'absolute', left: 0, top: 0, width: '400px', height: '874px', maxWidth: 'none', transform: `scale(${s.w / 400}, ${s.h / 874})`, transformOrigin: '0 0' };
 }

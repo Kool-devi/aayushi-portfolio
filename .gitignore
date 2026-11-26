@@ -19,3 +19,6 @@ stack_sans/fonts/*/webfonts/*-*.woff2
 
 # Root working PDFs (organized copies live in docs/)
 /*.pdf
+
+# The résumé every "Résumé" / "CV" link opens must be published
+!/resume.pdf

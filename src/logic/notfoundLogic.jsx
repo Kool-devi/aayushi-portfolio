@@ -26,7 +26,7 @@ export default class NotfoundLogic extends React.Component {
     return {
       q: S.q, pokes: String(S.pokes).padStart(2, '0'), mood: moods[Math.min(S.pokes, 4)],
       onQ: (e) => this.setState({ q: e.target.value, sel: 0 }),
-      onKey: (e) => { if (e.key === 'Enter' && list[0]) { const p = list[0]; if (p.target) window.open(p.href, '_blank'); else window.location.href = p.href; } },
+      onKey: (e) => { if (e.key === 'Enter' && list[0]) { const p = list[0]; if (p.target) window.open(p.href, '_blank', 'noopener'); else window.location.href = p.href; } },
       results: list.map((p, i) => ({ t: p.t, href: p.href, target: p.target || '_self', n: '0' + (i + 1), bg: i === 0 && q ? '#0B0B0B' : '#FFFFFFb3', fg: i === 0 && q ? '#FFFFFF' : '#0B0B0B' })),
       none: !!q && list.length === 0,
       d1x: a.x, d1y: a.y, d1ry: a.ry, d1rx: a.rx, d3x: b.x, d3y: b.y, d3ry: b.ry, d3rx: b.rx,

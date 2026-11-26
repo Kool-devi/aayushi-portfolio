@@ -3,7 +3,7 @@
 // dotted board, two to a row (the second column dropped a little, like a pinned moodboard) and
 // slightly askew. Hover straightens and lifts a frame; click (or tap) opens it large, with its
 // note and ← → to walk through every version. On phones each lane scrolls sideways.
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 const RATIO = '1440 / 1000';
@@ -49,8 +49,22 @@ function Lightbox({ lanes, at, setAt, mobile }) {
   const k = all.findIndex((x) => x.li === at[0] && x.i === at[1]);
   const cur = all[k];
   const go = useCallback((d) => { const n = all[(k + d + all.length) % all.length]; setAt([n.li, n.i]); }, [k, all.length]);
+  const box = useRef(null);
+  // focus moves into the viewer when it opens and back to the thumbnail when it closes
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') setAt(null); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1); };
+    const opener = document.activeElement;
+    box.current?.querySelector('button')?.focus({ preventScroll: true });
+    return () => { if (opener && document.contains(opener)) opener.focus({ preventScroll: true }); };
+  }, []);
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') setAt(null); if (e.key === 'ArrowRight') go(1); if (e.key === 'ArrowLeft') go(-1);
+      if (e.key === 'Tab' && box.current) { // keep Tab inside the viewer
+        const f = [...box.current.querySelectorAll('button')]; if (!f.length) return;
+        const i = f.indexOf(document.activeElement), n = e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i === f.length - 1 ? 0 : i + 1);
+        e.preventDefault(); f[n].focus();
+      }
+    };
     window.addEventListener('keydown', onKey);
     const html = document.documentElement, prev = html.style.overflow;
     html.style.overflow = 'hidden';
@@ -58,7 +72,7 @@ function Lightbox({ lanes, at, setAt, mobile }) {
   }, [go]);
   const btn = { all: "unset", cursor: "pointer", width: "44px", height: "44px", borderRadius: "50%", display: "grid", placeItems: "center", fontSize: "16px", flex: "none" };
   return (
-    <div data-lenis-prevent role="dialog" aria-modal="true" aria-label={`${cur.lane} ${cur.n}`} onClick={() => setAt(null)}
+    <div ref={box} data-lenis-prevent role="dialog" aria-modal="true" aria-label={`${cur.lane} ${cur.n}`} onClick={() => setAt(null)}
       style={{ position: "fixed", inset: "0", zIndex: "100", background: "rgba(11,11,11,.86)", display: "grid", placeItems: "center", padding: mobile ? "16px" : "32px", boxSizing: "border-box", fontFamily: "'Geist',sans-serif", color: "#FFFFFF" }}>
       <figure onClick={(e) => e.stopPropagation()} style={{ margin: "0", width: "min(1100px, 100%)", display: "flex", flexDirection: "column", gap: "16px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>

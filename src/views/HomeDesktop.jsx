@@ -46,7 +46,7 @@ export default function HomeDesktop({ v }) {
   return (
     <div style={{ background: "#EFEFEC", color: "#0B0B0B", fontFamily: "'Geist',sans-serif" }}>
       {" "}
-      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: `${hero.height}px`, zoom: hero.zoom, "--hero-shift": `${hero.shift}px`, overflow: "hidden", userSelect: "none", touchAction: "none" }}>
+      <section onPointerMove={v.onSeam9dMove} onPointerUp={v.onSeam9dUp} onPointerLeave={v.onSeam9dUp} style={{ position: "relative", height: `${hero.height}px`, zoom: hero.zoom, "--hero-shift": `${hero.shift}px`, overflow: "hidden", userSelect: "none" }}>
         {" "}
         <div style={{ position: "absolute", inset: "0", backgroundColor: "#EFEFEC", backgroundImage: "linear-gradient(90deg, #0B0B0B12 1px, transparent 1px)", backgroundSize: "calc((100% - 80px) / 10) 100%", backgroundPosition: "40px 0" }}>
           {" "}
@@ -75,7 +75,7 @@ export default function HomeDesktop({ v }) {
             </span>
             {" "}
             <span>
-              <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none", border: "1px dashed #0B0B0B59", padding: "6px 8px", margin: "-7px -9px" }}>
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none", border: "1px dashed #0B0B0B59", padding: "6px 8px", margin: "-7px -9px" }}>
                 Résumé {"↗\uFE0E"}
               </a>
             </span>
@@ -206,7 +206,7 @@ export default function HomeDesktop({ v }) {
               About
             </a>
             {" "}
-            <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+            <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
               Résumé {"↗\uFE0E"}
             </a>
             {" "}
@@ -227,10 +227,10 @@ export default function HomeDesktop({ v }) {
           </div>
           {" "}
           <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "86px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
-            I turn what users feel
+            {"I turn what users feel "}
             <br />
             <span style={{ fontStyle: "italic" }}>
-              into what teams
+              {"into what teams "}
               <br />
               {"can "}
               <span style={{ position: "relative", display: "inline-block" }}>
@@ -411,7 +411,7 @@ export default function HomeDesktop({ v }) {
           {" "}
         </div>
         {" "}
-        <div onPointerDown={v.onSeam9dDown} style={{ position: "absolute", top: "64px", bottom: "56px", left: v.seam9dLeft, width: "40px", marginLeft: "-20px", cursor: "ew-resize", display: "flex", justifyContent: "center" }}>
+        <div onPointerDown={v.onSeam9dDown} onKeyDown={v.onSeam9dKey} tabIndex={0} role="slider" aria-label="Polished or thinking view: drag or use the arrow keys" aria-orientation="horizontal" aria-valuemin={0} aria-valuemax={100} aria-valuenow={v.seam9dVal} aria-valuetext={`${v.seam9dVal}% polished`} style={{ position: "absolute", top: "64px", bottom: "56px", left: v.seam9dLeft, width: "40px", marginLeft: "-20px", cursor: "ew-resize", touchAction: "none", display: "flex", justifyContent: "center" }}>
           {" "}
           <span style={{ width: "1px", height: "calc(100% + 50px)", marginTop: "-50px", background: "#0B0B0B" }}></span>
           {" "}
@@ -509,7 +509,7 @@ export default function HomeDesktop({ v }) {
             {(v.folders9d || []).map((f, $index) => (
               <React.Fragment key={$index}>
                 {" "}
-                <article style={{ position: "absolute", inset: "0", display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,5fr)", gap: "12px", padding: "12px", boxSizing: "border-box", borderRadius: v.cardR9d, background: "#FFFFFF", opacity: f?.cardOp, transform: `translateY(${f?.cardY ?? ""})`, pointerEvents: f?.cardPe, transition: "opacity .45s ease, transform .55s cubic-bezier(.3,.9,.3,1)" }}>
+                <article inert={!f?.on} style={{ position: "absolute", inset: "0", display: "grid", gridTemplateColumns: "minmax(0,7fr) minmax(0,5fr)", gap: "12px", padding: "12px", boxSizing: "border-box", borderRadius: v.cardR9d, background: "#FFFFFF", opacity: f?.cardOp, transform: `translateY(${f?.cardY ?? ""})`, pointerEvents: f?.cardPe, transition: "opacity .45s ease, transform .55s cubic-bezier(.3,.9,.3,1)" }}>
                   {" "}
                   <div style={{ position: "relative", minHeight: "0", borderRadius: "16px", overflow: "hidden", background: "#EDEDEA" }}>
                     {" "}
@@ -696,7 +696,7 @@ export default function HomeDesktop({ v }) {
               </span>
               {" "}
               {v.cur9d?.cta ? (
-              <a className="dh4" href={v.cur9d?.href} target={v.cur9d?.target} onClick={v.cur9d?.onAct} style={{ marginTop: "auto", alignSelf: "flex-start", height: "48px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "16px", fontFamily: "'Geist',sans-serif", fontSize: "14px", fontWeight: "500" }}>
+              <a className="dh4" href={v.cur9d?.href} target={v.cur9d?.target} rel={v.cur9d?.target === "_blank" ? "noopener noreferrer" : undefined} onClick={v.cur9d?.onAct} style={{ marginTop: "auto", alignSelf: "flex-start", height: "48px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "16px", fontFamily: "'Geist',sans-serif", fontSize: "14px", fontWeight: "500" }}>
                 {show(v.cur9d?.cta)}{" "}
                 <span style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center" }}>
                   <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
@@ -762,10 +762,10 @@ export default function HomeDesktop({ v }) {
           </span>
           {" "}
           <div style={{ display: "flex", flexDirection: "column", gap: "6px", textAlign: "right", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", paddingBottom: "10px" }}>
-            <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ color: "#0B0B0B" }}>
+            <a href="https://linkedin.com/in/patelaayushi" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B" }}>
               LinkedIn {"↗\uFE0E"}
             </a>
-            <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" style={{ color: "#0B0B0B" }}>
+            <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B" }}>
               Behance {"↗\uFE0E"}
             </a>
           </div>

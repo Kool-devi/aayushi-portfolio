@@ -39,7 +39,7 @@ export default function AttuneDesktop({ v }) {
             About
           </a>
           {" "}
-          <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
             Résumé {"↗\uFE0E"}
           </a>
           {" "}
@@ -299,7 +299,7 @@ export default function AttuneDesktop({ v }) {
           <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", gap: "56px", padding: "0 0 0 40px" }}>
             <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
               <IPhone width={210} screenBg="#FFFFFF">
-<img src="Mockups/Attune/four-cards-explored-screen.webp" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+<img loading="lazy" src="Mockups/Attune/four-cards-explored-screen.webp" alt="Explored: the four modes as cards on one screen" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#FFFFFF", color: "#0B0B0B", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 <span style={{ color: "#E5322B" }}>✕</span>
@@ -308,7 +308,7 @@ export default function AttuneDesktop({ v }) {
             </div>
             <div style={{ width: "210px", display: "flex", flexDirection: "column", alignItems: "center", gap: "14px" }}>
               <IPhone width={210} screenBg="#FFFFFF">
-{s => <><img src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=1"} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
+{s => <><img loading="lazy" src="Mockups/Attune/proto-choose-start.webp" alt="" aria-hidden="true" style={protoBox(s)} /><div style={protoBox(s)}><ProtoFrame src={"prototypes/attune-choose-a-mode.html#z=1"} title="Attune — choose a mode prototype" width="100%" height="100%" /></div></>}
 </IPhone>
               <span style={{ display: "flex", alignItems: "center", gap: "8px", padding: "8px 13px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", fontSize: "12.5px", fontWeight: "500", whiteSpace: "nowrap" }}>
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#FCEB3F" }}></span>
@@ -346,7 +346,7 @@ export default function AttuneDesktop({ v }) {
 {s => <>
   {/* stills of each prototype's first screen, so the phone is never blank while one loads */}
   {(v.atFlow || []).map((m, $index) => (
-    <img key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), display: "block", opacity: m?.op, transition: "opacity .5s" }} />
+    <img loading="lazy" key={"p" + $index} src={m?.poster} alt="" aria-hidden="true" style={{ ...protoBox(s), display: "block", opacity: m?.op, transition: "opacity .5s" }} />
   ))}
   {/* the prototype of the mode in view; the previous one stays underneath until the new one has drawn */}
   {(v.atFlow || []).map((m, $index) => (m?.play || m?.keep ? (

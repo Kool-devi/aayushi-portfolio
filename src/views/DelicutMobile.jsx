@@ -31,7 +31,7 @@ export default function DelicutMobile({ v }) {
               <a href="index.html#work" style={{ color: "#0B0B0B", textDecoration: "none" }}>
                 Work
               </a>
-              <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+              <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
                 CV {"↗\uFE0E"}
               </a>
             </span>
@@ -104,7 +104,7 @@ export default function DelicutMobile({ v }) {
             {"Fig. 01 · Home screen with the day’s calories and upcoming meals"}
           </span>
           {" "}
-          <a href="https://delicut.ae/" target="_blank" style={{ position: "absolute", right: "40px", bottom: "20px", height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
+          <a href="https://delicut.ae/" target="_blank" rel="noopener noreferrer" style={{ position: "absolute", right: "40px", bottom: "20px", height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
             {"View live project "}
             <span style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#FCEB3F", color: "#0B0B0B", display: "grid", placeItems: "center" }}>
               <svg width="12" height="12" viewBox="0 0 100 100" style={{ display: "block" }}>
@@ -639,12 +639,12 @@ export default function DelicutMobile({ v }) {
               <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
                 <video src="Videos/Delicut/Onboarding-screen.mp4" autoPlay muted loop playsInline style={{ width: "100%", height: "100%", objectFit: "fill" /* whole screen recording, bottom included (it is ~3% taller than the frame's screen) */, display: "block" }}></video>
               </div>
-              <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
+              <img loading="lazy" src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
             </div>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
               {" "}
-              <img src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto", borderRadius: "20px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }} />
+              <img loading="lazy" src="Mockups/Delicut/Onboarding%20Elements.webp" alt="Onboarding screens: activity level, height, weight and goal pace" style={{ display: "block", width: "100%", height: "auto", borderRadius: "20px", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)" }} />
               {" "}
               <p style={{ margin: "0", fontSize: "15.5px", lineHeight: "1.55", color: "#3C3C38" }}>
                 If the plan hasn’t started yet, customers don’t see an empty home screen. They see when the plan starts and when the first delivery arrives.
@@ -774,7 +774,7 @@ export default function DelicutMobile({ v }) {
                     <div style={{ position: "absolute", left: "3.3%", right: "3.3%", top: "1.3%", bottom: "1.3%", borderRadius: "13% / 6.1%", overflow: "hidden", background: "#FFFFFF" }}>
                       <video src={d?.vid} autoPlay muted loop playsInline preload="auto" style={{ width: "100%", height: "100%", objectFit: "fill" /* whole screen recording, bottom included (it is ~3% taller than the frame's screen) */, display: "block" }}></video>
                     </div>
-                    <img src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
+                    <img loading="lazy" src="Mockups/Delicut/iPhone%20Frame.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", display: "block", pointerEvents: "none" }} />
                   </div>
                   {" "}
                 </div>
@@ -823,7 +823,7 @@ export default function DelicutMobile({ v }) {
                 <div style={{ borderRadius: "24px", background: "#FFFFFF", boxShadow: "0 1px 2px rgba(0,0,0,.04), 0 30px 60px -32px rgba(0,0,0,.25)", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                   {" "}
                   <div style={{ padding: "18px", background: "#EFEFEC", display: "flex", justifyContent: "center" }}>
-                    <img className="mh5" src={p?.src} alt={p?.t} style={{ display: "block", height: "440px", width: "auto", maxWidth: "100%", objectFit: "contain", filter: "drop-shadow(0 18px 22px rgba(0,0,0,.22))", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
+                    <img loading="lazy" className="mh5" src={p?.src} alt={p?.t} style={{ display: "block", height: "440px", width: "auto", maxWidth: "100%", objectFit: "contain", filter: "drop-shadow(0 18px 22px rgba(0,0,0,.22))", transform: "scale(1)", transition: "transform .6s cubic-bezier(.3,.9,.3,1)" }} />
                   </div>
                   {" "}
                   <div style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -902,7 +902,7 @@ export default function DelicutMobile({ v }) {
               {(v.dlExpStages || []).map((st, $index) => (
                 <div key={$index} aria-hidden={st?.op ? undefined : "true"} style={{ position: "absolute", inset: "0", padding: "18px", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center", gap: "12px", opacity: st?.op, transition: "opacity .5s" }}>
                   {st?.fallback ? (
-                    <img src="Mockups/Delicut/Delicut%20Expiry%20Screen.png" alt="Expiry flow screens" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
+                    <img loading="lazy" src="Mockups/Delicut/Delicut%20Expiry%20Screen.png" alt="Expiry flow screens" style={{ display: "block", width: "100%", height: "100%", objectFit: "contain" }} />
                   ) : (st?.imgs || []).map((src, k) => (
                     <img key={k} src={src} alt={`${v.dlExpCur?.t ?? ""} screen`} style={{ display: "block", height: "100%", width: "auto", maxWidth: "calc(50% - 6px)", objectFit: "contain", filter: "drop-shadow(0 16px 20px rgba(0,0,0,.2))" }} />
                   ))}

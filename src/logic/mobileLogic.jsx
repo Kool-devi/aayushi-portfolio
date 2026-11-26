@@ -152,6 +152,9 @@ export default class MobileLogic extends React.Component {
       onMSeamDown: (e) => { e.preventDefault(); this._mDrag = true; },
       onMSeamMove: (e) => { if (!this._mDrag) return; const r = e.currentTarget.getBoundingClientRect(); const pad = 30 * r.height / e.currentTarget.offsetHeight; /* keep the whole 48px handle inside the section */ this.setState({ mSeam: Math.max(pad, Math.min(r.height - pad, e.clientY - r.top)) / r.height * 100 }); },
       onMSeamUp: () => { this._mDrag = false; },
+      // keyboard: ↑ ↓ move the seam, Home/End jump to either end
+      mSeamVal: Math.round(this.state.mSeam ?? 52),
+      onMSeamKey: (e) => { const cur = this.state.mSeam ?? 52; const k = { ArrowUp: -5, ArrowLeft: -5, ArrowDown: 5, ArrowRight: 5, PageUp: -20, PageDown: 20 }[e.key]; let n = k != null ? cur + k : e.key === 'Home' ? 0 : e.key === 'End' ? 100 : null; if (n == null) return; e.preventDefault(); this.setState({ mSeam: Math.max(6, Math.min(94, n)) }); },
       atLearn: ['Why is AI here?', 'What should it know?', 'What stays private?', 'When should it stop?'].map((t, i) => ({ t, n: n2(i) }))
     };
   }
@@ -289,7 +292,7 @@ export default class MobileLogic extends React.Component {
       onKey9: (e) => {
         const ix = f.findIndex(c => c.id === sel);
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const n = f[(ix + (e.key === 'ArrowDown' ? 1 : -1) + f.length) % f.length]; n && this.setState({ ['sel9' + sfx]: n.id }); }
-        if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank'); }
+        if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank', 'noopener'); }
       },
       seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
       seam9Hint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',

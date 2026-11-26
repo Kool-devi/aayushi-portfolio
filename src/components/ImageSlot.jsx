@@ -30,7 +30,7 @@ export default function ImageSlot({ id = '', placeholder, shape, style }) {
   };
   return (
     <span style={box} role={src ? undefined : 'img'} aria-label={src ? undefined : placeholder}>
-      {src && <img src={src} alt={placeholder || ''} style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }} />}
+      {src && <img src={src} alt={placeholder || ''} loading={/portrait/i.test(id) ? undefined : 'lazy'} style={{ display: 'block', width: '100%', height: '100%', objectFit: 'cover' }} />}
     </span>
   );
 }

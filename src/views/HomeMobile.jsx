@@ -21,20 +21,20 @@ export default function HomeMobile({ v }) {
                 nav
               </span>
               {" "}
-              <a href="index.html" style={{ color: "transparent", textDecoration: "none" }}>
+              <a tabIndex={-1} href="index.html" style={{ color: "transparent", textDecoration: "none" }}>
                 Aayushi Patel
                 <br />
                 Product Designer
               </a>
               {" "}
               <div style={{ display: "flex", gap: "14px" }}>
-                <a href="#work" style={{ color: "transparent", textDecoration: "none" }}>
+                <a tabIndex={-1} href="#work" style={{ color: "transparent", textDecoration: "none" }}>
                   Work
                 </a>
-                <a href="#about" style={{ color: "transparent", textDecoration: "none" }}>
+                <a tabIndex={-1} href="#about" style={{ color: "transparent", textDecoration: "none" }}>
                   About
                 </a>
-                <a href="resume.pdf" target="_blank" style={{ color: "transparent", textDecoration: "none" }}>
+                <a tabIndex={-1} href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "transparent", textDecoration: "none" }}>
                   CV {"↗\uFE0E"}
                 </a>
               </div>
@@ -104,7 +104,7 @@ export default function HomeMobile({ v }) {
             {" "}
             <div style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr) minmax(0,1fr)", gap: "16px", alignItems: "end" }}>
               {" "}
-              <a href="mailto:aayushipatel2002@gmail.com" aria-label="Open to work — email Aayushi" style={{ position: "relative", width: "96px", height: "96px", display: "block", color: "#0B0B0B", textDecoration: "none", outline: "1px dashed #0B0B0B59", borderRadius: "50%" }}>
+              <a tabIndex={-1} href="mailto:aayushipatel2002@gmail.com" aria-label="Open to work — email Aayushi" style={{ position: "relative", width: "96px", height: "96px", display: "block", color: "#0B0B0B", textDecoration: "none", outline: "1px dashed #0B0B0B59", borderRadius: "50%" }}>
                 {" "}
                 <span style={{ position: "absolute", left: "4px", top: "4px", fontFamily: "'Geist Mono',monospace", fontSize: "9px", color: "#6E6E69" }}>
                   badge
@@ -143,7 +143,7 @@ export default function HomeMobile({ v }) {
               {" "}
             </div>
             {" "}
-            <a href="#work" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "transparent", color: "#3C3C38", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px", outline: "1px dashed #0B0B0B59", position: "relative" }}>
+            <a tabIndex={-1} href="#work" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "transparent", color: "#3C3C38", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px", outline: "1px dashed #0B0B0B59", position: "relative" }}>
               <span style={{ position: "absolute", left: "4px", top: "4px", fontFamily: "'Geist Mono',monospace", fontSize: "9px", color: "#6E6E69" }}>
                 CTA · primary
               </span>
@@ -255,7 +255,7 @@ export default function HomeMobile({ v }) {
                 <a href="#about" style={{ color: "#0B0B0B", textDecoration: "none" }}>
                   About
                 </a>
-                <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+                <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
                   CV {"↗\uFE0E"}
                 </a>
               </div>
@@ -449,7 +449,7 @@ export default function HomeMobile({ v }) {
           </div>
         </div>
         {" "}
-        <div onPointerDown={v.onMSeamDown} style={{ position: "absolute", left: "0", right: "0", top: v.mSeamTop, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div onPointerDown={v.onMSeamDown} onKeyDown={v.onMSeamKey} tabIndex={0} role="slider" aria-label="Polished or thinking view: drag or use the arrow keys" aria-orientation="vertical" aria-valuemin={0} aria-valuemax={100} aria-valuenow={v.mSeamVal} aria-valuetext={`${v.mSeamVal}% polished`} style={{ position: "absolute", left: "0", right: "0", top: v.mSeamTop, height: "44px", marginTop: "-22px", cursor: "ns-resize", touchAction: "none", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {" "}
           <span style={{ position: "absolute", left: "0", right: "0", top: "50%", height: "1px", background: "#0B0B0B" }}></span>
           {" "}
@@ -652,7 +652,7 @@ export default function HomeMobile({ v }) {
               </span>
               {" "}
               {v.cur9d?.cta ? (
-              <a className="mh0" href={v.cur9d?.href} target={v.cur9d?.target} onClick={v.cur9d?.onAct} style={{ marginTop: "auto", alignSelf: "flex-start", height: "48px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "16px", fontFamily: "'Geist',sans-serif", fontSize: "14px", fontWeight: "500" }}>
+              <a className="mh0" href={v.cur9d?.href} target={v.cur9d?.target} rel={v.cur9d?.target === "_blank" ? "noopener noreferrer" : undefined} onClick={v.cur9d?.onAct} style={{ marginTop: "auto", alignSelf: "flex-start", height: "48px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", gap: "16px", fontFamily: "'Geist',sans-serif", fontSize: "14px", fontWeight: "500" }}>
                 {show(v.cur9d?.cta)}{" "}
                 <span style={{ width: "32px", height: "32px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center" }}>
                   <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
@@ -686,10 +686,10 @@ export default function HomeMobile({ v }) {
           {/* links stacked on the left, the round Contact button on the right */}
           <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) auto", gap: "16px", alignItems: "center" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <a href="https://linkedin.com/in/patelaayushi" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
+              <a href="https://linkedin.com/in/patelaayushi" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
                 LinkedIn {"↗\uFE0E"}
               </a>
-              <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
+              <a href="https://www.behance.net/aayushipatel21/projects" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", height: "48px", borderRadius: "999px", textDecoration: "none", fontSize: "14px", fontWeight: "500", letterSpacing: "-.01em", border: "1px solid #0B0B0B", color: "#0B0B0B" }}>
                 Behance {"↗\uFE0E"}
               </a>
             </div>

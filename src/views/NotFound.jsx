@@ -36,7 +36,7 @@ export default function NotFound({ v }) {
             About
           </a>
           {" "}
-          <a href="/resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
             Résumé {"↗\uFE0E"}
           </a>
           {" "}
@@ -49,6 +49,7 @@ export default function NotFound({ v }) {
       </header>
       {" "}
       <main className="nf-main" style={{ position: "relative", flex: "1", minHeight: "0", display: "grid", gridTemplateColumns: "minmax(0,1fr) auto minmax(0,1fr)", alignItems: "center", gap: "0 2vw", padding: "0 40px", perspective: "1200px" }}>
+        <h1 className="sr-only">Page not found</h1>
         {" "}
         <button type="button" onClick={v.poke4a} aria-label="Poke the four" className="nf-four nf-four-a" style={{ all: "unset", cursor: "pointer", justifySelf: "end", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", fontSize: "clamp(220px, 33vw, 600px)", lineHeight: ".8", letterSpacing: "-.07em", transform: `translate(${v.d1x ?? ""}, ${v.d1y ?? ""}) rotateY(${v.d1ry ?? ""}) rotateX(${v.d1rx ?? ""}) rotate(${v.spin1 ?? ""})`, transition: `transform ${v.dT ?? ""} cubic-bezier(.3,1.3,.4,1)` }}>
           4
@@ -103,7 +104,7 @@ export default function NotFound({ v }) {
               {(v.results || []).map((r, $index) => (
                 <React.Fragment key={$index}>
                   {" "}
-                  <a className="nh0" href={r?.href} target={r?.target} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", height: "34px", padding: "0 12px", borderRadius: "999px", background: r?.bg, color: r?.fg, textDecoration: "none", fontSize: "13px", fontWeight: "500", transition: "background .2s" }}>
+                  <a className="nh0" href={r?.href} target={r?.target} rel={r?.target === "_blank" ? "noopener noreferrer" : undefined} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px", height: "34px", padding: "0 12px", borderRadius: "999px", background: r?.bg, color: r?.fg, textDecoration: "none", fontSize: "13px", fontWeight: "500", transition: "background .2s" }}>
                     <span style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: "0" }}>
                       <span style={{ fontSize: "10px", color: "#E5322B" }}>
                         {show(r?.n)}

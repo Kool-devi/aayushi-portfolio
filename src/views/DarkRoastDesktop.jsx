@@ -38,7 +38,7 @@ export default function DarkRoastDesktop({ v }) {
             About
           </a>
           {" "}
-          <a href="resume.pdf" target="_blank" style={{ color: "#0B0B0B", textDecoration: "none" }}>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer" style={{ color: "#0B0B0B", textDecoration: "none" }}>
             Résumé {"↗\uFE0E"}
           </a>
           {" "}
@@ -245,7 +245,7 @@ export default function DarkRoastDesktop({ v }) {
               <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#2DB34A" }}></span>
               Autoplay · best viewed on desktop
             </span>
-            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
+            <a href="DarkRoast%20Prototype%20Autoplay.html" target="_blank" rel="noopener noreferrer" style={{ height: "44px", padding: "0 8px 0 18px", borderRadius: "999px", background: "#FCEB3F", color: "#0B0B0B", textDecoration: "none", display: "flex", alignItems: "center", gap: "14px", fontSize: "13.5px", fontWeight: "500" }}>
               {"Open full screen "}
               <span style={{ width: "30px", height: "30px", borderRadius: "50%", background: "#0B0B0B", color: "#FCEB3F", display: "grid", placeItems: "center" }}>
                 <svg width="12" height="12" viewBox="0 0 100 100" style={{ display: "block" }}>

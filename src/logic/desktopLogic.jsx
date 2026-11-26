@@ -340,14 +340,17 @@ export default class DesktopLogic extends React.Component {
       onKey9: (e) => {
         const ix = f.findIndex(c => c.id === sel);
         if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const n = f[(ix + (e.key === 'ArrowDown' ? 1 : -1) + f.length) % f.length]; n && this.setState({ ['sel9' + sfx]: n.id }); }
-        if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank'); }
+        if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank', 'noopener'); }
       },
       seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
       // home page (sfx 'd'): one label per side, so it always says where dragging takes you
       seam9Hint: sfx === 'd' ? (seam >= 50 ? 'Drag to see the thinking' : 'Back to the polish') : seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
       onSeam9Down: (e) => { e.preventDefault(); this['seam9Drag' + sfx] = true; },
       onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); /* the seam is a vertical line dragged sideways */ },
-      onSeam9Up: () => { this['seam9Drag' + sfx] = false; }
+      onSeam9Up: () => { this['seam9Drag' + sfx] = false; },
+      // keyboard: ← → move the seam, Home/End jump to either side
+      seam9Val: Math.round(seam),
+      onSeam9Key: (e) => { const k = { ArrowLeft: -5, ArrowDown: -5, ArrowRight: 5, ArrowUp: 5, PageDown: -20, PageUp: 20 }[e.key]; let n = k != null ? seam + k : e.key === 'Home' ? 0 : e.key === 'End' ? 100 : null; if (n == null) return; e.preventDefault(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, n)) }); }
     };
     return sfx ? Object.fromEntries(Object.entries(out).map(([k, v]) => [k.replace('9', '9' + sfx), v])) : out;
   }
