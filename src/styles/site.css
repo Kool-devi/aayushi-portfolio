@@ -40,3 +40,6 @@ html[data-bars-hidden] { --bars-on: 0; }
    below them). */
 [data-pinbody] { transform: translateY(calc(var(--pin-s, 0px) * (1 + var(--bars-on)) / 2 + var(--pin-slack, 0px) / 2)); }
 @media (prefers-reduced-motion: reduce) { html { transition: none; } }
+
+/* Home "Just ask", email answer: on tablets 32px lets the address fit on one line (phones keep 33px and wrap) */
+@media (min-width: 600px) { .m-ask-email { font-size: 32px !important; } }

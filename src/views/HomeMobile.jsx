@@ -643,7 +643,7 @@ export default function HomeMobile({ v }) {
                 {show(v.cur9d?.kind)}
               </span>
               {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "33px", lineHeight: "1", color: "#0B0B0B", overflowWrap: "anywhere" }}>
+              <span className={v.cur9d?.id === "email" ? "m-ask-email" : undefined} style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "33px", lineHeight: "1", color: "#0B0B0B", overflowWrap: "anywhere" }}>
                 {show(v.cur9d?.title)}
               </span>
               {" "}
