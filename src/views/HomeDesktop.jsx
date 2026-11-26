@@ -687,7 +687,7 @@ export default function HomeDesktop({ v }) {
                 {show(v.cur9d?.kind)}
               </span>
               {" "}
-              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "44px", lineHeight: "1", color: "#0B0B0B", overflowWrap: "anywhere" }}>
+              <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: v.cur9d?.id === "email" ? "35px" /* the email address fits on one line */ : "44px", lineHeight: "1", color: "#0B0B0B", overflowWrap: "anywhere" }}>
                 {show(v.cur9d?.title)}
               </span>
               {" "}
