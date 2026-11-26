@@ -264,7 +264,7 @@ export default class MobileLogic extends React.Component {
     const folders9 = works.map((w, i) => {
       const depth = i === fo ? 0 : order.indexOf(i) + 1;
       return { ...w, href: sfx === 'd' && ({ darkroast: 'project-darkroast.html', delicut: 'project-delicut.html', case3: 'project-attune.html' })[w.key] || w.href, num: String(i + 1).padStart(2, '0'), tabLeft: (i * 286) + 'px', z: 10 - depth, top: (depth === 0 ? 40 : depth === 1 ? 20 : 0) + 'px',
-        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Web and mobile app', case3: 'Mobile app' }[w.key], year: { darkroast: '2026', delicut: '2025', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
+        bg: P.bg[depth], dot: depth === 0 ? P.dot : 'transparent', dotFg: depth === 0 ? '#F1EEDC' : '#3A3226', arrow: depth === 0 ? '↓' : '↑', role: { darkroast: 'Product Designer', delicut: 'Product Designer', case3: 'Product Designer' }[w.key], platform: { darkroast: 'Web app', delicut: 'Mobile app', case3: 'Mobile app' }[w.key], year: { darkroast: '2026', delicut: '2025', case3: '2026' }[w.key], filter: depth === 0 ? 'none' : 'grayscale(1)',
         onOpen: () => this.setState({ ['folder9' + sfx]: i }), on: depth === 0,
         ...(() => { const k = sfx + w.key, o = this.state.rcH === k; return {
           rcIn: () => this.setState({ rcH: k }), rcOut: () => this.state.rcH === k && this.setState({ rcH: null }),
@@ -302,9 +302,9 @@ export default class MobileLogic extends React.Component {
   renderVals() {
     // The order here is the order of the case studies in the Projects section.
     const works = [
-      { key: 'delicut', title: 'Delicut', desc: 'A meal plan app built for customers who skip days and come back later.', tags: 'Product design · UAE', href: 'project-delicut.html' },
-      { key: 'darkroast', title: 'DarkRoast', desc: 'A dashboard that shows brands which design project needs them today.', tags: 'Product design', href: 'project-darkroast.html' },
-      { key: 'case3', title: 'Attune AI', desc: 'Deciding when an AI should help a couple and when it should step back.', tags: 'AI product design', href: 'project-attune.html' }
+      { key: 'delicut', title: 'Delicut', desc: 'A meal plan app for choosing meals, tracking macros and managing deliveries.', tags: 'Product design  UAE', href: 'project-delicut.html' },
+      { key: 'darkroast', title: 'DarkRoast', desc: 'A project dashboard for brands working with on-demand designers.', tags: 'Product design', href: 'project-darkroast.html' },
+      { key: 'case3', title: 'Attune AI', desc: 'An intelligent guide that helps couples understand each other and grow together.', tags: 'Product design', href: 'project-attune.html' }
     ].map(w => ({ ...w, placeholder: COVER_ALT[w.key] }));
     const about = [
       { n: '01', title: 'Background', body: 'Trained in industrial design before moving into digital products — I still design for how things get built.' },
@@ -314,9 +314,9 @@ export default class MobileLogic extends React.Component {
       { n: '05', title: 'Inspiration', body: 'Architecture, long walks, and late‑night reading fuel most of my best ideas.' }
     ];
     const extra = {
-      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: 'Brands could track 5 design projects at once instead of 1', tag1: 'Agency platform' },
-      delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: 'Customers could skip, pause or change meals without calling support', tag1: 'Meal subscription' },
-      case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'An AI that helps couples work through fights without taking sides', tag1: 'AI for couples' }
+      darkroast: { frame: 'Frame 02 — DarkRoast / Desktop', metric: 'Brands can now manage 5 design projects at once', tag1: 'Design platform' },
+      delicut: { frame: 'Frame 03 — Delicut / Mobile', metric: '15k+ customers manage their meals in it', tag1: 'Meal subscription' },
+      case3: { frame: 'Frame 04 — Case 03 / Desktop', metric: 'Created a safety flow that steps back when a conversation gets too heavy', tag1: 'Relationship coaching' }
     };
     const tilts = ['-2deg', '1.5deg', '-1deg'];
     works.forEach((w, i) => Object.assign(w, extra[w.key], { tilt: tilts[i] }));

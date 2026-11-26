@@ -492,7 +492,8 @@ export default function HomeMobile({ v }) {
         {" "}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
           {" "}
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {/* one grid row per card, all as tall as the tallest, so the three cards match */}
+          <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr)", gridAutoRows: "1fr", gap: "16px" }}>
             {" "}
             {(v.folders9d || []).map((f, $index) => (
               <React.Fragment key={$index}>
@@ -514,8 +515,8 @@ export default function HomeMobile({ v }) {
                   {" "}
                   <div style={{ display: "flex", flexDirection: "column", gap: "10px", padding: "0 8px" }}>
                     {" "}
-                    <span style={{ fontSize: "12px", color: "#6E6E69" }}>
-                      {show(f?.tags)}{" · "}{show(f?.year)}
+                    <span style={{ fontSize: "12px", color: "#6E6E69", whiteSpace: "pre" }}>
+                      {show(f?.tags)}{"  "}{show(f?.year)}
                     </span>
                     {" "}
                     <h3 style={{ margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "36px", lineHeight: ".95", color: "#0B0B0B" }}>
@@ -559,7 +560,7 @@ export default function HomeMobile({ v }) {
                     <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "15px", lineHeight: "1.3", letterSpacing: "-.02em", color: "#0B0B0B" }}>{show(f?.rcInsight)}</span>
                   </div>
                   {" "}
-                  <a href={f?.href} style={{ height: "52px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14.5px", fontWeight: "500" }}>
+                  <a href={f?.href} style={{ marginTop: "auto", height: "52px", padding: "0 8px 0 20px", borderRadius: "999px", background: "#0B0B0B", color: "#FFFFFF", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14.5px", fontWeight: "500" }}>
                     Read the case study
                     <span style={{ width: "36px", height: "36px", borderRadius: "50%", background: "#FFFFFF", color: "#0B0B0B", display: "grid", placeItems: "center" }}>
                       <svg width="13" height="13" viewBox="0 0 100 100" style={{ display: "block" }}>
