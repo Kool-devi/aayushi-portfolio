@@ -108,7 +108,7 @@ export default function HomeDesktop({ v }) {
             Lede
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "242px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Primary CTA
           </div>
           {" "}
@@ -282,7 +282,7 @@ export default function HomeDesktop({ v }) {
             Deep research, clean interfaces.
           </p>
           {" "}
-          <a className="dh0" href="#work" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
+          <a className="dh0" href="#work" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "242px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
             {"Show my work "}
             <span style={{ display: "block", width: "14px" }}>
               <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
