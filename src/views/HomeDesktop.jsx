@@ -108,7 +108,7 @@ export default function HomeDesktop({ v }) {
             Lede
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+          <div style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "242px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
             Primary CTA
           </div>
           {" "}
@@ -226,17 +226,15 @@ export default function HomeDesktop({ v }) {
             <PointArrow size={92} />
           </div>
           {" "}
-          <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "86px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
+          <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "82px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
             I turn what users feel
             <br />
             <span style={{ fontStyle: "italic" }}>
-              into what teams
-              <br />
-              {"can "}
+              {"into what teams can "}
               <span style={{ position: "relative", display: "inline-block" }}>
                 build
                 {/* the hand-drawn ellipse, sized to the word so it follows it wherever the line breaks */}
-                <svg aria-hidden="true" viewBox="0 0 560 210" preserveAspectRatio="none" style={{ position: "absolute", left: "-.2em", top: "50%", width: "calc(100% + .38em)", height: "1.08em", transform: "translateY(-47%)", pointerEvents: "none", overflow: "visible" }}>
+                <svg aria-hidden="true" viewBox="0 0 560 210" preserveAspectRatio="none" style={{ position: "absolute", left: "-.32em", top: "50%", width: "calc(100% + .58em)", height: "1.18em", transform: "translateY(-46%)", pointerEvents: "none", overflow: "visible" }}>
                   <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" vectorEffect="non-scaling-stroke" transform="rotate(-6 280 105)"></ellipse>
                 </svg>
               </span>
@@ -282,7 +280,7 @@ export default function HomeDesktop({ v }) {
             Deep research, clean interfaces.
           </p>
           {" "}
-          <a className="dh0" href="#work" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
+          <a className="dh0" href="#work" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "242px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
             {"Show my work "}
             <span style={{ display: "block", width: "14px" }}>
               <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
