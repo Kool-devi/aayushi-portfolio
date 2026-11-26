@@ -57,7 +57,7 @@ export default function HomeDesktop({ v }) {
           </div>
           {" "}
           <div style={{ position: "absolute", left: "400px", top: "24px", width: "200px", height: "34px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
-            Edition
+            Status line
           </div>
           {" "}
           <div style={{ position: "absolute", left: "40px", right: "40px", top: "24px", display: "grid", gridTemplateColumns: "repeat(10, 1fr)", gap: "0 16px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
@@ -101,7 +101,7 @@ export default function HomeDesktop({ v }) {
           </div>
           {" "}
           <div style={{ position: "absolute", right: "40px", top: "calc(476px + var(--hero-shift, 0px))", width: "300px", height: "104px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
-            Proof · 2 metrics
+            Proof 2 numbers
           </div>
           {" "}
           <div style={{ position: "absolute", left: "40px", top: "calc(500px + var(--hero-shift, 0px))", width: "420px", height: "52px", border: "1px dashed #0B0B0B59", boxSizing: "border-box", padding: "7px 9px", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
@@ -123,7 +123,7 @@ export default function HomeDesktop({ v }) {
               01
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
-              Arrow points the eye straight into the promise.
+              Before I design anything, I take the old thing apart.
             </span>
           </div>
           {" "}
@@ -132,16 +132,16 @@ export default function HomeDesktop({ v }) {
               02
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
-              Promise first, name stays small in the header.
+              My first idea is rarely the one. Usually it’s the fourth.
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "706px", top: "calc(270px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "706px", top: "calc(270px + var(--hero-shift, 0px))", width: "146px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               03
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
-              Recruiters scan ~6 s — proof sits top‑right beside a face.
+              Users rarely say what they need. They show it.
             </span>
           </div>
           {" "}
@@ -150,21 +150,30 @@ export default function HomeDesktop({ v }) {
               04
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
-              If the lede needs two lines, it isn’t clear yet.
+              If it takes two lines to explain, it isn’t simple yet.
             </span>
           </div>
           {" "}
-          <div style={{ position: "absolute", left: "280px", top: "calc(586px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+          <div style={{ position: "absolute", left: "716px", top: "calc(180px + var(--hero-shift, 0px))", width: "200px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
               05
             </span>
             <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
-              One action. Résumé stays a link.
+              Mildly introverted. Very into your user flows.
             </span>
           </div>
           {" "}
-          <span style={{ position: "absolute", left: "40px", top: "min(calc(662px + var(--hero-shift, 0px)), calc(100% - 76px))", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
-            wireframe_v3.fig — the thinking
+          <div style={{ position: "absolute", right: "40px", top: "calc(592px + var(--hero-shift, 0px))", width: "300px", display: "grid", gridTemplateColumns: "26px 1fr", gap: "6px" }}>
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", color: "#E5322B" }}>
+              06
+            </span>
+            <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "10px", textTransform: "none", letterSpacing: "0", fontWeight: "400", lineHeight: "1.5", color: "#0B0B0B" }}>
+              If I can’t explain a number in an interview, it doesn’t go on the page.
+            </span>
+          </div>
+          {" "}
+          <span style={{ position: "absolute", left: "40px", top: "min(calc(662px + var(--hero-shift, 0px)), calc(100% - 76px))", whiteSpace: "pre", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "#5E5E5A" }}>
+            {"wireframe_v3.fig  the messy part"}
           </span>
           {" "}
         </div>
@@ -182,9 +191,11 @@ export default function HomeDesktop({ v }) {
             </a>
             {" "}
             <span style={{ gridColumn: "span 3" }}>
-              Portfolio — Edition
+              Currently
               <br />
-              06.10.2026
+              <span style={{ textTransform: "none" }}>
+                Taking apart how things work
+              </span>
             </span>
             {" "}
             <a href="#work" style={{ color: "#0B0B0B", textDecoration: "none" }}>
@@ -206,25 +217,29 @@ export default function HomeDesktop({ v }) {
           </div>
           {" "}
           <div style={{ position: "absolute", left: "40px", top: "calc(84px + var(--hero-shift, 0px))", whiteSpace: "nowrap", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-            Since 2020
-            <br />
             Halifax, Canada
+            <br />
+            Open to design roles
           </div>
           {" "}
           <div style={{ position: "absolute", left: "40px", top: "calc(128px + var(--hero-shift, 0px))" }}>
             <PointArrow size={92} />
           </div>
           {" "}
-          <svg width="560" height="210" viewBox="0 0 560 210" style={{ position: "absolute", left: "300px", top: "calc(340px + var(--hero-shift, 0px))", pointerEvents: "none", overflow: "visible" }}>
-            <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
-          </svg>
-          {" "}
-          <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "128px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
-            Innovate
+          <h1 data-arrow-target style={{ position: "absolute", left: "36px", top: "calc(236px + var(--hero-shift, 0px))", width: "840px", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "86px", lineHeight: ".92", whiteSpace: "nowrap", color: "#0B0B0B" }}>
+            I turn what users feel
             <br />
-            {"with "}
             <span style={{ fontStyle: "italic" }}>
-              purpose
+              into what teams
+              <br />
+              {"can "}
+              <span style={{ position: "relative", display: "inline-block" }}>
+                build
+                {/* the hand-drawn ellipse, sized to the word so it follows it wherever the line breaks */}
+                <svg aria-hidden="true" viewBox="0 0 560 210" preserveAspectRatio="none" style={{ position: "absolute", left: "-.2em", top: "50%", width: "calc(100% + .38em)", height: "1.08em", transform: "translateY(-47%)", pointerEvents: "none", overflow: "visible" }}>
+                  <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" vectorEffect="non-scaling-stroke" transform="rotate(-6 280 105)"></ellipse>
+                </svg>
+              </span>
             </span>
           </h1>
           {" "}
@@ -234,7 +249,7 @@ export default function HomeDesktop({ v }) {
           {" "}
           <div style={{ position: "absolute", right: "40px", top: "calc(444px + var(--hero-shift, 0px))", width: "300px", display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
             <span>
-              Fig. 01 — Aayushi
+              <span style={{ whiteSpace: "pre" }}>{"Fig. 01  Aayushi, mid explanation"}</span>
             </span>
             <span>
               2026
@@ -245,34 +260,30 @@ export default function HomeDesktop({ v }) {
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "12px" }}>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "58px", lineHeight: ".85" }}>
-                −28%
+                3 yrs
               </span>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-                Task completion
-                <br />
-                time
+                Designing real products
               </span>
             </div>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "12px" }}>
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "58px", lineHeight: ".85" }}>
-                −35%
+                15k+
               </span>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
-                Design‑to‑dev
-                <br />
-                handoff
+                People use something I designed
               </span>
             </div>
             {" "}
           </div>
           {" "}
           <p style={{ position: "absolute", left: "40px", top: "calc(500px + var(--hero-shift, 0px))", width: "420px", margin: "0", fontSize: "17px", lineHeight: "1.45", letterSpacing: "-.01em" }}>
-            Designing products that turn complex problems into clear, human experiences.
+            Deep research, clean interfaces.
           </p>
           {" "}
-          <a className="dh0" href="mailto:aayushipatel2002@gmail.com" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
-            {"Contact now "}
+          <a className="dh0" href="#work" style={{ position: "absolute", left: "40px", top: "calc(572px + var(--hero-shift, 0px))", width: "210px", height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
+            {"Show my work "}
             <span style={{ display: "block", width: "14px" }}>
               <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
                 <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="square"></path>
@@ -294,9 +305,9 @@ export default function HomeDesktop({ v }) {
                 {" "}
                 <circle cx="64" cy="64" r="41" fill="none" stroke="#0B0B0B" strokeOpacity=".35" strokeWidth="1" strokeDasharray="1 3"></circle>
                 {" "}
-                <text style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "8.4px", letterSpacing: "2.2px" }} fill="#0B0B0B">
-                  <textPath href="#v9d-ring">
-                    {"OPEN TO WORK · 2026 · CANADA · FULL‑TIME · "}
+                <text style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "8.4px", letterSpacing: "2.2px", whiteSpace: "pre" }} fill="#0B0B0B">
+                  <textPath href="#v9d-ring" textLength="326" lengthAdjust="spacing">
+                    {"OPEN TO WORK  FULL TIME  CANADA 2026  "}
                   </textPath>
                 </text>
                 {" "}
@@ -316,7 +327,7 @@ export default function HomeDesktop({ v }) {
               </span>
               {" "}
               <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontStyle: "italic", fontSize: "22px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                2026
+                now
               </span>
               {" "}
             </span>
@@ -331,6 +342,10 @@ export default function HomeDesktop({ v }) {
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>
+                {" UI design "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
                 {" Design systems "}
                 <span style={{ color: "#FCEB3F" }}>
                   /
@@ -339,19 +354,19 @@ export default function HomeDesktop({ v }) {
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>
+                {" AI products "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
+                {" Dashboards "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
+                {" Mobile apps "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
                 {" Usability testing "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" Enterprise "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" E‑commerce "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" Ed‑tech "}
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>
@@ -361,6 +376,10 @@ export default function HomeDesktop({ v }) {
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>
+                {" UI design "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
                 {" Design systems "}
                 <span style={{ color: "#FCEB3F" }}>
                   /
@@ -369,19 +388,19 @@ export default function HomeDesktop({ v }) {
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>
+                {" AI products "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
+                {" Dashboards "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
+                {" Mobile apps "}
+                <span style={{ color: "#FCEB3F" }}>
+                  /
+                </span>
                 {" Usability testing "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" Enterprise "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" E‑commerce "}
-                <span style={{ color: "#FCEB3F" }}>
-                  /
-                </span>
-                {" Ed‑tech "}
                 <span style={{ color: "#FCEB3F" }}>
                   /
                 </span>

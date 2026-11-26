@@ -343,7 +343,8 @@ export default class DesktopLogic extends React.Component {
         if (e.key === 'Enter') { if (raw.act) this.copyEmail(); else if (raw.target === '_blank') window.open(raw.href, '_blank'); }
       },
       seam9Left: seam + '%', seam9Right: (100 - seam) + '%',
-      seam9Hint: seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
+      // home page (sfx 'd'): one label per side, so it always says where dragging takes you
+      seam9Hint: sfx === 'd' ? (seam >= 50 ? 'Drag to see the thinking' : 'Back to the polish') : seam > 85 ? '← drag to see the thinking' : seam < 15 ? 'drag to see the polish →' : 'polish ← → thinking',
       onSeam9Down: (e) => { e.preventDefault(); this['seam9Drag' + sfx] = true; },
       onSeam9Move: (e) => { if (!this['seam9Drag' + sfx]) return; const r = e.currentTarget.getBoundingClientRect(); this.setState({ ['seam9' + sfx]: Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100)) }); /* the seam is a vertical line dragged sideways */ },
       onSeam9Up: () => { this['seam9Drag' + sfx] = false; }

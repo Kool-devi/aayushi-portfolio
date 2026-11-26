@@ -1,4 +1,4 @@
-// The hero's arrow, rotated so it always points at the "Innovate with purpose" heading, whatever
+// The hero's arrow, rotated so it always points at the hero heading, whatever
 // the screen size (the heading and the arrow move relative to each other as the layout scales).
 // It aims at the centre of the heading's text (marked data-arrow-target); if a page has more than
 // one (the mobile hero stacks two layers), the nearest one is used.

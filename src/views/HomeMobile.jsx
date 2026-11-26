@@ -46,9 +46,9 @@ export default function HomeMobile({ v }) {
                 meta
               </span>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-                Since 2020
-                <br />
                 Halifax, Canada
+                <br />
+                Open to design roles
               </span>
               <span style={{ display: "block", opacity: "0" }}>
                 <PointArrow size={54} />
@@ -60,16 +60,16 @@ export default function HomeMobile({ v }) {
                 H1 · Funnel Sans 400
               </span>
               {" "}
-              <svg width="330" height="120" viewBox="0 0 560 210" style={{ position: "absolute", left: "30px", top: "70px", pointerEvents: "none", overflow: "visible", opacity: "0" }}>
-                <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
-              </svg>
-              {" "}
               <div aria-hidden="true" data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
-                Innovate
-                <br />
-                {"with "}
+                {"I turn what users feel "}
                 <span style={{ fontStyle: "italic" }}>
-                  purpose
+                  {"into what teams can "}
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    build
+                    <svg aria-hidden="true" viewBox="0 0 560 210" preserveAspectRatio="none" style={{ position: "absolute", left: "-.2em", top: "50%", width: "calc(100% + .38em)", height: "1.08em", transform: "translateY(-47%)", pointerEvents: "none", overflow: "visible", opacity: "0" }}>
+                      <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" vectorEffect="non-scaling-stroke" transform="rotate(-6 280 105)"></ellipse>
+                    </svg>
+                  </span>
                 </span>
               </div>
               {" "}
@@ -79,7 +79,7 @@ export default function HomeMobile({ v }) {
               <span style={{ position: "absolute", left: "4px", top: "4px", fontFamily: "'Geist Mono',monospace", fontSize: "9px", color: "#6E6E69" }}>
                 body
               </span>
-              Designing products that turn complex problems into clear, human experiences.
+              Deep research, clean interfaces.
             </p>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -91,9 +91,9 @@ export default function HomeMobile({ v }) {
                 </span>
               </div>
               {" "}
-              <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "transparent" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", whiteSpace: "pre", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px", color: "transparent" }}>
                 <span>
-                  Fig. 01 — Aayushi
+                  {"Fig. 01  Aayushi, mid explanation"}
                 </span>
                 <span>
                   2026
@@ -114,7 +114,7 @@ export default function HomeMobile({ v }) {
                     ○ Available
                   </span>
                   <span style={{ fontSize: "13px", color: "#3C3C38" }}>
-                    2026
+                    now
                   </span>
                   <span>
                     open to work
@@ -125,34 +125,30 @@ export default function HomeMobile({ v }) {
               {" "}
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "10px", borderTop: "1px solid #0B0B0B59", position: "relative", outline: "1px dashed #0B0B0B59", outlineOffset: "2px", color: "#6E6E69" }}>
                 <span style={{ fontFamily: "'Geist Mono',monospace", fontWeight: "400", letterSpacing: "0", fontSize: "26px", lineHeight: "1", color: "#3C3C38" }}>
-                  −28%
+                  3 yrs
                 </span>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", fontFamily: "'Geist Mono',monospace", fontWeight: "400", letterSpacing: "0", fontSize: "9px", textTransform: "none" }}>
-                  Task completion
-                  <br />
-                  time
+                  Designing real products
                 </span>
               </div>
               {" "}
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "10px", borderTop: "1px solid #0B0B0B59", position: "relative", outline: "1px dashed #0B0B0B59", outlineOffset: "2px", color: "#6E6E69" }}>
                 <span style={{ fontFamily: "'Geist Mono',monospace", fontWeight: "400", letterSpacing: "0", fontSize: "26px", lineHeight: "1", color: "#3C3C38" }}>
-                  −35%
+                  15k+
                 </span>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px", fontFamily: "'Geist Mono',monospace", fontWeight: "400", letterSpacing: "0", fontSize: "9px", textTransform: "none" }}>
-                  Design‑to‑dev
-                  <br />
-                  handoff
+                  People use something I designed
                 </span>
               </div>
               {" "}
             </div>
             {" "}
-            <a href="mailto:aayushipatel2002@gmail.com" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "transparent", color: "#3C3C38", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px", outline: "1px dashed #0B0B0B59", position: "relative" }}>
+            <a href="#work" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "transparent", color: "#3C3C38", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px", outline: "1px dashed #0B0B0B59", position: "relative" }}>
               <span style={{ position: "absolute", left: "4px", top: "4px", fontFamily: "'Geist Mono',monospace", fontSize: "9px", color: "#6E6E69" }}>
                 CTA · primary
               </span>
               <span style={{ fontFamily: "'Geist Mono',monospace", fontWeight: "400", letterSpacing: "0", fontSize: "12px", textTransform: "none" }}>
-                [ Contact now ]
+                [ Show my work ]
               </span>
               {" "}
               <span style={{ display: "block", width: "14px" }}>
@@ -170,6 +166,10 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
+                  {" UI design "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
                   {" Design systems "}
                   <span style={{ color: "transparent" }}>
                     /
@@ -178,19 +178,19 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
+                  {" AI products "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
+                  {" Dashboards "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
+                  {" Mobile apps "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
                   {" Usability testing "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" Enterprise "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" E‑commerce "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" Ed‑tech "}
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
@@ -200,6 +200,10 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
+                  {" UI design "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
                   {" Design systems "}
                   <span style={{ color: "transparent" }}>
                     /
@@ -208,19 +212,19 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
+                  {" AI products "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
+                  {" Dashboards "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
+                  {" Mobile apps "}
+                  <span style={{ color: "transparent" }}>
+                    /
+                  </span>
                   {" Usability testing "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" Enterprise "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" E‑commerce "}
-                  <span style={{ color: "transparent" }}>
-                    /
-                  </span>
-                  {" Ed‑tech "}
                   <span style={{ color: "transparent" }}>
                     /
                   </span>
@@ -260,9 +264,9 @@ export default function HomeMobile({ v }) {
             {" "}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", paddingTop: "0" }}>
               <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase" }}>
-                Since 2020
-                <br />
                 Halifax, Canada
+                <br />
+                Open to design roles
               </span>
               <span style={{ display: "block", opacity: "1" }}>
                 <PointArrow size={54} />
@@ -271,23 +275,23 @@ export default function HomeMobile({ v }) {
             {" "}
             <div style={{ position: "relative" }}>
               {" "}
-              <svg width="330" height="120" viewBox="0 0 560 210" style={{ position: "absolute", left: "30px", top: "70px", pointerEvents: "none", overflow: "visible", opacity: "1" }}>
-                <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" transform="rotate(-6 280 105)"></ellipse>
-              </svg>
-              {" "}
               <h1 data-arrow-target style={{ position: "relative", margin: "0", fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "64px", lineHeight: ".9" }}>
-                Innovate
-                <br />
-                {"with "}
+                {"I turn what users feel "}
                 <span style={{ fontStyle: "italic" }}>
-                  purpose
+                  {"into what teams can "}
+                  <span style={{ position: "relative", display: "inline-block" }}>
+                    build
+                    <svg aria-hidden="true" viewBox="0 0 560 210" preserveAspectRatio="none" style={{ position: "absolute", left: "-.2em", top: "50%", width: "calc(100% + .38em)", height: "1.08em", transform: "translateY(-47%)", pointerEvents: "none", overflow: "visible", opacity: "1" }}>
+                      <ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" strokeWidth="1" vectorEffect="non-scaling-stroke" transform="rotate(-6 280 105)"></ellipse>
+                    </svg>
+                  </span>
                 </span>
               </h1>
               {" "}
             </div>
             {" "}
             <p style={{ margin: "0", fontSize: "16px", lineHeight: "1.45", letterSpacing: "-.01em", maxWidth: "30ch" }}>
-              Designing products that turn complex problems into clear, human experiences.
+              Deep research, clean interfaces.
             </p>
             {" "}
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -296,9 +300,9 @@ export default function HomeMobile({ v }) {
                 <ImageSlot id="v9d-portraitWide" shape="rect" placeholder="Aayushi Patel giving a talk" />
               </div>
               {" "}
-              <div style={{ display: "flex", justifyContent: "space-between", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", whiteSpace: "pre", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9.5px" }}>
                 <span>
-                  Fig. 01 — Aayushi
+                  {"Fig. 01  Aayushi, mid explanation"}
                 </span>
                 <span>
                   2026
@@ -318,9 +322,9 @@ export default function HomeMobile({ v }) {
                     </defs>
                     <circle cx="64" cy="64" r="63.5" fill="none" stroke="#0B0B0B" strokeWidth="1"></circle>
                     <circle cx="64" cy="64" r="41" fill="none" stroke="#0B0B0B" strokeOpacity=".35" strokeWidth="1" strokeDasharray="1 3"></circle>
-                    <text style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "8.4px", letterSpacing: "2.2px" }} fill="#0B0B0B">
-                      <textPath href="#m9d-ring">
-                        {"OPEN TO WORK · 2026 · CANADA · FULL‑TIME · "}
+                    <text style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "8.4px", letterSpacing: "2.2px", whiteSpace: "pre" }} fill="#0B0B0B">
+                      <textPath href="#m9d-ring" textLength="326" lengthAdjust="spacing">
+                        {"OPEN TO WORK  FULL TIME  CANADA 2026  "}
                       </textPath>
                     </text>
                     <circle cx="64" cy="0.5" r="3.5" fill="#E5322B"></circle>
@@ -333,7 +337,7 @@ export default function HomeMobile({ v }) {
                     Available
                   </span>
                   <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontStyle: "italic", fontSize: "20px", lineHeight: "1", letterSpacing: "-.04em" }}>
-                    2026
+                    now
                   </span>
                 </span>
                 {" "}
@@ -341,30 +345,26 @@ export default function HomeMobile({ v }) {
               {" "}
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "10px", borderTop: "1px solid #0B0B0B" }}>
                 <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: ".85" }}>
-                  −28%
+                  3 yrs
                 </span>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px" }}>
-                  Task completion
-                  <br />
-                  time
+                  Designing real products
                 </span>
               </div>
               {" "}
               <div style={{ display: "flex", flexDirection: "column", gap: "8px", paddingTop: "10px", borderTop: "1px solid #0B0B0B" }}>
                 <span style={{ fontFamily: "'Funnel Sans',sans-serif", fontWeight: "400", letterSpacing: "-.055em", fontSize: "34px", lineHeight: ".85" }}>
-                  −35%
+                  15k+
                 </span>
                 <span style={{ fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "9px" }}>
-                  Design‑to‑dev
-                  <br />
-                  handoff
+                  People use something I designed
                 </span>
               </div>
               {" "}
             </div>
             {" "}
-            <a href="mailto:aayushipatel2002@gmail.com" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
-              {"Contact now "}
+            <a href="#work" style={{ height: "52px", boxSizing: "border-box", padding: "0 18px", display: "flex", alignItems: "center", justifyContent: "space-between", background: "#0B0B0B", color: "#FCEB3F", textDecoration: "none", fontFamily: "'Geist',sans-serif", fontWeight: "500", fontSize: "10.5px", lineHeight: "1.35", letterSpacing: ".02em", textTransform: "uppercase", fontSize: "11px" }}>
+              {"Show my work "}
               <span style={{ display: "block", width: "14px" }}>
                 <svg width="14" height="14" viewBox="0 0 100 100" style={{ display: "block" }}>
                   <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="currentColor" strokeWidth="10" strokeLinecap="square"></path>
@@ -380,6 +380,10 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
+                  {" UI design "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
                   {" Design systems "}
                   <span style={{ color: "#FCEB3F" }}>
                     /
@@ -388,19 +392,19 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
+                  {" AI products "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
+                  {" Dashboards "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
+                  {" Mobile apps "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
                   {" Usability testing "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" Enterprise "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" E‑commerce "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" Ed‑tech "}
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
@@ -410,6 +414,10 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
+                  {" UI design "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
                   {" Design systems "}
                   <span style={{ color: "#FCEB3F" }}>
                     /
@@ -418,19 +426,19 @@ export default function HomeMobile({ v }) {
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
+                  {" AI products "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
+                  {" Dashboards "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
+                  {" Mobile apps "}
+                  <span style={{ color: "#FCEB3F" }}>
+                    /
+                  </span>
                   {" Usability testing "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" Enterprise "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" E‑commerce "}
-                  <span style={{ color: "#FCEB3F" }}>
-                    /
-                  </span>
-                  {" Ed‑tech "}
                   <span style={{ color: "#FCEB3F" }}>
                     /
                   </span>
