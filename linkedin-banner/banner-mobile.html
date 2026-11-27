@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LinkedIn Banner Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Geist:wght@300..700&display=swap">
+<style>
+  /* LinkedIn banner, 1584 × 396, mobile-friendly variant.
+     Phones show the banner ~390px wide (≈ ¼ scale), so every word that matters is ≥ 20px here
+     (≈ 5px+ on a phone); the 10–13px detail text of banner.html is dropped. */
+  :root { --y:#FCEB3F; --ink:#0B0B0B; --red:#E5322B; --green:#2DB34A; --paper:#EFEFEC; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1584px; height:396px; background:var(--y); overflow:hidden; }
+  body { font-family:'Geist',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+  .b { position:relative; width:1584px; height:396px; overflow:hidden; background:var(--y); }
+
+  .grid { position:absolute; inset:0 0 72px 0;
+    background-image:linear-gradient(90deg, #0B0B0B14 1px, transparent 1px);
+    background-size:calc((100% - 96px) / 10) 100%; background-position:48px 0; }
+  .rule { position:absolute; left:48px; right:48px; top:20px; height:1px; background:var(--ink); }
+
+  .lbl { font-weight:500; line-height:1.2; letter-spacing:.03em; text-transform:uppercase; }
+
+  .top { position:absolute; left:48px; right:48px; top:34px; display:flex; justify-content:space-between; align-items:center; font-size:21px; }
+  .open { display:flex; align-items:center; gap:12px; }
+  .dot { width:13px; height:13px; border-radius:50%; background:var(--green); box-shadow:0 0 0 5px #2DB34A38; }
+
+  h1 { position:absolute; left:400px; top:96px; font-family:'Funnel Sans',sans-serif; font-weight:400;
+    font-size:76px; line-height:.9; letter-spacing:-.055em; white-space:nowrap; }
+  h1 i { font-style:italic; }
+  .ring { position:relative; display:inline-block; }
+  .ring svg { position:absolute; left:-.2em; top:50%; width:calc(100% + .38em); height:1.12em;
+    transform:translateY(-47%); overflow:visible; }
+
+  .arrow { position:absolute; left:290px; top:104px; width:84px; height:84px; transform:rotate(8deg); }
+
+  .skills { position:absolute; left:404px; top:256px; font-size:22px; }
+  .skills b { color:var(--red); font-weight:500; padding:0 10px; }
+
+  .proof { position:absolute; right:48px; top:96px; width:316px; display:grid; grid-template-columns:auto auto; justify-content:space-between;
+    border-top:2px solid var(--ink); column-gap:20px; }
+  .proof > div { padding-top:14px; display:flex; flex-direction:column; gap:10px; }
+  .num { font-family:'Funnel Sans',sans-serif; font-weight:400; font-size:68px; line-height:.85; letter-spacing:-.055em; white-space:nowrap; }
+  .proof .lbl { font-size:19px; }
+
+  .tick { position:absolute; left:0; right:0; bottom:0; height:72px; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:flex-end; gap:32px; }
+  .tick .lbl { font-size:22px; letter-spacing:.04em; }
+  .tick .y { color:var(--y); }
+  .cta { display:flex; align-items:center; gap:16px; background:var(--y); color:var(--ink); height:72px; padding:0 48px 0 32px; }
+  .cta.lbl { font-size:28px; letter-spacing:.01em; text-transform:none; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="b">
+  <div class="grid"></div>
+  <div class="rule"></div>
+
+  <div class="top lbl">
+    <span>Product Designer · Halifax, Canada</span>
+    <span class="open"><span class="dot"></span>Open to full‑time roles</span>
+  </div>
+
+  <svg class="arrow" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" stroke-width="7" stroke-linecap="square" transform="rotate(-45 50 50)"/>
+  </svg>
+
+  <h1>I turn what users feel<br><i>into what teams can <span class="ring">build<svg viewBox="0 0 560 210" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" stroke-width="2" vector-effect="non-scaling-stroke" transform="rotate(-6 280 105)"/></svg></span></i></h1>
+
+  <div class="skills lbl">UX research<b>/</b>UI design<b>/</b>Design systems<b>/</b>AI products</div>
+
+  <div class="proof">
+    <div><span class="num">3 yrs</span><span class="lbl">Designing<br>products</span></div>
+    <div><span class="num">15k+</span><span class="lbl">People use<br>my work</span></div>
+  </div>
+
+  <div class="tick">
+    <span class="lbl">Hiring? <span class="y">/</span> Let’s talk</span>
+    <span class="cta lbl">aayushipatel.work
+      <svg width="20" height="20" viewBox="0 0 100 100"><path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="square" transform="rotate(-90 50 50)"/></svg>
+    </span>
+  </div>
+</div>
+</body>
+</html>
