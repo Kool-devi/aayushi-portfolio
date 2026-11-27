@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LinkedIn Banner Minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Geist:wght@300..700&display=swap">
+<style>
+  /* LinkedIn banner, 1584 × 396, minimal: works on desktop and phones (~¼ scale).
+     Only three things: the headline, availability, the portfolio link. Bottom-left is left
+     empty for the profile photo; content keeps ~100px from the right edge for mobile cropping. */
+  :root { --y:#FCEB3F; --ink:#0B0B0B; --red:#E5322B; --green:#2DB34A; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1584px; height:396px; background:var(--y); overflow:hidden; }
+  body { font-family:'Geist',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+  .b { position:relative; width:1584px; height:396px; overflow:hidden; background:var(--y); }
+
+  .grid { position:absolute; inset:0;
+    background-image:linear-gradient(90deg, #0B0B0B12 1px, transparent 1px);
+    background-size:calc((100% - 96px) / 10) 100%; background-position:48px 0; }
+  .rule { position:absolute; left:48px; right:48px; top:28px; height:1px; background:var(--ink); }
+
+  .lbl { font-weight:500; letter-spacing:.03em; text-transform:uppercase; font-size:22px; line-height:1; }
+  .open { position:absolute; right:100px; top:52px; display:flex; align-items:center; gap:12px; }
+  .dot { width:13px; height:13px; border-radius:50%; background:var(--green); box-shadow:0 0 0 5px #2DB34A38; }
+
+  h1 { position:absolute; left:470px; top:112px; font-family:'Funnel Sans',sans-serif; font-weight:400;
+    font-size:96px; line-height:.9; letter-spacing:-.055em; white-space:nowrap; }
+  h1 i { font-style:italic; }
+  .ring { position:relative; display:inline-block; }
+  .ring svg { position:absolute; left:-.2em; top:50%; width:calc(100% + .38em); height:1.12em;
+    transform:translateY(-47%); overflow:visible; }
+
+  .arrow { position:absolute; left:344px; top:128px; width:92px; height:92px; transform:rotate(10deg); }
+
+  .link { position:absolute; left:474px; top:310px; display:flex; align-items:center; gap:14px;
+    font-size:26px; font-weight:600; letter-spacing:-.005em; }
+  .link .red { color:var(--red); }
+</style>
+</head>
+<body>
+<div class="b">
+  <div class="grid"></div>
+  <div class="rule"></div>
+
+  <div class="open lbl"><span class="dot"></span>Product Designer · Open to work</div>
+
+  <svg class="arrow" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" stroke-width="7" stroke-linecap="square" transform="rotate(-45 50 50)"/>
+  </svg>
+
+  <h1>I turn what users feel<br><i>into what teams can <span class="ring">build<svg viewBox="0 0 560 210" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" stroke-width="2" vector-effect="non-scaling-stroke" transform="rotate(-6 280 105)"/></svg></span></i></h1>
+
+  <div class="link">aayushipatel.work
+    <svg width="20" height="20" viewBox="0 0 100 100"><path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#E5322B" stroke-width="13" stroke-linecap="square" transform="rotate(-90 50 50)"/></svg>
+  </div>
+</div>
+</body>
+</html>
