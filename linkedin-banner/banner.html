@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LinkedIn Banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Geist:wght@300..700&display=swap">
+<style>
+  /* LinkedIn banner, 1584 × 396. Same tokens as the site hero (src/views/HomeDesktop.jsx). */
+  :root { --y:#FCEB3F; --y2:#E9DA2E; --ink:#0B0B0B; --red:#E5322B; --green:#2DB34A; --paper:#EFEFEC; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:1584px; height:396px; background:var(--y); overflow:hidden; }
+  body { font-family:'Geist',sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+  .b { position:relative; width:1584px; height:396px; overflow:hidden; background:var(--y); }
+
+  /* 10-column grid, like the hero's underlay */
+  .grid { position:absolute; inset:0 0 52px 0;
+    background-image:linear-gradient(90deg, #0B0B0B14 1px, transparent 1px);
+    background-size:calc((100% - 96px) / 10) 100%; background-position:48px 0; }
+  .rule { position:absolute; left:48px; right:48px; top:22px; height:1px; background:var(--ink); }
+
+  .lbl { font-weight:500; font-size:13px; line-height:1.35; letter-spacing:.03em; text-transform:uppercase; }
+  .sm  { font-size:11.5px; }
+
+  /* top meta row */
+  .meta { position:absolute; left:48px; right:48px; top:34px; display:grid;
+    grid-template-columns:repeat(10, 1fr); }
+  .meta .c1 { grid-column:1 / span 3; }
+  .meta .c2 { grid-column:4 / span 3; }
+  .meta .c3 { grid-column:7 / span 2; }
+  .meta .c4 { grid-column:9 / span 2; text-align:right; }
+  .nc { text-transform:none; }
+
+  /* headline */
+  h1 { position:absolute; left:462px; top:112px; font-family:'Funnel Sans',sans-serif; font-weight:400;
+    font-size:70px; line-height:.9; letter-spacing:-.055em; white-space:nowrap; }
+  h1 i { font-style:italic; }
+  .ring { position:relative; display:inline-block; }
+  .ring svg { position:absolute; left:-.2em; top:50%; width:calc(100% + .38em); height:1.12em;
+    transform:translateY(-47%); overflow:visible; }
+
+  /* arrow cue pointing at the headline */
+  .arrow { position:absolute; left:344px; top:124px; width:80px; height:80px; transform:rotate(8deg); }
+
+  /* skills line under the headline */
+  .skills { position:absolute; left:466px; top:274px; font-size:13px; }
+  .skills b { color:var(--red); font-weight:500; padding:0 7px; }
+
+  /* right column: proof numbers */
+  .proof { position:absolute; right:48px; top:100px; width:300px; display:grid; grid-template-columns:1fr 1fr;
+    border-top:1px solid var(--ink); }
+  .proof > div { padding-top:12px; display:flex; flex-direction:column; gap:8px; }
+  .num { font-family:'Funnel Sans',sans-serif; font-weight:400; font-size:58px; line-height:.85; letter-spacing:-.055em; }
+
+  /* notes with red index, like the hero annotations */
+  .note { position:absolute; display:grid; grid-template-columns:28px 1fr; gap:4px; width:300px; }
+  .note .i { color:var(--red); }
+  .note .t { font-size:13px; line-height:1.45; }
+
+  /* open-to-work badge */
+  .badge { position:absolute; right:48px; top:206px; width:124px; height:124px; }
+  .badge > svg { width:124px; height:124px; }
+  .badge .in { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+  .dot { width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 0 3px #2DB34A33; }
+  .now { font-family:'Funnel Sans',sans-serif; font-style:italic; font-size:24px; line-height:1; letter-spacing:-.04em; }
+
+  /* bottom ticker strip */
+  .tick { position:absolute; left:0; right:0; bottom:0; height:52px; background:var(--ink); color:var(--paper);
+    display:flex; align-items:center; justify-content:flex-end; padding:0 48px; gap:28px; }
+  .tick .lbl { font-size:12.5px; letter-spacing:.06em; }
+  .tick .y { color:var(--y); }
+  .cta { display:flex; align-items:center; gap:12px; background:var(--y); color:var(--ink); height:52px; padding:0 22px;
+    margin-right:-48px; }
+</style>
+</head>
+<body>
+<div class="b">
+  <div class="grid"></div>
+  <div class="rule"></div>
+
+  <div class="meta lbl">
+    <div class="c1">Aayushi Patel<br>Product Designer</div>
+    <div class="c2">Currently<br><span class="nc">Open to full‑time product design roles</span></div>
+    <div class="c3">Halifax, Canada<br>Canada 2026</div>
+    <div class="c4">Portfolio<br><span class="nc">aayushipatel.work ↗&#xFE0E;</span></div>
+  </div>
+
+  <svg class="arrow" viewBox="0 0 100 100" aria-hidden="true">
+    <path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="#0B0B0B" stroke-width="6" stroke-linecap="square" transform="rotate(-45 50 50)"/>
+  </svg>
+
+  <h1>I turn what users feel<br><i>into what teams can <span class="ring">build<svg viewBox="0 0 560 210" preserveAspectRatio="none" aria-hidden="true"><ellipse cx="280" cy="105" rx="278" ry="92" fill="none" stroke="#0B0B0B" stroke-width="1.6" vector-effect="non-scaling-stroke" transform="rotate(-6 280 105)"/></svg></span></i></h1>
+
+  <div class="skills lbl">User research<b>/</b>UI design<b>/</b>Design systems<b>/</b>Prototyping<b>/</b>AI products<b>/</b>Usability testing</div>
+
+  <div class="proof">
+    <div><span class="num">3 yrs</span><span class="lbl sm">Designing real products</span></div>
+    <div><span class="num">15k+</span><span class="lbl sm">People use something<br>I designed</span></div>
+  </div>
+
+  <div class="note" style="left:1236px; top:240px; width:160px;">
+    <span class="lbl i">01</span>
+    <span class="t">Deep research,<br>clean interfaces.</span>
+  </div>
+
+  <div class="badge" aria-hidden="true">
+    <svg viewBox="0 0 128 128" width="128" height="128" style="overflow:visible; transform:rotate(-28deg)">
+      <defs><path id="ring" d="M64,64 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0"/></defs>
+      <circle cx="64" cy="64" r="63.5" fill="none" stroke="#0B0B0B" stroke-width="1"/>
+      <circle cx="64" cy="64" r="41" fill="none" stroke="#0B0B0B" stroke-opacity=".35" stroke-width="1" stroke-dasharray="1 3"/>
+      <text style="font-family:'Geist',sans-serif; font-weight:500; font-size:8.4px; letter-spacing:2.2px; white-space:pre" fill="#0B0B0B">
+        <textPath href="#ring" textLength="326" lengthAdjust="spacing">OPEN TO WORK  FULL TIME  CANADA 2026  </textPath>
+      </text>
+      <circle cx="64" cy="0.5" r="3.5" fill="#E5322B"/>
+    </svg>
+    <div class="in">
+      <span class="lbl" style="font-size:9.5px; display:flex; align-items:center; gap:6px"><span class="dot"></span>Available</span>
+      <span class="now">now</span>
+    </div>
+  </div>
+
+  <div class="tick">
+    <span class="lbl">Hiring a product designer? <span class="y">/</span> Let’s talk</span>
+    <span class="cta lbl">See my work at aayushipatel.work
+      <svg width="13" height="13" viewBox="0 0 100 100"><path d="M14 14 L84 84 M84 34 L84 84 L34 84" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" transform="rotate(-90 50 50)"/></svg>
+    </span>
+  </div>
+</div>
+</body>
+</html>
